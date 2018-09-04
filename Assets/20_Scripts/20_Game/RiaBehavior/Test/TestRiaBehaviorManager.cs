@@ -5,7 +5,7 @@ public class TestRiaBehaviorManager : RiaBehaviorManager<TestRiaBehavior>
 {
     protected override void OnAwake()
     {
-        //StartCoroutine(ShotBehabior(0.5f));
+        // StartCoroutine(ShotBehabior(0.5f));
         ShotBehabiorAll();
     }
 
@@ -19,11 +19,11 @@ public class TestRiaBehaviorManager : RiaBehaviorManager<TestRiaBehavior>
         yield return new WaitForSeconds(_span);
         while (true)
         {
-            for (int i = 0; i < behaviors.Length; ++i)
+            for (int i = 0; i < Behaviors.Length; ++i)
             {
-                if (!behaviors[i].Alive)
+                if (!Behaviors[i].Alive)
                 {
-                    behaviors[i].WakeUp(Vector3.zero, Quaternion.identity);
+                    Behaviors[i].WakeUp(Vector3.zero, Quaternion.identity);
                     break;
                 }
             }
@@ -34,9 +34,9 @@ public class TestRiaBehaviorManager : RiaBehaviorManager<TestRiaBehavior>
 
     private void ShotBehabiorAll()
     {
-        for (int i = 0; i < behaviors.Length; ++i)
+        for (int i = 0; i < Behaviors.Length; ++i)
         {
-            behaviors[i].WakeUp(Vector3.zero, Quaternion.identity);
+            Behaviors[i].WakeUp(Vector3.zero, Quaternion.identity);
         }
     }
 

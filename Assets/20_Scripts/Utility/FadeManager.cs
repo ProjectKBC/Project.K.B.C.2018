@@ -51,7 +51,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
         StartCoroutine(CrossFade(_time, () => { SceneManager.LoadScene(_sceneName); }));
     }
 
-    protected override void OnAwake()
+    protected override void OnInit()
     {
         this.go = gameObject;
         DontDestroyOnLoad(this.gameObject);
@@ -167,7 +167,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
         {
             while (true)
             {
-                if ( _isBreak()) { break; }
+                if (_isBreak()) { break; }
 
                 yield return null;
             }

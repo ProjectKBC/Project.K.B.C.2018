@@ -3,10 +3,13 @@
 public abstract class RiaBehaviorManager<T> : SingletonMonoBehaviour<RiaBehaviorManager<T>> where T : RiaBehavior
 {
     [SerializeField]
-    protected GameObject[] objects = new GameObject[1];
-    protected T[] behaviors = null;
+    private GameObject[] objects = new GameObject[1];
+    private T[] behaviors = null;
 
-    protected override void OnSingltonAwake()
+    protected GameObject[] Objects { get { return this.objects; } set { this.objects = value; } }
+    protected T[] Behaviors { get { return this.behaviors; } set { this.behaviors = value; } }
+
+    protected override void OnInit()
     {
         behaviors = new T[objects.Length];
         for (int i = 0; i < objects.Length; ++i)

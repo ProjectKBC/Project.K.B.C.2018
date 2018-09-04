@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class RiaSceneManager : SingletonMonoBehaviour<RiaSceneManager>
 {
-    protected override void OnAwake()
+    protected override void OnInit()
     {
         StartCoroutine(this.CheckManagers());
     }

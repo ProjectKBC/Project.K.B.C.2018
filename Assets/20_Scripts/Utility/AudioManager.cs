@@ -188,7 +188,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         return null;
     }
 
-    protected override void OnAwake()
+    protected override void OnInit()
     {
         this.go = this.gameObject;
         DontDestroyOnLoad(this);

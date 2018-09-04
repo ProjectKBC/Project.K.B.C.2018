@@ -53,7 +53,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : Single
         {
             if (this.isInit) { return; }
 
-            this.OnAwake();
+            this.OnInit();
             this.isInit = true;
 
             return;
@@ -63,5 +63,5 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : Single
         Debug.Break();
     }
     
-    protected abstract void OnAwake();
+    protected abstract void OnInit();
 }
