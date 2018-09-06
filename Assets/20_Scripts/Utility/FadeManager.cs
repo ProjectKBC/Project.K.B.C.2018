@@ -150,11 +150,11 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
         this.state = FadeState.Free;
     }
 
-    public IEnumerator CrossFade(float _time, BetweenCrossFadeFunc _betweenCrossFadeFunc)
+    public IEnumerator CrossFade(float _time, BetweenCrossFadeFunc _betweenCrossFadeFunc = null)
     {
         yield return this.FadeOut(_time / 2);
 
-        _betweenCrossFadeFunc();
+        if (_betweenCrossFadeFunc != null) _betweenCrossFadeFunc();
 
         yield return this.FadeIn(_time / 2);
     }
