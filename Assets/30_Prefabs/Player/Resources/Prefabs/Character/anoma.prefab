@@ -644,5 +644,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: 100
   moveSpeed: 30
-  normalBulletPrefab: {fileID: 0}
+  normalBulletPrefab: {fileID: 1588243435498868, guid: ed1d9007d42aa45ddbf7431c7091b1ed,
+    type: 2}
   shotInterval: 3

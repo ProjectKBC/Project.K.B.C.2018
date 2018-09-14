@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GeneralNB : MonoBehaviour {
-    
-    public float shotSPD = 1; // 弾の速度
+public class GeneralNB : MonoBehaviour
+{
+    [SerializeField]
+    private float shotSPD = 1; // 弾の速度
 
     private void Update ()
     {
         Vector3 tmp = this.transform.position;
-        tmp.z += shotSPD;
+        tmp.y += shotSPD * Time.deltaTime;
         this.transform.position = tmp;
 
-        if(this.transform.position.z >= 10)
+        if(this.transform.position.y >= 10)
         {
             Destroy(gameObject);
         }
