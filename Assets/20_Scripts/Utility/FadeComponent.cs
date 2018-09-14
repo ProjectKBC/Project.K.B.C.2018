@@ -45,7 +45,7 @@ public class FadeComponent : MonoBehaviour
         this.FadeAlpha = startAlpha;
 
         float startTime = Time.time;
-        while (Time.time - startTime <= _time)
+        while (targetAlpha < FadeAlpha)
         {
             float timeStep = (Time.time - startTime) / _time;
             timeStep = Mathf.Clamp01(timeStep);
@@ -75,7 +75,7 @@ public class FadeComponent : MonoBehaviour
         this.FadeAlpha = startAlpha;
 
         float startTime = Time.time;
-        while (Time.time - startTime <= _time)
+        while (FadeAlpha < targetAlpha)
         {
             float timeStep = (Time.time - startTime) / _time;
             timeStep = Mathf.Clamp01(timeStep);
