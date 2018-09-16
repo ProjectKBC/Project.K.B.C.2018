@@ -29,16 +29,13 @@ public class VeronicaPlayer : PlayerMove
         {
             case "Player1":
                 // z キーを押した時
-                if (Input.GetKeyDown(KeyCode.Z) && this.shotLp > 0)
+                if (Input.GetKeyDown(KeyCode.Z) && 0 < this.shotLp)
                 {
-                    this.normalBulletPrefab.transform.position = this.transform.position;
-                    // 通常弾のキャッシュを生成
-                    this.normalBullet = Instantiate(this.normalBulletPrefab).GetComponent<VeronicaNB>();
-                    this.normalBullet.shooter = this.tag;
+                    CreateBullet();
                 }
 
                 // z キーを押している間
-                if (Input.GetKey(KeyCode.Z) && this.shotLp > 0)
+                if (Input.GetKey(KeyCode.Z) && 0 < this.shotLp)
                 {
                     // 弾を撃ってる間は弾のライフポイントが減る
                     this.shotLp -= Time.deltaTime;
@@ -56,16 +53,13 @@ public class VeronicaPlayer : PlayerMove
 
             case "Player2":
                 // m キーを押した時
-                if (Input.GetKeyDown(KeyCode.M) && this.shotLp > 0)
+                if (Input.GetKeyDown(KeyCode.M) && 0 < this.shotLp)
                 {
-                    this.normalBulletPrefab.transform.position = this.transform.position;
-                    // 通常弾のキャッシュを生成
-                    this.normalBullet = Instantiate(this.normalBulletPrefab).GetComponent<VeronicaNB>();
-                    this.normalBullet.shooter = this.tag;
+                    CreateBullet();
                 }
 
                 // m キーを押している間
-                if (Input.GetKey(KeyCode.M) && this.shotLp > 0)
+                if (Input.GetKey(KeyCode.M) && 0 < this.shotLp)
                 {
                     // 弾を撃ってる間は弾のライフポイントが減る
                     this.shotLp -= Time.deltaTime;
@@ -87,5 +81,13 @@ public class VeronicaPlayer : PlayerMove
         {
             this.normalBullet.shooter = "none";
         }
+    }
+
+    private void CreateBullet()
+    {
+        this.normalBulletPrefab.transform.position = this.transform.position;
+        // 通常弾のキャッシュを生成
+        this.normalBullet = Instantiate(this.normalBulletPrefab).GetComponent<VeronicaNB>();
+        this.normalBullet.shooter = this.tag;
     }
 }

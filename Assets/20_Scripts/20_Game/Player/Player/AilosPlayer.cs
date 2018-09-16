@@ -25,14 +25,7 @@ public class AilosPlayer : PlayerMove {
                 // z キーを押している間
                 if (Input.GetKey(KeyCode.Z))
                 {
-                    shotTimeCount++;
-                    if (shotInterval < shotTimeCount)
-                    {
-                        shotTimeCount = 0;
-
-                        GameObject normalBullets = Instantiate(normalBulletPrefab);
-                        normalBullets.transform.position = this.transform.position;
-                    }
+                    CreateBullet();
                 }
 
                 break;
@@ -41,17 +34,22 @@ public class AilosPlayer : PlayerMove {
                 // m キーを押している間
                 if (Input.GetKey(KeyCode.M))
                 {
-                    shotTimeCount++;
-                    if (shotInterval < shotTimeCount)
-                    {
-                        shotTimeCount = 0;
-
-                        GameObject normalBullets = Instantiate(normalBulletPrefab);
-                        normalBullets.transform.position = this.transform.position;
-                    }
+                    CreateBullet();
                 }
 
                 break;
+        }
+    }
+
+    private void CreateBullet()
+    {
+        shotTimeCount++;
+        if (shotInterval < shotTimeCount)
+        {
+            shotTimeCount = 0;
+
+            GameObject normalBullets = Instantiate(normalBulletPrefab);
+            normalBullets.transform.position = this.transform.position;
         }
     }
 }
