@@ -3,17 +3,23 @@
 public class GeneralNB : MonoBehaviour
 {
     [SerializeField]
-    private float shotSPD = 1; // 弾の速度
+    private float shotSpeed = 60;
+    private Vector3 shotStartPos;
+    [SerializeField]
+    private float shotRange = 70;
 
-    private void Update ()
+    private void Start()
     {
-        Vector3 tmp = this.transform.position;
-        tmp.y += shotSPD * Time.deltaTime;
-        this.transform.position = tmp;
+        shotStartPos = this.transform.position;
+    }
 
-        if(this.transform.position.y >= 10)
+    private void Update()
+    {
+        this.transform.position += Vector3.up * shotSpeed * Time.deltaTime;
+
+        if (shotRange < Mathf.Abs(shotStartPos.y - this.transform.position.y))
         {
             Destroy(gameObject);
         }
-	}
+    }
 }
