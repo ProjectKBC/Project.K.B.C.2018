@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AilosNB : MonoBehaviour {
     [SerializeField]
-    private float shotSpeed = 60;
+    private float shotSpeed = 60.0f;
     private Vector3 shotStartPos;
     [SerializeField]
-    private float shotRange = 70;
+    private float shotRange = 70.0f;
 
     private void Start()
     {

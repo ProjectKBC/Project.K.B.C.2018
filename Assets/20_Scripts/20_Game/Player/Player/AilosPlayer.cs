@@ -1,12 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+/// <summary>
+/// ショットのボタンは仮の設定です
+/// </summary>
 
 public class AilosPlayer : PlayerMove {
     [SerializeField]
     private GameObject normalBulletPrefab = null;
     [SerializeField]
     private int shotInterval = 3;
+    [SerializeField]
+    private float spShotRange = 60.0f;
 
     // 弾を撃った後の経過時間
     private int shotTimeCount;
@@ -37,6 +40,23 @@ public class AilosPlayer : PlayerMove {
                     CreateBullet();
                 }
 
+                break;
+        }
+    }
+
+    private void SpecialShot()
+    {
+        switch (this.tag)
+        {
+            case "Player1":
+                // x キーを押している間
+                if (Input.GetKey(KeyCode.X))
+                {
+                    
+                }
+                break;
+
+            case "Player2":
                 break;
         }
     }

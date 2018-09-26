@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+/// <summary>
+/// ショットのボタンは仮の設定です
+/// </summary>
 
 public class VeronicaPlayer : PlayerMove
 {
