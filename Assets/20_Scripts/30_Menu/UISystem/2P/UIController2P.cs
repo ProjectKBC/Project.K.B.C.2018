@@ -55,7 +55,7 @@ public sealed class UIController2P : MonoBehaviour
     private PlayerCharacterEnum pl1chara;
     private PlayerCharacterEnum pl2chara;
 
-    private void Awake()
+    private void Start()
     {
         elapsedTime = Time.deltaTime;
 
@@ -70,20 +70,7 @@ public sealed class UIController2P : MonoBehaviour
         this.pl2States.isSelected = false;
 
         this.contents[this.pl1States.nowIndex].Pl1Overed = true;
-        for (int i = 0; i < this.contents.Length; ++i)
-        {
-            if (i == this.pl1States.nowIndex) { continue; }
-
-            this.contents[i].Pl1Overed = false;
-        }
-
         this.contents[this.pl2States.nowIndex].Pl2Overed = true;
-        for (int i = 0; i < this.contents.Length; ++i)
-        {
-            if (i == this.pl2States.nowIndex) { continue; }
-
-            this.contents[i].Pl2Overed = false;
-        }
     }
 
     private void Update()

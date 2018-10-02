@@ -47,25 +47,11 @@ public class CharaUIContent2P : MonoBehaviour
         }
         else if (this.pl1Selected)
         {
-            if (this.pl2Overed)
-            {
-                this.image.sprite = this.activeAllSelectedSprite;
-            }
-            else
-            {
-                this.image.sprite = this.activePl1SelectedSprite;
-            }
+            this.image.sprite = this.pl2Overed ? this.activeAllSelectedSprite : this.activePl1SelectedSprite;
         }
         else if (this.pl2Selected)
         {
-            if (this.pl1Overed)
-            {
-                this.image.sprite = this.activeAllSelectedSprite;
-            }
-            else
-            {
-                this.image.sprite = this.activePl2SelectedSprite;
-            }
+            this.image.sprite = this.pl1Overed ? this.activeAllSelectedSprite : this.activePl2SelectedSprite;
         }
         else if (this.pl1Overed && this.pl2Overed)
         {
@@ -103,7 +89,7 @@ public class CharaUIContent2P : MonoBehaviour
     [SerializeField]
     private PlayerCharacterEnum chara = PlayerCharacterEnum.veronica;
 
-    private Image image = null;
+    private Image image;
     private bool pl1Overed;
     private bool pl2Overed;
     private bool pl1Selected;
@@ -133,8 +119,6 @@ public class CharaUIContent2P : MonoBehaviour
         {
             Pl2Selected = false;
         }
-
-        return;
     }
 
     private void Awake()
