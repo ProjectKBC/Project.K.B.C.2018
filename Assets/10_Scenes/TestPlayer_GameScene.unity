@@ -1158,13 +1158,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 5
-  straightEnemy: {fileID: 1206317014964448, guid: 35ddeeedb53e940b8a84c74f9959521b,
+  straightEnemy: {fileID: 1206317014964448, guid: 44d950746c1274741b031f6b3ebb0cef,
     type: 2}
-  quadraticEnemy: {fileID: 1877999995235900, guid: 301b75534977e4688b297b9d81755284,
+  quadraticEnemy: {fileID: 1877999995235900, guid: 27709408c221e4f9b9b431b6100623b4,
     type: 2}
-  circleEnemy: {fileID: 1385024300171112, guid: 20913b3d6f6904709a7d7ace70c81f92,
+  circleEnemy: {fileID: 1385024300171112, guid: 62bef1773a1204d1fbcf5538edc02042,
     type: 2}
-  enemyPatterns: 000000000200000003000000
+  enemyPatterns: 00000000
   enemyManagerDebug:
     StraightHorizontalPos: {x: -40, y: 60}
     StraightHorizontalPosInterval: {x: 16, y: 0}
@@ -1517,8 +1517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de101118119491aa542e116ec26f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: 0
-  player2: 1
+  player1: 1
+  player2: 0
 --- !u!4 &1329087907
 Transform:
   m_ObjectHideFlags: 0
