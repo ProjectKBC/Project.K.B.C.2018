@@ -1145,7 +1145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1034435780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,7 +1164,7 @@ MonoBehaviour:
     type: 2}
   circleEnemy: {fileID: 1385024300171112, guid: 62bef1773a1204d1fbcf5538edc02042,
     type: 2}
-  enemyPatterns: 00000000
+  enemyPatterns: 000000000200000003000000
   enemyManagerDebug:
     StraightHorizontalPos: {x: -40, y: 60}
     StraightHorizontalPosInterval: {x: 16, y: 0}
@@ -1519,6 +1519,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: 1
   player2: 0
+  pl1ButtleKey:
+    normalShotKey: 0
+    specialShotKey: 0
+    skillKey: 0
+    moveUpKey: 0
+    moveLeftKey: 0
+    moveDownKey: 0
+    moveRightKey: 0
+  pl2ButtleKey:
+    normalShotKey: 0
+    specialShotKey: 0
+    skillKey: 0
+    moveUpKey: 0
+    moveLeftKey: 0
+    moveDownKey: 0
+    moveRightKey: 0
 --- !u!4 &1329087907
 Transform:
   m_ObjectHideFlags: 0

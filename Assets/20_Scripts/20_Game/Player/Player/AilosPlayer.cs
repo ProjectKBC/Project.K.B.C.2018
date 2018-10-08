@@ -4,7 +4,8 @@ using UnityEngine;
 /// ショットのボタンは仮の設定です
 /// </summary>
 
-public class AilosPlayer : PlayerMove {
+public class AilosPlayer : PlayerMove
+{
     [SerializeField]
     private GameObject normalBulletPrefab = null;
     [SerializeField]
@@ -12,12 +13,11 @@ public class AilosPlayer : PlayerMove {
     [SerializeField]
     private float spShotRange = 60.0f;
     [SerializeField]
-    private float searchTime = 3.5f;
+    private float searchTime = 2.5f;
     [SerializeField]
     private int serchNumOfTimes = 3;
 
     private GameObject[] targetEnemys = new GameObject[3];
-
 
     // 弾を撃った後の経過時間
     private int shotTimeCount;
@@ -31,25 +31,9 @@ public class AilosPlayer : PlayerMove {
 
     private void NormalShot()
     {
-        switch (this.tag)
+        if (Input.GetKey(normalShotKey))
         {
-            case "Player1":
-                // z キーを押している間
-                if (Input.GetKey(KeyCode.Z))
-                {
-                    CreateBullet();
-                }
-
-                break;
-
-            case "Player2":
-                // m キーを押している間
-                if (Input.GetKey(KeyCode.M))
-                {
-                    CreateBullet();
-                }
-
-                break;
+            CreateBullet();
         }
     }
 
@@ -58,13 +42,17 @@ public class AilosPlayer : PlayerMove {
         switch (this.tag)
         {
             case "Player1":
+                IEnumerator lockOn = LockOn(serchNumOfTimes);
                 // x キーを押した瞬間
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    StartCoroutine( LockOn(serchNumOfTimes) );
+                    StartCoroutine(lockOn);
                 }
+                // x キーを離した瞬間
                 if (Input.GetKeyUp(KeyCode.X))
                 {
+                    StopCoroutine(lockOn);
+                    lockOn = LockOn(serchNumOfTimes);
                     for (int i = 0; i < targetEnemys.Length; i++)
                     {
                         Destroy(targetEnemys[i]);
@@ -92,19 +80,18 @@ public class AilosPlayer : PlayerMove {
 
     private IEnumerator LockOn(int _serchNumOfTimes)
     {
-        if(Input.GetKey(KeyCode.X))
+        if (Input.GetKey(KeyCode.X))
         {
             for (int i = 0; i < _serchNumOfTimes; i++)
             {
                 yield return new WaitForSeconds(searchTime);
                 if (NearSearchEnemy(spShotRange) != null)
                 {
+                    Debug.Log(NearSearchEnemy(spShotRange));
                     targetEnemys[i] = NearSearchEnemy(spShotRange);
-                    Debug.Log(targetEnemys[i]);
                 }
             }
         }
-
     }
 
     private GameObject NearSearchEnemy(float _searchRadius)
@@ -115,6 +102,7 @@ public class AilosPlayer : PlayerMove {
 
         foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Enemy"))
         {
+            // サーチ済みの敵は省く
             if(0 <= System.Array.IndexOf(targetEnemys, obs)) { break; }
             tmpDistance = Vector3.Distance(obs.transform.position, this.transform.position);
             if (tmpDistance <= _searchRadius)

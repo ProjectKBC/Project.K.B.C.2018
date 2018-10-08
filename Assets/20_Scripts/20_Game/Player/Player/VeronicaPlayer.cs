@@ -27,56 +27,22 @@ public class VeronicaPlayer : PlayerMove
 
     private void NormalShot()
     {
-
-        switch (this.tag)
+        if (Input.GetKeyDown(normalShotKey) && 0 < this.shotLp)
         {
-            case "Player1":
-                // z キーを押した時
-                if (Input.GetKeyDown(KeyCode.Z) && 0 < this.shotLp)
-                {
-                    CreateBullet();
-                }
+            CreateBullet();
+        }
 
-                // z キーを押している間
-                if (Input.GetKey(KeyCode.Z) && 0 < this.shotLp)
-                {
-                    // 弾を撃ってる間は弾のライフポイントが減る
-                    this.shotLp -= Time.deltaTime;
-                }
+        if (Input.GetKey(normalShotKey) && 0 < this.shotLp)
+        {
+            // 弾を撃ってる間は弾のライフポイントが減る
+            this.shotLp -= Time.deltaTime;
+        }
 
-                // z キーを離している間
-                if (!Input.GetKey(KeyCode.Z) && this.shotLp < ShotMaxLp)
-                {
-                    // 弾を撃ってない間は弾のライフポイントが増える
-                    this.shotLp += Time.deltaTime;
-                    this.normalBullet.shooter = "none";
-                }
-
-                break;
-
-            case "Player2":
-                // m キーを押した時
-                if (Input.GetKeyDown(KeyCode.M) && 0 < this.shotLp)
-                {
-                    CreateBullet();
-                }
-
-                // m キーを押している間
-                if (Input.GetKey(KeyCode.M) && 0 < this.shotLp)
-                {
-                    // 弾を撃ってる間は弾のライフポイントが減る
-                    this.shotLp -= Time.deltaTime;
-                }
-
-                // m キーを離している間
-                if (!Input.GetKey(KeyCode.M) && this.shotLp < ShotMaxLp)
-                {
-                    // 弾を撃ってない間は弾のライフポイントが増える
-                    this.shotLp += Time.deltaTime;
-                    this.normalBullet.shooter = "none";
-                }
-
-                break;
+        if (!Input.GetKey(normalShotKey) && this.shotLp < ShotMaxLp)
+        {
+            // 弾を撃ってない間は弾のライフポイントが増える
+            this.shotLp += Time.deltaTime;
+            this.normalBullet.shooter = "none";
         }
 
         // 弾のライフポイントが切れた時

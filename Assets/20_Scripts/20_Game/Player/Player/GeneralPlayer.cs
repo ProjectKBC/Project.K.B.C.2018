@@ -18,25 +18,9 @@ public class GeneralPlayer : PlayerMove
 
     private void NormalShot()
     {
-        switch (this.tag)
+        if (Input.GetKey(normalShotKey))
         {
-            case "Player1":
-                // z キーを押している間
-                if (Input.GetKey(KeyCode.Z))
-                {
-                    CreateBullet();
-                }
-
-                break;
-
-            case "Player2":
-                // m キーを押している間
-                if (Input.GetKey(KeyCode.M))
-                {
-                    CreateBullet();
-                }
-
-                break;
+            CreateBullet();
         }
     }
 
