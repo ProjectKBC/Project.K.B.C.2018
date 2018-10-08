@@ -18,7 +18,9 @@ namespace Ria
 
         public override void Update()
         {
-            Debug.Log("PlayAction_Update");
+            //Debug.Log("PlayAction_Update");
+
+            this.gm.TestRBManager.Run();
         }
 
         public override void End()

@@ -15,7 +15,7 @@ public class TestRiaBehavior : RiaBehavior
 
         if (elapsedTime >= 5.0)
         {
-            //this.Sleep();
+            this.Sleep();
         }
     }
 
