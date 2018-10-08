@@ -13,12 +13,12 @@ namespace Ria
     /// </summary>
     [System.Serializable]
     public class EnemyManager : MonoBehaviour
-    {   
+    {
         private static readonly int AppearZPos = 100;
 
         // 使われていないのでコメントアウトした by flanny
         // private static readonly int BulletPool = 100;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -29,8 +29,8 @@ namespace Ria
             Quadratic,
             Circle
         }
-        
-        [SuppressMessage("ReSharper", "StyleCop.SA1401")]
+
+        [SuppressMessage ("ReSharper", "StyleCop.SA1401")]
         [System.Serializable]
         public class EnemyManagerDebugParam
         {
@@ -50,7 +50,7 @@ namespace Ria
 
         // 何のIntervalなのか教えて by flanny
         [SerializeField]
-        private float interval = 2;
+        private float interval = 5;
         [SerializeField]
         private GameObject straightEnemy = null;
         [SerializeField]
@@ -58,16 +58,16 @@ namespace Ria
         [SerializeField]
         private GameObject circleEnemy = null;
         [SerializeField]
-        private WavePattern[] enemyPatterns = new WavePattern[0];
+        private WavePattern [] enemyPatterns = new WavePattern [0];
 
-        [Space(16)]
+        [Space (16)]
 
         [SerializeField]
         private EnemyManagerDebugParam enemyManagerDebug = null;
 
-        private GameObject[] sEnemys;
-        private GameObject[] qEnemys;
-        private GameObject[] cEnemys;
+        private GameObject [] sEnemys;
+        private GameObject [] qEnemys;
+        private GameObject [] cEnemys;
 
         // private static EnemyManager instance = null;
         private float elapsedTime;
@@ -76,62 +76,62 @@ namespace Ria
         private float pass;
         // 今何wave目かの目印
         private int enemyCount;
-        
-        private void Awake()
+
+        private void Awake ()
         {
-            this.sEnemys = new GameObject[10];
-            this.qEnemys = new GameObject[10];
-            this.cEnemys = new GameObject[10];
+            this.sEnemys = new GameObject [10];
+            this.qEnemys = new GameObject [10];
+            this.cEnemys = new GameObject [10];
 
             for (int i = 0; i < 10; i++)
             {
-                this.sEnemys[i] = CreateEnemy(straightEnemy);
-                this.qEnemys[i] = CreateEnemy(quadraticEnemy);
-                this.cEnemys[i] = CreateEnemy(circleEnemy);
+                this.sEnemys [i] = CreateEnemy (straightEnemy);
+                this.qEnemys [i] = CreateEnemy (quadraticEnemy);
+                this.cEnemys [i] = CreateEnemy (circleEnemy);
             }
 
             this.enemyCount = 0;
             this.pass = interval;
         }
 
-        private void Update()
+        private void Update ()
         {
             this.elapsedTime += Time.deltaTime;
 
             // ここの計算がすごく怖い どういう意味？ by flanny
-            var nowPass = Mathf.Floor(this.elapsedTime * 10) / 10;
+            var nowPass = Mathf.Floor (this.elapsedTime * 10) / 10;
 
-            if (nowPass.Equals(this.pass))
+            if (nowPass.Equals (this.pass))
             {
 
                 if (enemyCount < enemyPatterns.Length)
                 {
-                    switch (enemyPatterns[enemyCount].ToString())
+                    switch (enemyPatterns [enemyCount].ToString ())
                     {
-                        case "StraightHorizontal":
-                            StraightHorizontal(
-                                3,
-                                this.enemyManagerDebug.StraightHorizontalPos,
-                                this.enemyManagerDebug.StraightHorizontalPosInterval);
-                            break;
+                    case "StraightHorizontal":
+                        StraightHorizontal (
+                            3,
+                            this.enemyManagerDebug.StraightHorizontalPos,
+                            this.enemyManagerDebug.StraightHorizontalPosInterval);
+                        break;
 
-                        case "StraightVertical":
-                            StraightVertical();
-                            break;
+                    case "StraightVertical":
+                        StraightVertical ();
+                        break;
 
-                        case "Quadratic":
-                            Quadratic(
-                                3,
-                                this.enemyManagerDebug.QuadraticPos,
-                                this.enemyManagerDebug.QuadraticPosInterval);
-                            break;
+                    case "Quadratic":
+                        Quadratic (
+                            3,
+                            this.enemyManagerDebug.QuadraticPos,
+                            this.enemyManagerDebug.QuadraticPosInterval);
+                        break;
 
-                        case "Circle":
-                            Circle(
-                                1,
-                                this.enemyManagerDebug.CirclePos,
-                                this.enemyManagerDebug.CirclePosInterval);
-                            break;
+                    case "Circle":
+                        Circle (
+                            1,
+                            this.enemyManagerDebug.CirclePos,
+                            this.enemyManagerDebug.CirclePosInterval);
+                        break;
                     }
 
                     enemyCount++;
@@ -140,10 +140,10 @@ namespace Ria
             }
         }
 
-        public GameObject CreateEnemy(GameObject _obj)
+        public GameObject CreateEnemy (GameObject _obj)
         {
-            var enemy = Instantiate(_obj);
-            enemy.SetActive(false);
+            var enemy = Instantiate (_obj);
+            enemy.SetActive (false);
             enemy.transform.parent = this.transform;
 
             return enemy;
@@ -157,7 +157,7 @@ namespace Ria
         /// <param name="_appearNum">敵機の登場数</param>
         /// <param name="_appearPos">登場する座標</param>
         /// <param name="_posInterval">登場の座標の間隔</param>
-        public void StraightHorizontal(int _appearNum, Vector2 _appearPos, Vector2 _posInterval)
+        public void StraightHorizontal (int _appearNum, Vector2 _appearPos, Vector2 _posInterval)
         {
             int appearCount = 0;
 
@@ -165,11 +165,11 @@ namespace Ria
             {
                 if (appearCount >= _appearNum) { break; }
 
-                if (!this.sEnemys[i].activeSelf)
+                if (!this.sEnemys [i].activeSelf)
                 {
                     // 起点に設置
-                    this.sEnemys[i].transform.position = new Vector3(_appearPos.x, _appearPos.y, AppearZPos);
-                    this.sEnemys[i].SetActive(true);
+                    this.sEnemys [i].transform.position = new Vector3 (_appearPos.x, _appearPos.y, AppearZPos);
+                    this.sEnemys [i].SetActive (true);
                     appearCount++;
 
                     // 次の起点の間隔をあける
@@ -178,9 +178,9 @@ namespace Ria
             }
         }
 
-        public void StraightVertical()
+        public void StraightVertical ()
         {
-            Debug.Log("StraightVerticalまだ書いてない！！！");
+            Debug.Log ("StraightVerticalまだ書いてない！！！");
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Ria
         /// <param name="_appearNum">敵機の出現数</param>
         /// <param name="_appearPos">登場する座標</param>
         /// <param name="_posInterval">登場する座標の間隔</param>
-        public void Quadratic(int _appearNum, Vector2 _appearPos, Vector2 _posInterval)
+        public void Quadratic (int _appearNum, Vector2 _appearPos, Vector2 _posInterval)
         {
             int appearCount = 0;
 
@@ -197,11 +197,11 @@ namespace Ria
             {
                 if (appearCount >= _appearNum) { break; }
 
-                if(!this.qEnemys[i].activeSelf)
+                if (!this.qEnemys [i].activeSelf)
                 {
                     // 起点に設置
-                    this.qEnemys[i].transform.position = new Vector3(_appearPos.x, _appearPos.y, AppearZPos);
-                    this.qEnemys[i].SetActive(true);
+                    this.qEnemys [i].transform.position = new Vector3 (_appearPos.x, _appearPos.y, AppearZPos);
+                    this.qEnemys [i].SetActive (true);
                     appearCount++;
 
                     // 次の起点の間隔をあける
@@ -216,20 +216,20 @@ namespace Ria
         /// <param name="_appearNum">敵機の登場数</param>
         /// <param name="_appearPos">登場する座標</param>
         /// <param name="_posInterval">登場する座標の間隔</param>
-        public void Circle(int _appearNum, Vector2 _appearPos, Vector2 _posInterval)
+        public void Circle (int _appearNum, Vector2 _appearPos, Vector2 _posInterval)
         {
             int count = 0;
-            
+
             for (int i = 0; i < this.cEnemys.Length; i++)
             {
                 if (count >= _appearNum) { break; }
-            
-                if (!this.cEnemys[i].activeSelf)
+
+                if (!this.cEnemys [i].activeSelf)
                 {
                     // 起点に設置
-                    this.cEnemys[i].transform.position = new Vector3(_appearPos.x, _appearPos.y, AppearZPos);
-                    this.cEnemys[i].GetComponent<CircleEnemy>().CenterPos = this.transform.position;
-                    this.cEnemys[i].SetActive(true);
+                    this.cEnemys [i].transform.position = new Vector3 (_appearPos.x, _appearPos.y, AppearZPos);
+                    this.cEnemys [i].GetComponent<CircleEnemy> ().CenterPos = this.transform.position;
+                    this.cEnemys [i].SetActive (true);
                     count++;
 
                     // 次の起点の間隔をあける
