@@ -11,7 +11,7 @@ public abstract class Enemy : MonoBehaviour
     protected static readonly float Bottom = -80.0f;
 
     public int HitPoint { get; protected set; }
-    public bool BurstAttackFlag = false;
+    public bool IsBurstAttack = false;
     public GameObject Go { get; protected set; }
     public Transform Trans { get; protected set; }
 
@@ -36,10 +36,10 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField]
     private float passInterval = 1.5f;
     [SerializeField]
-    private int BurstBulletNumber = 3;
+    private int burstBulletNumber = 3;
 
-    private int BurstCount;
-    private float BurstBulletInterval = 0.1f;
+    private int burstCount;
+    private float burstBulletInterval = 0.1f;
 
     protected virtual void Awake ()
     {
@@ -56,17 +56,17 @@ public abstract class Enemy : MonoBehaviour
         }
 
         this.Pass = this.PassInterval;
-        BurstCount = BurstBulletNumber;
+        burstCount = burstBulletNumber;
     }
 
     protected virtual void Update ()
     {
         ElapsedTime += Time.deltaTime;
         float nowPass = Mathf.Floor (this.ElapsedTime * 10) / 10;
-        //if (nowPass.Equals(this.Pass))
-        if (nowPass >= this.Pass) // ==やEqualsだと値も型も同じなのに挙動がおかしい、見えない小数がある？今はまだ原因不明
+        //if (nowPass.Equals(this.Pass)) // ==やEqualsだと値も型も同じなのに挙動がおかしい、見えない小数がある？今はまだ原因不明
+        if (nowPass >= this.Pass)
         {
-            if (BurstAttackFlag)
+            if (IsBurstAttack)
             {
                 BurstAttack (nowPass);
             }
@@ -148,15 +148,15 @@ public abstract class Enemy : MonoBehaviour
     public void BurstAttack (float nowPass)
     {
         BulletAppear ();
-        BurstCount -= 1;
-        if (BurstCount <= 0)
+        burstCount -= 1;
+        if (burstCount <= 0)
         {
-            this.Pass += this.PassInterval + BurstBulletInterval * BurstBulletNumber;
-            this.BurstCount = BurstBulletNumber;
+            this.Pass += this.PassInterval + burstBulletInterval * burstBulletNumber;
+            this.burstCount = burstBulletNumber;
         }
         else
         {
-            this.Pass += BurstBulletInterval;
+            this.Pass += burstBulletInterval;
         }
     }
 
