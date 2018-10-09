@@ -22,6 +22,10 @@ namespace Ria
         private PlayAction playAct = new PlayAction();
         private PauseAction pauseAct = new PauseAction();
         private FinalizeAction finalAct = new FinalizeAction();
+        
+        [SerializeField]
+        private TestRiaBehaviorChildManager testRBManager = null; 
+        public TestRiaBehaviorChildManager TestRBManager { get { return testRBManager; } }
 
         // Loading系
 
