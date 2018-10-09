@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  normalBulletPrefab: {fileID: 1196284274841118, guid: a67cadbe8e3fb4431bef3e766e91d067,
+  normalBulletPrefab: {fileID: 1421621883212656, guid: ae69d7b0701954af39867b60165f3465,
     type: 2}
   shotInterval: 3
   spShotRange: 60

@@ -382,11 +382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26e45a0715f24fe4a9d9ff1a95999f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
-  SPD: 0.3
-  normalBullet: {fileID: 1611373919145570, guid: e97e5dcb6139c4129bf7c2abc3bc11e6,
+  moveSpeed: 30
+  normalBulletPrefab: {fileID: 1611373919145570, guid: e97e5dcb6139c4129bf7c2abc3bc11e6,
     type: 2}
-  shotLP: 5
+  shotLp: 5
 --- !u!114 &114793604233175740
 MonoBehaviour:
   m_ObjectHideFlags: 1

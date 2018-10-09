@@ -117,12 +117,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f554dfd78224a3884b4d90d94c6845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBurstAttack: 0
   fixHitPoint: 1
   moveSpeedRate: 2
   nomalBulletSpeed: 8
-  nomalBullet: {fileID: 1738035679312372, guid: 4604e1179122f4ad2b3dd56f6a09dfdc,
+  nomalBullet: {fileID: 1738035679312372, guid: 40efa1b1eec085847b2d415955947f6a,
     type: 2}
   passInterval: 1.5
+  burstBulletNumber: 3
   debug:
     Radius: 16
     EndStraightPos: {x: 0, y: -60}
