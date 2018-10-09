@@ -3,7 +3,7 @@
 public abstract class RiaBehaviorChildManager<T> : SingletonMonoBehaviour<RiaBehaviorChildManager<T>> where T : RiaBehavior
 {
     [SerializeField]
-    private GameObject[] objects = new GameObject[1];
+    private GameObject[] objects = new GameObject[0];
     private T[] behaviors = null;
 
     protected GameObject[] Objects { get { return this.objects; } set { this.objects = value; } }
@@ -13,6 +13,10 @@ public abstract class RiaBehaviorChildManager<T> : SingletonMonoBehaviour<RiaBeh
 
     protected override void OnInit()
     {
+        this.elapsedTime = Time.deltaTime;
+
+        if (objects.Length == 0) { return; }
+
         behaviors = new T[objects.Length];
         for (int i = 0; i < objects.Length; ++i)
         {
@@ -24,8 +28,7 @@ public abstract class RiaBehaviorChildManager<T> : SingletonMonoBehaviour<RiaBeh
 
             behaviors[i].Init();
         }
-
-        this.elapsedTime = Time.deltaTime;
+        objects = null;
     }
 
     public void Init()
@@ -37,9 +40,12 @@ public abstract class RiaBehaviorChildManager<T> : SingletonMonoBehaviour<RiaBeh
     {
         this.elapsedTime += Time.deltaTime;
 
-        for (int i = 0; i < behaviors.Length; ++i)
+        if (behaviors != null)
         {
-            behaviors[i].Run();
+            for (int i = 0; i < behaviors.Length; ++i)
+            {
+                behaviors[i].Run();
+            }
         }
 
         OnUpdate();

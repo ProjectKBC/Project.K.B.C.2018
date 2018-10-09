@@ -3,25 +3,41 @@
 public abstract class RiaBehavior : MonoBehaviour
 {
     #region STATIC READONLY
+
     protected static readonly Vector3 VECTOR_ZERO = Vector3.zero;
     protected static readonly Vector3 VECTOR_ONE = Vector3.one;
     protected static readonly Quaternion ROTATE_NONE = Quaternion.identity;
-    #endregion
+
+    #endregion STATIC READONLY
 
     #region PUBLIC MEMBER
+
     public bool Alive { get; protected set; }
-    #endregion
+
+    #endregion PUBLIC MEMBER
 
     #region SERIALIZE PRIVATE MEMBER
+
     [SerializeField]
     private bool isDebug = false;
-    #endregion
+
+    #endregion SERIALIZE PRIVATE MEMBER
 
     #region PROTECTED MEMBER
+
     protected GameObject go_ = null;
     protected Transform trans_ = null;
     protected float elapsedTime = 0;
-    #endregion
+
+    #endregion PROTECTED MEMBER
+
+    #region PRIVATE MEMBER
+
+    private Vector3 firstPos;
+    private Vector3 firstScale;
+    private Quaternion firstRotate;
+
+    #endregion PRIVATE MEMBER
 
     /// <summary>
     /// RiaManagerのUpdate関数内で呼び出す関数
@@ -47,6 +63,10 @@ public abstract class RiaBehavior : MonoBehaviour
         this.go_ = this.gameObject;
         this.trans_ = this.transform;
         this.elapsedTime = 0;
+
+        this.firstPos = this.trans_.position;
+        this.firstRotate = this.trans_.localRotation;
+        this.firstScale = this.trans_.localScale;
 
         this.go_.SetActive(false);
         this.Alive = false;
@@ -75,11 +95,11 @@ public abstract class RiaBehavior : MonoBehaviour
     public void WakeUp()
     {
         if (isDebug) { Debug.Log("WakeUp() in " + this.name); }
-        
+
         this.go_.SetActive(true);
         this.Alive = true;
 
-        OnWakeUp(this.trans_.localPosition, this.trans_.localRotation);
+        OnWakeUp(this.firstPos, this.firstRotate);
     }
 
     /// <summary>
@@ -93,7 +113,7 @@ public abstract class RiaBehavior : MonoBehaviour
 
         this.trans_.localPosition = _position;
         this.trans_.localRotation = _rotation;
-        this.trans_.localScale = VECTOR_ONE;
+        this.trans_.localScale = this.firstScale;
         this.go_.SetActive(true);
         this.Alive = true;
 
@@ -101,7 +121,10 @@ public abstract class RiaBehavior : MonoBehaviour
     }
 
     protected abstract void OnRun();
+
     protected abstract void OnInit();
+
     protected abstract void OnSleep();
+
     protected abstract void OnWakeUp(Vector3 _position, Quaternion _rotation);
 }

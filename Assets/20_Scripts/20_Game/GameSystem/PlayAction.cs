@@ -20,7 +20,8 @@ namespace Ria
         {
             //Debug.Log("PlayAction_Update");
 
-            this.gm.TestRBManager.Run();
+            //this.gm.TestRBManager.Run();
+            this.gm.RBEnemyManager.Run();
         }
 
         public override void End()

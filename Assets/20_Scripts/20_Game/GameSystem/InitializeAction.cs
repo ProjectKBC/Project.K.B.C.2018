@@ -15,7 +15,8 @@ namespace Ria
             Debug.Log("InitializeAction_Start");
             this.gm = GameManager.Instance;
 
-            this.gm.TestRBManager.Init();
+            //this.gm.TestRBManager.Init();
+            this.gm.RBEnemyManager.Init();
         }
 
         public override void Update()

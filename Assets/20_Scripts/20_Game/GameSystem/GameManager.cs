@@ -22,10 +22,14 @@ namespace Ria
         private PlayAction playAct = new PlayAction();
         private PauseAction pauseAct = new PauseAction();
         private FinalizeAction finalAct = new FinalizeAction();
-        
+
         [SerializeField]
-        private TestRiaBehaviorChildManager testRBManager = null; 
+        private TestRiaBehaviorChildManager testRBManager = null;
         public TestRiaBehaviorChildManager TestRBManager { get { return testRBManager; } }
+
+        [SerializeField]
+        private RBEnemyManager rbEnemyManager = null;
+        public RBEnemyManager RBEnemyManager { get { return rbEnemyManager; } }
 
         // Loading系
 
@@ -59,6 +63,18 @@ namespace Ria
                 int tmpI = ((int)this.currentState + 1) % (int)State.Length;
                 State tmp = (State)Enum.ToObject(typeof(State), tmpI);
                 this.SetState(tmp);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (this.currentState == State.Play)
+                {
+                    this.SetState(State.Pause);
+                }
+                else if (this.currentState == State.Pause)
+                {
+                    this.SetState(State.Play);
+                }
             }
         }
 
