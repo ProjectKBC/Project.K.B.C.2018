@@ -16,6 +16,27 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     private PlayerEnum player1;
     [SerializeField]
     private PlayerEnum player2;
+
+    [System.Serializable]
+    public struct PlayerButtleKey
+    {
+        public KeyCode normalShotKey;
+        public KeyCode specialShotKey;
+        public KeyCode skillKey;
+        public KeyCode moveUpKey;
+        public KeyCode moveLeftKey;
+        public KeyCode moveDownKey;
+        public KeyCode moveRightKey;
+    }
+
+    public static PlayerButtleKey Pl1ButtleKey { get; private set; }
+    public static PlayerButtleKey Pl2ButtleKey { get; private set; }
+
+    [SerializeField]
+    private PlayerButtleKey pl1ButtleKey;
+    [SerializeField]
+    private PlayerButtleKey pl2ButtleKey;
+
     
     protected override void OnInit()
     {
@@ -37,6 +58,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
 
         GameObjectPl1.tag = "Player1";
+        Pl1ButtleKey = pl1ButtleKey;
         GameObjectPl2.tag = "Player2";
+        Pl2ButtleKey = pl2ButtleKey;
     }
 }

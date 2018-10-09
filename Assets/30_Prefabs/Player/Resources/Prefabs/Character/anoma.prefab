@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4903496118450144}
-  - component: {fileID: 114264806812534636}
+  - component: {fileID: 114476093060100206}
   m_Layer: 0
   m_Name: anoma
   m_TagString: Untagged
@@ -631,7 +631,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602237312145132}
   m_Mesh: {fileID: 4300010, guid: 23d3e00965676e04c9ed8745e65192b9, type: 3}
---- !u!114 &114264806812534636
+--- !u!114 &114476093060100206
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -639,11 +639,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1884338516698722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115b29e8637724ce0b3bacb48e166be5, type: 3}
+  m_Script: {fileID: 11500000, guid: 85da9f209e3b748b4bbbff970d1219b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 100
   moveSpeed: 30
-  normalBulletPrefab: {fileID: 1588243435498868, guid: ed1d9007d42aa45ddbf7431c7091b1ed,
+  normalBulletPrefab: {fileID: 1196284274841118, guid: a67cadbe8e3fb4431bef3e766e91d067,
     type: 2}
   shotInterval: 3
+  spShotRange: 60
+  searchTime: 0.5
+  serchNumOfTimes: 3
