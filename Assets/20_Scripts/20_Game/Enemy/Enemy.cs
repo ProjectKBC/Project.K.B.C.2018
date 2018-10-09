@@ -6,11 +6,12 @@ public abstract class Enemy : MonoBehaviour
     // 定数はstatic readonlyに
     // public と protected はアクセサーに
     // gameobject と transform はキャッシュをとる by flanny
-    protected static readonly Vector3 SpownPos = new Vector3(0, 0, 200);
-    protected static readonly int BulletPool = 10;
-    protected static readonly float Bottom = -600.0f;
+    protected static readonly Vector3 SpownPos = new Vector3 (0, 0, 200);
+    protected static readonly int BulletPool = 20;
+    protected static readonly float Bottom = -80.0f;
 
     public int HitPoint { get; protected set; }
+    public bool IsBurstAttack = false;
     public GameObject Go { get; protected set; }
     public Transform Trans { get; protected set; }
 
@@ -34,116 +35,149 @@ public abstract class Enemy : MonoBehaviour
     private GameObject nomalBullet;
     [SerializeField]
     private float passInterval = 1.5f;
+    [SerializeField]
+    private int burstBulletNumber = 3;
 
-    protected virtual void Awake()
+    private int burstCount;
+    private float burstBulletInterval = 0.1f;
+
+    protected virtual void Awake ()
     {
         this.Go = this.gameObject;
         this.Trans = this.Go.transform;
 
         this.HitPoint = this.fixHitPoint;
         this.ElapsedTime = 0.0f;
-        this.NomalBullets = new List<GameObject>();
+        this.NomalBullets = new List<GameObject> ();
 
         for (int i = 0; i < BulletPool; i++)
         {
-            this.NomalBullets.Add(CreateBullet(nomalBullet));
+            this.NomalBullets.Add (CreateBullet (nomalBullet));
         }
 
         this.Pass = this.PassInterval;
+        burstCount = burstBulletNumber;
     }
 
-    protected virtual void Update()
+    protected virtual void Update ()
     {
         ElapsedTime += Time.deltaTime;
-
-        var nowPass = Mathf.Floor(this.ElapsedTime * 10) / 10;
-        if (nowPass.Equals(this.Pass))
+        float nowPass = Mathf.Floor (this.ElapsedTime * 10) / 10;
+        //if (nowPass.Equals(this.Pass)) // ==やEqualsだと値も型も同じなのに挙動がおかしい、見えない小数がある？今はまだ原因不明
+        if (nowPass >= this.Pass)
         {
-            BulletAppear();
-            this.Pass += this.PassInterval;
+            if (IsBurstAttack)
+            {
+                BurstAttack (nowPass);
+            }
+            else
+            {
+                BulletAppear ();
+                this.Pass += PassInterval;
+            }
         }
-
-        Dead();
-        NomalAttack();
-        BeyondLine();
+        Dead ();
+        NomalAttack ();
+        BeyondLine ();
     }
 
-    protected virtual void OnDisable()
+    protected virtual void OnDisable ()
     {
         this.HitPoint = this.fixHitPoint;
         this.ElapsedTime = 0.0f;
         this.Pass = this.PassInterval;
     }
 
-    public void Dead()
+    public void Dead ()
     {
         if (this.HitPoint <= 0)
         {
-            HideEnemy();
+            HideEnemy ();
         }
     }
 
-    public void BeyondLine()
+    public void BeyondLine ()
     {
-        if (this.transform.position.y < Bottom)
+        if (this.Trans.position.y < Bottom)
         {
-            HideEnemy();
+            HideEnemy ();
         }
     }
 
-    public GameObject CreateBullet(GameObject _obj)
+    public GameObject CreateBullet (GameObject _obj)
     {
-        var bullet = Instantiate(_obj);
+        var bullet = Instantiate (_obj);
         // _bullet.transform.parent = this.transform;
-        HideBullet(bullet);
+        HideBullet (bullet);
         return bullet;
     }
 
-    public void BulletAppear()
+    public void BulletAppear ()
     {
         for (int i = 0; i < this.NomalBullets.Count; i++)
         {
-            if (!this.NomalBullets[i].gameObject.activeSelf)
+            if (!this.NomalBullets [i].gameObject.activeSelf)
             {
-                this.NomalBullets[i].transform.position = this.Trans.position;
-                this.NomalBullets[i].gameObject.SetActive(true);
+                this.NomalBullets [i].transform.position = this.Trans.position;
+                this.NomalBullets [i].gameObject.SetActive (true);
                 break;
             }
         }
     }
 
-    public void NomalAttack()
+    public void NomalAttack ()
     {
         for (int i = 0; i < this.NomalBullets.Count; i++)
         {
 
-            if (this.NomalBullets[i].gameObject.activeSelf)
+            if (this.NomalBullets [i].gameObject.activeSelf)
             {
-                Vector3 pos = this.NomalBullets[i].transform.position;
+                Vector3 pos = this.NomalBullets [i].transform.position;
                 pos.y -= nomalBulletSpeed;
-                this.NomalBullets[i].transform.position = pos;
+                this.NomalBullets [i].transform.position = pos;
 
-                if (this.NomalBullets[i].transform.position.y < Bottom)
+                if (this.NomalBullets [i].transform.position.y < Bottom)
                 {
-                    HideBullet(this.NomalBullets[i]);
+                    HideBullet (this.NomalBullets [i]);
                 }
             }
         }
     }
 
-    public void HideEnemy()
+
+    public void BurstAttack (float nowPass)
     {
-        this.Go.SetActive(false);
+        BulletAppear ();
+        burstCount -= 1;
+        if (burstCount <= 0)
+        {
+            this.Pass += this.PassInterval + burstBulletInterval * burstBulletNumber;
+            this.burstCount = burstBulletNumber;
+        }
+        else
+        {
+            this.Pass += burstBulletInterval;
+        }
+    }
+
+    public void TurnPlayer ()
+    {
+        //Playerの方へ攻撃してくれる予定
+    }
+
+    public void HideEnemy ()
+    {
+        this.Go.SetActive (false);
         this.Trans.position = SpownPos;
     }
 
-    public void HideBullet(GameObject _bullet)
+    public void HideBullet (GameObject _bullet)
     {
-        _bullet.gameObject.SetActive(false);
+        _bullet.gameObject.SetActive (false);
         _bullet.transform.position = SpownPos;
     }
 
-    public bool IsHit()
+    public bool IsHit ()
     {
         return false;
     }
