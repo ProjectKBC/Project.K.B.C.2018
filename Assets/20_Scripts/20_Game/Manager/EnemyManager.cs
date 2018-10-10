@@ -8,12 +8,16 @@ namespace Ria
 {
     using System.Diagnostics.CodeAnalysis;
 
+
     /// <summary>
     /// 敵の生成や出現を管理するクラス
     /// </summary>
     [System.Serializable]
     public class EnemyManager : MonoBehaviour
     {
+        private static readonly Vector3 player1EnemyStart = new Vector3(-40, 60, 0);
+        private static readonly Vector3 player2EnemyStart = new Vector3(40, 60, 0);
+
         private static readonly int AppearZPos = 100;
 
         // 使われていないのでコメントアウトした by flanny
@@ -145,7 +149,6 @@ namespace Ria
             var enemy = Instantiate (_obj);
             enemy.SetActive (false);
             enemy.transform.parent = this.transform;
-
             return enemy;
         }
 

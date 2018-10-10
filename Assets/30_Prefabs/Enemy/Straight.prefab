@@ -13,10 +13,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: passInterval
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: BurstAttackFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeedRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: IsBurstAttack
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -129,10 +137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b94415bbcd147ef8be1d5adb99ac09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurstAttackFlag: 1
+  IsBurstAttack: 1
   fixHitPoint: 1
-  moveSpeedRate: 10
+  moveSpeedRate: 5
   nomalBulletSpeed: 2
   nomalBullet: {fileID: 1738035679312372, guid: 8f9251b225aa840c496ca4480efeecee,
     type: 2}
-  passInterval: 1
+  passInterval: 2
+  burstBulletNumber: 3

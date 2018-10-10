@@ -39,7 +39,7 @@ public abstract class Enemy : MonoBehaviour
     private int burstBulletNumber = 3;
 
     private int burstCount;
-    private float burstBulletInterval = 0.1f;
+    private float burstBulletInterval = 0.2f;
 
     protected virtual void Awake ()
     {
@@ -50,10 +50,14 @@ public abstract class Enemy : MonoBehaviour
         this.ElapsedTime = 0.0f;
         this.NomalBullets = new List<GameObject> ();
 
+        /*
         for (int i = 0; i < BulletPool; i++)
         {
             this.NomalBullets.Add (CreateBullet (nomalBullet));
         }
+        */
+
+        CreateBullet(this.NomalBullet);
 
         this.Pass = this.PassInterval;
         burstCount = burstBulletNumber;
@@ -77,7 +81,7 @@ public abstract class Enemy : MonoBehaviour
             }
         }
         Dead ();
-        NomalAttack ();
+        //NomalAttack ();
         BeyondLine ();
     }
 
@@ -104,12 +108,15 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public GameObject CreateBullet (GameObject _obj)
+    public void CreateBullet (GameObject _obj)
     {
-        var bullet = Instantiate (_obj);
-        // _bullet.transform.parent = this.transform;
-        HideBullet (bullet);
-        return bullet;
+        for (int i = 0; i < BulletPool; i++)
+        {
+            var bullet = Instantiate(_obj);
+            //bullet.transform.SetParent(this.transform, true);
+            HideBullet(bullet);
+            this.NomalBullets.Add(bullet);
+        }
     }
 
     public void BulletAppear ()
@@ -125,25 +132,10 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void NomalAttack ()
+    public void ForwardEnemy ()
     {
-        for (int i = 0; i < this.NomalBullets.Count; i++)
-        {
-
-            if (this.NomalBullets [i].gameObject.activeSelf)
-            {
-                Vector3 pos = this.NomalBullets [i].transform.position;
-                pos.y -= nomalBulletSpeed;
-                this.NomalBullets [i].transform.position = pos;
-
-                if (this.NomalBullets [i].transform.position.y < Bottom)
-                {
-                    HideBullet (this.NomalBullets [i]);
-                }
-            }
-        }
+        // ある程度まで前進する
     }
-
 
     public void BurstAttack (float nowPass)
     {
@@ -158,11 +150,6 @@ public abstract class Enemy : MonoBehaviour
         {
             this.Pass += burstBulletInterval;
         }
-    }
-
-    public void TurnPlayer ()
-    {
-        //Playerの方へ攻撃してくれる予定
     }
 
     public void HideEnemy ()

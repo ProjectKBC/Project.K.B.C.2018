@@ -6,22 +6,27 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: BulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
+  m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1738035679312372}
-  m_IsPrefabAsset: 1
+  m_IsPrefabParent: 0
 --- !u!1 &1738035679312372
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
+  serializedVersion: 5
   m_Component:
   - component: {fileID: 4872895179357728}
   - component: {fileID: 33647206967697214}
   - component: {fileID: 23155616039476706}
   - component: {fileID: 135512043734962854}
+  - component: {fileID: 114970572301522780}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Untagged
@@ -32,7 +37,7 @@ GameObject:
 --- !u!4 &4872895179357728
 Transform:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1738035679312372}
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
@@ -45,7 +50,7 @@ Transform:
 --- !u!23 &23155616039476706
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1738035679312372}
   m_Enabled: 1
@@ -80,14 +85,31 @@ MeshRenderer:
 --- !u!33 &33647206967697214
 MeshFilter:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1738035679312372}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114970572301522780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738035679312372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4cb4c908f7eb4a3dbe3c90b4712b66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletSpeed: 10
+  Bottom: -80
+  MyPositionX: 0
+  MyPositionY: 0
+  PlayerPositionX: 0
+  PlayerPositionY: 0
 --- !u!135 &135512043734962854
 SphereCollider:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1738035679312372}
   m_Material: {fileID: 0}
