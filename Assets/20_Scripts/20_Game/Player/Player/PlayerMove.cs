@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     protected KeyCode moveLeftKey;
     protected KeyCode moveDownKey;
     protected KeyCode moveRightKey;
+    protected string enemyTag;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerMove : MonoBehaviour
                 moveLeftKey = PlayerManager.Pl1ButtleKey.moveLeftKey;
                 moveDownKey = PlayerManager.Pl1ButtleKey.moveDownKey;
                 moveRightKey = PlayerManager.Pl1ButtleKey.moveRightKey;
+                enemyTag = "Enemy1";
                 break;
 
             case "Player2":
@@ -35,6 +37,7 @@ public class PlayerMove : MonoBehaviour
                 moveLeftKey = PlayerManager.Pl2ButtleKey.moveLeftKey;
                 moveDownKey = PlayerManager.Pl2ButtleKey.moveDownKey;
                 moveRightKey = PlayerManager.Pl2ButtleKey.moveRightKey;
+                enemyTag = "Enemy2";
                 break;
         }
     }

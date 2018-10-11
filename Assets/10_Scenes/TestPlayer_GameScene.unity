@@ -1145,7 +1145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1034435780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,21 +1520,21 @@ MonoBehaviour:
   player1: 1
   player2: 0
   pl1ButtleKey:
-    normalShotKey: 0
-    specialShotKey: 0
+    normalShotKey: 122
+    specialShotKey: 120
     skillKey: 0
-    moveUpKey: 0
-    moveLeftKey: 0
-    moveDownKey: 0
-    moveRightKey: 0
+    moveUpKey: 119
+    moveLeftKey: 97
+    moveDownKey: 115
+    moveRightKey: 100
   pl2ButtleKey:
-    normalShotKey: 0
-    specialShotKey: 0
+    normalShotKey: 110
+    specialShotKey: 109
     skillKey: 0
-    moveUpKey: 0
-    moveLeftKey: 0
-    moveDownKey: 0
-    moveRightKey: 0
+    moveUpKey: 273
+    moveLeftKey: 276
+    moveDownKey: 274
+    moveRightKey: 275
 --- !u!4 &1329087907
 Transform:
   m_ObjectHideFlags: 0

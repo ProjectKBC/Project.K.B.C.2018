@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 /// <summary>
 /// ショットのボタンは仮の設定です
@@ -9,18 +11,19 @@ public class AilosPlayer : PlayerMove
     [SerializeField]
     private GameObject normalBulletPrefab = null;
     [SerializeField]
-    private int shotInterval = 3;
+    private int normalShotInterval = 3;
     [SerializeField]
-    private float spShotRange = 60.0f;
+    private float spShotRange = 30.0f;
     [SerializeField]
-    private float searchTime = 2.5f;
+    private float searchTime = 0.5f;
     [SerializeField]
-    private int serchNumOfTimes = 3;
+    private int searchNumOfTimes = 3;
 
-    private GameObject[] targetEnemys = new GameObject[3];
-
+    private GameObject[] targetEnemys;
+    private float currentTime = 0;
+    private int searchCount = 0;
     // 弾を撃った後の経過時間
-    private int shotTimeCount;
+    private int normalShotTimeCount;
 
     private void Update()
     {
@@ -39,81 +42,71 @@ public class AilosPlayer : PlayerMove
 
     private void SpecialShot()
     {
-        switch (this.tag)
+        if (Input.GetKeyDown(specialShotKey))
         {
-            case "Player1":
-                IEnumerator lockOn = LockOn(serchNumOfTimes);
-                // x キーを押した瞬間
-                if (Input.GetKeyDown(KeyCode.X))
-                {
-                    StartCoroutine(lockOn);
-                }
-                // x キーを離した瞬間
-                if (Input.GetKeyUp(KeyCode.X))
-                {
-                    StopCoroutine(lockOn);
-                    lockOn = LockOn(serchNumOfTimes);
-                    for (int i = 0; i < targetEnemys.Length; i++)
-                    {
-                        Destroy(targetEnemys[i]);
-                        targetEnemys[i] = null;
-                    }
-                }
-                break;
+            currentTime = 0;
+            searchCount = 0;
+            targetEnemys = new GameObject[searchNumOfTimes];
+        }
 
-            case "Player2":
-                break;
+        if (Input.GetKey(specialShotKey))
+        {
+            if (NearSearchEnemy(spShotRange) == null || searchNumOfTimes <= searchCount) { return; }
+
+            currentTime += Time.deltaTime;
+            if (searchTime <= currentTime)
+            {
+                searchCount++;
+                targetEnemys[searchCount - 1] = NearSearchEnemy(spShotRange);
+                currentTime = 0;
+            }
+        }
+
+        if (Input.GetKeyUp(specialShotKey))
+        {
+            for (int i = 0; i < searchCount; i++)
+            {
+                targetEnemys[i].SetActive(false);
+            }
         }
     }
 
     private void CreateBullet()
     {
-        shotTimeCount++;
-        if (shotInterval < shotTimeCount)
+        normalShotTimeCount++;
+        if (normalShotInterval < normalShotTimeCount)
         {
-            shotTimeCount = 0;
+            normalShotTimeCount = 0;
 
             GameObject normalBullets = Instantiate(normalBulletPrefab);
             normalBullets.transform.position = this.transform.position;
         }
     }
 
-    private IEnumerator LockOn(int _serchNumOfTimes)
-    {
-        if (Input.GetKey(KeyCode.X))
-        {
-            for (int i = 0; i < _serchNumOfTimes; i++)
-            {
-                yield return new WaitForSeconds(searchTime);
-                if (NearSearchEnemy(spShotRange) != null)
-                {
-                    Debug.Log(NearSearchEnemy(spShotRange));
-                    targetEnemys[i] = NearSearchEnemy(spShotRange);
-                }
-            }
-        }
-    }
-
     private GameObject NearSearchEnemy(float _searchRadius)
     {
+        SortedDictionary<float, GameObject> searchEnemys = new SortedDictionary<float, GameObject>();
         GameObject targetEnemy = null;
-        float tmpDistance = 0;
-        float nearDistance = 0;
+        bool searchFlag = false;
 
-        foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Enemy"))
+        foreach (GameObject obs in GameObject.FindGameObjectsWithTag(enemyTag))
         {
             // サーチ済みの敵は省く
-            if(0 <= System.Array.IndexOf(targetEnemys, obs)) { break; }
-            tmpDistance = Vector3.Distance(obs.transform.position, this.transform.position);
+            if(0 <= System.Array.IndexOf(targetEnemys, obs)) { continue; }
+            float tmpDistance = Vector3.Distance(obs.transform.position, this.transform.position);
             if (tmpDistance <= _searchRadius)
             {
-                if (nearDistance == 0 || tmpDistance < nearDistance)
-                {
-                    nearDistance = tmpDistance;
-                    targetEnemy = obs;
-                }
+                searchEnemys.Add(Vector3.Distance(obs.transform.position, this.transform.position), obs);
+                searchFlag = true;
             }
+
+        }
+
+        if (searchFlag)
+        {
+            targetEnemy = searchEnemys.First().Value;
         }
         return targetEnemy;
     }
+
 }
