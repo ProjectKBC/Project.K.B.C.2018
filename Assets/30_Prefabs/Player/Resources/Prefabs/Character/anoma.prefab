@@ -649,3 +649,5 @@ MonoBehaviour:
   spShotRange: 30
   searchTime: 0.5
   searchNumOfTimes: 3
+  spShotCoolTime: 1.5
+  skillTime: 5

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-/// <summary>
-/// ショットのボタンは仮の設定です
-/// </summary>
+// todo: スコアによるスキルのリキャストの実装
 
-public class AilosPlayer : PlayerMove
+public class AilosPlayer : PlayerData
 {
+    private static readonly float AlphaMaxValue = 0.75f;
+
     [SerializeField]
     private GameObject normalBulletPrefab = null;
     [SerializeField]
@@ -20,13 +20,19 @@ public class AilosPlayer : PlayerMove
     private int searchNumOfTimes = 3;
     [SerializeField]
     private float spShotCoolTime = 1.5f;
+    [SerializeField]
+    private float skillTime = 5.0f;
 
+    private int normalShotTimeCount;
     private GameObject[] targetEnemys;
     private float searchCoolTimeCount = 0;
     private float spShotCoolTimeCount = 0;
     private int searchCount = 0;
-    // 弾を撃った後の経過時間
-    private int normalShotTimeCount;
+    private float alphaValue = 0;
+    private float opponentMoveSpeed;
+    private float skillTimeCount = 0;
+    private bool isSkillFlag = false;
+    private float speedChangeRate = 0;
 
     protected override void Start()
     {
@@ -39,11 +45,12 @@ public class AilosPlayer : PlayerMove
         base.Move();
         NormalShot();
         SpecialShot();
+        Skill();
     }
 
     private void NormalShot()
     {
-        if (Input.GetKey(normalShotKey))
+        if (Input.GetKey(NormalShotKey))
         {
             CreateBullet();
         }
@@ -57,14 +64,14 @@ public class AilosPlayer : PlayerMove
             return;
         }
 
-        if (Input.GetKeyDown(specialShotKey))
+        if (Input.GetKeyDown(SpecialShotKey))
         {
             searchCoolTimeCount = 0;
             searchCount = 0;
             targetEnemys = new GameObject[searchNumOfTimes];
         }
 
-        if (Input.GetKey(specialShotKey))
+        if (Input.GetKey(SpecialShotKey))
         {
             if (NearSearchEnemy(spShotRange) == null || searchNumOfTimes <= searchCount) { return; }
 
@@ -77,12 +84,40 @@ public class AilosPlayer : PlayerMove
             }
         }
 
-        if (Input.GetKeyUp(specialShotKey))
+        if (Input.GetKeyUp(SpecialShotKey))
         {
             for (int i = 0; i < searchCount; i++)
             {
                 targetEnemys[i].SetActive(false);
                 spShotCoolTimeCount = 0;
+            }
+        }
+    }
+
+    private void Skill()
+    {
+        if (Input.GetKeyDown(SkillKey) && isSkillFlag == false)
+        {
+            isSkillFlag = true;
+            opponentMoveSpeed = OpponentPlayer.MoveSpeed;
+        } 
+
+        if (isSkillFlag)
+        {
+            float beforeAlphaValue = alphaValue;
+            // このアルファ値の変動で画面が上手い具合にフェードするか正直わかんない
+            alphaValue = Mathf.Lerp(0, AlphaMaxValue, Time.deltaTime);
+            // アルファ値の変動に伴う相手プレイヤーのスピードの調整もよくわかんない
+            speedChangeRate = (beforeAlphaValue <= alphaValue) ? 1 - alphaValue : 1 + (alphaValue * 2);
+            OpponentPlayer.MoveSpeed = OpponentPlayer.MoveSpeed * speedChangeRate;
+            skillTimeCount += Time.deltaTime;
+
+            if (skillTime <= skillTimeCount)
+            {
+                skillTimeCount = 0;
+                alphaValue = 0;
+                OpponentPlayer.MoveSpeed = opponentMoveSpeed;
+                isSkillFlag = false;
             }
         }
     }
@@ -103,9 +138,9 @@ public class AilosPlayer : PlayerMove
     {
         SortedDictionary<float, GameObject> searchEnemys = new SortedDictionary<float, GameObject>();
         GameObject targetEnemy = null;
-        bool searchFlag = false;
+        bool isSearchFlag = false;
 
-        foreach (GameObject obs in GameObject.FindGameObjectsWithTag(enemyTag))
+        foreach (GameObject obs in GameObject.FindGameObjectsWithTag(EnemyTag))
         {
             // サーチ済みの敵は省く
             if(0 <= System.Array.IndexOf(targetEnemys, obs)) { continue; }
@@ -113,15 +148,12 @@ public class AilosPlayer : PlayerMove
             if (tmpDistance <= _searchRadius)
             {
                 searchEnemys.Add(Vector3.Distance(obs.transform.position, this.transform.position), obs);
-                searchFlag = true;
+                isSearchFlag = true;
             }
 
         }
 
-        if (searchFlag)
-        {
-            targetEnemy = searchEnemys.First().Value;
-        }
+        if (isSearchFlag) { targetEnemy = searchEnemys.First().Value; }
         return targetEnemy;
     }
 

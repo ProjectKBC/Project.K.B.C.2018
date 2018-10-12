@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GeneralPlayer : PlayerMove
+public class GeneralPlayer : PlayerData
 {
     [SerializeField]
     private GameObject normalBulletPrefab = null;
@@ -18,7 +18,7 @@ public class GeneralPlayer : PlayerMove
 
     private void NormalShot()
     {
-        if (Input.GetKey(normalShotKey))
+        if (Input.GetKey(NormalShotKey))
         {
             CreateBullet();
         }
