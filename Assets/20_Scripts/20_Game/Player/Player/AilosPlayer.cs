@@ -18,12 +18,21 @@ public class AilosPlayer : PlayerMove
     private float searchTime = 0.5f;
     [SerializeField]
     private int searchNumOfTimes = 3;
+    [SerializeField]
+    private float spShotCoolTime = 1.5f;
 
     private GameObject[] targetEnemys;
-    private float currentTime = 0;
+    private float searchCoolTimeCount = 0;
+    private float spShotCoolTimeCount = 0;
     private int searchCount = 0;
     // 弾を撃った後の経過時間
     private int normalShotTimeCount;
+
+    protected override void Start()
+    {
+        base.Start();
+        spShotCoolTimeCount = spShotCoolTime;
+    }
 
     private void Update()
     {
@@ -42,9 +51,15 @@ public class AilosPlayer : PlayerMove
 
     private void SpecialShot()
     {
+        if(spShotCoolTimeCount < spShotCoolTime)
+        {
+            spShotCoolTimeCount += Time.deltaTime;
+            return;
+        }
+
         if (Input.GetKeyDown(specialShotKey))
         {
-            currentTime = 0;
+            searchCoolTimeCount = 0;
             searchCount = 0;
             targetEnemys = new GameObject[searchNumOfTimes];
         }
@@ -53,12 +68,12 @@ public class AilosPlayer : PlayerMove
         {
             if (NearSearchEnemy(spShotRange) == null || searchNumOfTimes <= searchCount) { return; }
 
-            currentTime += Time.deltaTime;
-            if (searchTime <= currentTime)
+            searchCoolTimeCount += Time.deltaTime;
+            if (searchTime <= searchCoolTimeCount)
             {
                 searchCount++;
                 targetEnemys[searchCount - 1] = NearSearchEnemy(spShotRange);
-                currentTime = 0;
+                searchCoolTimeCount = 0;
             }
         }
 
@@ -67,6 +82,7 @@ public class AilosPlayer : PlayerMove
             for (int i = 0; i < searchCount; i++)
             {
                 targetEnemys[i].SetActive(false);
+                spShotCoolTimeCount = 0;
             }
         }
     }

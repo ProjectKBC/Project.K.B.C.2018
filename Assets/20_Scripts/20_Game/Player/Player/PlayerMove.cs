@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     protected KeyCode moveRightKey;
     protected string enemyTag;
 
-    private void Start()
+    protected virtual void Start()
     {
         switch(this.tag)
         {
