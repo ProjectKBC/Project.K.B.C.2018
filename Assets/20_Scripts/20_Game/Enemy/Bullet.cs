@@ -11,12 +11,15 @@ public class Bullet : MonoBehaviour
 
     public GameObject Go { get; protected set; }
     public Transform Trans { get; protected set; }
-    public float MyPositionX;
-    public float MyPositionY;
-    public float PlayerPositionX;
-    public float PlayerPositionY;
+    protected float MyAppearPositionX;
+    protected float MyAppearPositionY;
+    protected float PlayerPositionX;
+    protected float PlayerPositionY;
+    protected Vector3 PlayerPosition;
+    protected Vector3 MyAppearPosition;
+    protected Vector3 VectorMyselfPlayer;
 
-    public void Awake()
+    protected virtual void Awake()
     {
         this.Go = this.gameObject;
         this.Trans = this.Go.transform;
@@ -24,24 +27,32 @@ public class Bullet : MonoBehaviour
 
     public void OnEnable()
     {
-        this.MyPositionX = Trans.position.x;
-        this.MyPositionY = Trans.position.y;
+        this.PlayerPosition = PlayerManager.GameObjectPl1.transform.position;
+        this.VectorMyselfPlayer = new Vector3 (this.PlayerPosition.x - this.MyAppearPosition.x,
+            this.PlayerPosition.y - this.MyAppearPosition.y, this.MyAppearPosition.y).normalized;
+        /*
+        this.MyAppearPositionX = Trans.position.x;
+        this.MyAppearPositionY = Trans.position.y;
         this.PlayerPositionX = PlayerManager.GameObjectPl1.transform.position.x;
         this.PlayerPositionY = PlayerManager.GameObjectPl1.transform.position.y;
+        */
     }
 
-    public void Update()
+    protected virtual void Update()
     {
-        GoPlayer(this.MyPositionX, this.MyPositionY,
-                  this.PlayerPositionX, this.PlayerPositionY);
+        /*
+        GoPlayer(this.MyAppearPositionX, this.MyAppearPositionY,
+            this.PlayerPositionX, this.PlayerPositionY);
+            */
+        //GoPlayer();
         BeyondLine();
     }
 
     public void OnDisable()
     {
-
     }
-
+    
+    /*
     public void GoPlayer(float _enemyX, float _enemyY, float _playerX, float _playerY)
     {
         Vector3 pos = this.Trans.position;
@@ -70,8 +81,23 @@ public class Bullet : MonoBehaviour
             Debug.Log("それはレア");
         }
     }
+    */
+    
+    public void GoPlayer()
+    {
+        Vector3 myNowPos = this.Trans.position;
 
-    public void NomalAttack()
+        myNowPos.x += (this.VectorMyselfPlayer.x * this.BulletSpeed * Time.deltaTime);
+        myNowPos.y += (this.VectorMyselfPlayer.y * this.BulletSpeed * Time.deltaTime);
+        //myNowPos.z += (this.vectorMyselfPlayer.z * this.BulletSpeed * Time.deltaTime);
+
+        
+        Debug.Log(myNowPos);
+        this.Trans.position = myNowPos;
+        //this.Trans.position = Vector3.MoveTowards(this.Trans.position, this.PlayerPosition, 10.0f * Time.deltaTime);
+    }
+    
+    public void NormalAttack()
     {
         Vector3 pos = this.Trans.position;
         pos.y += -BulletSpeed * Time.deltaTime;

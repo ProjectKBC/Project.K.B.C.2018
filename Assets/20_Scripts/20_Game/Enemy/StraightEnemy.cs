@@ -23,7 +23,27 @@ public sealed class StraightEnemy : Enemy
         // this.ElapsedTime += UnityEngine.Time.deltaTime;
 
         // _
-        StraightMove();
+        float nowPass = Mathf.Floor (this.ElapsedTime * 10) / 10;
+        if (this.Trans.position.y > ordinaryForwardBorder)
+        {
+            ForwardEnemy(ordinaryForwardBorder);
+        }
+        else
+        {
+            StraightMove();
+            //NormalAtack();
+        }
+        if (nowPass >= this.Pass)
+        {
+            if (IsBurstAttack)
+            {
+                BurstAttack ();
+            }
+            else
+            {
+                NormalAtack ();
+            }
+        }
     }
 
     // protected override void OnDisable()

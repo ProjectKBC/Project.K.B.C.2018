@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="20_Scripts" t="Include">
+          <e p="10_Title" t="Include">
+            <e p="TitleManager.cs" t="Include" />
+          </e>
+          <e p="20_Game" t="Include">
+            <e p="Enemy" t="Include">
+              <e p="BigBee.cs" t="Include" />
+              <e p="Bullet.cs" t="Include" />
+              <e p="CircleEnemy.cs" t="Include" />
+              <e p="Enemy.cs" t="Include" />
+              <e p="Needle.cs" t="Include" />
+              <e p="QuadraticEnemy.cs" t="Include" />
+              <e p="StraightEnemy.cs" t="Include" />
+            </e>
+            <e p="Manager" t="Include">
+              <e p="ChildManager.cs" t="Include" />
+              <e p="EnemyManager.cs" t="Include" />
+              <e p="GameManager.cs" t="Include" />
+            </e>
+            <e p="Player" t="Include">
+              <e p="Bullet" t="Include">
+                <e p="GeneralNB.cs" t="Include" />
+                <e p="VeronicaNB.cs" t="Include" />
+              </e>
+              <e p="Player" t="Include">
+                <e p="AnomaShot.cs" t="Include" />
+                <e p="GeneralPlayer.cs" t="Include" />
+                <e p="PlayerManager.cs" t="Include" />
+                <e p="PlayerNumber.cs" t="Include" />
+                <e p="PlayerShot.cs" t="Include" />
+                <e p="VeronicaPlayer.cs" t="Include" />
+              </e>
+              <e p="Test" t="Include">
+                <e p="PlayerTest.cs" t="Include" />
+                <e p="TestUIManager.cs" t="Include" />
+              </e>
+            </e>
+            <e p="RiaBehavior" t="Include">
+              <e p="RiaBehavior.cs" t="Include" />
+              <e p="RiaBehaviorManager.cs" t="Include" />
+              <e p="Test" t="Include">
+                <e p="TestRiaBehavior.cs" t="Include" />
+                <e p="TestRiaBehaviorManager.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="30_Menu" t="Include">
+            <e p="ButtonController.cs" t="Include" />
+            <e p="ButtonControllerOnClick.cs" t="Include" />
+            <e p="CharacterButton.cs" t="Include" />
+            <e p="CharaSelecter.cs" t="Include" />
+            <e p="ScreenChangeSystem.cs" t="Include" />
+          </e>
+          <e p="Base" t="Include">
+            <e p="SingletonMonoBehaviour.cs" t="Include" />
+          </e>
+          <e p="UnityManiax" t="Include">
+            <e p="AssetCatalog.cs" t="Include" />
+            <e p="AssetCatalogEditor.cs" t="Include" />
+            <e p="CachedBehaviour.cs" t="Include" />
+            <e p="Missile2D.cs" t="Include" />
+            <e p="MissileCatalog.cs" t="Include" />
+            <e p="MissileCatalogEditor.cs" t="Include" />
+            <e p="MissileDown.cs" t="Include" />
+            <e p="MissileLeft.cs" t="Include" />
+            <e p="MissileRight.cs" t="Include" />
+            <e p="MissileUp.cs" t="Include" />
+            <e p="ObjectPool.cs" t="Include" />
+            <e p="Shooter.cs" t="Include" />
+            <e p="Task.cs" t="Include" />
+            <e p="TaskSystem.cs" t="Include" />
+            <e p="UNIQUEID.cs" t="Include" />
+          </e>
+          <e p="Utility" t="Include">
+            <e p="AudioManager.cs" t="Include" />
+            <e p="DontDestroyOnLoad.cs" t="Include" />
+            <e p="FadeComponent.cs" t="Include" />
+            <e p="FadeManager.cs" t="Include" />
+            <e p="InitializeSceneManager.cs" t="Include" />
+            <e p="RiaSceneManager.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Project.K.B.C.2018.sln" t="IncludeFlat" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2018.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2018.2/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_Project.K.B.C.2018.2041706987.00" t="ExcludeRecursive" />
+  </component>
+</project>

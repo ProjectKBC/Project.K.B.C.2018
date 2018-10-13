@@ -25,7 +25,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: IsBurstAttack
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b94415bbcd147ef8be1d5adb99ac09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsBurstAttack: 1
+  IsBurstAttack: 0
   fixHitPoint: 1
   moveSpeedRate: 5
   nomalBulletSpeed: 2
