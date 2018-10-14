@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public enum BulletType
+    {
+        NormalAttack,
+        GoPlayer
+    }
+    
     protected static readonly Vector3 SpownPos = new Vector3(0, 0, 200);
     protected static readonly float Bottom = -80.0f;
 
@@ -18,6 +24,9 @@ public class Bullet : MonoBehaviour
     protected Vector3 PlayerPosition;
     protected Vector3 MyAppearPosition;
     protected Vector3 VectorMyselfPlayer;
+
+    [SerializeField]
+    private BulletType bulletType;
 
     protected virtual void Awake()
     {
@@ -45,13 +54,23 @@ public class Bullet : MonoBehaviour
             this.PlayerPositionX, this.PlayerPositionY);
             */
         //GoPlayer();
+        switch (this.bulletType.ToString())
+        {
+            case "NormalAttack":
+                NormalAttack();
+                break;
+
+            case "GoPlayer":
+                GoPlayer();
+                break;
+        }
         BeyondLine();
     }
 
     public void OnDisable()
     {
     }
-    
+        
     /*
     public void GoPlayer(float _enemyX, float _enemyY, float _playerX, float _playerY)
     {

@@ -7,20 +7,6 @@ public class BigBee : Enemy
     protected Vector3[] FanPosition;
     private int FanCount = 9;
 
-    protected override void Awake()
-    {
-        base.Awake();
-
-        /*
-        FanPosition = new Vector3[this.FanCount];
-        
-        for (int i = 0; i < this.FanCount; i++)
-        {
-            this.FanPosition[i] = new Vector3(0, 180, 100);
-        }
-        */
-    }
-
     protected override void Update()
     {
         base.Update();
