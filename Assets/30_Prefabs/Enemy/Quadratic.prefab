@@ -11,6 +11,10 @@ Prefab:
       propertyPath: nomalBulletSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeedRate
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1877999995235900}
@@ -121,12 +125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a08700b4f9654b3fb0b6b18f19d75bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBurstAttack: 0
   fixHitPoint: 1
-  moveSpeedRate: 10
+  moveSpeedRate: 4
   nomalBulletSpeed: 1
   nomalBullet: {fileID: 1738035679312372, guid: 8f9251b225aa840c496ca4480efeecee,
     type: 2}
   passInterval: 1.5
+  burstBulletNumber: 3
   debug:
     PassingX: -78
     PassingY: 56

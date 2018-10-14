@@ -225,7 +225,6 @@ namespace Ria
             float appearSpace = System.Math.Abs(_enemyData.LeftPosX - _enemyData.RightPosX) / (_appearNum + 1);
             float appearRightPosX = _enemyData.RightPosX - appearSpace;
             float appearLeftPosX = _enemyData.LeftPosX + appearSpace;
-            Debug.Log("スペース" + appearSpace + "左の下限" + _enemyData.LeftPosX + "右の上限" + _enemyData.RightPosX + "左の敵の値" + appearLeftPosX);
             
             for (int i = 0; i < _enemyData.StraightEnemys.Length; i++)
             {
@@ -264,6 +263,18 @@ namespace Ria
         public void Quadratic(int _appearNum, PlayersEnemyData _enemyData, Vector2 _appearPos, Vector2 _posInterval)
         {
             int appearCount = 0;
+            float appearSpace = -20;
+            float appearPosX = -90;
+            float appearPosY = 40;
+
+            if (_enemyData.PlayerType.Equals("Enemy1"))
+            {
+                appearPosX = -90.0f;
+            }
+            else if(_enemyData.PlayerType.Equals("Enemy2"))
+            {
+                appearPosX = -8.0f;
+            }
 
             for (int i = 0; i < _enemyData.QuadraticEnemys.Length; i++)
             {
@@ -276,7 +287,7 @@ namespace Ria
                 {
                     // 起点に設置
                     _enemyData.QuadraticEnemys[i].transform.position =
-                        new Vector3(_appearPos.x, _appearPos.y, AppearZPos);
+                        new Vector3(appearPosX + appearCount * appearSpace, appearPosY, AppearZPos);
                     _enemyData.QuadraticEnemys[i].SetActive(true);
                     appearCount++;
 

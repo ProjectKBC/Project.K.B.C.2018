@@ -37,7 +37,7 @@ public sealed class QuadraticEnemy : Enemy
         // this.ElapsedTime += Time.deltaTime;
 
         // _
-        QuadraticMove(debug.PassingX, debug.PassingY, debug.MaxX, debug.MaxY);
+        QuadraticMove(this.Trans.position.x, this.Trans.position.y, -10, 0);
     }
 
     // protected override void OnDisable()
