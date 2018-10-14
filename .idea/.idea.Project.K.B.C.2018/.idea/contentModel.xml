@@ -18,22 +18,31 @@
               <e p="QuadraticEnemy.cs" t="Include" />
               <e p="StraightEnemy.cs" t="Include" />
             </e>
+            <e p="GameSystem" t="Include">
+              <e p="FinalizeAction.cs" t="Include" />
+              <e p="GameManager.cs" t="Include" />
+              <e p="InitializeAction.cs" t="Include" />
+              <e p="PauseAction.cs" t="Include" />
+              <e p="PlayAction.cs" t="Include" />
+            </e>
             <e p="Manager" t="Include">
               <e p="ChildManager.cs" t="Include" />
               <e p="EnemyManager.cs" t="Include" />
-              <e p="GameManager.cs" t="Include" />
+              <e p="TestChildManagerr.cs" t="Include" />
+              <e p="TestEnemyManager .cs" t="Include" />
             </e>
             <e p="Player" t="Include">
               <e p="Bullet" t="Include">
+                <e p="AilosNB.cs" t="Include" />
                 <e p="GeneralNB.cs" t="Include" />
                 <e p="VeronicaNB.cs" t="Include" />
               </e>
               <e p="Player" t="Include">
-                <e p="AnomaShot.cs" t="Include" />
+                <e p="AilosPlayer.cs" t="Include" />
                 <e p="GeneralPlayer.cs" t="Include" />
+                <e p="PlayerData.cs" t="Include" />
                 <e p="PlayerManager.cs" t="Include" />
                 <e p="PlayerNumber.cs" t="Include" />
-                <e p="PlayerShot.cs" t="Include" />
                 <e p="VeronicaPlayer.cs" t="Include" />
               </e>
               <e p="Test" t="Include">
@@ -43,11 +52,21 @@
             </e>
             <e p="RiaBehavior" t="Include">
               <e p="RiaBehavior.cs" t="Include" />
+              <e p="RiaBehaviorChildManager.cs" t="Include" />
               <e p="RiaBehaviorManager.cs" t="Include" />
               <e p="Test" t="Include">
                 <e p="TestRiaBehavior.cs" t="Include" />
+                <e p="TestRiaBehaviorChildManager.cs" t="Include" />
                 <e p="TestRiaBehaviorManager.cs" t="Include" />
               </e>
+            </e>
+            <e p="Test_RB" t="Include">
+              <e p="CircleRBEnemy.cs" t="Include" />
+              <e p="QuadraticRBEnemy.cs" t="Include" />
+              <e p="RBEnemy.cs" t="Include" />
+              <e p="RBEnemyChildManager.cs" t="Include" />
+              <e p="RBEnemyManager.cs" t="Include" />
+              <e p="StraightRBEnemy.cs" t="Include" />
             </e>
           </e>
           <e p="30_Menu" t="Include">
@@ -56,9 +75,25 @@
             <e p="CharacterButton.cs" t="Include" />
             <e p="CharaSelecter.cs" t="Include" />
             <e p="ScreenChangeSystem.cs" t="Include" />
+            <e p="UISystem" t="Include">
+              <e p="2P" t="Include">
+                <e p="CharaUIContent2P.cs" t="Include" />
+                <e p="UIContent2P.cs" t="Include" />
+                <e p="UIController2P.cs" t="Include" />
+              </e>
+              <e p="Single" t="Include">
+                <e p="SampleUIContent.cs" t="Include" />
+                <e p="UIContent.cs" t="Include" />
+                <e p="UIController.cs" t="Include" />
+              </e>
+            </e>
           </e>
           <e p="Base" t="Include">
+            <e p="Singleton.cs" t="Include" />
             <e p="SingletonMonoBehaviour.cs" t="Include" />
+          </e>
+          <e p="Settings" t="Include">
+            <e p="PlayerCharacterEnum.cs" t="Include" />
           </e>
           <e p="UnityManiax" t="Include">
             <e p="AssetCatalog.cs" t="Include" />
@@ -79,11 +114,91 @@
           </e>
           <e p="Utility" t="Include">
             <e p="AudioManager.cs" t="Include" />
-            <e p="DontDestroyOnLoad.cs" t="Include" />
-            <e p="FadeComponent.cs" t="Include" />
-            <e p="FadeManager.cs" t="Include" />
-            <e p="InitializeSceneManager.cs" t="Include" />
-            <e p="RiaSceneManager.cs" t="Include" />
+            <e p="Fade" t="Include">
+              <e p="FadeComponent.cs" t="Include" />
+              <e p="FadeManager.cs" t="Include" />
+            </e>
+            <e p="Scene" t="Include">
+              <e p="DontDestroyOnLoad.cs" t="Include" />
+              <e p="InitializeSceneManager.cs" t="Include" />
+              <e p="RiaSceneManager.cs" t="Include" />
+            </e>
+            <e p="State" t="Include">
+              <e p="StateAction.cs" t="Include" />
+              <e p="StateManager.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="TestShader" t="Include">
+          <e p="BackgroundController.cs" t="Include" />
+          <e p="Plygon.cs" t="Include" />
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Examples &amp; Extras" t="Include">
+            <e p="Fonts" t="Include">
+              <e p="Anton OFL.txt" t="Include" />
+              <e p="Bangers - OFL.txt" t="Include" />
+              <e p="LiberationSans - OFL.txt" t="Include" />
+              <e p="Oswald-Bold - OFL.txt" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Benchmark01.cs" t="Include" />
+              <e p="Benchmark01_UGUI.cs" t="Include" />
+              <e p="Benchmark02.cs" t="Include" />
+              <e p="Benchmark03.cs" t="Include" />
+              <e p="Benchmark04.cs" t="Include" />
+              <e p="CameraController.cs" t="Include" />
+              <e p="ChatController.cs" t="Include" />
+              <e p="EnvMapAnimator.cs" t="Include" />
+              <e p="ObjectSpin.cs" t="Include" />
+              <e p="ShaderPropAnimator.cs" t="Include" />
+              <e p="SimpleScript.cs" t="Include" />
+              <e p="SkewTextExample.cs" t="Include" />
+              <e p="TeleType.cs" t="Include" />
+              <e p="TextConsoleSimulator.cs" t="Include" />
+              <e p="TextMeshProFloatingText.cs" t="Include" />
+              <e p="TextMeshSpawner.cs" t="Include" />
+              <e p="TMP_DigitValidator.cs" t="Include" />
+              <e p="TMP_ExampleScript_01.cs" t="Include" />
+              <e p="TMP_FrameRateCounter.cs" t="Include" />
+              <e p="TMP_PhoneNumberValidator.cs" t="Include" />
+              <e p="TMP_TextEventCheck.cs" t="Include" />
+              <e p="TMP_TextEventHandler.cs" t="Include" />
+              <e p="TMP_TextInfoDebugTool.cs" t="Include" />
+              <e p="TMP_TextSelector_A.cs" t="Include" />
+              <e p="TMP_TextSelector_B.cs" t="Include" />
+              <e p="TMP_UiFrameRateCounter.cs" t="Include" />
+              <e p="TMPro_InstructionOverlay.cs" t="Include" />
+              <e p="VertexColorCycler.cs" t="Include" />
+              <e p="VertexJitter.cs" t="Include" />
+              <e p="VertexShakeA.cs" t="Include" />
+              <e p="VertexShakeB.cs" t="Include" />
+              <e p="VertexZoom.cs" t="Include" />
+              <e p="WarpTextExample.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+            <e p="Shaders" t="Include">
+              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+              <e p="TMP_Bitmap.shader" t="Include" />
+              <e p="TMP_SDF Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface.shader" t="Include" />
+              <e p="TMP_SDF.shader" t="Include" />
+              <e p="TMP_Sprite.shader" t="Include" />
+              <e p="TMPro.cginc" t="Include" />
+              <e p="TMPro_Properties.cginc" t="Include" />
+              <e p="TMPro_Surface.cginc" t="Include" />
+            </e>
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
       </e>
