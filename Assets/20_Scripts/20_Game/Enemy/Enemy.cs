@@ -3,11 +3,12 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+
     // 定数はstatic readonlyに
     // public と protected はアクセサーに
     // gameobject と transform はキャッシュをとる by flanny
     protected static readonly Vector3 SpownPos = new Vector3 (0, 0, 200);
-    protected static readonly int BulletPool = 20;
+    protected static readonly int BulletPool = 60;
     protected static readonly float Bottom = -80.0f;
 
     public int HitPoint { get; protected set; }
@@ -23,7 +24,7 @@ public abstract class Enemy : MonoBehaviour
     protected int FixHitPoint { get { return this.fixHitPoint; } set { this.fixHitPoint = value; } }
     protected List<GameObject> NomalBullets { get; set; }
     protected float ElapsedTime { get; private set; }
-    protected float Pass { get; private set; }
+    protected float Pass { get; set; }
 
     [SerializeField]
     private int fixHitPoint;
@@ -38,22 +39,23 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField]
     private int burstBulletNumber = 3;
 
+    protected float ordinaryForwardBorder = 35.0f;
+    protected float ordinaryForwardSpeed = 30.0f;
     private int burstCount;
-    private float burstBulletInterval = 0.1f;
+    private float burstBulletInterval = 0.2f;
+    private float rightEnd;
+    private float leftEnd;
 
     protected virtual void Awake ()
     {
+        
         this.Go = this.gameObject;
         this.Trans = this.Go.transform;
 
         this.HitPoint = this.fixHitPoint;
         this.ElapsedTime = 0.0f;
         this.NomalBullets = new List<GameObject> ();
-
-        for (int i = 0; i < BulletPool; i++)
-        {
-            this.NomalBullets.Add (CreateBullet (nomalBullet));
-        }
+        CreateBullet(this.NomalBullet);
 
         this.Pass = this.PassInterval;
         burstCount = burstBulletNumber;
@@ -64,20 +66,21 @@ public abstract class Enemy : MonoBehaviour
         ElapsedTime += Time.deltaTime;
         float nowPass = Mathf.Floor (this.ElapsedTime * 10) / 10;
         //if (nowPass.Equals(this.Pass)) // ==やEqualsだと値も型も同じなのに挙動がおかしい、見えない小数がある？今はまだ原因不明
+        /*
         if (nowPass >= this.Pass)
         {
             if (IsBurstAttack)
             {
-                BurstAttack (nowPass);
+                BurstAttack ();
             }
             else
             {
-                BulletAppear ();
-                this.Pass += PassInterval;
+                NormalAtack ();
             }
         }
+        */
         Dead ();
-        NomalAttack ();
+        //NomalAttack ();
         BeyondLine ();
     }
 
@@ -104,50 +107,62 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public GameObject CreateBullet (GameObject _obj)
+    public void CreateBullet (GameObject _obj)
     {
-        var bullet = Instantiate (_obj);
-        // _bullet.transform.parent = this.transform;
-        HideBullet (bullet);
-        return bullet;
+        for (int i = 0; i < BulletPool; i++)
+        {
+            var bullet = Instantiate(_obj);
+            //bullet.transform.SetParent(this.transform, true);
+            HideBullet(bullet);
+            this.NomalBullets.Add(bullet);
+        }
     }
 
-    public void BulletAppear ()
+    public GameObject SearchAvailableBullet ()
     {
         for (int i = 0; i < this.NomalBullets.Count; i++)
         {
             if (!this.NomalBullets [i].gameObject.activeSelf)
             {
-                this.NomalBullets [i].transform.position = this.Trans.position;
-                this.NomalBullets [i].gameObject.SetActive (true);
-                break;
+                return this.NomalBullets[i];
             }
         }
+
+        return null;
     }
 
-    public void NomalAttack ()
+    public void BulletAppear(GameObject _bullet)
     {
-        for (int i = 0; i < this.NomalBullets.Count; i++)
+        //GameObject bullet = this.SearchAvailableBullet();
+        _bullet.transform.position = this.Trans.position;
+        _bullet.gameObject.SetActive (true);
+    }
+
+    public void ForwardEnemy (float _borderY)
+    {
+        // ある程度まで前進する
+        /*
+        if (this.Trans.position.y > _borderY)
         {
-
-            if (this.NomalBullets [i].gameObject.activeSelf)
-            {
-                Vector3 pos = this.NomalBullets [i].transform.position;
-                pos.y -= nomalBulletSpeed;
-                this.NomalBullets [i].transform.position = pos;
-
-                if (this.NomalBullets [i].transform.position.y < Bottom)
-                {
-                    HideBullet (this.NomalBullets [i]);
-                }
-            }
+            Vector3 pos = this.Trans.position;
+            pos.y -= this.ordinaryForwardSpeed + Time.deltaTime;
+            this.Trans.position = pos;
         }
+        */
+        Vector3 pos = this.Trans.position;
+        pos.y += -this.ordinaryForwardSpeed * Time.deltaTime;
+        this.Trans.position = pos;
     }
 
-
-    public void BurstAttack (float nowPass)
+    public void NormalAtack ()
     {
-        BulletAppear ();
+      BulletAppear (SearchAvailableBullet());
+      this.Pass += PassInterval;
+    }
+
+    public void BurstAttack ()
+    {
+        BulletAppear (SearchAvailableBullet());
         burstCount -= 1;
         if (burstCount <= 0)
         {
@@ -158,11 +173,6 @@ public abstract class Enemy : MonoBehaviour
         {
             this.Pass += burstBulletInterval;
         }
-    }
-
-    public void TurnPlayer ()
-    {
-        //Playerの方へ攻撃してくれる予定
     }
 
     public void HideEnemy ()

@@ -6,53 +6,48 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: BulletSpeed
-      value: 10
-      objectReference: {fileID: 0}
+    m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1738035679312372}
-  m_IsPrefabParent: 0
---- !u!1 &1738035679312372
+  m_RootGameObject: {fileID: 1458108209937710}
+  m_IsPrefabParent: 1
+--- !u!1 &1458108209937710
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4872895179357728}
-  - component: {fileID: 33647206967697214}
-  - component: {fileID: 23155616039476706}
-  - component: {fileID: 135512043734962854}
-  - component: {fileID: 114970572301522780}
+  - component: {fileID: 4601743673743830}
+  - component: {fileID: 33120297313146594}
+  - component: {fileID: 23760216637697812}
+  - component: {fileID: 114382265321005728}
   m_Layer: 0
-  m_Name: bullet
+  m_Name: Hati
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4872895179357728
+--- !u!4 &4601743673743830
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1738035679312372}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 1458108209937710}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: -42.5, y: 60, z: 100}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23155616039476706
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
+--- !u!23 &23760216637697812
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1738035679312372}
+  m_GameObject: {fileID: 1458108209937710}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +57,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: deaef8c83ece4490aa18765c09d47098, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,39 +77,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33647206967697214
+--- !u!33 &33120297313146594
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1738035679312372}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114970572301522780
+  m_GameObject: {fileID: 1458108209937710}
+  m_Mesh: {fileID: 4300000, guid: deaef8c83ece4490aa18765c09d47098, type: 3}
+--- !u!114 &114382265321005728
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1738035679312372}
+  m_GameObject: {fileID: 1458108209937710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4cb4c908f7eb4a3dbe3c90b4712b66c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ae8852d4aef8443dab730e4400c7988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletSpeed: 10
-  Bottom: -80
-  MyPositionX: 0
-  MyPositionY: 0
-  PlayerPositionX: 0
-  PlayerPositionY: 0
---- !u!135 &135512043734962854
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1738035679312372}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  IsBurstAttack: 1
+  fixHitPoint: 1
+  moveSpeedRate: 10
+  nomalBulletSpeed: 1
+  nomalBullet: {fileID: 1569959322399528, guid: 1534cc8606c614a4fbf49469f74aa65c,
+    type: 2}
+  passInterval: 3
+  burstBulletNumber: 3

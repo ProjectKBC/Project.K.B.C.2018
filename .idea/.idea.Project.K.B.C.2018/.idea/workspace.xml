@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2e9c19f4-8f53-4a42-a6af-9a3e44fbdd4a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/10_Scenes/CommonScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/10_Scenes/CommonScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/10_Scenes/TestEnemy_GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/10_Scenes/TestEnemy_GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/StraightEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/StraightEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Manager/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Manager/EnemyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/30_Prefabs/Enemy/Straight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/30_Prefabs/Enemy/Straight.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/30_Prefabs/Player/Bullet/VeronicaNB.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/30_Prefabs/Player/Bullet/VeronicaNB.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="180670577">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.18" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="4660" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="4660" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Bullet.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+              <folding>
+                <marker date="1539362848630" expanded="false" signature="6:78" ph="..." />
+                <marker date="1539362848630" expanded="true" signature="691:778" ph="{...}" />
+                <marker date="1539362848630" expanded="true" signature="806:1376" ph="{...}" />
+                <marker date="1539362848630" expanded="true" signature="1093:1370" ph="/* this.MyAppearPositionX = Trans.position.x; ... */" />
+                <marker date="1539362848630" expanded="true" signature="1413:1617" ph="{...}" />
+                <marker date="1539362848630" expanded="true" signature="1428:1567" ph="/* GoPlayer(this.MyAppearPositionX, this.MyAppearPositionY, ... */" />
+                <marker date="1539362848630" expanded="true" signature="1646:1658" ph="{...}" />
+                <marker date="1539362848630" expanded="true" signature="1668:2597" ph="/* public void GoPlayer(float _enemyX, float _enemyY, float _playerX, float _playerY) ... */" />
+                <marker date="1539362848630" expanded="true" signature="2629:3151" ph="{...}" />
+                <marker date="1539362848630" expanded="true" signature="3187:3325" ph="{...}" />
+                <marker date="1539362848630" expanded="true" signature="3355:3457" ph="{...}" />
+                <marker date="1539362848630" expanded="true" signature="3405:3451" ph="{...}" />
+                <marker date="1539362848630" expanded="true" signature="3487:3573" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Needle.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="25" column="86" selection-start-line="25" selection-start-column="86" selection-end-line="25" selection-end-column="86" />
+              <folding>
+                <marker date="1539362960661" expanded="false" signature="6:78" ph="..." />
+                <marker date="1539362960661" expanded="true" signature="211:254" ph="{...}" />
+                <marker date="1539362960661" expanded="true" signature="292:347" ph="{...}" />
+                <marker date="1539362960661" expanded="true" signature="373:562" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/BigBee.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+              <folding>
+                <marker date="1539363194446" expanded="false" signature="6:78" ph="..." />
+                <marker date="1539363194446" expanded="true" signature="213:457" ph="{...}" />
+                <marker date="1539363194446" expanded="true" signature="251:451" ph="/* FanPosition = new Vector3[this.FanCount]; ... */" />
+                <marker date="1539363194446" expanded="true" signature="495:851" ph="{...}" />
+                <marker date="1539363194446" expanded="true" signature="649:718" ph="{...}" />
+                <marker date="1539363194446" expanded="true" signature="731:845" ph="{...}" />
+                <marker date="1539363194446" expanded="true" signature="779:835" ph="{...}" />
+                <marker date="1539363194446" expanded="true" signature="877:1180" ph="{...}" />
+                <marker date="1539363194446" expanded="true" signature="940:1134" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Enemy.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="496">
+              <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+              <folding>
+                <marker date="1539363704702" expanded="false" signature="6:52" ph="..." />
+                <marker date="1539363704702" expanded="true" signature="105:211" ph="/* 定数はstatic readonlyに ... */" />
+                <marker date="1539363704702" expanded="true" signature="1907:2252" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="2290:2808" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="2501:2736" ph="/* if (nowPass &gt;= this.Pass) ... */" />
+                <marker date="1539363704702" expanded="true" signature="2849:2975" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="3000:3090" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="3038:3084" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="3121:3223" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="3171:3217" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="3271:3531" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="3322:3525" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="3579:3826" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="3643:3798" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="3715:3788" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="3876:4051" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="4098:4511" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="4135:4365" ph="/* if (this.Trans.position.y &gt; _borderY) ... */" />
+                <marker date="1539363704702" expanded="true" signature="4543:4634" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="4666:5014" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="4774:4929" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="4942:5008" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="5044:5131" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="5180:5285" ph="{...}" />
+                <marker date="1539363704702" expanded="true" signature="5311:5345" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Manager/EnemyManager.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4495">
+              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <folding>
+                <marker date="1539454901602" expanded="true" signature="0:56" ph="/* Author : ketty ... */" />
+                <marker date="1539454901602" expanded="true" signature="64:115" ph="..." />
+                <marker date="1539454901602" expanded="true" signature="130:11383" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="205:318" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="353:1603" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="843:1597" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="1347:1442" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="1493:1587" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="1609:1665" ph="/// 敵の生成や出現を管理するクラス ... " />
+                <marker date="1539454901602" expanded="true" signature="1737:11381" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="1807:1895" ph="/* 使われていないのでコメントアウトした by flanny ... */" />
+                <marker date="1539454901602" expanded="true" signature="1905:1954" ph="///  ... " />
+                <marker date="1539454901602" expanded="true" signature="2086:2597" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="3383:3801" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="3832:4115" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="4171:4356" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="4416:5106" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="4485:4972" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="5184:6984" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="5255:6974" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="5346:6960" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="5452:6831" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="7045:7254" ph="///  ... " />
+                <marker date="1539454901602" expanded="true" signature="7392:8155" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="7507:8145" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="7568:7631" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="7694:8131" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="8195:8268" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="8278:8488" ph="///  ... " />
+                <marker date="1539454901602" expanded="true" signature="8605:9332" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="8721:9322" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="8782:8845" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="8909:9308" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="9342:10054" ph="/* public void Appear(int _appearNum, GameObject[] _enemyPool, Vector2 _appearPos, Vector2 _posInterval) ... */" />
+                <marker date="1539454901602" expanded="true" signature="10064:10274" ph="///  ... " />
+                <marker date="1539454901602" expanded="true" signature="10388:11173" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="10495:11163" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="10550:10613" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="10674:11149" ph="{...}" />
+                <marker date="1539454901602" expanded="true" signature="11227:11375" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/CircleEnemy.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1539254413186" expanded="false" signature="6:57" ph="..." />
+                <marker date="1539254413186" expanded="true" signature="212:408" ph="{...}" />
+                <marker date="1539254413186" expanded="true" signature="276:363" ph="/* = (-375.0f, 600.0f) ... */" />
+                <marker date="1539254413186" expanded="true" signature="663:740" ph="/* protected override void Awake() ... */" />
+                <marker date="1539254413186" expanded="true" signature="746:787" ph="///  ... " />
+                <marker date="1539254413186" expanded="true" signature="824:1125" ph="{...}" />
+                <marker date="1539254413186" expanded="true" signature="863:1028" ph="/* ElapsedTimeはEnemyで宣言されているので、Enemy内で更新すべき ... */" />
+                <marker date="1539254413186" expanded="true" signature="1131:1216" ph="/* protected override void OnDisable() ... */" />
+                <marker date="1539254413186" expanded="true" signature="1222:1395" ph="///  ... " />
+                <marker date="1539254413186" expanded="true" signature="1492:2027" ph="{...}" />
+                <marker date="1539254413186" expanded="true" signature="1750:1910" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/QuadraticEnemy.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1537129737182" expanded="false" signature="6:57" ph="..." />
+                <marker date="1537129737182" expanded="true" signature="101:1600" ph="{...}" />
+                <marker date="1537129737182" expanded="true" signature="226:435" ph="{...}" />
+                <marker date="1537129737182" expanded="true" signature="514:591" ph="/* protected override void Awake() ... */" />
+                <marker date="1537129737182" expanded="true" signature="597:638" ph="///  ... " />
+                <marker date="1537129737182" expanded="true" signature="675:903" ph="{...}" />
+                <marker date="1537129737182" expanded="true" signature="714:818" ph="/* ElapsedTimeはEnemyで宣言されているので、Enemy内で更新すべき ... */" />
+                <marker date="1537129737182" expanded="true" signature="909:994" ph="/* protected override void OnDisable() ... */" />
+                <marker date="1537129737182" expanded="true" signature="1000:1197" ph="///  ... " />
+                <marker date="1537129737182" expanded="true" signature="1288:1598" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/StraightEnemy.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+              <folding>
+                <marker date="1539337757920" expanded="false" signature="6:57" ph="..." />
+                <marker date="1539337757920" expanded="true" signature="100:1330" ph="{...}" />
+                <marker date="1539337757920" expanded="true" signature="223:235" ph="{...}" />
+                <marker date="1539337757920" expanded="true" signature="241:318" ph="/* protected override void Awake() ... */" />
+                <marker date="1539337757920" expanded="true" signature="324:365" ph="///  ... " />
+                <marker date="1539337757920" expanded="true" signature="402:1016" ph="{...}" />
+                <marker date="1539337757920" expanded="true" signature="440:504" ph="/* this.ElapsedTime += UnityEngine.Time.deltaTime; ... */" />
+                <marker date="1539337757920" expanded="true" signature="629:698" ph="{...}" />
+                <marker date="1539337757920" expanded="true" signature="711:788" ph="{...}" />
+                <marker date="1539337757920" expanded="true" signature="822:1010" ph="{...}" />
+                <marker date="1539337757920" expanded="true" signature="863:923" ph="{...}" />
+                <marker date="1539337757920" expanded="true" signature="940:1000" ph="{...}" />
+                <marker date="1539337757920" expanded="true" signature="1022:1107" ph="/* protected override void OnDisable() ... */" />
+                <marker date="1539337757920" expanded="true" signature="1113:1154" ph="///  ... " />
+                <marker date="1539337757920" expanded="true" signature="1186:1327" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>MyPositionX</find>
+      <find>BulletAppear</find>
+      <find>passin</find>
+      <find>Pass</find>
+      <find>10</find>
+      <find>straightEnemy</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/StraightEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Player/Player/PlayerNumber.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Manager/EnemyManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/BigBee.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Needle.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/CircleEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/QuadraticEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/StraightEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Bullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Needle.cs" />
+        <option value="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/BigBee.cs" />
+        <option value="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Manager/EnemyManager.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1366" />
+    <option name="height" value="768" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="20_Scripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="20_Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="20_Game" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="20_Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="20_Game" type="1045f7f1:UnityExplorerNode" />
+              <item name="Enemy" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="20_Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="20_Game" type="1045f7f1:UnityExplorerNode" />
+              <item name="Manager" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="20_Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="20_Game" type="1045f7f1:UnityExplorerNode" />
+              <item name="Player" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="20_Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="20_Game" type="1045f7f1:UnityExplorerNode" />
+              <item name="Player" type="1045f7f1:UnityExplorerNode" />
+              <item name="Player" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Packages" type="4e2708dd:PackagesRoot" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2e9c19f4-8f53-4a42-a6af-9a3e44fbdd4a" name="Default Changelist" comment="" />
+      <created>1539276807626</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539276807626</updated>
+      <workItem from="1539276815859" duration="25655000" />
+      <workItem from="1539396421754" duration="14094000" />
+      <workItem from="1539451438615" duration="3474000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="43223000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1366" height="768" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25755286" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unity" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Player/Player/PlayerNumber.cs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Bullet.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+          <folding>
+            <marker date="1539362848630" expanded="false" signature="6:78" ph="..." />
+            <marker date="1539362848630" expanded="true" signature="691:778" ph="{...}" />
+            <marker date="1539362848630" expanded="true" signature="806:1376" ph="{...}" />
+            <marker date="1539362848630" expanded="true" signature="1093:1370" ph="/* this.MyAppearPositionX = Trans.position.x; ... */" />
+            <marker date="1539362848630" expanded="true" signature="1413:1617" ph="{...}" />
+            <marker date="1539362848630" expanded="true" signature="1428:1567" ph="/* GoPlayer(this.MyAppearPositionX, this.MyAppearPositionY, ... */" />
+            <marker date="1539362848630" expanded="true" signature="1646:1658" ph="{...}" />
+            <marker date="1539362848630" expanded="true" signature="1668:2597" ph="/* public void GoPlayer(float _enemyX, float _enemyY, float _playerX, float _playerY) ... */" />
+            <marker date="1539362848630" expanded="true" signature="2629:3151" ph="{...}" />
+            <marker date="1539362848630" expanded="true" signature="3187:3325" ph="{...}" />
+            <marker date="1539362848630" expanded="true" signature="3355:3457" ph="{...}" />
+            <marker date="1539362848630" expanded="true" signature="3405:3451" ph="{...}" />
+            <marker date="1539362848630" expanded="true" signature="3487:3573" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Needle.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="25" column="86" selection-start-line="25" selection-start-column="86" selection-end-line="25" selection-end-column="86" />
+          <folding>
+            <marker date="1539362960661" expanded="false" signature="6:78" ph="..." />
+            <marker date="1539362960661" expanded="true" signature="211:254" ph="{...}" />
+            <marker date="1539362960661" expanded="true" signature="292:347" ph="{...}" />
+            <marker date="1539362960661" expanded="true" signature="373:562" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/Enemy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <marker date="1539363704702" expanded="false" signature="6:52" ph="..." />
+            <marker date="1539363704702" expanded="true" signature="105:211" ph="/* 定数はstatic readonlyに ... */" />
+            <marker date="1539363704702" expanded="true" signature="1907:2252" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="2290:2808" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="2501:2736" ph="/* if (nowPass &gt;= this.Pass) ... */" />
+            <marker date="1539363704702" expanded="true" signature="2849:2975" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="3000:3090" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="3038:3084" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="3121:3223" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="3171:3217" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="3271:3531" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="3322:3525" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="3579:3826" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="3643:3798" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="3715:3788" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="3876:4051" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="4098:4511" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="4135:4365" ph="/* if (this.Trans.position.y &gt; _borderY) ... */" />
+            <marker date="1539363704702" expanded="true" signature="4543:4634" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="4666:5014" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="4774:4929" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="4942:5008" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="5044:5131" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="5180:5285" ph="{...}" />
+            <marker date="1539363704702" expanded="true" signature="5311:5345" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/CircleEnemy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1539254413186" expanded="false" signature="6:57" ph="..." />
+            <marker date="1539254413186" expanded="true" signature="212:408" ph="{...}" />
+            <marker date="1539254413186" expanded="true" signature="276:363" ph="/* = (-375.0f, 600.0f) ... */" />
+            <marker date="1539254413186" expanded="true" signature="663:740" ph="/* protected override void Awake() ... */" />
+            <marker date="1539254413186" expanded="true" signature="746:787" ph="///  ... " />
+            <marker date="1539254413186" expanded="true" signature="824:1125" ph="{...}" />
+            <marker date="1539254413186" expanded="true" signature="863:1028" ph="/* ElapsedTimeはEnemyで宣言されているので、Enemy内で更新すべき ... */" />
+            <marker date="1539254413186" expanded="true" signature="1131:1216" ph="/* protected override void OnDisable() ... */" />
+            <marker date="1539254413186" expanded="true" signature="1222:1395" ph="///  ... " />
+            <marker date="1539254413186" expanded="true" signature="1492:2027" ph="{...}" />
+            <marker date="1539254413186" expanded="true" signature="1750:1910" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/QuadraticEnemy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1537129737182" expanded="false" signature="6:57" ph="..." />
+            <marker date="1537129737182" expanded="true" signature="101:1600" ph="{...}" />
+            <marker date="1537129737182" expanded="true" signature="226:435" ph="{...}" />
+            <marker date="1537129737182" expanded="true" signature="514:591" ph="/* protected override void Awake() ... */" />
+            <marker date="1537129737182" expanded="true" signature="597:638" ph="///  ... " />
+            <marker date="1537129737182" expanded="true" signature="675:903" ph="{...}" />
+            <marker date="1537129737182" expanded="true" signature="714:818" ph="/* ElapsedTimeはEnemyで宣言されているので、Enemy内で更新すべき ... */" />
+            <marker date="1537129737182" expanded="true" signature="909:994" ph="/* protected override void OnDisable() ... */" />
+            <marker date="1537129737182" expanded="true" signature="1000:1197" ph="///  ... " />
+            <marker date="1537129737182" expanded="true" signature="1288:1598" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/StraightEnemy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+          <folding>
+            <marker date="1539337757920" expanded="false" signature="6:57" ph="..." />
+            <marker date="1539337757920" expanded="true" signature="100:1330" ph="{...}" />
+            <marker date="1539337757920" expanded="true" signature="223:235" ph="{...}" />
+            <marker date="1539337757920" expanded="true" signature="241:318" ph="/* protected override void Awake() ... */" />
+            <marker date="1539337757920" expanded="true" signature="324:365" ph="///  ... " />
+            <marker date="1539337757920" expanded="true" signature="402:1016" ph="{...}" />
+            <marker date="1539337757920" expanded="true" signature="440:504" ph="/* this.ElapsedTime += UnityEngine.Time.deltaTime; ... */" />
+            <marker date="1539337757920" expanded="true" signature="629:698" ph="{...}" />
+            <marker date="1539337757920" expanded="true" signature="711:788" ph="{...}" />
+            <marker date="1539337757920" expanded="true" signature="822:1010" ph="{...}" />
+            <marker date="1539337757920" expanded="true" signature="863:923" ph="{...}" />
+            <marker date="1539337757920" expanded="true" signature="940:1000" ph="{...}" />
+            <marker date="1539337757920" expanded="true" signature="1022:1107" ph="/* protected override void OnDisable() ... */" />
+            <marker date="1539337757920" expanded="true" signature="1113:1154" ph="///  ... " />
+            <marker date="1539337757920" expanded="true" signature="1186:1327" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/BigBee.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+          <folding>
+            <marker date="1539363194446" expanded="false" signature="6:78" ph="..." />
+            <marker date="1539363194446" expanded="true" signature="213:457" ph="{...}" />
+            <marker date="1539363194446" expanded="true" signature="251:451" ph="/* FanPosition = new Vector3[this.FanCount]; ... */" />
+            <marker date="1539363194446" expanded="true" signature="495:851" ph="{...}" />
+            <marker date="1539363194446" expanded="true" signature="649:718" ph="{...}" />
+            <marker date="1539363194446" expanded="true" signature="731:845" ph="{...}" />
+            <marker date="1539363194446" expanded="true" signature="779:835" ph="{...}" />
+            <marker date="1539363194446" expanded="true" signature="877:1180" ph="{...}" />
+            <marker date="1539363194446" expanded="true" signature="940:1134" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Manager/EnemyManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4495">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <marker date="1539454901602" expanded="true" signature="0:56" ph="/* Author : ketty ... */" />
+            <marker date="1539454901602" expanded="true" signature="64:115" ph="..." />
+            <marker date="1539454901602" expanded="true" signature="130:11383" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="205:318" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="353:1603" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="843:1597" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="1347:1442" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="1493:1587" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="1609:1665" ph="/// 敵の生成や出現を管理するクラス ... " />
+            <marker date="1539454901602" expanded="true" signature="1737:11381" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="1807:1895" ph="/* 使われていないのでコメントアウトした by flanny ... */" />
+            <marker date="1539454901602" expanded="true" signature="1905:1954" ph="///  ... " />
+            <marker date="1539454901602" expanded="true" signature="2086:2597" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="3383:3801" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="3832:4115" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="4171:4356" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="4416:5106" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="4485:4972" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="5184:6984" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="5255:6974" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="5346:6960" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="5452:6831" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="7045:7254" ph="///  ... " />
+            <marker date="1539454901602" expanded="true" signature="7392:8155" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="7507:8145" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="7568:7631" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="7694:8131" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="8195:8268" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="8278:8488" ph="///  ... " />
+            <marker date="1539454901602" expanded="true" signature="8605:9332" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="8721:9322" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="8782:8845" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="8909:9308" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="9342:10054" ph="/* public void Appear(int _appearNum, GameObject[] _enemyPool, Vector2 _appearPos, Vector2 _posInterval) ... */" />
+            <marker date="1539454901602" expanded="true" signature="10064:10274" ph="///  ... " />
+            <marker date="1539454901602" expanded="true" signature="10388:11173" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="10495:11163" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="10550:10613" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="10674:11149" ph="{...}" />
+            <marker date="1539454901602" expanded="true" signature="11227:11375" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
