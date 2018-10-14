@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4903496118450144}
-  - component: {fileID: 114476093060100206}
+  - component: {fileID: 114042760014455166}
   m_Layer: 0
   m_Name: anoma
   m_TagString: Untagged
@@ -631,7 +631,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602237312145132}
   m_Mesh: {fileID: 4300010, guid: 23d3e00965676e04c9ed8745e65192b9, type: 3}
---- !u!114 &114476093060100206
+--- !u!114 &114042760014455166
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -645,7 +645,9 @@ MonoBehaviour:
   moveSpeed: 30
   normalBulletPrefab: {fileID: 1421621883212656, guid: ae69d7b0701954af39867b60165f3465,
     type: 2}
-  shotInterval: 3
-  spShotRange: 60
+  normalShotInterval: 3
+  spShotRange: 30
   searchTime: 0.5
-  serchNumOfTimes: 3
+  searchNumOfTimes: 3
+  spShotCoolTime: 1.5
+  skillTime: 5

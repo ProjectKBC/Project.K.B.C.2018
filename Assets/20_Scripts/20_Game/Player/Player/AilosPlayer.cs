@@ -1,37 +1,56 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-/// <summary>
-/// ショットのボタンは仮の設定です
-/// </summary>
+// todo: スコアによるスキルのリキャストの実装
 
-public class AilosPlayer : PlayerMove
+public class AilosPlayer : PlayerData
 {
+    private static readonly float AlphaMaxValue = 0.75f;
+
     [SerializeField]
     private GameObject normalBulletPrefab = null;
     [SerializeField]
-    private int shotInterval = 3;
+    private int normalShotInterval = 3;
     [SerializeField]
-    private float spShotRange = 60.0f;
+    private float spShotRange = 30.0f;
     [SerializeField]
-    private float searchTime = 2.5f;
+    private float searchTime = 0.5f;
     [SerializeField]
-    private int serchNumOfTimes = 3;
+    private int searchNumOfTimes = 3;
+    [SerializeField]
+    private float spShotCoolTime = 1.5f;
+    [SerializeField]
+    private float skillTime = 5.0f;
 
-    private GameObject[] targetEnemys = new GameObject[3];
+    private int normalShotTimeCount;
+    private GameObject[] targetEnemys;
+    private float searchCoolTimeCount = 0;
+    private float spShotCoolTimeCount = 0;
+    private int searchCount = 0;
+    private float alphaValue = 0;
+    private float opponentMoveSpeed;
+    private float skillTimeCount = 0;
+    private bool isSkillFlag = false;
+    private float speedChangeRate = 0;
 
-    // 弾を撃った後の経過時間
-    private int shotTimeCount;
+    protected override void Start()
+    {
+        base.Start();
+        spShotCoolTimeCount = spShotCoolTime;
+    }
 
     private void Update()
     {
         base.Move();
         NormalShot();
         SpecialShot();
+        Skill();
     }
 
     private void NormalShot()
     {
-        if (Input.GetKey(normalShotKey))
+        if (Input.GetKey(NormalShotKey))
         {
             CreateBullet();
         }
@@ -39,81 +58,103 @@ public class AilosPlayer : PlayerMove
 
     private void SpecialShot()
     {
-        switch (this.tag)
+        if(spShotCoolTimeCount < spShotCoolTime)
         {
-            case "Player1":
-                IEnumerator lockOn = LockOn(serchNumOfTimes);
-                // x キーを押した瞬間
-                if (Input.GetKeyDown(KeyCode.X))
-                {
-                    StartCoroutine(lockOn);
-                }
-                // x キーを離した瞬間
-                if (Input.GetKeyUp(KeyCode.X))
-                {
-                    StopCoroutine(lockOn);
-                    lockOn = LockOn(serchNumOfTimes);
-                    for (int i = 0; i < targetEnemys.Length; i++)
-                    {
-                        Destroy(targetEnemys[i]);
-                        targetEnemys[i] = null;
-                    }
-                }
-                break;
+            spShotCoolTimeCount += Time.deltaTime;
+            return;
+        }
 
-            case "Player2":
-                break;
+        if (Input.GetKeyDown(SpecialShotKey))
+        {
+            searchCoolTimeCount = 0;
+            searchCount = 0;
+            targetEnemys = new GameObject[searchNumOfTimes];
+        }
+
+        if (Input.GetKey(SpecialShotKey))
+        {
+            if (NearSearchEnemy(spShotRange) == null || searchNumOfTimes <= searchCount) { return; }
+
+            searchCoolTimeCount += Time.deltaTime;
+            if (searchTime <= searchCoolTimeCount)
+            {
+                searchCount++;
+                targetEnemys[searchCount - 1] = NearSearchEnemy(spShotRange);
+                searchCoolTimeCount = 0;
+            }
+        }
+
+        if (Input.GetKeyUp(SpecialShotKey))
+        {
+            for (int i = 0; i < searchCount; i++)
+            {
+                targetEnemys[i].SetActive(false);
+                spShotCoolTimeCount = 0;
+            }
+        }
+    }
+
+    private void Skill()
+    {
+        if (Input.GetKeyDown(SkillKey) && isSkillFlag == false)
+        {
+            isSkillFlag = true;
+            opponentMoveSpeed = OpponentPlayer.MoveSpeed;
+        } 
+
+        if (isSkillFlag)
+        {
+            float beforeAlphaValue = alphaValue;
+            // このアルファ値の変動で画面が上手い具合にフェードするか正直わかんない
+            alphaValue = Mathf.Lerp(0, AlphaMaxValue, Time.deltaTime);
+            // アルファ値の変動に伴う相手プレイヤーのスピードの調整もよくわかんない
+            speedChangeRate = (beforeAlphaValue <= alphaValue) ? 1 - alphaValue : 1 + (alphaValue * 2);
+            OpponentPlayer.MoveSpeed = OpponentPlayer.MoveSpeed * speedChangeRate;
+            skillTimeCount += Time.deltaTime;
+
+            if (skillTime <= skillTimeCount)
+            {
+                skillTimeCount = 0;
+                alphaValue = 0;
+                OpponentPlayer.MoveSpeed = opponentMoveSpeed;
+                isSkillFlag = false;
+            }
         }
     }
 
     private void CreateBullet()
     {
-        shotTimeCount++;
-        if (shotInterval < shotTimeCount)
+        normalShotTimeCount++;
+        if (normalShotInterval < normalShotTimeCount)
         {
-            shotTimeCount = 0;
+            normalShotTimeCount = 0;
 
             GameObject normalBullets = Instantiate(normalBulletPrefab);
             normalBullets.transform.position = this.transform.position;
         }
     }
 
-    private IEnumerator LockOn(int _serchNumOfTimes)
-    {
-        if (Input.GetKey(KeyCode.X))
-        {
-            for (int i = 0; i < _serchNumOfTimes; i++)
-            {
-                yield return new WaitForSeconds(searchTime);
-                if (NearSearchEnemy(spShotRange) != null)
-                {
-                    Debug.Log(NearSearchEnemy(spShotRange));
-                    targetEnemys[i] = NearSearchEnemy(spShotRange);
-                }
-            }
-        }
-    }
-
     private GameObject NearSearchEnemy(float _searchRadius)
     {
+        SortedDictionary<float, GameObject> searchEnemys = new SortedDictionary<float, GameObject>();
         GameObject targetEnemy = null;
-        float tmpDistance = 0;
-        float nearDistance = 0;
+        bool isSearchFlag = false;
 
-        foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Enemy"))
+        foreach (GameObject obs in GameObject.FindGameObjectsWithTag(EnemyTag))
         {
             // サーチ済みの敵は省く
-            if(0 <= System.Array.IndexOf(targetEnemys, obs)) { break; }
-            tmpDistance = Vector3.Distance(obs.transform.position, this.transform.position);
+            if(0 <= System.Array.IndexOf(targetEnemys, obs)) { continue; }
+            float tmpDistance = Vector3.Distance(obs.transform.position, this.transform.position);
             if (tmpDistance <= _searchRadius)
             {
-                if (nearDistance == 0 || tmpDistance < nearDistance)
-                {
-                    nearDistance = tmpDistance;
-                    targetEnemy = obs;
-                }
+                searchEnemys.Add(Vector3.Distance(obs.transform.position, this.transform.position), obs);
+                isSearchFlag = true;
             }
+
         }
+
+        if (isSearchFlag) { targetEnemy = searchEnemys.First().Value; }
         return targetEnemy;
     }
+
 }

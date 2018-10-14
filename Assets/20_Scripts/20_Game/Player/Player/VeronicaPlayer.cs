@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
-/// <summary>
-/// ショットのボタンは仮の設定です
-/// </summary>
 
-public class VeronicaPlayer : PlayerMove
+public class VeronicaPlayer : PlayerData
 {
     private static readonly float ShotMaxLp = 5.0f;
 
@@ -27,18 +24,18 @@ public class VeronicaPlayer : PlayerMove
 
     private void NormalShot()
     {
-        if (Input.GetKeyDown(normalShotKey) && 0 < this.shotLp)
+        if (Input.GetKeyDown(NormalShotKey) && 0 < this.shotLp)
         {
             CreateBullet();
         }
 
-        if (Input.GetKey(normalShotKey) && 0 < this.shotLp)
+        if (Input.GetKey(NormalShotKey) && 0 < this.shotLp)
         {
             // 弾を撃ってる間は弾のライフポイントが減る
             this.shotLp -= Time.deltaTime;
         }
 
-        if (!Input.GetKey(normalShotKey) && this.shotLp < ShotMaxLp)
+        if (!Input.GetKey(NormalShotKey) && this.shotLp < ShotMaxLp)
         {
             // 弾を撃ってない間は弾のライフポイントが増える
             this.shotLp += Time.deltaTime;
