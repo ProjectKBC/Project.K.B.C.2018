@@ -125,4 +125,4 @@ MonoBehaviour:
     type: 2}
   passInterval: 2
   burstBulletNumber: 3
-  stayTime: 4
+  stayTime: 10
