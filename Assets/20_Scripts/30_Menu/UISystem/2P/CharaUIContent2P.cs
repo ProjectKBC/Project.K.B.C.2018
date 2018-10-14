@@ -41,50 +41,57 @@ public class CharaUIContent2P : MonoBehaviour
 
     private void UpdateSprite()
     {
-        if (this.pl1Selected && this.pl2Selected)
+        if (this.pl1Selected && this.pl2Selected) // どちらもSelectされている
         {
-            this.image.sprite = this.activeAllSelectedSprite;
+            this.image.sprite = this.spSelectAll;
         }
-        else if (this.pl1Selected)
+        else if (this.pl1Selected) // PL1はSelectされている
         {
-            this.image.sprite = this.pl2Overed ? this.activeAllSelectedSprite : this.activePl1SelectedSprite;
+            this.image.sprite = (this.pl2Overed) ? this.spOver2Select1 : this.spSelect1;
         }
-        else if (this.pl2Selected)
+        else if (this.pl2Selected) // PL2はSelectされている
         {
-            this.image.sprite = this.pl1Overed ? this.activeAllSelectedSprite : this.activePl2SelectedSprite;
+            this.image.sprite = (this.pl1Overed) ? this.spOver1Select2 : this.spSelect2;
         }
-        else if (this.pl1Overed && this.pl2Overed)
+        else // どちらもSelectされていない
         {
-            this.image.sprite = this.activeAllSprite;
-        }
-        else if (this.pl1Overed)
-        {
-            this.image.sprite = this.activePl1Sprite;
-        }
-        else if (this.pl2Overed)
-        {
-            this.image.sprite = this.activePl2Sprite;
-        }
-        else
-        {
-            this.image.sprite = this.normalSprite;
+            if (this.pl1Overed && this.pl2Overed) // どちらもOverされている
+            {
+                this.image.sprite = this.spOverAll;
+            }
+            else if (this.pl1Overed)
+            {
+                this.image.sprite = this.spOver1;
+            }
+            else if (this.pl2Overed)
+            {
+                this.image.sprite = this.spOver2;
+            }
+            else // どちらもOverされていない
+            {
+                this.image.sprite = this.spNormal;
+            }
         }
     }
 
     [SerializeField]
-    private Sprite normalSprite = null;
+    private Sprite spNormal = null;
     [SerializeField]
-    private Sprite activePl1Sprite = null;
+    private Sprite spOver1 = null;
     [SerializeField]
-    private Sprite activePl2Sprite = null;
+    private Sprite spOver2 = null;
     [SerializeField]
-    private Sprite activeAllSprite = null;
+    private Sprite spOverAll = null;
     [SerializeField]
-    private Sprite activePl1SelectedSprite = null;
+    private Sprite spSelect1 = null;
     [SerializeField]
-    private Sprite activePl2SelectedSprite = null;
+    private Sprite spSelect2 = null;
     [SerializeField]
-    private Sprite activeAllSelectedSprite = null;
+    private Sprite spOver1Select2 = null;
+    [SerializeField]
+    private Sprite spOver2Select1 = null;
+    [SerializeField]
+    private Sprite spSelectAll = null;
 
     [SerializeField]
     private PlayerCharacterEnum chara = PlayerCharacterEnum.veronica;
