@@ -15,6 +15,7 @@ namespace Ria
         StraightVertical,
         Quadratic,
         Circle,
+        Stay,
         Bee
     }
 
@@ -29,6 +30,7 @@ namespace Ria
         public GameObject[] StraightEnemys;
         public GameObject[] QuadraticEnemys;
         public GameObject[] CircleEnemys;
+        public GameObject[] StayEnemys;
         public GameObject BeeEnemy;
         public float EnemyAppearPass;
         public float RightPosX;
@@ -42,6 +44,7 @@ namespace Ria
             this.StraightEnemys = new GameObject[this.PoolEnemy];
             this.QuadraticEnemys = new GameObject[this.PoolEnemy];
             this.CircleEnemys = new GameObject[this.PoolEnemy];
+            this.StayEnemys = new GameObject[this.PoolEnemy];
             this.BeeEnemy = new GameObject();
             this.EnemyCount = 0;
             this.EnemyAppearPass = 0;
@@ -107,6 +110,7 @@ namespace Ria
         [SerializeField] private GameObject straightEnemy = null;
         [SerializeField] private GameObject quadraticEnemy = null;
         [SerializeField] private GameObject circleEnemy = null;
+        [SerializeField] private GameObject stayEnemy = null;
         [SerializeField] private GameObject beeEnemy = null;
 
         public EnemyPattern[] Enemy1Patterns;
@@ -156,6 +160,9 @@ namespace Ria
                 _enemyData.StraightEnemys[i].tag = _enemyData.PlayerType;
                 _enemyData.CircleEnemys[i].tag = _enemyData.PlayerType;
                 _enemyData.QuadraticEnemys[i].tag = _enemyData.PlayerType;
+
+                _enemyData.StayEnemys[i] = CreateEnemy(this.stayEnemy);
+                _enemyData.StayEnemys[i].tag = _enemyData.PlayerType;
             }
 
             _enemyData.BeeEnemy = CreateEnemy(this.beeEnemy);
@@ -196,6 +203,14 @@ namespace Ria
                                 _enemyData,
                                 this.enemyManagerDebug.CirclePos,
                                 this.enemyManagerDebug.CirclePosInterval);
+                            break;
+                        
+                        case "Stay":
+                            Stay(
+                                5,
+                                _enemyData,
+                                this.enemyManagerDebug.StraightHorizontalPos,
+                                this.enemyManagerDebug.StraightHorizontalPosInterval);
                             break;
 
                         case "Bee":
@@ -240,8 +255,6 @@ namespace Ria
                         new Vector3(appearLeftPosX + appearCount * appearSpace, _enemyData.EnemyStartPos.y, _enemyData.EnemyStartPos.z);
                     _enemyData.StraightEnemys[i].SetActive(true);
                     appearCount++;
-
-                    Debug.Log(_enemyData.StraightEnemys[i].transform.position);
                     
                     // 次の起点の間隔をあける
                     _appearPos += _posInterval;
@@ -345,6 +358,35 @@ namespace Ria
                     _enemyData.CircleEnemys[i].SetActive(true);
                     appearCount++;
 
+                    // 次の起点の間隔をあける
+                    _appearPos += _posInterval;
+                }
+            }
+        }
+
+        public void Stay(int _appearNum, PlayersEnemyData _enemyData, Vector2 _appearPos,
+            Vector2 _posInterval)
+        {
+            int appearCount = 0;
+            float appearSpace = System.Math.Abs(_enemyData.LeftPosX - _enemyData.RightPosX) / (_appearNum + 1);
+            float appearRightPosX = _enemyData.RightPosX - appearSpace;
+            float appearLeftPosX = _enemyData.LeftPosX + appearSpace;
+            
+            for (int i = 0; i < _enemyData.StayEnemys.Length; i++)
+            {
+                if (appearCount >= _appearNum)
+                {
+                    break;
+                }
+
+                if (!_enemyData.StayEnemys[i].activeSelf)
+                {
+                    // 起点に設置
+                    _enemyData.StayEnemys[i].transform.position =
+                        new Vector3(appearLeftPosX + appearCount * appearSpace, _enemyData.EnemyStartPos.y, _enemyData.EnemyStartPos.z);
+                    _enemyData.StayEnemys[i].SetActive(true);
+                    appearCount++;
+                    
                     // 次の起点の間隔をあける
                     _appearPos += _posInterval;
                 }
