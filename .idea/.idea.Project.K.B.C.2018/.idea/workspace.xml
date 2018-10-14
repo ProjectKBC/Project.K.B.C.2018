@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e9c19f4-8f53-4a42-a6af-9a3e44fbdd4a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project.K.B.C.2018/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project.K.B.C.2018/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/10_Scenes/TestEnemy_GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/10_Scenes/TestEnemy_GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Manager/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/20_Scripts/20_Game/Manager/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/30_Prefabs/Player/Bullet/VeronicaNB.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/30_Prefabs/Player/Bullet/VeronicaNB.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/50_Sprites/BackGround.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project.K.B.C.2018/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project.K.B.C.2018/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -151,49 +144,49 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Manager/EnemyManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="191" lean-forward="true" selection-start-line="191" selection-end-line="191" />
+            <state relative-caret-position="344">
+              <caret line="337" column="47" lean-forward="true" selection-start-line="337" selection-start-column="47" selection-end-line="337" selection-end-column="47" />
               <folding>
-                <marker date="1539514441200" expanded="true" signature="0:56" ph="/* Author : ketty ... */" />
-                <marker date="1539514441200" expanded="false" signature="64:115" ph="..." />
-                <marker date="1539514441200" expanded="true" signature="130:12144" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="205:318" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="353:1824" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="906:1818" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="1410:1585" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="1636:1808" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="1830:1886" ph="/// 敵の生成や出現を管理するクラス ... " />
-                <marker date="1539514441200" expanded="true" signature="1958:12142" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="2028:2116" ph="/* 使われていないのでコメントアウトした by flanny ... */" />
-                <marker date="1539514441200" expanded="true" signature="2126:2175" ph="///  ... " />
-                <marker date="1539514441200" expanded="true" signature="2307:2818" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="3604:4022" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="4053:4336" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="4392:4577" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="4637:5327" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="4706:5193" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="5405:7205" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="5476:7195" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="5567:7181" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="5673:7052" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="7266:7475" ph="///  ... " />
-                <marker date="1539514441200" expanded="true" signature="7613:8898" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="8129:8888" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="8190:8253" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="8316:8874" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="8938:9011" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="9021:9231" ph="///  ... " />
-                <marker date="1539514441200" expanded="true" signature="9348:10075" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="9464:10065" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="9525:9588" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="9652:10051" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="10085:10797" ph="/* public void Appear(int _appearNum, GameObject[] _enemyPool, Vector2 _appearPos, Vector2 _posInterval) ... */" />
-                <marker date="1539514441200" expanded="true" signature="10807:11017" ph="///  ... " />
-                <marker date="1539514441200" expanded="true" signature="11131:11934" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="11244:11924" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="11305:11368" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="11429:11910" ph="{...}" />
-                <marker date="1539514441200" expanded="true" signature="11988:12136" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="0:56" ph="/* Author : ketty ... */" />
+                <marker date="1539519876503" expanded="false" signature="64:115" ph="..." />
+                <marker date="1539519876503" expanded="true" signature="130:12144" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="205:318" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="353:1824" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="906:1818" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="1410:1585" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="1636:1808" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="1830:1886" ph="/// 敵の生成や出現を管理するクラス ... " />
+                <marker date="1539519876503" expanded="true" signature="1958:12142" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="2028:2116" ph="/* 使われていないのでコメントアウトした by flanny ... */" />
+                <marker date="1539519876503" expanded="true" signature="2126:2175" ph="///  ... " />
+                <marker date="1539519876503" expanded="true" signature="2307:2818" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="3604:4022" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="4053:4336" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="4392:4577" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="4637:5327" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="4706:5193" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="5405:7205" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="5476:7195" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="5567:7181" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="5673:7052" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="7266:7475" ph="///  ... " />
+                <marker date="1539519876503" expanded="true" signature="7613:8898" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="8129:8888" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="8190:8253" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="8316:8874" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="8938:9011" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="9021:9231" ph="///  ... " />
+                <marker date="1539519876503" expanded="true" signature="9348:10075" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="9464:10065" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="9525:9588" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="9652:10051" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="10085:10797" ph="/* public void Appear(int _appearNum, GameObject[] _enemyPool, Vector2 _appearPos, Vector2 _posInterval) ... */" />
+                <marker date="1539519876503" expanded="true" signature="10807:11017" ph="///  ... " />
+                <marker date="1539519876503" expanded="true" signature="11131:11934" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="11244:11924" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="11305:11368" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="11429:11910" ph="{...}" />
+                <marker date="1539519876503" expanded="true" signature="11988:12136" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -223,18 +216,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/QuadraticEnemy.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="608">
+              <caret line="39" column="78" selection-start-line="39" selection-start-column="78" selection-end-line="39" selection-end-column="78" />
               <folding>
-                <marker date="1539511346954" expanded="false" signature="6:57" ph="..." />
-                <marker date="1539511346954" expanded="true" signature="101:1600" ph="{...}" />
-                <marker date="1539511346954" expanded="true" signature="226:435" ph="{...}" />
-                <marker date="1539511346954" expanded="true" signature="514:591" ph="/* protected override void Awake() ... */" />
-                <marker date="1539511346954" expanded="true" signature="597:638" ph="///  ... " />
-                <marker date="1539511346954" expanded="true" signature="675:903" ph="{...}" />
-                <marker date="1539511346954" expanded="true" signature="714:818" ph="/* ElapsedTimeはEnemyで宣言されているので、Enemy内で更新すべき ... */" />
-                <marker date="1539511346954" expanded="true" signature="909:994" ph="/* protected override void OnDisable() ... */" />
-                <marker date="1539511346954" expanded="true" signature="1000:1197" ph="///  ... " />
-                <marker date="1539511346954" expanded="true" signature="1288:1598" ph="{...}" />
+                <marker date="1539519876500" expanded="false" signature="6:57" ph="..." />
+                <marker date="1539519876500" expanded="true" signature="101:1600" ph="{...}" />
+                <marker date="1539519876500" expanded="true" signature="226:435" ph="{...}" />
+                <marker date="1539519876500" expanded="true" signature="514:591" ph="/* protected override void Awake() ... */" />
+                <marker date="1539519876500" expanded="true" signature="597:638" ph="///  ... " />
+                <marker date="1539519876500" expanded="true" signature="675:903" ph="{...}" />
+                <marker date="1539519876500" expanded="true" signature="714:818" ph="/* ElapsedTimeはEnemyで宣言されているので、Enemy内で更新すべき ... */" />
+                <marker date="1539519876500" expanded="true" signature="909:994" ph="/* protected override void OnDisable() ... */" />
+                <marker date="1539519876500" expanded="true" signature="1000:1197" ph="///  ... " />
+                <marker date="1539519876500" expanded="true" signature="1288:1598" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -319,6 +313,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
       <pane id="UnityExplorer">
         <subPane>
           <expand>
@@ -376,9 +373,6 @@
         <option name="show-hidden-items" value="false" />
       </pane>
       <pane id="FileSystemExplorer" />
-      <pane id="SolutionExplorer">
-        <option name="show-all-files" value="false" />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -433,7 +427,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44898000" />
+    <option name="totallyTimeSpent" value="45150000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -446,9 +440,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2613293" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26510575" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -639,18 +632,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Enemy/QuadraticEnemy.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="608">
+          <caret line="39" column="78" selection-start-line="39" selection-start-column="78" selection-end-line="39" selection-end-column="78" />
           <folding>
-            <marker date="1539511346954" expanded="false" signature="6:57" ph="..." />
-            <marker date="1539511346954" expanded="true" signature="101:1600" ph="{...}" />
-            <marker date="1539511346954" expanded="true" signature="226:435" ph="{...}" />
-            <marker date="1539511346954" expanded="true" signature="514:591" ph="/* protected override void Awake() ... */" />
-            <marker date="1539511346954" expanded="true" signature="597:638" ph="///  ... " />
-            <marker date="1539511346954" expanded="true" signature="675:903" ph="{...}" />
-            <marker date="1539511346954" expanded="true" signature="714:818" ph="/* ElapsedTimeはEnemyで宣言されているので、Enemy内で更新すべき ... */" />
-            <marker date="1539511346954" expanded="true" signature="909:994" ph="/* protected override void OnDisable() ... */" />
-            <marker date="1539511346954" expanded="true" signature="1000:1197" ph="///  ... " />
-            <marker date="1539511346954" expanded="true" signature="1288:1598" ph="{...}" />
+            <marker date="1539519876500" expanded="false" signature="6:57" ph="..." />
+            <marker date="1539519876500" expanded="true" signature="101:1600" ph="{...}" />
+            <marker date="1539519876500" expanded="true" signature="226:435" ph="{...}" />
+            <marker date="1539519876500" expanded="true" signature="514:591" ph="/* protected override void Awake() ... */" />
+            <marker date="1539519876500" expanded="true" signature="597:638" ph="///  ... " />
+            <marker date="1539519876500" expanded="true" signature="675:903" ph="{...}" />
+            <marker date="1539519876500" expanded="true" signature="714:818" ph="/* ElapsedTimeはEnemyで宣言されているので、Enemy内で更新すべき ... */" />
+            <marker date="1539519876500" expanded="true" signature="909:994" ph="/* protected override void OnDisable() ... */" />
+            <marker date="1539519876500" expanded="true" signature="1000:1197" ph="///  ... " />
+            <marker date="1539519876500" expanded="true" signature="1288:1598" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -681,49 +675,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/20_Scripts/20_Game/Manager/EnemyManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="191" lean-forward="true" selection-start-line="191" selection-end-line="191" />
+        <state relative-caret-position="344">
+          <caret line="337" column="47" lean-forward="true" selection-start-line="337" selection-start-column="47" selection-end-line="337" selection-end-column="47" />
           <folding>
-            <marker date="1539514441200" expanded="true" signature="0:56" ph="/* Author : ketty ... */" />
-            <marker date="1539514441200" expanded="false" signature="64:115" ph="..." />
-            <marker date="1539514441200" expanded="true" signature="130:12144" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="205:318" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="353:1824" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="906:1818" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="1410:1585" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="1636:1808" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="1830:1886" ph="/// 敵の生成や出現を管理するクラス ... " />
-            <marker date="1539514441200" expanded="true" signature="1958:12142" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="2028:2116" ph="/* 使われていないのでコメントアウトした by flanny ... */" />
-            <marker date="1539514441200" expanded="true" signature="2126:2175" ph="///  ... " />
-            <marker date="1539514441200" expanded="true" signature="2307:2818" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="3604:4022" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="4053:4336" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="4392:4577" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="4637:5327" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="4706:5193" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="5405:7205" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="5476:7195" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="5567:7181" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="5673:7052" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="7266:7475" ph="///  ... " />
-            <marker date="1539514441200" expanded="true" signature="7613:8898" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="8129:8888" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="8190:8253" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="8316:8874" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="8938:9011" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="9021:9231" ph="///  ... " />
-            <marker date="1539514441200" expanded="true" signature="9348:10075" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="9464:10065" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="9525:9588" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="9652:10051" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="10085:10797" ph="/* public void Appear(int _appearNum, GameObject[] _enemyPool, Vector2 _appearPos, Vector2 _posInterval) ... */" />
-            <marker date="1539514441200" expanded="true" signature="10807:11017" ph="///  ... " />
-            <marker date="1539514441200" expanded="true" signature="11131:11934" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="11244:11924" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="11305:11368" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="11429:11910" ph="{...}" />
-            <marker date="1539514441200" expanded="true" signature="11988:12136" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="0:56" ph="/* Author : ketty ... */" />
+            <marker date="1539519876503" expanded="false" signature="64:115" ph="..." />
+            <marker date="1539519876503" expanded="true" signature="130:12144" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="205:318" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="353:1824" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="906:1818" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="1410:1585" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="1636:1808" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="1830:1886" ph="/// 敵の生成や出現を管理するクラス ... " />
+            <marker date="1539519876503" expanded="true" signature="1958:12142" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="2028:2116" ph="/* 使われていないのでコメントアウトした by flanny ... */" />
+            <marker date="1539519876503" expanded="true" signature="2126:2175" ph="///  ... " />
+            <marker date="1539519876503" expanded="true" signature="2307:2818" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="3604:4022" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="4053:4336" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="4392:4577" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="4637:5327" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="4706:5193" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="5405:7205" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="5476:7195" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="5567:7181" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="5673:7052" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="7266:7475" ph="///  ... " />
+            <marker date="1539519876503" expanded="true" signature="7613:8898" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="8129:8888" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="8190:8253" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="8316:8874" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="8938:9011" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="9021:9231" ph="///  ... " />
+            <marker date="1539519876503" expanded="true" signature="9348:10075" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="9464:10065" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="9525:9588" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="9652:10051" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="10085:10797" ph="/* public void Appear(int _appearNum, GameObject[] _enemyPool, Vector2 _appearPos, Vector2 _posInterval) ... */" />
+            <marker date="1539519876503" expanded="true" signature="10807:11017" ph="///  ... " />
+            <marker date="1539519876503" expanded="true" signature="11131:11934" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="11244:11924" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="11305:11368" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="11429:11910" ph="{...}" />
+            <marker date="1539519876503" expanded="true" signature="11988:12136" ph="{...}" />
           </folding>
         </state>
       </provider>
