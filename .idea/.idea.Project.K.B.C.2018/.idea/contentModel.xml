@@ -12,6 +12,7 @@
             <e p="Enemy" t="Include">
               <e p="BigBee.cs" t="Include" />
               <e p="Bullet.cs" t="Include" />
+              <e p="ChildBee.cs" t="Include" />
               <e p="CircleEnemy.cs" t="Include" />
               <e p="Enemy.cs" t="Include" />
               <e p="Needle.cs" t="Include" />

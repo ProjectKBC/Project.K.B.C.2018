@@ -54,7 +54,14 @@ public class Bullet : MonoBehaviour
 
     public void OnEnable()
     {
-        this.PlayerPosition = PlayerManager.GameObjectPl1.transform.position;
+        if (this.tag.Equals("Enemy1"))
+        {
+            this.PlayerPosition = PlayerManager.GameObjectPl1.transform.position;
+        }
+        else if (this.tag.Equals("Enemy2"))
+        {
+            this.PlayerPosition = PlayerManager.GameObjectPl2.transform.position;
+        }
         this.VectorMyselfPlayer = new Vector3 (this.PlayerPosition.x - this.MyAppearPosition.x,
             this.PlayerPosition.y - this.MyAppearPosition.y, this.MyAppearPosition.y).normalized;
         /*
@@ -129,7 +136,6 @@ public class Bullet : MonoBehaviour
         //myNowPos.z += (this.vectorMyselfPlayer.z * this.BulletSpeed * Time.deltaTime);
 
         
-        Debug.Log(myNowPos);
         this.Trans.position = myNowPos;
         //this.Trans.position = Vector3.MoveTowards(this.Trans.position, this.PlayerPosition, 10.0f * Time.deltaTime);
     }
