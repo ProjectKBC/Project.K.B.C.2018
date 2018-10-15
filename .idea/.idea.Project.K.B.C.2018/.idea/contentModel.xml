@@ -16,6 +16,7 @@
               <e p="Enemy.cs" t="Include" />
               <e p="Needle.cs" t="Include" />
               <e p="QuadraticEnemy.cs" t="Include" />
+              <e p="SinEnemy.cs" t="Include" />
               <e p="StayEnemy.cs" t="Include" />
               <e p="StraightEnemy.cs" t="Include" />
             </e>

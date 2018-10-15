@@ -8,7 +8,6 @@ public abstract class Enemy : MonoBehaviour
     // public と protected はアクセサーに
     // gameobject と transform はキャッシュをとる by flanny
     protected static readonly Vector3 SpownPos = new Vector3(0, 0, 200);
-    protected static readonly int BulletPool = 60;
     protected static readonly float Bottom = -80.0f;
     protected static readonly float Top = 80.0f;
 
@@ -47,7 +46,7 @@ public abstract class Enemy : MonoBehaviour
         set { this.fixHitPoint = value; }
     }
 
-    protected List<GameObject> NomalBullets { get; set; }
+    protected List<GameObject> NormalBullets;
     protected float ElapsedTime { get; private set; }
     protected float Pass { get; set; }
 
@@ -56,12 +55,13 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private float nomalBulletSpeed;
     [SerializeField] private GameObject nomalBullet;
     [SerializeField] private float passInterval = 1.5f;
-    [SerializeField] private int burstBulletNumber = 3;
+    [SerializeField] protected int BurstBulletNumber = 3;
 
+    protected int bulletPool = 20;
     protected float ordinaryForwardBorder = 35.0f;
     protected float ordinaryForwardSpeed = 30.0f;
-    private int burstCount;
-    private float burstBulletInterval = 0.2f;
+    protected int BurstCount;
+    protected float burstBulletInterval = 0.2f;
     private float rightEnd;
     private float leftEnd;
 
@@ -72,11 +72,14 @@ public abstract class Enemy : MonoBehaviour
 
         this.HitPoint = this.fixHitPoint;
         this.ElapsedTime = 0.0f;
-        this.NomalBullets = new List<GameObject>();
-        CreateBullet(this.NomalBullet);
 
         this.Pass = this.PassInterval;
-        burstCount = burstBulletNumber;
+        BurstCount = BurstBulletNumber;
+    }
+
+    protected virtual void Start()
+    {
+        
     }
 
     protected virtual void Update()
@@ -131,22 +134,39 @@ public abstract class Enemy : MonoBehaviour
 
     public void CreateBullet(GameObject _obj)
     {
-        for (int i = 0; i < BulletPool; i++)
+        this.NormalBullets = new List<GameObject>();
+        
+        for (int i = 0; i < this.bulletPool; i++)
         {
             var bullet = Instantiate(_obj);
+            bullet.tag = this.tag;
             //bullet.transform.SetParent(this.transform, true);
             HideBullet(bullet);
-            this.NomalBullets.Add(bullet);
+            this.NormalBullets.Add(bullet);
         }
     }
 
     public GameObject SearchAvailableBullet()
     {
-        for (int i = 0; i < this.NomalBullets.Count; i++)
+        
+        for (int i = 0; i < this.NormalBullets.Count; i++)
         {
-            if (!this.NomalBullets[i].gameObject.activeSelf)
+            if (!this.NormalBullets[i].gameObject.activeSelf)
             {
-                return this.NomalBullets[i];
+                return this.NormalBullets[i];
+            }
+        }
+
+        return null;
+    }
+
+    public GameObject SearchAvailableBullet(List<GameObject> _bulletPools)
+    {
+        for (int i = 0; i < _bulletPools.Count; i++)
+        {
+            if (!_bulletPools[i].gameObject.activeSelf)
+            {
+                return _bulletPools[i];
             }
         }
 
@@ -192,11 +212,11 @@ public abstract class Enemy : MonoBehaviour
     public void BurstAttack()
     {
         BulletAppear(SearchAvailableBullet());
-        burstCount -= 1;
-        if (burstCount <= 0)
+        this.BurstCount -= 1;
+        if (this.BurstCount <= 0)
         {
-            this.Pass += this.PassInterval + burstBulletInterval * burstBulletNumber;
-            this.burstCount = burstBulletNumber;
+            this.Pass += this.PassInterval + burstBulletInterval * this.BurstBulletNumber;
+            this.BurstCount = this.BurstBulletNumber;
         }
         else
         {

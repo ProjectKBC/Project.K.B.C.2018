@@ -16,6 +16,7 @@ namespace Ria
         Quadratic,
         Circle,
         Stay,
+        Sin,
         Bee
     }
 
@@ -31,6 +32,7 @@ namespace Ria
         public GameObject[] QuadraticEnemys;
         public GameObject[] CircleEnemys;
         public GameObject[] StayEnemys;
+        public GameObject[] SinEnemys;
         public GameObject BeeEnemy;
         public float EnemyAppearPass;
         public float RightPosX;
@@ -45,6 +47,8 @@ namespace Ria
             this.QuadraticEnemys = new GameObject[this.PoolEnemy];
             this.CircleEnemys = new GameObject[this.PoolEnemy];
             this.StayEnemys = new GameObject[this.PoolEnemy];
+            this.SinEnemys = new GameObject[this.PoolEnemy];
+
             this.BeeEnemy = new GameObject();
             this.EnemyCount = 0;
             this.EnemyAppearPass = 0;
@@ -111,6 +115,8 @@ namespace Ria
         [SerializeField] private GameObject quadraticEnemy = null;
         [SerializeField] private GameObject circleEnemy = null;
         [SerializeField] private GameObject stayEnemy = null;
+        [SerializeField] private GameObject sinEnemy = null;
+
         [SerializeField] private GameObject beeEnemy = null;
 
         public EnemyPattern[] Enemy1Patterns;
@@ -163,6 +169,8 @@ namespace Ria
 
                 _enemyData.StayEnemys[i] = CreateEnemy(this.stayEnemy);
                 _enemyData.StayEnemys[i].tag = _enemyData.PlayerType;
+                _enemyData.SinEnemys[i] = CreateEnemy(this.sinEnemy);
+                _enemyData.SinEnemys[i].tag = _enemyData.PlayerType;
             }
 
             _enemyData.BeeEnemy = CreateEnemy(this.beeEnemy);
@@ -171,7 +179,7 @@ namespace Ria
 
         public void EnemyAppear(float _nowPass, PlayersEnemyData _enemyData)
         {
-            if (_nowPass.Equals(_enemyData.EnemyAppearPass))
+            if (_nowPass >= _enemyData.EnemyAppearPass)
             {
                 if (_enemyData.EnemyCount < _enemyData.EnemyPatterns.Length)
                 {
@@ -208,6 +216,14 @@ namespace Ria
                         case "Stay":
                             Stay(
                                 5,
+                                _enemyData,
+                                this.enemyManagerDebug.StraightHorizontalPos,
+                                this.enemyManagerDebug.StraightHorizontalPosInterval);
+                            break;
+                        
+                        case "Sin":
+                            Sin(
+                                3,
                                 _enemyData,
                                 this.enemyManagerDebug.StraightHorizontalPos,
                                 this.enemyManagerDebug.StraightHorizontalPosInterval);
@@ -385,6 +401,40 @@ namespace Ria
                     _enemyData.StayEnemys[i].transform.position =
                         new Vector3(appearLeftPosX + appearCount * appearSpace, _enemyData.EnemyStartPos.y, _enemyData.EnemyStartPos.z);
                     _enemyData.StayEnemys[i].SetActive(true);
+                    appearCount++;
+                    
+                    // 次の起点の間隔をあける
+                    _appearPos += _posInterval;
+                }
+            }
+        }
+
+        public void Sin(int _appearNum, PlayersEnemyData _enemyData, Vector2 _appearPos,
+            Vector2 _posInterval)
+        {
+            int appearCount = 0;
+            float appearSpace = -20;
+            float appearPosX = -90;
+            float appearPosY = 40;
+
+            if (_enemyData.PlayerType.Equals("Enemy2"))
+            {
+                appearPosX = _enemyData.RightPosX - _enemyData.LeftPosX;
+            }
+
+            for (int i = 0; i < _enemyData.SinEnemys.Length; i++)
+            {
+                if (appearCount >= _appearNum)
+                {
+                    break;
+                }
+
+                if (!_enemyData.SinEnemys[i].activeSelf)
+                {
+                    // 起点に設置
+                    _enemyData.SinEnemys[i].transform.position =
+                        new Vector3(appearPosX + appearCount * appearSpace, appearPosY, AppearZPos);
+                    _enemyData.SinEnemys[i].SetActive(true);
                     appearCount++;
                     
                     // 次の起点の間隔をあける

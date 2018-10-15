@@ -2072,9 +2072,10 @@ MonoBehaviour:
   circleEnemy: {fileID: 1705388037023850, guid: 28d5a52ffc2794401afeed1a0f3013f2,
     type: 2}
   stayEnemy: {fileID: 1269887116242392, guid: 6bdae7b70d03f427eb7dd586fe273778, type: 2}
+  sinEnemy: {fileID: 1798963835953624, guid: ddad949e046154e9f8c4300fe2fef1bf, type: 2}
   beeEnemy: {fileID: 1458108209937710, guid: 8c1638c7d25ec432982faf5ec09e8889, type: 2}
-  Enemy1Patterns: 04000000
-  Enemy2Patterns: 04000000
+  Enemy1Patterns: 06000000
+  Enemy2Patterns: 0100000001000000
 --- !u!4 &1864421225
 Transform:
   m_ObjectHideFlags: 0
