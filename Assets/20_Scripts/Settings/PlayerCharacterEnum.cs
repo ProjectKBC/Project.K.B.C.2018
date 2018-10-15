@@ -2,8 +2,10 @@
 
 public enum PlayerCharacterEnum
 {
-    [Description("ailos")]
-    ailos,
+    [Description("random")]
+    random,
+    [Description("airos")]
+    airos,
     [Description("anoma")]
     anoma,
     [Description("emilia")]
@@ -22,6 +24,8 @@ public enum PlayerCharacterEnum
     vega_al,
     [Description("veronica")]
     veronica,
+    [Description("length")]
+    length_empty,
 }
 
 static class PlayerCharacterEnumExtend
