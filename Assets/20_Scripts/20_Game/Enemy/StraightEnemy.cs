@@ -14,9 +14,16 @@ public sealed class StraightEnemy : Enemy
     //     base.Awake();
     // }
 
-    /// <summary>
-    /// 
-    /// </summary>
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+    
+    protected override void Start()
+    {
+        CreateBullet(this.NomalBullet);
+    }
+
     protected override void Update()
     {
         base.Update();

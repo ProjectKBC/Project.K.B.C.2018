@@ -11,7 +11,11 @@ public class Bullet : MonoBehaviour
     }
     
     protected static readonly Vector3 SpownPos = new Vector3(0, 0, 200);
+
+    protected static readonly float Top = 80.0f;
     protected static readonly float Bottom = -80.0f;
+    protected float LeftPosX;
+    protected float RightPosX;
 
     public float BulletSpeed = 10.0f;
 
@@ -32,6 +36,20 @@ public class Bullet : MonoBehaviour
     {
         this.Go = this.gameObject;
         this.Trans = this.Go.transform;
+    }
+
+    protected virtual void Start()
+    {
+        if (this.tag.Equals("Enemy1"))
+        {
+            this.LeftPosX = -85.0f;
+            this.RightPosX = -3.0f;
+        }
+        else if (this.tag.Equals("Enemy2"))
+        {
+            this.LeftPosX = 3.0f;
+            this.RightPosX = 85.0f;
+        }
     }
 
     public void OnEnable()
@@ -125,7 +143,9 @@ public class Bullet : MonoBehaviour
 
     public void BeyondLine()
     {
-        if (this.Trans.position.y < Bottom)
+        if (this.Trans.position.y < Bottom || this.Trans.position.y > Top
+                                           || this.Trans.position.x < this.LeftPosX ||
+                                           this.Trans.position.x > this.RightPosX)
         {
             HideBullet();
         }

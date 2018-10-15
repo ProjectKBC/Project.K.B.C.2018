@@ -103,3 +103,5 @@ MonoBehaviour:
     type: 2}
   passInterval: 3
   burstBulletNumber: 3
+  normalBulletPool: 80
+  barrage: 0000000000000000000000000000000000000000
