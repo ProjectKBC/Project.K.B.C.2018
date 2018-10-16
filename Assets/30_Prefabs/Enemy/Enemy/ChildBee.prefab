@@ -103,10 +103,14 @@ MonoBehaviour:
     type: 2}
   passInterval: 1.5
   BurstBulletNumber: 3
-  movePosData:
-  - 0.2
-  - -10
-  - 40
-  - 0.5
-  - -10
-  - -40
+  movePosDatas:
+  - Second: 0.3
+    PosX: -10
+    PosY: 40
+    Speed: 0
+    MoveFlag: 0
+  - Second: 0.5
+    PosX: -10
+    PosY: -40
+    Speed: 0
+    MoveFlag: 0
