@@ -565,7 +565,7 @@ MonoBehaviour:
     Kana: {fileID: 1546189490}
     Alp: {fileID: 1280240216}
   nextToStageSelectImage: {fileID: 1918663962}
-  nextToStageSelectIntervalTime: 1
+  nextToStageSelectIntervalTime: 0.5
 --- !u!4 &475589464
 Transform:
   m_ObjectHideFlags: 0

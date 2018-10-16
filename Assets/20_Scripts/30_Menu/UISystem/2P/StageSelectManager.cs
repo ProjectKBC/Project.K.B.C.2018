@@ -21,6 +21,8 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
         {
             this.isNextWindow = value;
             this.nextWindowImage.enabled = value;
+
+            this.nextWindowSpownTime = value ? this.elapsedTime : float.MaxValue;
         }
     }
 
@@ -32,6 +34,8 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
         {
             this.isPrevWindow = value;
             this.prevWindowImage.enabled = value;
+            
+            this.prevWindowSpownTime = value ? this.elapsedTime : float.MaxValue;
         }
     }
 
@@ -45,26 +49,39 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
     [SerializeField]
     private Image prevWindowImage = null;
     [SerializeField]
+    private float prevToCharaSelectIntervalTime = 0.5f;
+    [SerializeField]
     private Image nextWindowImage = null;
+    [SerializeField]
+    private float nextToCharaSelectIntervalTime = 0.5f;
     [Space(8)]
     [SerializeField]
     private Sprite[] sprites = new Sprite[0];
 
+    private float elapsedTime;
     private StageEnum stage;
     private int nowIndex;
     private bool isNextWindow;
+    private float nextWindowSpownTime;
     private bool isPrevWindow;
+    private float prevWindowSpownTime;
 
     protected override void OnInit()
     {
+        this.elapsedTime = 0;
+
         this.stage = StageEnum.stage1;
         this.nowIndex = 0;
         this.IsNextWindow = false;
         this.IsPrevWindow = false;
+        this.prevWindowSpownTime = float.MaxValue;
+        this.nextWindowSpownTime = float.MaxValue;
     }
 
     public void Run()
     {
+        this.elapsedTime += Time.deltaTime;
+
         if (Input.GetKeyDown(this.pl1key.NextKey) || Input.GetKeyDown(this.pl2key.NextKey))
         {
             NextStage();
@@ -102,7 +119,8 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
 
     private void ReturnAction()
     {
-        if (this.IsNextWindow)
+        if (this.IsNextWindow && 
+            this.nextToCharaSelectIntervalTime <= this.elapsedTime - this.nextWindowSpownTime)
         {
             SelectUIManager.Instance.TransitionToGameScene(this.stage);
         }
@@ -132,7 +150,8 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
         {
             this.IsNextWindow = false;
         }
-        else if (this.IsPrevWindow)
+        else if (this.IsPrevWindow &&
+                 this.prevToCharaSelectIntervalTime <= this.elapsedTime - this.prevWindowSpownTime)
         {
             this.OnInit();
             SelectUIManager.Instance.TransitionToCharactetSelect();
