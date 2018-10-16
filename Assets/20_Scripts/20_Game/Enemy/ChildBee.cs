@@ -3,10 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChildBee : Enemy {
-	
+
+	[System.Serializable]
+	class GoPosData
+	{
+		public float Second;
+		public float PosX;
+		public float PosY;
+		
+		[HideInInspector]
+		public float Speed;
+		[HideInInspector]
+		public bool MoveFlag = false;
+
+		public GoPosData(float _second, float _posX, float _posY)
+		{
+			this.Second = _second;
+			this.PosX = _posX;
+			this.PosY = _posY;
+		}
+	}
+
 	[SerializeField]
-	// 何秒で移動するか、X座標、Y座標がループして入っている
-	private float[] movePosData;
+	private GoPosData[] movePosDatas;
 	
 	// 上の配列を回すためのカウント変数
 	private int movePosDataCount = 0;
@@ -16,13 +35,10 @@ public class ChildBee : Enemy {
 
 	
 	//private int bulletPool = 10;
-	// データがあるかどうか（最新か）のフラグ、何秒で移動するか、X座標、Y座標が入ってる
-	private float[] moveData;
 
 	protected override void Awake()
 	{
 		base.Awake();
-		this.moveData = new float[4];
 	}
 
 	protected override void Start()
@@ -39,67 +55,64 @@ public class ChildBee : Enemy {
 		//Debug.Log(this.movePosDataCount < this.movePosData.Length);
 		
 		// 移動しきってなかったら
-		if (this.movePosDataCount < this.movePosData.Length)
+		if (this.movePosDataCount < this.movePosDatas.Length)
 		{
-			SecondMovePosition(this.movePosData[this.movePosDataCount], this.movePosData[this.movePosDataCount + 1],
-				this.movePosData[this.movePosDataCount + 2]);
+			SecondMovePosition(this.movePosDatas[this.movePosDataCount]);
 		}
 	}
 
-	private void SecondMovePosition(float _time, float _posX, float _posY)
+	private void SecondMovePosition(GoPosData _movePosDatas)
 	{
-		if (this.moveData[0] <= 0)
-		{
-			float d = (float) System.Math.Sqrt((_posX - this.Trans.position.x) * (_posX - this.Trans.position.x)
-			                                   + (_posY - this.Trans.position.y) * (_posY - this.Trans.position.y));
-			this.moveData[1] = d / _time;
-			this.moveData[2] = _posX;
-			this.moveData[3] = _posY;
-			this.moveData[0] = 1;
-			this.VectorMyselfPosition = new Vector3(this.moveData[2] - this.Trans.position.x,
-				this.moveData[3] - this.Trans.position.y, this.Trans.position.z).normalized;
-		}
-		else
+		if (_movePosDatas.MoveFlag)
 		{
 			Vector3 myNowPos = this.Trans.position;
 			
-			myNowPos.x += (this.VectorMyselfPosition.x * this.moveData[1] * Time.deltaTime);
-			myNowPos.y += (this.VectorMyselfPosition.y * this.moveData[1] * Time.deltaTime);
+			myNowPos.x += (this.VectorMyselfPosition.x * _movePosDatas.Speed * Time.deltaTime);
+			myNowPos.y += (this.VectorMyselfPosition.y * _movePosDatas.Speed * Time.deltaTime);
 			
 			this.Trans.position = myNowPos;
-
+			
 			if (this.VectorMyselfPosition.x >= 0 && this.VectorMyselfPosition.y >= 0)
 			{
-				if (this.Trans.position.x >= this.moveData[2] && this.Trans.position.y >= this.moveData[3])
+				if (this.Trans.position.x >= _movePosDatas.PosX && this.Trans.position.y >= _movePosDatas.PosY)
 				{
-					this.moveData[0] = -1;
-					this.movePosDataCount += 3;
+					_movePosDatas.MoveFlag = false;
+					this.movePosDataCount += 1;
 				}
 			}
 			else if (this.VectorMyselfPosition.x < 0 && this.VectorMyselfPosition.y >= 0)
 			{
-				if (this.Trans.position.x < this.moveData[2] && this.Trans.position.y >= this.moveData[3])
+				if (this.Trans.position.x < _movePosDatas.PosX && this.Trans.position.y >= _movePosDatas.PosY)
 				{
-					this.moveData[0] = -1;
-					this.movePosDataCount += 3;
+					_movePosDatas.MoveFlag = false;
+					this.movePosDataCount += 1;
 				}
 			}
 			else if (this.VectorMyselfPosition.x >= 0 && this.VectorMyselfPosition.y < 0)
 			{
-				if (this.Trans.position.x >= this.moveData[2] && this.Trans.position.y < this.moveData[3])
+				if (this.Trans.position.x >= _movePosDatas.PosX && this.Trans.position.y < _movePosDatas.PosY)
 				{
-					this.moveData[0] = -1;
-					this.movePosDataCount += 3;
+					_movePosDatas.MoveFlag = false;
+					this.movePosDataCount += 1;
 				}
 			}
 			else if (this.VectorMyselfPosition.x < 0 && this.VectorMyselfPosition.y < 0)
 			{
-				if (this.Trans.position.x < this.moveData[2] && this.Trans.position.y < this.moveData[3])
+				if (this.Trans.position.x < _movePosDatas.PosX && this.Trans.position.y < _movePosDatas.PosY)
 				{
-					this.moveData[0] = -1;
-					this.movePosDataCount += 3;
+					_movePosDatas.MoveFlag = false;
+					this.movePosDataCount += 1;
 				}
 			}
+		}
+		else
+		{
+			float d = (float) System.Math.Sqrt(System.Math.Pow(_movePosDatas.PosX - this.Trans.position.x, 2)
+			                                   + System.Math.Pow(_movePosDatas.PosY - this.Trans.position.y, 2));
+			_movePosDatas.Speed = d / _movePosDatas.Second;
+			this.VectorMyselfPosition = new Vector3(_movePosDatas.PosX - this.Trans.position.x,
+				_movePosDatas.PosY - this.Trans.position.y, this.Trans.position.z).normalized;
+			_movePosDatas.MoveFlag = true;
 		}
 	}
 }
