@@ -10,16 +10,30 @@
           </e>
           <e p="20_Game" t="Include">
             <e p="Enemy" t="Include">
-              <e p="BigBee.cs" t="Include" />
-              <e p="Bullet.cs" t="Include" />
-              <e p="ChildBee.cs" t="Include" />
-              <e p="CircleEnemy.cs" t="Include" />
-              <e p="Enemy.cs" t="Include" />
-              <e p="Needle.cs" t="Include" />
-              <e p="QuadraticEnemy.cs" t="Include" />
-              <e p="SinEnemy.cs" t="Include" />
-              <e p="StayEnemy.cs" t="Include" />
-              <e p="StraightEnemy.cs" t="Include" />
+              <e p="Bullet" t="Include">
+                <e p="Bullet.cs" t="Include" />
+                <e p="Needle.cs" t="Include" />
+              </e>
+              <e p="Enemy" t="Include">
+                <e p="BigBee.cs" t="Include" />
+                <e p="ChildBee.cs" t="Include" />
+                <e p="CircleEnemy.cs" t="Include" />
+                <e p="Enemy.cs" t="Include" />
+                <e p="QuadraticEnemy.cs" t="Include" />
+                <e p="SinEnemy.cs" t="Include" />
+                <e p="StayEnemy.cs" t="Include" />
+                <e p="StraightEnemy.cs" t="Include" />
+              </e>
+              <e p="KettyEnemy" t="Include">
+                <e p="KettyBigBee.cs" t="Include" />
+                <e p="KettyChildBee.cs" t="Include" />
+                <e p="KettyCircleEnemy.cs" t="Include" />
+                <e p="KettyEnemy.cs" t="Include" />
+                <e p="KettyQuadraticEnemy.cs" t="Include" />
+                <e p="KettySinEnemy.cs" t="Include" />
+                <e p="KettyStayEnemy.cs" t="Include" />
+                <e p="KettyStraightEnemy.cs" t="Include" />
+              </e>
             </e>
             <e p="GameSystem" t="Include">
               <e p="FinalizeAction.cs" t="Include" />
@@ -31,6 +45,7 @@
             <e p="Manager" t="Include">
               <e p="ChildManager.cs" t="Include" />
               <e p="EnemyManager.cs" t="Include" />
+              <e p="KettyEnemyManager.cs" t="Include" />
               <e p="TestChildManagerr.cs" t="Include" />
               <e p="TestEnemyManager .cs" t="Include" />
             </e>

@@ -9,32 +9,33 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1739803846535740}
+  m_RootGameObject: {fileID: 1679524531128298}
   m_IsPrefabParent: 1
---- !u!1 &1739803846535740
+--- !u!1 &1679524531128298
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4471596812155240}
-  - component: {fileID: 33893935790141944}
-  - component: {fileID: 23851210244945120}
-  - component: {fileID: 95536456380084010}
+  - component: {fileID: 4220000162530302}
+  - component: {fileID: 33326936937749940}
+  - component: {fileID: 23452965444576230}
+  - component: {fileID: 95230386213154428}
+  - component: {fileID: 114487149960832706}
   m_Layer: 0
-  m_Name: OriginEnemy
+  m_Name: KettyCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4471596812155240
+--- !u!4 &4220000162530302
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1739803846535740}
+  m_GameObject: {fileID: 1679524531128298}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 150, y: 150, z: 150}
@@ -42,12 +43,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!23 &23851210244945120
+--- !u!23 &23452965444576230
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1739803846535740}
+  m_GameObject: {fileID: 1679524531128298}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -80,20 +81,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33893935790141944
+--- !u!33 &33326936937749940
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1739803846535740}
+  m_GameObject: {fileID: 1679524531128298}
   m_Mesh: {fileID: 4300000, guid: 83a9f0caa6ab2174cbe754807078ee1d, type: 3}
---- !u!95 &95536456380084010
+--- !u!95 &95230386213154428
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1739803846535740}
+  m_GameObject: {fileID: 1679524531128298}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 83a9f0caa6ab2174cbe754807078ee1d, type: 3}
   m_Controller: {fileID: 0}
@@ -105,3 +106,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114487149960832706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1679524531128298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2458fa02e99488abfbe321da1df5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebug: 0
+  IsBurstAttack: 0
+  fixHitPoint: 1
+  moveSpeedRate: 5
+  nomalBulletSpeed: 5
+  nomalBullet: {fileID: 1645425903874554, guid: a90cdf84469c74db4a53632086102650,
+    type: 2}
+  passInterval: 1.5
+  BurstBulletNumber: 3
+  debug:
+    Radius: 0
+    EndStraightPos: {x: 0, y: 0}
