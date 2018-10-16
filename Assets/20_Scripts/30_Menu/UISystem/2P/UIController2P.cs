@@ -1,12 +1,6 @@
 ﻿using System;
-
-using Boo.Lang;
-
-using JetBrains.Annotations;
-
 using UnityEngine;
 using UnityEngine.UI;
-
 using Random = System.Random;
 
 public enum Player
@@ -120,20 +114,24 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     [Space(8)]
     [SerializeField]
     private Images pl2Images = null;
+    [Space(16)]
+    [SerializeField]
+    private Image nextToStageSelectImage = null;
+    [SerializeField]
+    private float nextToStageSelectIntervalTime = 0.5f;
 
     // private fields
     private float elapsedTime;
     private SelecterStates pl1States;
     private SelecterStates pl2States;
-    private PlayerCharacterEnum pl1chara;
-    private PlayerCharacterEnum pl2chara;
+    private float allSelectedTime;
 
     protected override void OnInit()
     {
         this.elapsedTime = 0;
 
         // private fields
-        this.pl1States = new SelecterStates();;
+        this.pl1States = new SelecterStates();
         this.pl1States.NowIndex = this.pl1FirstIndex;
         this.pl1States.KeyIntervalStartTime = 0f;
         this.pl1States.RapidKeyWaitStartTime = 0f;
@@ -141,13 +139,16 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
         this.pl1States.IsSelected = false;
         this.pl1States.PlayerCharacter = PlayerCharacterEnum.length_empty;
 
-        this.pl2States = new SelecterStates(); ;
+        this.pl2States = new SelecterStates();
         this.pl2States.NowIndex = this.pl2FirstIndex;
         this.pl2States.KeyIntervalStartTime = 0f;
         this.pl2States.RapidKeyWaitStartTime = 0f;
         this.pl2States.IsFirstCursorMove = false;
         this.pl2States.IsSelected = false;
         this.pl2States.PlayerCharacter = PlayerCharacterEnum.length_empty;
+
+        this.nextToStageSelectImage.enabled = false;
+        this.allSelectedTime = 0;
 
         // selectorの初期化
         for (int i = 0; i < this.charaSelectorSets.Length; ++i)
@@ -168,90 +169,88 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     {
         this.elapsedTime += Time.deltaTime;
 
-        this.MoveSelect();
-        this.ActionSelect();
+        this.MoveCursor();
+        this.ActionCursor();
     }
 
-    private void MoveSelect()
+    private void MoveCursor()
     {
         // Player1
-        var _states = this.pl1States;
-        var _key = this.pl1key;
-        var _pl = Player.pl1;
-        if (!_states.IsSelected)
+        if (!this.pl1States.IsSelected)
         {
-            MoveCursor(_states, _key, _pl);
+            MoveCursorFunc(Player.pl1);
         }
 
         // Player2
-        _states = this.pl2States;
-        _key = this.pl2key;
-        _pl = Player.pl2;
-        if (!_states.IsSelected)
+        if (!this.pl2States.IsSelected)
         {
-            MoveCursor(_states, _key, _pl);
+            MoveCursorFunc(Player.pl2);
         }
 
     }
 
-    private void MoveCursor(SelecterStates _states, PlayerKey _key, Player _pl)
+    private void MoveCursorFunc(Player _pl)
     {
+        SelecterStates states = (_pl == Player.pl1) ? this.pl1States :
+                                (_pl == Player.pl2) ? this.pl2States : null;
+        PlayerKey key = (_pl == Player.pl1) ? this.pl1key :
+                        (_pl == Player.pl2) ? this.pl2key : new PlayerKey();
 
         // いずれの方向キーも押されていない
-        if (!Input.GetKey(_key.UpKey) && !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.RightKey) && !Input.GetKey(_key.LeftKey))
+        if (!Input.GetKey(key.UpKey) && !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey) && !Input.GetKey(key.LeftKey))
         {
-            _states.KeyIntervalStartTime = -1;
-            _states.RapidKeyWaitStartTime = -1;
-            _states.IsFirstCursorMove = false;
+            states.KeyIntervalStartTime = -1;
+            states.RapidKeyWaitStartTime = -1;
+            states.IsFirstCursorMove = false;
             return;
         }
         // いずれかの方向キーがいずれも押されていない状態からKeyDownした
-        else if (_states.KeyIntervalStartTime == -1)
+        else if (states.KeyIntervalStartTime == -1)
         {
-            _states.KeyIntervalStartTime = this.elapsedTime;
-            _states.RapidKeyWaitStartTime = this.elapsedTime;
+            states.KeyIntervalStartTime = this.elapsedTime;
+            states.RapidKeyWaitStartTime = this.elapsedTime;
             return;
         }
 
         // キー入力のインターバル時間に達していない
-        if (this.elapsedTime - _states.KeyIntervalStartTime < this.pressedReactionIntervalTime) { return; }
+        if (this.elapsedTime - states.KeyIntervalStartTime < this.pressedReactionIntervalTime) { return; }
         
         // キーの連射入力時間に達しておらず、連射扱いとなる場合
-        if (this.elapsedTime - _states.RapidKeyWaitStartTime < this.pressedWaitTime && _states.IsFirstCursorMove) { return; }
+        if (this.elapsedTime - states.RapidKeyWaitStartTime < this.pressedWaitTime && states.IsFirstCursorMove) { return; }
 
         // キーの連射速度時間に達していない場合
-        if (this.elapsedTime - _states.KeyIntervalStartTime < this.pressedRapidIntervalTime && _states.IsFirstCursorMove) { return; }
+        if (this.elapsedTime - states.KeyIntervalStartTime < this.pressedRapidIntervalTime && states.IsFirstCursorMove) { return; }
 
-        if (!_states.IsFirstCursorMove)
+        if (!states.IsFirstCursorMove)
         {
-            _states.IsFirstCursorMove = true;
+            states.IsFirstCursorMove = true;
         }
 
-        var isUp = Input.GetKey(_key.UpKey) &&
-                   !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.RightKey) && !Input.GetKey(_key.LeftKey);
+        var isUp = Input.GetKey(key.UpKey) &&
+                   !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey) && !Input.GetKey(key.LeftKey);
 
-        var isDown = Input.GetKey(_key.DownKey) &&
-                     !Input.GetKey(_key.UpKey) && !Input.GetKey(_key.RightKey) && !Input.GetKey(_key.LeftKey);
+        var isDown = Input.GetKey(key.DownKey) &&
+                     !Input.GetKey(key.UpKey) && !Input.GetKey(key.RightKey) && !Input.GetKey(key.LeftKey);
 
-        var isRight = Input.GetKey(_key.RightKey) &&
-                      !Input.GetKey(_key.UpKey) && !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.LeftKey);
+        var isRight = Input.GetKey(key.RightKey) &&
+                      !Input.GetKey(key.UpKey) && !Input.GetKey(key.DownKey) && !Input.GetKey(key.LeftKey);
 
-        var isLeft = Input.GetKey(_key.LeftKey) &&
-                     !Input.GetKey(_key.UpKey) && !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.RightKey);
+        var isLeft = Input.GetKey(key.LeftKey) &&
+                     !Input.GetKey(key.UpKey) && !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey);
 
-        var isUpLeft = Input.GetKey(_key.UpKey) && Input.GetKey(_key.LeftKey) &&
-                       !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.RightKey);
+        var isUpLeft = Input.GetKey(key.UpKey) && Input.GetKey(key.LeftKey) &&
+                       !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey);
 
-        var isUpRight = Input.GetKey(_key.UpKey) && Input.GetKey(_key.RightKey) &&
-                         !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.LeftKey);
+        var isUpRight = Input.GetKey(key.UpKey) && Input.GetKey(key.RightKey) &&
+                         !Input.GetKey(key.DownKey) && !Input.GetKey(key.LeftKey);
 
-        var isDownLeft = Input.GetKey(_key.DownKey) && Input.GetKey(_key.LeftKey) &&
-                          !Input.GetKey(_key.UpKey) && !Input.GetKey(_key.RightKey);
+        var isDownLeft = Input.GetKey(key.DownKey) && Input.GetKey(key.LeftKey) &&
+                          !Input.GetKey(key.UpKey) && !Input.GetKey(key.RightKey);
 
-        var isDownRight = Input.GetKey(_key.DownKey) && Input.GetKey(_key.RightKey) &&
-                           !Input.GetKey(_key.UpKey) && !Input.GetKey(_key.LeftKey);
+        var isDownRight = Input.GetKey(key.DownKey) && Input.GetKey(key.RightKey) &&
+                           !Input.GetKey(key.UpKey) && !Input.GetKey(key.LeftKey);
 
-        var index = _states.NowIndex;
+        var index = states.NowIndex;
         
         if (isUp)
         {
@@ -267,7 +266,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
             {
                 this.PrevContent(_pl, 5);
             }
-            _states.KeyIntervalStartTime = this.elapsedTime;
+            states.KeyIntervalStartTime = this.elapsedTime;
         }
 
         if (isDown)
@@ -284,7 +283,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
             {
                 this.NextContent(_pl, 5);
             }
-            _states.KeyIntervalStartTime = this.elapsedTime;
+            states.KeyIntervalStartTime = this.elapsedTime;
         }
 
         if (isRight)
@@ -301,7 +300,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
             {
                 this.NextContent(_pl);
             }
-            _states.KeyIntervalStartTime = this.elapsedTime;
+            states.KeyIntervalStartTime = this.elapsedTime;
         }
 
         if (isLeft)
@@ -318,7 +317,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
             {
                 this.PrevContent(_pl);
             }
-            _states.KeyIntervalStartTime = this.elapsedTime;
+            states.KeyIntervalStartTime = this.elapsedTime;
         }
 
         if (isUpLeft)
@@ -339,7 +338,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
             {
                 this.PrevContent(_pl, 3);
             }
-            _states.KeyIntervalStartTime = this.elapsedTime;
+            states.KeyIntervalStartTime = this.elapsedTime;
         }
 
         if (isUpRight)
@@ -360,7 +359,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
             {
                 this.PrevContent(_pl, 2);
             }
-            _states.KeyIntervalStartTime = this.elapsedTime;
+            states.KeyIntervalStartTime = this.elapsedTime;
         }
 
         if (isDownLeft)
@@ -381,7 +380,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
             {
                 this.NextContent(_pl, 2);
             }
-            _states.KeyIntervalStartTime = this.elapsedTime;
+            states.KeyIntervalStartTime = this.elapsedTime;
         }
 
         if (isDownRight)
@@ -402,11 +401,11 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
             {
                 this.NextContent(_pl, 3);
             }
-            _states.KeyIntervalStartTime = this.elapsedTime;
+            states.KeyIntervalStartTime = this.elapsedTime;
         }
     }
 
-    private void ActionSelect()
+    private void ActionCursor()
     {
         if (Input.GetKeyDown(this.pl1key.ReturnKey))
         {
@@ -445,24 +444,15 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     /// <param name="_advance">進める数</param>
     private void NextContent(Player _pl, int _advance)
     {
-        if (_pl == Player.pl1)
-        {
-            var prevIndex = this.pl1States.NowIndex;
-            this.pl1States.NowIndex = (this.pl1States.NowIndex + _advance) % this.charaSelectorSets.Length;
-            UpdateCursor(prevIndex);
-            UpdateCursor(this.pl1States.NowIndex);
-            UpdateStand(_pl);
-            UpdateNames(_pl);
-        }
-        else if (_pl == Player.pl2)
-        {
-            var prevIndex = this.pl2States.NowIndex;
-            this.pl2States.NowIndex = (this.pl2States.NowIndex + _advance) % this.charaSelectorSets.Length;
-            UpdateCursor(prevIndex);
-            UpdateCursor(this.pl2States.NowIndex);
-            UpdateStand(_pl);
-            UpdateNames(_pl);
-        }
+        SelecterStates state = (_pl == Player.pl1) ? this.pl1States :
+                               (_pl == Player.pl2) ? this.pl2States : null;
+
+        var prevIndex = state.NowIndex;
+        state.NowIndex = (state.NowIndex + _advance) % this.charaSelectorSets.Length;
+        UpdateCursor(prevIndex);
+        UpdateCursor(state.NowIndex);
+        UpdateStand(_pl);
+        UpdateNames(_pl);
     }
 
     /// <summary>
@@ -481,24 +471,16 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     /// <param name="_advance">戻す数</param>
     private void PrevContent(Player _pl, int _advance)
     {
-        if (_pl == Player.pl1)
-        {
-            var prevIndex = this.pl1States.NowIndex;
-            this.pl1States.NowIndex = (this.charaSelectorSets.Length + this.pl1States.NowIndex - _advance) % this.charaSelectorSets.Length;
-            UpdateCursor(prevIndex);
-            UpdateCursor(this.pl1States.NowIndex);
-            UpdateStand(_pl);
-            UpdateNames(_pl);
-        }
-        else if (_pl == Player.pl2)
-        {
-            var prevIndex = this.pl2States.NowIndex;
-            this.pl2States.NowIndex = (this.charaSelectorSets.Length + this.pl2States.NowIndex - _advance) % this.charaSelectorSets.Length;
-            UpdateCursor(prevIndex);
-            UpdateCursor(this.pl2States.NowIndex);
-            UpdateStand(_pl);
-            UpdateNames(_pl);
-        }
+        SelecterStates state = (_pl == Player.pl1) ? this.pl1States :
+                               (_pl == Player.pl2) ? this.pl2States : null;
+
+        var prevIndex = state.NowIndex;
+        state.NowIndex =
+            (this.charaSelectorSets.Length + state.NowIndex - _advance) % this.charaSelectorSets.Length;
+        UpdateCursor(prevIndex);
+        UpdateCursor(state.NowIndex);
+        UpdateStand(_pl);
+        UpdateNames(_pl);
     }
 
     /// <summary>
@@ -508,105 +490,89 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     /// <returns>正常に処理されたか</returns>
     private bool ReturnAction(Player _pl)
     {
-        if (this.pl1States.IsSelected && this.pl2States.IsSelected)
+        if (this.pl1States.IsSelected && this.pl2States.IsSelected &&
+           (this.nextToStageSelectIntervalTime <= this.elapsedTime - this.allSelectedTime))
         {
             // todo: StageSelect画面に移行する
+            var chara1 = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
+            var chara2 = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
+
             return true;
         }
 
+        var result = ReturnFunc(_pl);
+
+        if (this.pl1States.IsSelected && this.pl2States.IsSelected)
+        {
+            this.nextToStageSelectImage.enabled = true;
+            this.allSelectedTime = this.elapsedTime;
+        }
+
+        return result;
+    }
+
+    private bool ReturnFunc(Player _pl)
+    {
+        SelecterStates state = null;
+        PlayerCharacterEnum pc = PlayerCharacterEnum.length_empty;
+        Images images = null;
+        Sprite sprite = null;
+
         if (_pl == Player.pl1)
         {
-            if (this.pl1States.IsSelected) { return true; }
-
-            PlayerCharacterEnum pc = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
-            if (pc == PlayerCharacterEnum.length_empty)
-            {
-                // todo: SE [選択できない]
-                return false;
-            }
-            else if (pc == PlayerCharacterEnum.random)
-            {
-                var random = new Random();
-                int index;
-                while (true)
-                {
-                    index = random.Next(0, (int)PlayerCharacterEnum.length_empty);
-                    pc = this.charaSelectorSets[index].PlayerCharacter;
-                    if (pc != PlayerCharacterEnum.random && pc != PlayerCharacterEnum.length_empty) { break; }
-                }
-
-                this.pl1States.PlayerCharacter = pc;
-                this.pl1States.IsSelected = true;
-                this.pl1Images.StandBack.sprite = this.sprites.StandBackActive1;
-                var tmp = this.pl1States.NowIndex;
-                this.pl1States.NowIndex = index;
-                UpdateCursor(tmp);
-                UpdateCursor(this.pl1States.NowIndex);
-                UpdateStand(_pl);
-                UpdateNames(_pl);
-
-                // todo: SE [選択した]
-                return true;
-            }
-            else
-            {
-                this.pl1States.PlayerCharacter = pc;
-                this.pl1States.IsSelected = true;
-                this.pl1Images.StandBack.sprite = this.sprites.StandBackActive1;
-                UpdateCursor(this.pl1States.NowIndex);
-
-                // todo: SE [選択した]
-                return true;
-            }
+            state = this.pl1States;
+            pc = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
+            images = this.pl1Images;
+            sprite = this.sprites.StandBackActive1;
         }
-        else if (_pl == Player.pl2)
+        if (_pl == Player.pl2)
         {
-            if (this.pl2States.IsSelected) { return true; }
+            state = this.pl2States;
+            pc = this.charaSelectorSets[this.pl2States.NowIndex].PlayerCharacter;
+            images = this.pl2Images;
+            sprite = this.sprites.StandBackActive2;
+        }
 
-            PlayerCharacterEnum pc = this.charaSelectorSets[this.pl2States.NowIndex].PlayerCharacter;
-            if (pc == PlayerCharacterEnum.length_empty)
+        if (state.IsSelected) { return true; }
+
+        if (pc == PlayerCharacterEnum.length_empty)
+        {
+            // todo: SE [選択できない]
+            return false;
+        }
+        else if (pc == PlayerCharacterEnum.random)
+        {
+            var random = new Random();
+            int index;
+            while (true)
             {
-                // todo: SE [選択できない]
-                return false;
+                index = random.Next(0, (int)PlayerCharacterEnum.length_empty);
+                pc = this.charaSelectorSets[index].PlayerCharacter;
+                if (pc != PlayerCharacterEnum.random && pc != PlayerCharacterEnum.length_empty) { break; }
             }
-            else if (pc == PlayerCharacterEnum.random)
-            {
-                var random = new Random();
-                int index;
-                while (true)
-                {
-                    index = random.Next(0, (int)PlayerCharacterEnum.length_empty);
-                    pc = this.charaSelectorSets[index].PlayerCharacter;
-                    if (pc != PlayerCharacterEnum.random && pc != PlayerCharacterEnum.length_empty) { break; }
-                }
 
-                this.pl2States.PlayerCharacter = pc;
-                this.pl2States.IsSelected = true;
-                this.pl2Images.StandBack.sprite = this.sprites.StandBackActive2;
-                var tmp = this.pl2States.NowIndex;
-                this.pl2States.NowIndex = index;
-                UpdateCursor(tmp);
-                UpdateCursor(this.pl2States.NowIndex);
-                UpdateStand(_pl);
-                UpdateNames(_pl);
+            state.PlayerCharacter = pc;
+            state.IsSelected = true;
+            images.StandBack.sprite = sprite;
+            var tmp = state.NowIndex;
+            state.NowIndex = index;
+            UpdateCursor(tmp);
+            UpdateCursor(state.NowIndex);
+            UpdateStand(_pl);
+            UpdateNames(_pl);
 
-                // todo: SE [選択した]
-                return true;
-            }
-            else
-            {
-                this.pl2States.PlayerCharacter = pc;
-                this.pl2States.IsSelected = true;
-                this.pl2Images.StandBack.sprite = this.sprites.StandBackActive2;
-                UpdateCursor(this.pl2States.NowIndex);
-
-                // todo: SE [選択した]
-                return true;
-            }
+            // todo: SE [選択した]
+            return true;
         }
         else
         {
-            return false;
+            state.PlayerCharacter = pc;
+            state.IsSelected = true;
+            images.StandBack.sprite = sprite;
+            UpdateCursor(state.NowIndex);
+
+            // todo: SE [選択した]
+            return true;
         }
     }
 
@@ -617,32 +583,44 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     /// <returns>正常に処理されたか</returns>
     private bool CancelAction(Player _pl)
     {
+        CancelFunc(_pl);
+
+        if (!this.pl1States.IsSelected || !this.pl2States.IsSelected)
+        {
+            this.nextToStageSelectImage.enabled = false;
+        }
+
+        return true;
+    }
+
+    private bool CancelFunc(Player _pl)
+    {
+        SelecterStates state = null;
+        Images images = null;
+        Sprite sprite = null;
         if (_pl == Player.pl1)
         {
-            if (!this.pl1States.IsSelected)
-            {
-                // todo: 対戦を終了します [選択を続ける]　[*前の画面に戻る]
-                return true;
-            }
-
-            this.pl1States.PlayerCharacter = PlayerCharacterEnum.length_empty;
-            this.pl1States.IsSelected = false;
-            this.pl1Images.StandBack.sprite = this.sprites.StandBackNormal1;
-            UpdateCursor(this.pl1States.NowIndex);
+            state = this.pl1States;
+            images = this.pl1Images;
+            sprite = this.sprites.StandBackNormal1;
         }
-        else if (_pl == Player.pl2)
+        if (_pl == Player.pl2)
         {
-            if (!this.pl2States.IsSelected)
-            {
-                // todo: 対戦を終了します [選択を続ける]　[*前の画面に戻る]
-                return true;
-            }
-
-            this.pl2States.PlayerCharacter = PlayerCharacterEnum.length_empty;
-            this.pl2States.IsSelected = false;
-            this.pl2Images.StandBack.sprite = this.sprites.StandBackNormal2;
-            UpdateCursor(this.pl2States.NowIndex);
+            state = this.pl2States;
+            images = this.pl2Images;
+            sprite = this.sprites.StandBackNormal2;
         }
+        
+        if (!state.IsSelected)
+        {
+            // todo: 対戦を終了します [選択を続ける]　[*前の画面に戻る]
+            return true;
+        }
+
+        state.PlayerCharacter = PlayerCharacterEnum.length_empty;
+        state.IsSelected = false;
+        images.StandBack.sprite = sprite;
+        UpdateCursor(state.NowIndex);
 
         return true;
     }
@@ -695,69 +673,69 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
 
     private void UpdateStand(Player _pl)
     {
+        CharaSelectorSet set = new CharaSelectorSet();
+        SelecterStates state = null;
+        Images images = null;
+        Sprite sprite = null;
+
         if (_pl == Player.pl1)
         {
-            var set = this.charaSelectorSets[this.pl1States.NowIndex];
-            if (set.PlayerCharacter == PlayerCharacterEnum.length_empty)
-            {
-                this.pl1Images.StandFront.sprite = null;
-                this.pl1Images.StandFront.enabled = false;
-            }
-            else
-            {
-                this.pl1Images.StandFront.enabled = true;
-                this.pl1Images.StandFront.sprite = set.StandPL1;
-            }
+            state = this.pl1States;
+            set = this.charaSelectorSets[state.NowIndex];
+            images = this.pl1Images;
+            sprite = set.StandPL1;
         }
-        else if (_pl == Player.pl2)
+        if (_pl == Player.pl2)
         {
-            var set = this.charaSelectorSets[this.pl2States.NowIndex];
-            if (set.PlayerCharacter == PlayerCharacterEnum.length_empty)
-            {
-                this.pl2Images.StandFront.sprite = null;
-                this.pl2Images.StandFront.enabled = false;
-            }
-            else
-            {
-                this.pl2Images.StandFront.enabled = true;
-                this.pl2Images.StandFront.sprite = set.StandPL2;
-            }
+            state = this.pl2States;
+            set = this.charaSelectorSets[state.NowIndex];
+            images = this.pl2Images;
+            sprite = set.StandPL2;
+        }
+
+        if (set.PlayerCharacter == PlayerCharacterEnum.length_empty)
+        {
+            images.StandFront.sprite = null;
+            images.StandFront.enabled = false;
+        }
+        else
+        {
+            images.StandFront.enabled = true;
+            images.StandFront.sprite = sprite;
         }
     }
 
     private void UpdateNames(Player _pl)
     {
+        SelecterStates state = null;
+        CharaSelectorSet set = new CharaSelectorSet();
+        Images images = null;
+
         if (_pl == Player.pl1)
         {
-            var set = this.charaSelectorSets[this.pl1States.NowIndex];
-            if (set.PlayerCharacter == PlayerCharacterEnum.length_empty)
-            {
-                this.pl1Images.SetNameImages(null, null);
-                this.pl1Images.Kana.enabled = false;
-                this.pl1Images.Alp.enabled = false;
-            }
-            else
-            {
-                this.pl1Images.Kana.enabled = true;
-                this.pl1Images.Alp.enabled = true;
-                this.pl1Images.SetNameImages(set.KanaName, set.AlpName);
-            }
+            state = this.pl1States;
+            set = this.charaSelectorSets[state.NowIndex];
+            images = this.pl1Images;
+            
         }
-        else if (_pl == Player.pl2)
+        if (_pl == Player.pl2)
         {
-            var set = this.charaSelectorSets[this.pl2States.NowIndex];
-            if (set.PlayerCharacter == PlayerCharacterEnum.length_empty)
-            {
-                this.pl2Images.SetNameImages(null, null);
-                this.pl2Images.Kana.enabled = false;
-                this.pl2Images.Alp.enabled = false;
-            }
-            else
-            {
-                this.pl2Images.Kana.enabled = true;
-                this.pl2Images.Alp.enabled = true;
-                this.pl2Images.SetNameImages(set.KanaName, set.AlpName);
-            }
+            state = this.pl2States;
+            set = this.charaSelectorSets[state.NowIndex];
+            images = this.pl2Images;
+        }
+
+        if (set.PlayerCharacter == PlayerCharacterEnum.length_empty)
+        {
+            images.SetNameImages(null, null);
+            images.Kana.enabled = false;
+            images.Alp.enabled = false;
+        }
+        else
+        {
+            images.Kana.enabled = true;
+            images.Alp.enabled = true;
+            images.SetNameImages(set.KanaName, set.AlpName);
         }
     }
 }

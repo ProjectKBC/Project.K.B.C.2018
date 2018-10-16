@@ -19,6 +19,8 @@ public class UIController2PEditor : Editor
     private SerializedProperty selectorSpriteProp;
     private SerializedProperty pl1ImagesProp;
     private SerializedProperty pl2ImagesProp;
+    private SerializedProperty nextToStageSelectImageProp;
+    private SerializedProperty nextToStageSelectIntervalTimeProp;
 
     private bool isOpen_ = true;
     private int currentIndex;
@@ -37,6 +39,9 @@ public class UIController2PEditor : Editor
 
         pl1ImagesProp = serializedObject.FindProperty("pl1Images");
         pl2ImagesProp = serializedObject.FindProperty("pl2Images");
+
+        nextToStageSelectImageProp = serializedObject.FindProperty("nextToStageSelectImage");
+        nextToStageSelectIntervalTimeProp = serializedObject.FindProperty("nextToStageSelectIntervalTime");
     }
 
     public override void OnInspectorGUI()
@@ -125,6 +130,8 @@ public class UIController2PEditor : Editor
 
         EditorGUILayout.PropertyField(this.pl1ImagesProp, true);
         EditorGUILayout.PropertyField(this.pl2ImagesProp, true);
+        EditorGUILayout.PropertyField(this.nextToStageSelectImageProp, true);
+        EditorGUILayout.PropertyField(this.nextToStageSelectIntervalTimeProp, true); 
 
         serializedObject.ApplyModifiedProperties();
     }
