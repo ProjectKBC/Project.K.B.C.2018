@@ -279,18 +279,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pl1key:
-    nextKey: 275
-    prevKey: 276
-    returnKey: 13
-    cancelKey: 8
+    UpKey: 119
+    DownKey: 115
+    LeftKey: 97
+    RightKey: 100
+    ReturnKey: 122
+    CancelKey: 120
   pl1FirstIndex: 0
   pl2key:
-    nextKey: 100
-    prevKey: 97
-    returnKey: 122
-    cancelKey: 120
+    UpKey: 273
+    DownKey: 274
+    LeftKey: 276
+    RightKey: 275
+    ReturnKey: 13
+    CancelKey: 8
   pl2FirstIndex: 2
   pressedWaitTime: 1
+  pressedReactionIntervalTime: 0.003
+  pressedRapidIntervalTime: 0.1
   sprites:
     Normal: {fileID: 21300000, guid: 952c734842d1a6b4ea5ceaee2575fba6, type: 3}
     Over1: {fileID: 21300002, guid: 952c734842d1a6b4ea5ceaee2575fba6, type: 3}

@@ -14,6 +14,8 @@ public class UIController2PEditor : Editor
     private SerializedProperty pl2keyProp;
     private SerializedProperty pl2FirstIndexProp;
     private SerializedProperty pressedWaitTimeProp;
+    private SerializedProperty pressedReactionIntervalTimeProp;
+    private SerializedProperty pressedRapidIntervalTimeProp;
     private SerializedProperty selectorSpriteProp;
     private SerializedProperty pl1ImagesProp;
     private SerializedProperty pl2ImagesProp;
@@ -29,7 +31,8 @@ public class UIController2PEditor : Editor
         pl1FirstIndexProp = serializedObject.FindProperty("pl1FirstIndex");
         pl2FirstIndexProp = serializedObject.FindProperty("pl2FirstIndex");
         pressedWaitTimeProp = serializedObject.FindProperty("pressedWaitTime");
-
+        pressedReactionIntervalTimeProp = serializedObject.FindProperty("pressedReactionIntervalTime");
+        pressedRapidIntervalTimeProp = serializedObject.FindProperty("pressedRapidIntervalTime");
         selectorSpriteProp = serializedObject.FindProperty("sprites");
 
         pl1ImagesProp = serializedObject.FindProperty("pl1Images");
@@ -47,6 +50,8 @@ public class UIController2PEditor : Editor
         EditorGUILayout.PropertyField(this.pl2keyProp, true);
         EditorGUILayout.PropertyField(this.pl2FirstIndexProp, true);
         EditorGUILayout.PropertyField(this.pressedWaitTimeProp, true);
+        EditorGUILayout.PropertyField(this.pressedReactionIntervalTimeProp, true);
+        EditorGUILayout.PropertyField(this.pressedRapidIntervalTimeProp, true);
         EditorGUILayout.PropertyField(this.selectorSpriteProp, true);
 
         EditorGUILayout.Space();

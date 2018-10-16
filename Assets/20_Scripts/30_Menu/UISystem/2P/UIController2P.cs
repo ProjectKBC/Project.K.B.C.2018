@@ -20,18 +20,21 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     [System.Serializable]
     private struct PlayerKey
     {
-        public KeyCode nextKey;
-        public KeyCode prevKey;
-        public KeyCode returnKey;
-        public KeyCode cancelKey;
+        public KeyCode UpKey;
+        public KeyCode DownKey;
+        public KeyCode LeftKey;
+        public KeyCode RightKey;
+        public KeyCode ReturnKey;
+        public KeyCode CancelKey;
     }
 
-    private struct SelecterStates
+    private class SelecterStates
     {
-        public int nowIndex;
-        public float nextKeyPressedTime;
-        public float prevKeyPressedTime;
-        public bool isSelected;
+        public int NowIndex;
+        public float KeyIntervalStartTime;
+        public float RapidKeyWaitStartTime;
+        public bool IsFirstCursorMove;
+        public bool IsSelected;
         public PlayerCharacterEnum PlayerCharacter;
     }
 
@@ -95,6 +98,10 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     [Space(8)]
     [SerializeField]
     private float pressedWaitTime = 1.0f;
+    [SerializeField]
+    private float pressedReactionIntervalTime = .03f;
+    [SerializeField]
+    private float pressedRapidIntervalTime = .1f;
 
     [Space(16)]
 
@@ -123,19 +130,23 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
 
     protected override void OnInit()
     {
-        elapsedTime = Time.deltaTime;
+        this.elapsedTime = 0;
 
         // private fields
-        this.pl1States.nowIndex = this.pl1FirstIndex;
-        this.pl1States.nextKeyPressedTime = 0f;
-        this.pl1States.prevKeyPressedTime = 0f;
-        this.pl1States.isSelected = false;
+        this.pl1States = new SelecterStates();;
+        this.pl1States.NowIndex = this.pl1FirstIndex;
+        this.pl1States.KeyIntervalStartTime = 0f;
+        this.pl1States.RapidKeyWaitStartTime = 0f;
+        this.pl1States.IsFirstCursorMove = false;
+        this.pl1States.IsSelected = false;
         this.pl1States.PlayerCharacter = PlayerCharacterEnum.length_empty;
 
-        this.pl2States.nowIndex = this.pl2FirstIndex;
-        this.pl2States.nextKeyPressedTime = 0f;
-        this.pl2States.prevKeyPressedTime = 0f;
-        this.pl2States.isSelected = false;
+        this.pl2States = new SelecterStates(); ;
+        this.pl2States.NowIndex = this.pl2FirstIndex;
+        this.pl2States.KeyIntervalStartTime = 0f;
+        this.pl2States.RapidKeyWaitStartTime = 0f;
+        this.pl2States.IsFirstCursorMove = false;
+        this.pl2States.IsSelected = false;
         this.pl2States.PlayerCharacter = PlayerCharacterEnum.length_empty;
 
         // selectorの初期化
@@ -163,75 +174,256 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
 
     private void MoveSelect()
     {
-        if (pl1States.isSelected) { goto pl2MoveSelect; }
-
-        if (Input.GetKeyDown(this.pl1key.nextKey))
+        // Player1
+        var _states = this.pl1States;
+        var _key = this.pl1key;
+        var _pl = Player.pl1;
+        if (!_states.IsSelected)
         {
-            this.NextContent(Player.pl1);
-            this.pl1States.nextKeyPressedTime = this.elapsedTime;
+            MoveCursor(_states, _key, _pl);
         }
 
-        if (Input.GetKeyDown(this.pl1key.prevKey))
+        // Player2
+        _states = this.pl2States;
+        _key = this.pl2key;
+        _pl = Player.pl2;
+        if (!_states.IsSelected)
         {
-            this.PrevContent(Player.pl1);
-            this.pl1States.prevKeyPressedTime = this.elapsedTime;
+            MoveCursor(_states, _key, _pl);
         }
 
-        if (Input.GetKey(this.pl1key.nextKey) && this.pressedWaitTime <= this.elapsedTime - this.pl1States.nextKeyPressedTime)
+    }
+
+    private void MoveCursor(SelecterStates _states, PlayerKey _key, Player _pl)
+    {
+
+        // いずれの方向キーも押されていない
+        if (!Input.GetKey(_key.UpKey) && !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.RightKey) && !Input.GetKey(_key.LeftKey))
         {
-            this.NextContent(Player.pl1);
+            _states.KeyIntervalStartTime = -1;
+            _states.RapidKeyWaitStartTime = -1;
+            _states.IsFirstCursorMove = false;
+            return;
+        }
+        // いずれかの方向キーがいずれも押されていない状態からKeyDownした
+        else if (_states.KeyIntervalStartTime == -1)
+        {
+            _states.KeyIntervalStartTime = this.elapsedTime;
+            _states.RapidKeyWaitStartTime = this.elapsedTime;
+            return;
         }
 
-        if (Input.GetKey(this.pl1key.prevKey) && this.pressedWaitTime <= this.elapsedTime - this.pl1States.prevKeyPressedTime)
+        // キー入力のインターバル時間に達していない
+        if (this.elapsedTime - _states.KeyIntervalStartTime < this.pressedReactionIntervalTime) { return; }
+        
+        // キーの連射入力時間に達しておらず、連射扱いとなる場合
+        if (this.elapsedTime - _states.RapidKeyWaitStartTime < this.pressedWaitTime && _states.IsFirstCursorMove) { return; }
+
+        // キーの連射速度時間に達していない場合
+        if (this.elapsedTime - _states.KeyIntervalStartTime < this.pressedRapidIntervalTime && _states.IsFirstCursorMove) { return; }
+
+        if (!_states.IsFirstCursorMove)
         {
-            this.PrevContent(Player.pl1);
+            _states.IsFirstCursorMove = true;
         }
 
-        pl2MoveSelect:
+        var isUp = Input.GetKey(_key.UpKey) &&
+                   !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.RightKey) && !Input.GetKey(_key.LeftKey);
 
-        if (pl2States.isSelected) { return; }
+        var isDown = Input.GetKey(_key.DownKey) &&
+                     !Input.GetKey(_key.UpKey) && !Input.GetKey(_key.RightKey) && !Input.GetKey(_key.LeftKey);
 
-        if (Input.GetKeyDown(this.pl2key.nextKey))
+        var isRight = Input.GetKey(_key.RightKey) &&
+                      !Input.GetKey(_key.UpKey) && !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.LeftKey);
+
+        var isLeft = Input.GetKey(_key.LeftKey) &&
+                     !Input.GetKey(_key.UpKey) && !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.RightKey);
+
+        var isUpLeft = Input.GetKey(_key.UpKey) && Input.GetKey(_key.LeftKey) &&
+                       !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.RightKey);
+
+        var isUpRight = Input.GetKey(_key.UpKey) && Input.GetKey(_key.RightKey) &&
+                         !Input.GetKey(_key.DownKey) && !Input.GetKey(_key.LeftKey);
+
+        var isDownLeft = Input.GetKey(_key.DownKey) && Input.GetKey(_key.LeftKey) &&
+                          !Input.GetKey(_key.UpKey) && !Input.GetKey(_key.RightKey);
+
+        var isDownRight = Input.GetKey(_key.DownKey) && Input.GetKey(_key.RightKey) &&
+                           !Input.GetKey(_key.UpKey) && !Input.GetKey(_key.LeftKey);
+
+        var index = _states.NowIndex;
+        
+        if (isUp)
         {
-            this.NextContent(Player.pl2);
-            this.pl2States.nextKeyPressedTime = this.elapsedTime;
+            if (index == 0 || index == 1 || index == 2)
+            {
+                this.PrevContent(_pl, 3);
+            }
+            else if (index == 3 || index == 4)
+            {
+                this.PrevContent(_pl, 8);
+            }
+            else
+            {
+                this.PrevContent(_pl, 5);
+            }
+            _states.KeyIntervalStartTime = this.elapsedTime;
         }
 
-        if (Input.GetKeyDown(this.pl2key.prevKey))
+        if (isDown)
         {
-            this.PrevContent(Player.pl2);
-            this.pl2States.prevKeyPressedTime = this.elapsedTime;
+            if (index == 12 || index == 11 || index == 10)
+            {
+                this.NextContent(_pl, 3);
+            }
+            else if (index == 9 || index == 8)
+            {
+                this.NextContent(_pl, 8);
+            }
+            else
+            {
+                this.NextContent(_pl, 5);
+            }
+            _states.KeyIntervalStartTime = this.elapsedTime;
         }
 
-        if (Input.GetKey(this.pl2key.nextKey) && this.pressedWaitTime <= this.elapsedTime - this.pl2States.nextKeyPressedTime)
+        if (isRight)
         {
-            this.NextContent(Player.pl2);
+            if (index == 2 || index == 7 || index == 12)
+            {
+                this.PrevContent(_pl, 2);
+            }
+            else if (index == 4 || index == 9)
+            {
+                this.PrevContent(_pl, 1);
+            }
+            else
+            {
+                this.NextContent(_pl);
+            }
+            _states.KeyIntervalStartTime = this.elapsedTime;
         }
 
-        if (Input.GetKey(this.pl2key.prevKey) && this.pressedWaitTime <= this.elapsedTime - this.pl2States.prevKeyPressedTime)
+        if (isLeft)
         {
-            this.PrevContent(Player.pl2);
+            if (index == 0 || index == 5 || index == 10)
+            {
+                this.NextContent(_pl, 2);
+            }
+            else if (index == 3 || index == 8)
+            {
+                this.NextContent(_pl, 1);
+            }
+            else
+            {
+                this.PrevContent(_pl);
+            }
+            _states.KeyIntervalStartTime = this.elapsedTime;
+        }
+
+        if (isUpLeft)
+        {
+            if (index == 2 || index == 10)
+            {
+                this.PrevContent(_pl, 0);
+            }
+            else if (index == 1 || index == 5)
+            {
+                this.NextContent(_pl, 6);
+            }
+            else if (index == 0)
+            {
+                this.PrevContent(_pl, 1);
+            }
+            else
+            {
+                this.PrevContent(_pl, 3);
+            }
+            _states.KeyIntervalStartTime = this.elapsedTime;
+        }
+
+        if (isUpRight)
+        {
+            if (index == 0 || index == 12)
+            {
+                this.PrevContent(_pl, 0);
+            }
+            else if (index == 1 || index == 7)
+            {
+                this.NextContent(_pl, 4);
+            }
+            else if (index == 2)
+            {
+                this.PrevContent(_pl, 5);
+            }
+            else
+            {
+                this.PrevContent(_pl, 2);
+            }
+            _states.KeyIntervalStartTime = this.elapsedTime;
+        }
+
+        if (isDownLeft)
+        {
+            if (index == 0 || index == 12)
+            {
+                this.NextContent(_pl, 0);
+            }
+            else if (index == 5 || index == 11)
+            {
+                this.PrevContent(_pl, 4);
+            }
+            else if (index == 10)
+            {
+                this.NextContent(_pl, 5);
+            }
+            else
+            {
+                this.NextContent(_pl, 2);
+            }
+            _states.KeyIntervalStartTime = this.elapsedTime;
+        }
+
+        if (isDownRight)
+        {
+            if (index == 2 || index == 10)
+            {
+                this.NextContent(_pl, 0);
+            }
+            else if (index == 7 || index == 11)
+            {
+                this.PrevContent(_pl, 6);
+            }
+            else if (index == 12)
+            {
+                this.NextContent(_pl, 1);
+            }
+            else
+            {
+                this.NextContent(_pl, 3);
+            }
+            _states.KeyIntervalStartTime = this.elapsedTime;
         }
     }
 
     private void ActionSelect()
     {
-        if (Input.GetKeyDown(this.pl1key.returnKey))
+        if (Input.GetKeyDown(this.pl1key.ReturnKey))
         {
             this.ReturnAction(Player.pl1);
         }
 
-        if (Input.GetKeyDown(this.pl1key.cancelKey))
+        if (Input.GetKeyDown(this.pl1key.CancelKey))
         {
             this.CancelAction(Player.pl1);
         }
 
-        if (Input.GetKeyDown(this.pl2key.returnKey))
+        if (Input.GetKeyDown(this.pl2key.ReturnKey))
         {
             this.ReturnAction(Player.pl2);
         }
 
-        if (Input.GetKeyDown(this.pl2key.cancelKey))
+        if (Input.GetKeyDown(this.pl2key.CancelKey))
         {
             this.CancelAction(Player.pl2);
         }
@@ -243,21 +435,31 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     /// <param name="_pl">操作したプレイヤー</param>
     private void NextContent(Player _pl)
     {
+        NextContent(_pl, 1);
+    }
+
+    /// <summary>
+    /// カーソルを_advanceだけ進める
+    /// </summary>
+    /// <param name="_pl">操作したプレイヤー</param>
+    /// <param name="_advance">進める数</param>
+    private void NextContent(Player _pl, int _advance)
+    {
         if (_pl == Player.pl1)
         {
-            var prevIndex = this.pl1States.nowIndex;
-            this.pl1States.nowIndex = (this.pl1States.nowIndex + 1) % this.charaSelectorSets.Length;
+            var prevIndex = this.pl1States.NowIndex;
+            this.pl1States.NowIndex = (this.pl1States.NowIndex + _advance) % this.charaSelectorSets.Length;
             UpdateCursor(prevIndex);
-            UpdateCursor(this.pl1States.nowIndex);
+            UpdateCursor(this.pl1States.NowIndex);
             UpdateStand(_pl);
             UpdateNames(_pl);
         }
         else if (_pl == Player.pl2)
         {
-            var prevIndex = this.pl2States.nowIndex;
-            this.pl2States.nowIndex = (this.pl2States.nowIndex + 1) % this.charaSelectorSets.Length;
+            var prevIndex = this.pl2States.NowIndex;
+            this.pl2States.NowIndex = (this.pl2States.NowIndex + _advance) % this.charaSelectorSets.Length;
             UpdateCursor(prevIndex);
-            UpdateCursor(this.pl2States.nowIndex);
+            UpdateCursor(this.pl2States.NowIndex);
             UpdateStand(_pl);
             UpdateNames(_pl);
         }
@@ -269,21 +471,31 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     /// <param name="_pl">操作したプレイヤー</param>
     private void PrevContent(Player _pl)
     {
+        PrevContent(_pl, 1);
+    }
+
+    /// <summary>
+    /// カーソルを_advanceだけ戻す
+    /// </summary>
+    /// <param name="_pl">操作したプレイヤー</param>
+    /// <param name="_advance">戻す数</param>
+    private void PrevContent(Player _pl, int _advance)
+    {
         if (_pl == Player.pl1)
         {
-            var prevIndex = this.pl1States.nowIndex;
-            this.pl1States.nowIndex = (this.charaSelectorSets.Length + this.pl1States.nowIndex - 1) % this.charaSelectorSets.Length;
+            var prevIndex = this.pl1States.NowIndex;
+            this.pl1States.NowIndex = (this.charaSelectorSets.Length + this.pl1States.NowIndex - _advance) % this.charaSelectorSets.Length;
             UpdateCursor(prevIndex);
-            UpdateCursor(this.pl1States.nowIndex);
+            UpdateCursor(this.pl1States.NowIndex);
             UpdateStand(_pl);
             UpdateNames(_pl);
         }
         else if (_pl == Player.pl2)
         {
-            var prevIndex = this.pl2States.nowIndex;
-            this.pl2States.nowIndex = (this.charaSelectorSets.Length + this.pl2States.nowIndex - 1) % this.charaSelectorSets.Length;
+            var prevIndex = this.pl2States.NowIndex;
+            this.pl2States.NowIndex = (this.charaSelectorSets.Length + this.pl2States.NowIndex - _advance) % this.charaSelectorSets.Length;
             UpdateCursor(prevIndex);
-            UpdateCursor(this.pl2States.nowIndex);
+            UpdateCursor(this.pl2States.NowIndex);
             UpdateStand(_pl);
             UpdateNames(_pl);
         }
@@ -296,7 +508,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     /// <returns>正常に処理されたか</returns>
     private bool ReturnAction(Player _pl)
     {
-        if (this.pl1States.isSelected && this.pl2States.isSelected)
+        if (this.pl1States.IsSelected && this.pl2States.IsSelected)
         {
             // todo: StageSelect画面に移行する
             return true;
@@ -304,9 +516,9 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
 
         if (_pl == Player.pl1)
         {
-            if (this.pl1States.isSelected) { return true; }
+            if (this.pl1States.IsSelected) { return true; }
 
-            PlayerCharacterEnum pc = this.charaSelectorSets[this.pl1States.nowIndex].PlayerCharacter;
+            PlayerCharacterEnum pc = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
             if (pc == PlayerCharacterEnum.length_empty)
             {
                 // todo: SE [選択できない]
@@ -324,23 +536,24 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
                 }
 
                 this.pl1States.PlayerCharacter = pc;
-                this.pl1States.isSelected = true;
+                this.pl1States.IsSelected = true;
                 this.pl1Images.StandBack.sprite = this.sprites.StandBackActive1;
-                var tmp = this.pl1States.nowIndex;
-                this.pl1States.nowIndex = index;
+                var tmp = this.pl1States.NowIndex;
+                this.pl1States.NowIndex = index;
                 UpdateCursor(tmp);
-                UpdateCursor(this.pl1States.nowIndex);
+                UpdateCursor(this.pl1States.NowIndex);
                 UpdateStand(_pl);
                 UpdateNames(_pl);
 
+                // todo: SE [選択した]
                 return true;
             }
             else
             {
                 this.pl1States.PlayerCharacter = pc;
-                this.pl1States.isSelected = true;
+                this.pl1States.IsSelected = true;
                 this.pl1Images.StandBack.sprite = this.sprites.StandBackActive1;
-                UpdateCursor(this.pl1States.nowIndex);
+                UpdateCursor(this.pl1States.NowIndex);
 
                 // todo: SE [選択した]
                 return true;
@@ -348,9 +561,9 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
         }
         else if (_pl == Player.pl2)
         {
-            if (this.pl2States.isSelected) { return true; }
+            if (this.pl2States.IsSelected) { return true; }
 
-            PlayerCharacterEnum pc = this.charaSelectorSets[this.pl2States.nowIndex].PlayerCharacter;
+            PlayerCharacterEnum pc = this.charaSelectorSets[this.pl2States.NowIndex].PlayerCharacter;
             if (pc == PlayerCharacterEnum.length_empty)
             {
                 // todo: SE [選択できない]
@@ -368,23 +581,24 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
                 }
 
                 this.pl2States.PlayerCharacter = pc;
-                this.pl2States.isSelected = true;
+                this.pl2States.IsSelected = true;
                 this.pl2Images.StandBack.sprite = this.sprites.StandBackActive2;
-                var tmp = this.pl2States.nowIndex;
-                this.pl2States.nowIndex = index;
+                var tmp = this.pl2States.NowIndex;
+                this.pl2States.NowIndex = index;
                 UpdateCursor(tmp);
-                UpdateCursor(this.pl2States.nowIndex);
+                UpdateCursor(this.pl2States.NowIndex);
                 UpdateStand(_pl);
                 UpdateNames(_pl);
 
+                // todo: SE [選択した]
                 return true;
             }
             else
             {
                 this.pl2States.PlayerCharacter = pc;
-                this.pl2States.isSelected = true;
+                this.pl2States.IsSelected = true;
                 this.pl2Images.StandBack.sprite = this.sprites.StandBackActive2;
-                UpdateCursor(this.pl2States.nowIndex);
+                UpdateCursor(this.pl2States.NowIndex);
 
                 // todo: SE [選択した]
                 return true;
@@ -405,29 +619,29 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     {
         if (_pl == Player.pl1)
         {
-            if (!this.pl1States.isSelected)
+            if (!this.pl1States.IsSelected)
             {
-                // 対戦を終了します [選択を続ける]　[*前の画面に戻る]
+                // todo: 対戦を終了します [選択を続ける]　[*前の画面に戻る]
                 return true;
             }
 
             this.pl1States.PlayerCharacter = PlayerCharacterEnum.length_empty;
-            this.pl1States.isSelected = false;
+            this.pl1States.IsSelected = false;
             this.pl1Images.StandBack.sprite = this.sprites.StandBackNormal1;
-            UpdateCursor(this.pl1States.nowIndex);
+            UpdateCursor(this.pl1States.NowIndex);
         }
         else if (_pl == Player.pl2)
         {
-            if (!this.pl2States.isSelected)
+            if (!this.pl2States.IsSelected)
             {
-                // 対戦を終了します [選択を続ける]　[*前の画面に戻る]
+                // todo: 対戦を終了します [選択を続ける]　[*前の画面に戻る]
                 return true;
             }
 
             this.pl2States.PlayerCharacter = PlayerCharacterEnum.length_empty;
-            this.pl2States.isSelected = false;
+            this.pl2States.IsSelected = false;
             this.pl2Images.StandBack.sprite = this.sprites.StandBackNormal2;
-            UpdateCursor(this.pl2States.nowIndex);
+            UpdateCursor(this.pl2States.NowIndex);
         }
 
         return true;
@@ -440,10 +654,10 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     private void UpdateCursor(int _index)
     {
         var set = this.charaSelectorSets[_index];
-        var isOveredPL1 = (_index == this.pl1States.nowIndex && !this.pl1States.isSelected);
-        var isOveredPL2 = (_index == this.pl2States.nowIndex && !this.pl2States.isSelected);
-        var isSelectedPL1 = (_index == this.pl1States.nowIndex && this.pl1States.isSelected);
-        var isSelectedPL2 = (_index == this.pl2States.nowIndex && this.pl2States.isSelected);
+        var isOveredPL1 = (_index == this.pl1States.NowIndex && !this.pl1States.IsSelected);
+        var isOveredPL2 = (_index == this.pl2States.NowIndex && !this.pl2States.IsSelected);
+        var isSelectedPL1 = (_index == this.pl1States.NowIndex && this.pl1States.IsSelected);
+        var isSelectedPL2 = (_index == this.pl2States.NowIndex && this.pl2States.IsSelected);
 
         // どちらもSelectされている
         if (isSelectedPL1 && isSelectedPL2)
@@ -483,7 +697,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     {
         if (_pl == Player.pl1)
         {
-            var set = this.charaSelectorSets[this.pl1States.nowIndex];
+            var set = this.charaSelectorSets[this.pl1States.NowIndex];
             if (set.PlayerCharacter == PlayerCharacterEnum.length_empty)
             {
                 this.pl1Images.StandFront.sprite = null;
@@ -497,7 +711,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
         }
         else if (_pl == Player.pl2)
         {
-            var set = this.charaSelectorSets[this.pl2States.nowIndex];
+            var set = this.charaSelectorSets[this.pl2States.NowIndex];
             if (set.PlayerCharacter == PlayerCharacterEnum.length_empty)
             {
                 this.pl2Images.StandFront.sprite = null;
@@ -515,7 +729,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     {
         if (_pl == Player.pl1)
         {
-            var set = this.charaSelectorSets[this.pl1States.nowIndex];
+            var set = this.charaSelectorSets[this.pl1States.NowIndex];
             if (set.PlayerCharacter == PlayerCharacterEnum.length_empty)
             {
                 this.pl1Images.SetNameImages(null, null);
@@ -531,7 +745,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
         }
         else if (_pl == Player.pl2)
         {
-            var set = this.charaSelectorSets[this.pl2States.nowIndex];
+            var set = this.charaSelectorSets[this.pl2States.NowIndex];
             if (set.PlayerCharacter == PlayerCharacterEnum.length_empty)
             {
                 this.pl2Images.SetNameImages(null, null);
