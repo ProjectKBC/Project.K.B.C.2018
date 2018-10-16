@@ -9,7 +9,7 @@ public enum Player
     pl2,
 }
 
-public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
+public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManager>
 {
     [System.Serializable]
     private struct PlayerKey
@@ -115,7 +115,7 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
     [SerializeField]
     private Images pl2Images = null;
     [Space(16)]
-    [SerializeField]
+    [SerializeField, Header("NextToStageSelect")]
     private Image nextToStageSelectImage = null;
     [SerializeField]
     private float nextToStageSelectIntervalTime = 0.5f;
@@ -165,7 +165,33 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
         UpdateNames(Player.pl2);
     }
 
-    private void Update()
+    public void Init()
+    {
+        this.pl1States.KeyIntervalStartTime = 0f;
+        this.pl1States.RapidKeyWaitStartTime = 0f;
+        this.pl1States.IsFirstCursorMove = false;
+        this.pl1States.IsSelected = false;
+        this.pl1States.PlayerCharacter = PlayerCharacterEnum.length_empty;
+        
+        this.pl2States.KeyIntervalStartTime = 0f;
+        this.pl2States.RapidKeyWaitStartTime = 0f;
+        this.pl2States.IsFirstCursorMove = false;
+        this.pl2States.IsSelected = false;
+        this.pl2States.PlayerCharacter = PlayerCharacterEnum.length_empty;
+
+        this.nextToStageSelectImage.enabled = false;
+        this.allSelectedTime = 0;
+
+        for (int i = 0; i < charaSelectorSets.Length; ++i)
+        {
+            UpdateCursor(i);
+        }
+
+        this.pl1Images.StandBack.sprite = this.sprites.StandBackNormal1;
+        this.pl2Images.StandBack.sprite = this.sprites.StandBackNormal2;
+    }
+
+    public void Run()
     {
         this.elapsedTime += Time.deltaTime;
 
@@ -493,9 +519,10 @@ public sealed class UIController2P : SingletonMonoBehaviour<UIController2P>
         if (this.pl1States.IsSelected && this.pl2States.IsSelected &&
            (this.nextToStageSelectIntervalTime <= this.elapsedTime - this.allSelectedTime))
         {
-            // todo: StageSelect画面に移行する
             var chara1 = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
             var chara2 = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
+
+            SelectUIManager.Instance.TransitionToStageSelect(chara1, chara2);
 
             return true;
         }

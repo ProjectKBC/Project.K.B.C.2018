@@ -5,20 +5,25 @@ using UnityEditor;
 using UnityEngine;
 using UnityEditorInternal;
 
-[CustomEditor(typeof(UIController2P))]
-public class UIController2PEditor : Editor
+[CustomEditor(typeof(CharaSelectManager))]
+public class CharaSelectManagerEditor : Editor
 {
     private SerializedProperty charaSelectorSetsProp;
+
     private SerializedProperty pl1keyProp;
     private SerializedProperty pl1FirstIndexProp;
     private SerializedProperty pl2keyProp;
     private SerializedProperty pl2FirstIndexProp;
+
     private SerializedProperty pressedWaitTimeProp;
     private SerializedProperty pressedReactionIntervalTimeProp;
     private SerializedProperty pressedRapidIntervalTimeProp;
+
     private SerializedProperty selectorSpriteProp;
+
     private SerializedProperty pl1ImagesProp;
     private SerializedProperty pl2ImagesProp;
+
     private SerializedProperty nextToStageSelectImageProp;
     private SerializedProperty nextToStageSelectIntervalTimeProp;
 
@@ -27,21 +32,23 @@ public class UIController2PEditor : Editor
 
     private void OnEnable()
     {
-        charaSelectorSetsProp = serializedObject.FindProperty("charaSelectorSets");
-        pl1keyProp = serializedObject.FindProperty("pl1key");
-        pl2keyProp = serializedObject.FindProperty("pl2key");
-        pl1FirstIndexProp = serializedObject.FindProperty("pl1FirstIndex");
-        pl2FirstIndexProp = serializedObject.FindProperty("pl2FirstIndex");
-        pressedWaitTimeProp = serializedObject.FindProperty("pressedWaitTime");
-        pressedReactionIntervalTimeProp = serializedObject.FindProperty("pressedReactionIntervalTime");
-        pressedRapidIntervalTimeProp = serializedObject.FindProperty("pressedRapidIntervalTime");
-        selectorSpriteProp = serializedObject.FindProperty("sprites");
+        this.charaSelectorSetsProp = serializedObject.FindProperty("charaSelectorSets");
 
-        pl1ImagesProp = serializedObject.FindProperty("pl1Images");
-        pl2ImagesProp = serializedObject.FindProperty("pl2Images");
+        this.pl1keyProp = serializedObject.FindProperty("pl1key");
+        this.pl2keyProp = serializedObject.FindProperty("pl2key");
+        this.pl1FirstIndexProp = serializedObject.FindProperty("pl1FirstIndex");
+        this.pl2FirstIndexProp = serializedObject.FindProperty("pl2FirstIndex");
 
-        nextToStageSelectImageProp = serializedObject.FindProperty("nextToStageSelectImage");
-        nextToStageSelectIntervalTimeProp = serializedObject.FindProperty("nextToStageSelectIntervalTime");
+        this.pressedWaitTimeProp = serializedObject.FindProperty("pressedWaitTime");
+        this.pressedReactionIntervalTimeProp = serializedObject.FindProperty("pressedReactionIntervalTime");
+        this.pressedRapidIntervalTimeProp = serializedObject.FindProperty("pressedRapidIntervalTime");
+        this.selectorSpriteProp = serializedObject.FindProperty("sprites");
+
+        this.pl1ImagesProp = serializedObject.FindProperty("pl1Images");
+        this.pl2ImagesProp = serializedObject.FindProperty("pl2Images");
+
+        this.nextToStageSelectImageProp = serializedObject.FindProperty("nextToStageSelectImage");
+        this.nextToStageSelectIntervalTimeProp = serializedObject.FindProperty("nextToStageSelectIntervalTime");
     }
 
     public override void OnInspectorGUI()
@@ -130,8 +137,9 @@ public class UIController2PEditor : Editor
 
         EditorGUILayout.PropertyField(this.pl1ImagesProp, true);
         EditorGUILayout.PropertyField(this.pl2ImagesProp, true);
+
         EditorGUILayout.PropertyField(this.nextToStageSelectImageProp, true);
-        EditorGUILayout.PropertyField(this.nextToStageSelectIntervalTimeProp, true); 
+        EditorGUILayout.PropertyField(this.nextToStageSelectIntervalTimeProp, true);
 
         serializedObject.ApplyModifiedProperties();
     }
