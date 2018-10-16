@@ -2075,7 +2075,7 @@ MonoBehaviour:
   sinEnemy: {fileID: 1798963835953624, guid: ddad949e046154e9f8c4300fe2fef1bf, type: 2}
   beeEnemy: {fileID: 1458108209937710, guid: 8c1638c7d25ec432982faf5ec09e8889, type: 2}
   Enemy1Patterns: 06000000
-  Enemy2Patterns: 0100000001000000
+  Enemy2Patterns: 
 --- !u!4 &1864421225
 Transform:
   m_ObjectHideFlags: 0
@@ -2595,6 +2595,26 @@ Prefab:
     - target: {fileID: 4375026557847972, guid: b6bbb4f1364824f8e8d108dc597583bf, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114020215257053344, guid: b6bbb4f1364824f8e8d108dc597583bf,
+        type: 2}
+      propertyPath: pl2ButtleKey.moveUpKey
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 114020215257053344, guid: b6bbb4f1364824f8e8d108dc597583bf,
+        type: 2}
+      propertyPath: pl2ButtleKey.moveLeftKey
+      value: 276
+      objectReference: {fileID: 0}
+    - target: {fileID: 114020215257053344, guid: b6bbb4f1364824f8e8d108dc597583bf,
+        type: 2}
+      propertyPath: pl2ButtleKey.moveDownKey
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 114020215257053344, guid: b6bbb4f1364824f8e8d108dc597583bf,
+        type: 2}
+      propertyPath: pl2ButtleKey.moveRightKey
+      value: 275
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6bbb4f1364824f8e8d108dc597583bf, type: 2}

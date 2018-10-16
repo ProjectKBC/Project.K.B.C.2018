@@ -7,18 +7,24 @@ public class BigBee : Enemy
 {
     public enum Barrage
     {
-        Fan
+        Fan,
+        Funnel
     }
 
     protected Vector3[] FanPosition;
     private int fanNum;
     private int minRad = -60;
     private int maxRad = 60;
-    
+
+    [SerializeField]
+    private GameObject childBee;
     [SerializeField]
     private int normalBulletPool;
 
     [SerializeField] private Barrage[] barrage;
+
+    private List<GameObject> childBees;
+    private int childBeePool = 5;
 
     private int barrageCount = 0;
 
@@ -29,7 +35,8 @@ public class BigBee : Enemy
 
     protected override void Start()
     {
-        this.CreateNormalBullet(this.NomalBullet, out  this.NormalBullets, this.normalBulletPool);
+        this.CreateNormalBullet(this.NomalBullet, out this.NormalBullets, this.normalBulletPool);
+        this.CreateNormalBullet(this.childBee, out this.childBees, this.childBeePool);
     }
 
     protected override void Update()
@@ -51,6 +58,10 @@ public class BigBee : Enemy
                         case "Fan":
                             this.fanNum = UnityEngine.Random.Range(5, 13);
                             this.Fan(fanNum);
+                            break;
+                        
+                        case "Funnel":
+                            this.Funnel();
                             break;
                     }
 
@@ -74,6 +85,11 @@ public class BigBee : Enemy
 
     }
 
+    protected void AppearChildBee()
+    {
+        
+    }
+
     protected void Fan(int _fanNum)
     {
         int appearSpace = (this.maxRad - this.minRad) / (_fanNum + 1);
@@ -85,5 +101,15 @@ public class BigBee : Enemy
             this.BulletAppear(bullet);
         }
 
+    }
+
+    protected void Funnel()
+    {
+        for (int i = 0; i < this.childBees.Count; i ++)
+        {
+            GameObject funnel = this.SearchAvailableBullet(this.childBees);
+            funnel.transform.position = this.Trans.position;
+            this.BulletAppear(funnel);
+        }
     }
 }

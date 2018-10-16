@@ -419,7 +419,7 @@ namespace Ria
 
             if (_enemyData.PlayerType.Equals("Enemy2"))
             {
-                appearPosX = _enemyData.RightPosX - _enemyData.LeftPosX;
+                appearPosX = -2.0f;
             }
 
             for (int i = 0; i < _enemyData.SinEnemys.Length; i++)
