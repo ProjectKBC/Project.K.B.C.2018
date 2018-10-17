@@ -121,7 +121,7 @@ MonoBehaviour:
   fixHitPoint: 1
   moveSpeedRate: 10
   nomalBulletSpeed: 2
-  nomalBullet: {fileID: 1721000224869594, guid: 1f2f751af4cee4fed94bf5b5787316dc,
+  nomalBullet: {fileID: 1645425903874554, guid: a90cdf84469c74db4a53632086102650,
     type: 2}
   passInterval: 1.5
-  burstBulletNumber: 3
+  BurstBulletNumber: 3
