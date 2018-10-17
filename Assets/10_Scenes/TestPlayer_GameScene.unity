@@ -1145,7 +1145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1034435780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,13 +1158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 2
-  straightEnemy: {fileID: 1206317014964448, guid: 44d950746c1274741b031f6b3ebb0cef,
-    type: 2}
-  quadraticEnemy: {fileID: 1877999995235900, guid: 27709408c221e4f9b9b431b6100623b4,
-    type: 2}
-  circleEnemy: {fileID: 1385024300171112, guid: 62bef1773a1204d1fbcf5538edc02042,
-    type: 2}
-  enemyPatterns: 00000000030000000200000003000000
   enemyManagerDebug:
     StraightHorizontalPos: {x: 0, y: 0}
     StraightHorizontalPosInterval: {x: 0, y: 0}
@@ -1172,6 +1165,15 @@ MonoBehaviour:
     QuadraticPosInterval: {x: 0, y: 0}
     CirclePos: {x: 0, y: 0}
     CirclePosInterval: {x: 0, y: 0}
+  straightEnemy: {fileID: 1206317014964448, guid: 44d950746c1274741b031f6b3ebb0cef,
+    type: 2}
+  quadraticEnemy: {fileID: 1877999995235900, guid: 27709408c221e4f9b9b431b6100623b4,
+    type: 2}
+  circleEnemy: {fileID: 1385024300171112, guid: 62bef1773a1204d1fbcf5538edc02042,
+    type: 2}
+  beeEnemy: {fileID: 0}
+  Enemy1Patterns: 
+  Enemy2Patterns: 
 --- !u!4 &1034435781
 Transform:
   m_ObjectHideFlags: 0
