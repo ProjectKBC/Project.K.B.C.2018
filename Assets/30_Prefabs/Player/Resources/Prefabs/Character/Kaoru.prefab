@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1709433776302762}
+  m_RootGameObject: {fileID: 1538106837818676}
   m_IsPrefabAsset: 1
---- !u!1 &1709433776302762
+--- !u!1 &1538106837818676
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4757779075879524}
-  - component: {fileID: 114653545189561740}
-  - component: {fileID: 212021953473241970}
+  - component: {fileID: 4088319988177902}
+  - component: {fileID: 114092755070186968}
+  - component: {fileID: 212206392911216978}
   m_Layer: 0
-  m_Name: anoma
+  m_Name: Kaoru
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4757779075879524
+--- !u!4 &4088319988177902
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709433776302762}
+  m_GameObject: {fileID: 1538106837818676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,12 +41,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114653545189561740
+--- !u!114 &114092755070186968
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709433776302762}
+  m_GameObject: {fileID: 1538106837818676}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85da9f209e3b748b4bbbff970d1219b7, type: 3}
@@ -61,12 +61,12 @@ MonoBehaviour:
   searchNumOfTimes: 3
   spShotCoolTime: 1.5
   skillTime: 5
---- !u!212 &212021953473241970
+--- !u!212 &212206392911216978
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709433776302762}
+  m_GameObject: {fileID: 1538106837818676}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dcc5b425680d54fdf934e8f3a2bda853, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ed6d33f6e51a4dc2921e2f66e1a9cca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -31,6 +31,7 @@ public class VeronicaPlayer : PlayerData
     {
         base.Move();
         NormalShot();
+
     }
 
     private void NormalShot()

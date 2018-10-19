@@ -18,8 +18,16 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     // プレイヤーが選べるキャラクター
     public enum PlayerEnum
     {
-        Veronica,
+        Ailos,
         Anoma,
+        Emilia,
+        Held,
+        Kaito,
+        Kaoru,
+        Laxa,
+        Twist,
+        Vega_al,
+        Veronica,
     }
 
     [SerializeField]

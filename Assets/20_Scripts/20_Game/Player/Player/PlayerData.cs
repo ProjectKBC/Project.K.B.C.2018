@@ -41,6 +41,14 @@ public class PlayerData : MonoBehaviour
     private KeyCode moveDownKey;
     private KeyCode moveRightKey;
 
+    private Vector3 pos;
+    private static int pl1AreaLeftLine = -80;
+    private static int pl1AreaRightLine = -8;
+    private static int pl2AreaLeftLine = -pl1AreaRightLine;
+    private static int pl2AreaRightLine = -pl1AreaLeftLine;
+    private static int playAreaTopLine = 44;
+    private static int playAreaBottomLine = -55;
+
     protected virtual void Start()
     {
         switch(this.tag)
@@ -77,6 +85,19 @@ public class PlayerData : MonoBehaviour
         if (Input.GetKey(this.moveLeftKey)) { this.transform.position += Vector3.left * MoveSpeed * Time.deltaTime; }
         if (Input.GetKey(this.moveDownKey)) { this.transform.position += Vector3.down * MoveSpeed * Time.deltaTime; }
         if (Input.GetKey(this.moveRightKey)) { this.transform.position += Vector3.right * MoveSpeed * Time.deltaTime; }
+
+        pos = this.transform.position;
+
+        switch (this.tag)
+        {
+            case "Player1":
+                this.transform.position = new Vector3(Mathf.Clamp(pos.x, pl1AreaLeftLine, pl1AreaRightLine), Mathf.Clamp(pos.y, playAreaBottomLine, playAreaTopLine), pos.z);
+                break;
+
+            case "Player2":
+                this.transform.position = new Vector3(Mathf.Clamp(pos.x, pl2AreaLeftLine, pl2AreaRightLine), Mathf.Clamp(pos.y, playAreaBottomLine, playAreaTopLine), pos.z);
+                break;
+        }
     }
 
 }
