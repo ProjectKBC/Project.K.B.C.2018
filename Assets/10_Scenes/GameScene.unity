@@ -2091,8 +2091,9 @@ MonoBehaviour:
   - {fileID: 2046498769}
   - {fileID: 1149720618}
   playerNumber: 0
-  ufa1Script: {fileID: 11400000, guid: abbc533326220364f9b3995b8ed1ee64, type: 2}
-  ufa2Script: {fileID: 11400000, guid: e7cbff9ff8851e245ac41b60b57172e2, type: 2}
+  factory:
+    ufa1Script: {fileID: 11400000, guid: abbc533326220364f9b3995b8ed1ee64, type: 2}
+    ufa2Script: {fileID: 11400000, guid: e7cbff9ff8851e245ac41b60b57172e2, type: 2}
   createUFASpan: 1
 --- !u!4 &659389934
 Transform:
@@ -3551,8 +3552,9 @@ MonoBehaviour:
   - {fileID: 140499013}
   - {fileID: 1026281865}
   playerNumber: 1
-  ufa1Script: {fileID: 11400000, guid: abbc533326220364f9b3995b8ed1ee64, type: 2}
-  ufa2Script: {fileID: 11400000, guid: e7cbff9ff8851e245ac41b60b57172e2, type: 2}
+  factory:
+    ufa1Script: {fileID: 11400000, guid: abbc533326220364f9b3995b8ed1ee64, type: 2}
+    ufa2Script: {fileID: 11400000, guid: e7cbff9ff8851e245ac41b60b57172e2, type: 2}
   createUFASpan: 1.25
 --- !u!4 &1208161743
 Transform:

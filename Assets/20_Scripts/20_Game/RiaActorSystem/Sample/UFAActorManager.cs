@@ -1,17 +1,12 @@
 ﻿using UnityEngine;
 
-public sealed class RiaUFAActorManager : RiaActorManager
+public sealed class UFAActorManager : RiaActorManager
 {
     [SerializeField]
     private PlayerNumber playerNumber = PlayerNumber.player1;
 
     [SerializeField]
-    private UFA1Script ufa1Script = null;
-    [SerializeField]
-    private UFA2Script ufa2Script = null;
-
-    private UFA1Status UFA1Status(GameObject _go) { return new UFA1Status(_go, this.playerNumber); }
-    private UFA2Status UFA2Status(GameObject _go) { return new UFA2Status(_go, this.playerNumber); }
+    RiaUFAActorFactory factory = null;
 
     [SerializeField]
     private float createUFASpan = 1.0f;
@@ -33,23 +28,26 @@ public sealed class RiaUFAActorManager : RiaActorManager
 
             if (!actor) { return; }
 
+            // 画面端とかの構造体あったらいいなぁ by flanny
             var pos = (this.playerNumber == PlayerNumber.player1) ?
                       new Vector3(-42.5f, 70) :
                       new Vector3(42.5f, 70);
 
             if (countUFA == 0)
             {
-                var status = this.UFA1Status(actor.gameObject);
-                var script = this.ufa1Script;
-
-                actor.WakeUp(status, script, pos);
+                this.factory.CreateUFA(
+                    RiaUFAActorFactory.UFACategory.UFA1,
+                    this.playerNumber,
+                    actor,
+                    pos);
             }
             else
             {
-                var status = this.UFA2Status(actor.gameObject);
-                var script = this.ufa2Script;
-
-                actor.WakeUp(status, script, pos);
+                this.factory.CreateUFA(
+                    RiaUFAActorFactory.UFACategory.UFA2,
+                    this.playerNumber,
+                    actor,
+                    pos);
             }
             
             this.createUFATime = this.PlayElapsedTime;

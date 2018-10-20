@@ -8,7 +8,11 @@ public sealed class UFA2Status : RiaCharacterStatus
 
     public UFA2Status(GameObject _go, PlayerNumber _playerNumber) : base(_go)
     {
-        this.SpriteRenderer = go_.GetComponent<SpriteRenderer>();
+        this.SpriteRenderer = this.go_.GetComponent<SpriteRenderer>();
+        if (!this.SpriteRenderer) { Debug.LogWarning("SpriteRendererがありません", this.go_); }
+
         this.PlayerNumber = _playerNumber;
+
+        this.go_.tag = (_playerNumber == PlayerNumber.player1) ? "Enemy1" : "Enemy2";
     }
 }
