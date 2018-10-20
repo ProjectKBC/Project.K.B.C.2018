@@ -34,3 +34,13 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Rider
+
+.idea/
+
+# Mac OSX
+
+Thumbs.db
+Desktop.ini
+.DS_Store
