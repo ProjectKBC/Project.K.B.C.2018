@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4107258302503400}
   - component: {fileID: 33081626888371220}
   - component: {fileID: 23496603430202236}
-  - component: {fileID: 114649977541744426}
+  - component: {fileID: 114199551467064696}
   m_Layer: 0
   m_Name: ChildBee
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143472677140866}
   m_Mesh: {fileID: 4300000, guid: deaef8c83ece4490aa18765c09d47098, type: 3}
---- !u!114 &114649977541744426
+--- !u!114 &114199551467064696
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,25 +92,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1143472677140866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d52aabc170ac403880e543cfd0e111b, type: 3}
+  m_Script: {fileID: 11500000, guid: c14638cbd4fa14bb5a44de50cacc3b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsBurstAttack: 0
-  fixHitPoint: 1
-  moveSpeedRate: 5
-  nomalBulletSpeed: 5
-  nomalBullet: {fileID: 1417648256310878, guid: 038c93bcf6edc48ca9a038a5d1faf423,
-    type: 2}
+  fixHitPoint: 0
+  moveSpeedRate: 0
+  nomalBulletSpeed: 0
+  nomalBullet: {fileID: 0}
   passInterval: 1.5
   BurstBulletNumber: 3
-  movePosDatas:
-  - Second: 0.3
-    PosX: -10
-    PosY: 40
-    Speed: 0
-    MoveFlag: 0
-  - Second: 0.5
-    PosX: -10
-    PosY: -40
-    Speed: 0
-    MoveFlag: 0
+  movePosDatas: []

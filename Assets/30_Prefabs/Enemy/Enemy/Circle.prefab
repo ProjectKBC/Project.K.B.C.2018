@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33160166902932416}
   - component: {fileID: 23157495058338626}
   - component: {fileID: 95296471809935232}
-  - component: {fileID: 114608719673125780}
+  - component: {fileID: 114845837288230426}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -106,7 +106,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114608719673125780
+--- !u!114 &114845837288230426
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -114,17 +114,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1705388037023850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99f554dfd78224a3884b4d90d94c6845, type: 3}
+  m_Script: {fileID: 11500000, guid: e0071505e90204c538517956d266f3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsBurstAttack: 0
-  fixHitPoint: 1
-  moveSpeedRate: 2
-  nomalBulletSpeed: 1
-  nomalBullet: {fileID: 1645425903874554, guid: a90cdf84469c74db4a53632086102650,
-    type: 2}
+  fixHitPoint: 0
+  moveSpeedRate: 0
+  nomalBulletSpeed: 0
+  nomalBullet: {fileID: 0}
   passInterval: 1.5
-  burstBulletNumber: 3
+  BurstBulletNumber: 3
   debug:
     Radius: 0
     EndStraightPos: {x: 0, y: 0}

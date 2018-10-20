@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4601743673743830}
   - component: {fileID: 33120297313146594}
   - component: {fileID: 23760216637697812}
-  - component: {fileID: 114382265321005728}
+  - component: {fileID: 114217543836283144}
   m_Layer: 0
   m_Name: Bee
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458108209937710}
   m_Mesh: {fileID: 4300000, guid: deaef8c83ece4490aa18765c09d47098, type: 3}
---- !u!114 &114382265321005728
+--- !u!114 &114217543836283144
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,17 +92,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1458108209937710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae8852d4aef8443dab730e4400c7988, type: 3}
+  m_Script: {fileID: 11500000, guid: a78046cf8553144fc9f2f1ca0f596e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsBurstAttack: 1
-  fixHitPoint: 1
-  moveSpeedRate: 10
-  nomalBulletSpeed: 1
-  nomalBullet: {fileID: 1569959322399528, guid: 1534cc8606c614a4fbf49469f74aa65c,
-    type: 2}
-  passInterval: 3
+  IsBurstAttack: 0
+  fixHitPoint: 0
+  moveSpeedRate: 0
+  nomalBulletSpeed: 0
+  nomalBullet: {fileID: 0}
+  passInterval: 1.5
   BurstBulletNumber: 3
-  childBee: {fileID: 1143472677140866, guid: 1a0bd7ca2acaf4a5ca04d57b9326fecd, type: 2}
-  normalBulletPool: 80
-  barrage: 0000000000000000010000000000000000000000
+  childBee: {fileID: 0}
+  normalBulletPool: 0
+  barrage: 

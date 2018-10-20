@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33034429922773886}
   - component: {fileID: 23881117327298502}
   - component: {fileID: 95810556982408946}
-  - component: {fileID: 114815398727648032}
+  - component: {fileID: 114897300199242342}
   m_Layer: 0
   m_Name: Stay
   m_TagString: Untagged
@@ -106,7 +106,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114815398727648032
+--- !u!114 &114897300199242342
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -114,15 +114,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1269887116242392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfc39c7f280ca4ea9ad6fa3e9d32990b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b2e8ba9785f04bb0946266034b70999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsBurstAttack: 1
-  fixHitPoint: 1
-  moveSpeedRate: 5
-  nomalBulletSpeed: 2
-  nomalBullet: {fileID: 1721000224869594, guid: 1f2f751af4cee4fed94bf5b5787316dc,
-    type: 2}
-  passInterval: 2
+  IsBurstAttack: 0
+  fixHitPoint: 0
+  moveSpeedRate: 0
+  nomalBulletSpeed: 0
+  nomalBullet: {fileID: 0}
+  passInterval: 1.5
   BurstBulletNumber: 3
-  stayTime: 10
+  stayTime: 2

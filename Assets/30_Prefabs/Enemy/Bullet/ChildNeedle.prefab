@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33192720109470416}
   - component: {fileID: 23594088829191968}
   - component: {fileID: 65391817751516040}
-  - component: {fileID: 114169206068970346}
+  - component: {fileID: 114903174741793652}
   m_Layer: 0
   m_Name: ChildNeedle
   m_TagString: Untagged
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114169206068970346
+--- !u!114 &114903174741793652
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1417648256310878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 095f9c3ccd60b4bf3b5894631f299fa4, type: 3}
+  m_Script: {fileID: 11500000, guid: cb7d478468ec3434e94ce5ce7f1b405d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BulletSpeed: 10

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33818862321940960}
   - component: {fileID: 23343591032169838}
   - component: {fileID: 135174247178909086}
-  - component: {fileID: 114525052612800766}
+  - component: {fileID: 114047479084922704}
   m_Layer: 0
   m_Name: GoPlayer
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1645425903874554}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114525052612800766
+--- !u!114 &114047479084922704
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -93,11 +93,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1645425903874554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4cb4c908f7eb4a3dbe3c90b4712b66c, type: 3}
+  m_Script: {fileID: 11500000, guid: ac018b6b9072047f1b640bf4de6349fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BulletSpeed: 10
-  bulletType: 1
+  bulletType: 0
 --- !u!135 &135174247178909086
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33403592513562032}
   - component: {fileID: 23712424530926128}
   - component: {fileID: 95157498870028290}
-  - component: {fileID: 114198650804231176}
+  - component: {fileID: 114928676113393812}
   m_Layer: 0
   m_Name: Straight
   m_TagString: Untagged
@@ -106,7 +106,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114198650804231176
+--- !u!114 &114928676113393812
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -114,14 +114,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1417616512233444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97b94415bbcd147ef8be1d5adb99ac09, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cd05e6c71bb44d73b329986de43a54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsBurstAttack: 0
-  fixHitPoint: 1
-  moveSpeedRate: 5
-  nomalBulletSpeed: 2
-  nomalBullet: {fileID: 1721000224869594, guid: 1f2f751af4cee4fed94bf5b5787316dc,
-    type: 2}
-  passInterval: 2
-  burstBulletNumber: 3
+  fixHitPoint: 0
+  moveSpeedRate: 0
+  nomalBulletSpeed: 0
+  nomalBullet: {fileID: 0}
+  passInterval: 1.5
+  BurstBulletNumber: 3

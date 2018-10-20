@@ -1,22 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1206317014964448}
-  m_IsPrefabAsset: 1
 --- !u!1 &1206317014964448
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
   m_Component:
   - component: {fileID: 4866968352033574}
   - component: {fileID: 33955558675836336}
@@ -33,8 +22,8 @@ GameObject:
 --- !u!4 &4866968352033574
 Transform:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1206317014964448}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -300, y: 0, z: 0}
@@ -46,8 +35,8 @@ Transform:
 --- !u!23 &23303873681200314
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1206317014964448}
   m_Enabled: 1
   m_CastShadows: 1
@@ -84,16 +73,16 @@ MeshRenderer:
 --- !u!33 &33955558675836336
 MeshFilter:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1206317014964448}
   m_Mesh: {fileID: 4300000, guid: 83a9f0caa6ab2174cbe754807078ee1d, type: 3}
 --- !u!95 &95716314962837366
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1206317014964448}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 83a9f0caa6ab2174cbe754807078ee1d, type: 3}
@@ -109,14 +98,15 @@ Animator:
 --- !u!114 &114849220178833562
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1206317014964448}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97b94415bbcd147ef8be1d5adb99ac09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CorrespondingSourceObject: {fileID: 0}
   IsBurstAttack: 0
   fixHitPoint: 1
   moveSpeedRate: 10

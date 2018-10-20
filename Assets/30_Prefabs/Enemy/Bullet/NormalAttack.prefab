@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33950195922055186}
   - component: {fileID: 23589748421757794}
   - component: {fileID: 135386045573607008}
-  - component: {fileID: 114561477542327348}
+  - component: {fileID: 114583563775477756}
   m_Layer: 0
   m_Name: NormalAttack
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721000224869594}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114561477542327348
+--- !u!114 &114583563775477756
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1721000224869594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4cb4c908f7eb4a3dbe3c90b4712b66c, type: 3}
+  m_Script: {fileID: 11500000, guid: ac018b6b9072047f1b640bf4de6349fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BulletSpeed: 10
