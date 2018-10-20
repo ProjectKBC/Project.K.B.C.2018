@@ -1,53 +1,56 @@
-﻿using System.Collections;
-using UnityEngine;
-
-public class TestRiaBehaviorChildManager : RiaBehaviorChildManager<TestRiaBehavior>
+﻿namespace RiaBehavior
 {
-    private float shotElapsedTime = 0;
+    using System.Collections;
+    using UnityEngine;
 
-    protected override void OnAwake()
+    public class TestRiaBehaviorChildManager : RiaBehaviorChildManager<TestRiaBehavior>
     {
-    }
+        private float shotElapsedTime = 0;
 
-    protected override void OnUpdate()
-    {
-        shotElapsedTime += Time.deltaTime;
-
-        ShotBehabior(0.05f/3);
-    }
-
-    private void ShotBehabior(float _span)
-    {
-        if (_span <= shotElapsedTime)
+        protected override void OnAwake()
         {
-            OneShot();
-            //ShotBehabiorAll();
-
-            shotElapsedTime = 0;
         }
-    }
 
-    private void OneShot()
-    {
-        for (int i = 0; i < Behaviors.Length; ++i)
+        protected override void OnUpdate()
         {
-            if (!Behaviors[i].Alive)
+            shotElapsedTime += Time.deltaTime;
+
+            ShotBehabior(0.05f / 3);
+        }
+
+        private void ShotBehabior(float _span)
+        {
+            if (_span <= shotElapsedTime)
             {
-                Behaviors[i].WakeUp(Vector3.zero, Quaternion.identity);
-                break;
+                OneShot();
+                //ShotBehabiorAll();
+
+                shotElapsedTime = 0;
             }
         }
-    }
 
-    private void ShotBehabiorAll()
-    {
-        for (int i = 0; i < Behaviors.Length; ++i)
+        private void OneShot()
         {
-            if (!Behaviors[i].Alive)
+            for (int i = 0; i < Behaviors.Length; ++i)
             {
-                Behaviors[i].WakeUp(Vector3.zero, Quaternion.identity);
+                if (!Behaviors[i].Alive)
+                {
+                    Behaviors[i].WakeUp(Vector3.zero, Quaternion.identity);
+                    break;
+                }
             }
         }
-    }
 
+        private void ShotBehabiorAll()
+        {
+            for (int i = 0; i < Behaviors.Length; ++i)
+            {
+                if (!Behaviors[i].Alive)
+                {
+                    Behaviors[i].WakeUp(Vector3.zero, Quaternion.identity);
+                }
+            }
+        }
+
+    }
 }

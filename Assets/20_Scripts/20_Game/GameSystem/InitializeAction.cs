@@ -15,18 +15,18 @@ namespace Ria
             Debug.Log("InitializeAction_Start");
             this.gm = GameManager.Instance;
 
-            //this.gm.TestRBManager.Init();
-            this.gm.RBEnemyManager.Init();
+            this.gm.UFAManagerPL1.Init();
+            this.gm.UFAManagerPL2.Init();
         }
 
         public override void Update()
         {
-            Debug.Log("InitializeAction_Update");
+            //Debug.Log("InitializeAction_Update");
         }
 
         public override void End()
         {
-            Debug.Log("InitializeAction_End");
+            //Debug.Log("InitializeAction_End");
         }
     }
 }

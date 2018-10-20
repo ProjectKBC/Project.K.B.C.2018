@@ -24,12 +24,12 @@ namespace Ria
         private FinalizeAction finalAct = new FinalizeAction();
 
         [SerializeField]
-        private TestRiaBehaviorChildManager testRBManager = null;
-        public TestRiaBehaviorChildManager TestRBManager { get { return testRBManager; } }
+        private RiaUFAActorManager ufaManagerPL1 = null;
+        public RiaUFAActorManager UFAManagerPL1 { get { return this.ufaManagerPL1; } }
 
         [SerializeField]
-        private RBEnemyManager rbEnemyManager = null;
-        public RBEnemyManager RBEnemyManager { get { return rbEnemyManager; } }
+        private RiaUFAActorManager ufaManagerPL2 = null;
+        public RiaUFAActorManager UFAManagerPL2 { get { return this.ufaManagerPL2; } }
 
         // Loading系
 
