@@ -1,7 +1,19 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class SelectUIManager : SingletonMonoBehaviour<SelectUIManager>
 {
+    public static void SelectedData (
+        out PlayerCharacterEnum _pc1,
+        out PlayerCharacterEnum _pc2,
+        out StageEnum _stage)
+    {
+        var self = SelectUIManager.Instance;
+
+        _pc1 = self.pc1;
+        _pc2 = self.pc2;
+        _stage = self.stage;
+    }
+
     public enum State
     {
         CharacterSelect,
@@ -20,26 +32,28 @@ public class SelectUIManager : SingletonMonoBehaviour<SelectUIManager>
 
     // ステートマシン系
     private StateManager<State> stateManager = new StateManager<State>();
-    private State currentState = State.CharacterSelect;
+    private State currentState;
     private CharacterSelectState charaAct = new CharacterSelectState();
     private StageSelectState stageAct = new StageSelectState();
 
-    private PlayerCharacterEnum pc1 = PlayerCharacterEnum.length_empty;
-    private PlayerCharacterEnum pc2 = PlayerCharacterEnum.length_empty;
-    private StageEnum stage = StageEnum.length_empty;
+    private PlayerCharacterEnum pc1;
+    private PlayerCharacterEnum pc2;
+    private StageEnum stage;
 
     public void TransitionToStageSelect(PlayerCharacterEnum _pc1, PlayerCharacterEnum _pc2)
     {
         this.pc1 = _pc1;
         this.pc2 = _pc2;
 
-        this.SetState(State.StageSelect);
-    }
+		this.currentState = State.StageSelect;
+		this.stateManager.SetState(this.currentState);
+	}
 
     public void TransitionToCharactetSelect()
-    {
-        this.SetState(State.CharacterSelect);
-    }
+	{
+		this.currentState = State.CharacterSelect;
+		this.stateManager.SetState(this.currentState);
+	}
 
     public void TransitionToGameScene(StageEnum _stage)
     {
@@ -51,19 +65,13 @@ public class SelectUIManager : SingletonMonoBehaviour<SelectUIManager>
     {
         this.stateManager.Add(State.CharacterSelect, this.charaAct);
         this.stateManager.Add(State.StageSelect, this.stageAct);
-
-        this.SetState(State.CharacterSelect);
-    }
+		
+		this.currentState = State.CharacterSelect;
+		this.stateManager.SetState(this.currentState);
+	}
 
     private void Update()
     {
         this.stateManager.Update();
     }
-
-    private void SetState(State _state)
-    {
-        this.currentState = _state;
-        this.stateManager.SetState(_state);
-    }
-
 }
