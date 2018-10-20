@@ -18,12 +18,12 @@ namespace Ria
 
         public override void Update()
         {
-            Debug.Log("PauseAction_Update");
+            //Debug.Log("PauseAction_Update");
         }
 
         public override void End()
         {
-            Debug.Log("PauseAction_End");
+            //Debug.Log("PauseAction_End");
         }
     }
 }

@@ -20,13 +20,13 @@ namespace Ria
         {
             //Debug.Log("PlayAction_Update");
 
-            //this.gm.TestRBManager.Run();
-            this.gm.RBEnemyManager.Run();
+            this.gm.UFAManagerPL1.Play();
+            this.gm.UFAManagerPL2.Play();
         }
 
         public override void End()
         {
-            Debug.Log("PlayAction_End");
+            //Debug.Log("PlayAction_End");
         }
     }
 }

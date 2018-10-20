@@ -1,41 +1,45 @@
-﻿using UnityEngine;
-
-public abstract class RiaBehaviorManager<T> : SingletonMonoBehaviour<RiaBehaviorManager<T>> where T : RiaBehavior
+﻿namespace RiaBehavior
 {
-    [SerializeField]
-    private GameObject[] objects = new GameObject[1];
-    private T[] behaviors = null;
+    using UnityEngine;
 
-    protected GameObject[] Objects { get { return this.objects; } set { this.objects = value; } }
-    protected T[] Behaviors { get { return this.behaviors; } set { this.behaviors = value; } }
-
-    protected override void OnInit()
+    public abstract class RiaBehaviorManager<T> : SingletonMonoBehaviour<RiaBehaviorManager<T>> where T : RiaBehavior
     {
-        behaviors = new T[objects.Length];
-        for (int i = 0; i < objects.Length; ++i)
+        [SerializeField]
+        private GameObject[] objects = new GameObject[1];
+        private T[] behaviors = null;
+
+        protected GameObject[] Objects { get { return this.objects; } set { this.objects = value; } }
+        protected T[] Behaviors { get { return this.behaviors; } set { this.behaviors = value; } }
+
+        protected override void OnInit()
         {
-            behaviors[i] = objects[i].GetComponent<T>();
-            if (behaviors[i] == null)
+            behaviors = new T[objects.Length];
+            for (int i = 0; i < objects.Length; ++i)
             {
-                Debug.LogError("<color=#f00>"+ objects[i].name + "has not " + typeof(T) + ".</color>", objects[i]);
+                behaviors[i] = objects[i].GetComponent<T>();
+                if (behaviors[i] == null)
+                {
+                    Debug.LogError("<color=#f00>" + objects[i].name + "has not " + typeof(T) + ".</color>", objects[i]);
+                }
+
+                behaviors[i].Init();
             }
 
-            behaviors[i].Init();
+            OnAwake();
         }
 
-        OnAwake();
-    }
-
-    private void Update()
-    {
-        for (int i = 0; i < behaviors.Length; ++i)
+        private void Update()
         {
-            behaviors[i].Run();
+            for (int i = 0; i < behaviors.Length; ++i)
+            {
+                behaviors[i].Run();
+            }
+
+            OnUpdate();
         }
 
-        OnUpdate();
+        protected abstract void OnAwake();
+        protected abstract void OnUpdate();
     }
 
-    protected abstract void OnAwake();
-    protected abstract void OnUpdate();
 }
