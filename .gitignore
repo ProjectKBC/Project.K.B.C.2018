@@ -36,11 +36,12 @@ sysinfo.txt
 *.unitypackage
 
 # Rider
-
 .idea/
 
-# Mac OSX
+# Visual Studio Code
+.vscode/
 
+# Mac OSX
 Thumbs.db
 Desktop.ini
 .DS_Store
