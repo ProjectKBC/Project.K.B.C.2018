@@ -1,14 +1,8 @@
-﻿/* Author : ketty
- * Last Update : 2018/09/07 flanny
- */
-
-using System.Runtime.CompilerServices;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
-namespace Ria
+namespace RiaBehaviorSystem
 {
-    using System.Diagnostics.CodeAnalysis;
-
     public enum EnemyPattern
     {
         StraightHorizontal,
@@ -68,11 +62,7 @@ namespace Ria
         }
     }
 
-    /// <summary>
-    /// 敵の生成や出現を管理するクラス
-    /// </summary>
-    [System.Serializable]
-    public class EnemyManager : MonoBehaviour
+    public class KettyEnemyManager : RiaBehaviorChildManager<KettyEnemy>
     {
         private static readonly int AppearZPos = 100;
 
@@ -126,9 +116,11 @@ namespace Ria
         public PlayersEnemyData Enemy2Data;
 
         // private static EnemyManager instance = null;
-        private float elapsedTime;
+        
+		// ↓スーパークラスで定義済み
+		// private float elapsedTime;
 
-        private void Awake()
+        protected override void OnAwake()
         {
             this.Enemy1Data = new PlayersEnemyData("Enemy1", Enemy1Patterns, this.poolEnemy);
             this.Enemy2Data = new PlayersEnemyData("Enemy2", Enemy2Patterns, this.poolEnemy);
@@ -138,7 +130,7 @@ namespace Ria
             this.Enemy2Data.EnemyAppearPass = this.interval;
         }
 
-        private void Update()
+        protected override void OnUpdate()
         {
             this.elapsedTime += Time.deltaTime;
 
@@ -166,7 +158,6 @@ namespace Ria
                 _enemyData.StraightEnemys[i].tag = _enemyData.PlayerType;
                 _enemyData.CircleEnemys[i].tag = _enemyData.PlayerType;
                 _enemyData.QuadraticEnemys[i].tag = _enemyData.PlayerType;
-
                 _enemyData.StayEnemys[i] = CreateEnemy(this.stayEnemy);
                 _enemyData.StayEnemys[i].tag = _enemyData.PlayerType;
                 _enemyData.SinEnemys[i] = CreateEnemy(this.sinEnemy);
@@ -192,11 +183,9 @@ namespace Ria
                                 this.enemyManagerDebug.StraightHorizontalPos,
                                 this.enemyManagerDebug.StraightHorizontalPosInterval);
                             break;
-
                         case "StraightVertical":
                             StraightVertical();
                             break;
-
                         case "Quadratic":
                             Quadratic(
                                 3,
@@ -204,7 +193,6 @@ namespace Ria
                                 this.enemyManagerDebug.QuadraticPos,
                                 this.enemyManagerDebug.QuadraticPosInterval);
                             break;
-
                         case "Circle":
                             Circle(
                                 1,
@@ -212,7 +200,6 @@ namespace Ria
                                 this.enemyManagerDebug.CirclePos,
                                 this.enemyManagerDebug.CirclePosInterval);
                             break;
-                        
                         case "Stay":
                             Stay(
                                 5,
@@ -220,7 +207,6 @@ namespace Ria
                                 this.enemyManagerDebug.StraightHorizontalPos,
                                 this.enemyManagerDebug.StraightHorizontalPosInterval);
                             break;
-                        
                         case "Sin":
                             Sin(
                                 3,
@@ -228,7 +214,6 @@ namespace Ria
                                 this.enemyManagerDebug.StraightHorizontalPos,
                                 this.enemyManagerDebug.StraightHorizontalPosInterval);
                             break;
-
                         case "Bee":
                             Bee(
                                 _enemyData);
@@ -242,7 +227,6 @@ namespace Ria
         }
 
         // ここから下は出現させる関数、どの関数も似たようなこと書いてるから改善できそう
-
         /// <summary>
         /// 
         /// </summary>
@@ -254,9 +238,8 @@ namespace Ria
         {
             int appearCount = 0;
             float appearSpace = System.Math.Abs(_enemyData.LeftPosX - _enemyData.RightPosX) / (_appearNum + 1);
-            float appearRightPosX = _enemyData.RightPosX - appearSpace;
+            //float appearRightPosX = _enemyData.RightPosX - appearSpace;
             float appearLeftPosX = _enemyData.LeftPosX + appearSpace;
-            
             for (int i = 0; i < _enemyData.StraightEnemys.Length; i++)
             {
                 if (appearCount >= _appearNum)
@@ -268,10 +251,11 @@ namespace Ria
                 {
                     // 起点に設置
                     _enemyData.StraightEnemys[i].transform.position =
-                        new Vector3(appearLeftPosX + appearCount * appearSpace, _enemyData.EnemyStartPos.y, _enemyData.EnemyStartPos.z);
+                        new Vector3(appearLeftPosX + appearCount * appearSpace, _enemyData.EnemyStartPos.y,
+                            _enemyData.EnemyStartPos.z);
                     _enemyData.StraightEnemys[i].SetActive(true);
                     appearCount++;
-                    
+
                     // 次の起点の間隔をあける
                     _appearPos += _posInterval;
                 }
@@ -295,12 +279,11 @@ namespace Ria
             float appearSpace = -20;
             float appearPosX = -90;
             float appearPosY = 40;
-
             if (_enemyData.PlayerType.Equals("Enemy1"))
             {
                 appearPosX = -90.0f;
             }
-            else if(_enemyData.PlayerType.Equals("Enemy2"))
+            else if (_enemyData.PlayerType.Equals("Enemy2"))
             {
                 appearPosX = -8.0f;
             }
@@ -348,7 +331,6 @@ namespace Ria
             }
         }
         */
-
         /// <summary>
         /// 
         /// </summary>
@@ -358,7 +340,6 @@ namespace Ria
         public void Circle(int _appearNum, PlayersEnemyData _enemyData, Vector2 _appearPos, Vector2 _posInterval)
         {
             int appearCount = 0;
-
             for (int i = 0; i < _enemyData.CircleEnemys.Length; i++)
             {
                 if (appearCount >= _appearNum)
@@ -385,9 +366,8 @@ namespace Ria
         {
             int appearCount = 0;
             float appearSpace = System.Math.Abs(_enemyData.LeftPosX - _enemyData.RightPosX) / (_appearNum + 1);
-            float appearRightPosX = _enemyData.RightPosX - appearSpace;
+            //float appearRightPosX = _enemyData.RightPosX - appearSpace;
             float appearLeftPosX = _enemyData.LeftPosX + appearSpace;
-            
             for (int i = 0; i < _enemyData.StayEnemys.Length; i++)
             {
                 if (appearCount >= _appearNum)
@@ -399,10 +379,11 @@ namespace Ria
                 {
                     // 起点に設置
                     _enemyData.StayEnemys[i].transform.position =
-                        new Vector3(appearLeftPosX + appearCount * appearSpace, _enemyData.EnemyStartPos.y, _enemyData.EnemyStartPos.z);
+                        new Vector3(appearLeftPosX + appearCount * appearSpace, _enemyData.EnemyStartPos.y,
+                            _enemyData.EnemyStartPos.z);
                     _enemyData.StayEnemys[i].SetActive(true);
                     appearCount++;
-                    
+
                     // 次の起点の間隔をあける
                     _appearPos += _posInterval;
                 }
@@ -416,7 +397,6 @@ namespace Ria
             float appearSpace = -20;
             float appearPosX = -90;
             float appearPosY = 40;
-
             if (_enemyData.PlayerType.Equals("Enemy2"))
             {
                 appearPosX = -2.0f;
@@ -436,7 +416,7 @@ namespace Ria
                         new Vector3(appearPosX + appearCount * appearSpace, appearPosY, AppearZPos);
                     _enemyData.SinEnemys[i].SetActive(true);
                     appearCount++;
-                    
+
                     // 次の起点の間隔をあける
                     _appearPos += _posInterval;
                 }

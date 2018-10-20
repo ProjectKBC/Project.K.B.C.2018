@@ -9,15 +9,7 @@ public abstract class RiaActorManager : MonoBehaviour// : SingletonMonoBehaviour
     protected GameObject[] Objects { get { return this.objects; } set { this.objects = value; } }
     protected RiaActor[] Actors { get; set; }
 
-    private bool isInit;
-
-    /// <summary>
-    /// Awake
-    /// </summary>
-    protected void Awake()
-    {
-        this.isInit = false;
-    }
+    private bool isInit = false;
 
     public void Init()
     {
@@ -75,4 +67,3 @@ public abstract class RiaActorManager : MonoBehaviour// : SingletonMonoBehaviour
     protected abstract void OnInitialize();
     protected abstract void OnUpdate();
 }
-

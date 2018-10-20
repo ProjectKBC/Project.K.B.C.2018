@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "RiaCharacterScript/UFA1Script", fileName = "UFA1Script")]
 public sealed class UFA1Script : RiaCharacterScript
 {
-    [SerializeField]
+	public float HitDamagePoint { get { return this.hitDamagePoint; } private set { this.hitDamagePoint = value; } }
+
+	[SerializeField]
     private Sprite sprite = null;
     [SerializeField]
     private float maxHitPoint = 1;
@@ -41,6 +43,6 @@ public sealed class UFA1Script : RiaCharacterScript
 
     protected override void OnEnd(RiaCharacterStatus _status)
     {
-        var status = _status as UFA1Status;
+        //var status = _status as UFA1Status;
     }
 }

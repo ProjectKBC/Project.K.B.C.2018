@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +26,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     private bool[] isPlayBgm = new bool[2];
 
     private AudioSource[] seSources = new AudioSource[12];
-    private AudioSource[] seLoopSources = new AudioSource[4];
+    // private AudioSource[] seLoopSources = new AudioSource[4];
     private Dictionary<SoundEffect, AudioSource> seLoopSet = new Dictionary<SoundEffect, AudioSource>();
 
     public void PlaySe(SoundEffect _se, float _volume = 1f)

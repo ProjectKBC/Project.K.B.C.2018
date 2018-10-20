@@ -1,53 +1,56 @@
 ﻿using UnityEngine;
 
-public sealed class KettySinEnemy : KettyEnemy
+namespace RiaBehaviorSystem
 {
-    protected override void OnInit()
+    public sealed class KettySinEnemy : KettyEnemy
     {
-        base.OnInit();
-    }
-
-    protected override void Start()
-    {
-        CreateBullet(this.NomalBullet);
-    }
-
-    protected override void OnRun()
-    {
-        base.OnRun();
-
-        float nowPass = Mathf.Floor(this.ElapsedTime * 10) / 10;
-        if (this.Trans.position.y > ordinaryForwardBorder)
+        protected override void OnInit()
         {
-            ForwardEnemy(ordinaryForwardBorder);
-        }
-        else
-        {
-            SinMove();
+            base.OnInit();
         }
 
-        if (nowPass >= this.Pass)
+        protected override void Start()
         {
-            if (IsBurstAttack)
+            CreateBullet(this.NomalBullet);
+        }
+
+        protected override void OnRun()
+        {
+            base.OnRun();
+
+            float nowPass = Mathf.Floor(this.ElapsedTime * 10) / 10;
+            if (this.Trans.position.y > ordinaryForwardBorder)
             {
-                BurstAttack();
+                ForwardEnemy(ordinaryForwardBorder);
             }
             else
             {
-                NormalAtack();
+                SinMove();
+            }
+
+            if (nowPass >= this.Pass)
+            {
+                if (IsBurstAttack)
+                {
+                    BurstAttack();
+                }
+                else
+                {
+                    NormalAtack();
+                }
             }
         }
-    }
 
-    private void SinMove()
-    {
-        Vector3 pos = this.Trans.position;
-        pos.x += this.MoveSpeedRate * Time.deltaTime;
-        pos.y = Mathf.Sin(pos.x / this.MoveSpeedRate) * this.MoveSpeedRate;
-        this.Trans.position = pos;
-    }
+        private void SinMove()
+        {
+            Vector3 pos = this.Trans.position;
+            pos.x += this.MoveSpeedRate * Time.deltaTime;
+            pos.y = Mathf.Sin(pos.x / this.MoveSpeedRate) * this.MoveSpeedRate;
+            this.Trans.position = pos;
+        }
 
-    protected override void OnWakeUp(Vector3 _position, Quaternion _rotation)
-    {
+        protected override void OnWakeUp(Vector3 _position, Quaternion _rotation)
+        {
+        }
     }
 }

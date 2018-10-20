@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Ria
 {
     public class FinalizeAction : StateAction
     {
-        private GameManager gm;
+        //private GameManager gm;
 
         public FinalizeAction()
         {
@@ -13,7 +13,7 @@ namespace Ria
         public override void Start()
         {
             Debug.Log("FinalizeAction_Start");
-            this.gm = GameManager.Instance;
+            //this.gm = GameManager.Instance;
         }
 
         public override void Update()

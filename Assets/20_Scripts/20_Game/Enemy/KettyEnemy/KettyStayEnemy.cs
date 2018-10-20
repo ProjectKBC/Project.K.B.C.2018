@@ -1,52 +1,55 @@
 ﻿using UnityEngine;
 
-public sealed class KettyStayEnemy : KettyEnemy
+namespace RiaBehaviorSystem
 {
-    [SerializeField] private float stayTime = 2.0f;
-
-    //private float untilStayTime;
-
-    protected override void OnInit()
+    public sealed class KettyStayEnemy : KettyEnemy
     {
-        base.OnInit();
-    }
+        [SerializeField] private float stayTime = 2.0f;
 
-    protected override void Start()
-    {
-        CreateBullet(this.NomalBullet);
-    }
+        //private float untilStayTime;
 
-    protected override void OnRun()
-    {
-        base.OnRun();
-        float nowPass = Mathf.Floor(this.ElapsedTime * 10) / 10;
-
-        if (nowPass >= this.stayTime)
+        protected override void OnInit()
         {
-            base.BackMove();
+            base.OnInit();
         }
-        else
+
+        protected override void Start()
         {
-            if (this.Trans.position.y > ordinaryForwardBorder)
-            {
-                ForwardEnemy(ordinaryForwardBorder);
-            }
+            CreateBullet(this.NomalBullet);
+        }
 
-            if (nowPass >= this.Pass)
+        protected override void OnRun()
+        {
+            base.OnRun();
+            float nowPass = Mathf.Floor(this.ElapsedTime * 10) / 10;
+
+            if (nowPass >= this.stayTime)
             {
-                if (IsBurstAttack)
+                base.BackMove();
+            }
+            else
+            {
+                if (this.Trans.position.y > ordinaryForwardBorder)
                 {
-                    BurstAttack();
+                    ForwardEnemy(ordinaryForwardBorder);
                 }
-                else
+
+                if (nowPass >= this.Pass)
                 {
-                    NormalAtack();
+                    if (IsBurstAttack)
+                    {
+                        BurstAttack();
+                    }
+                    else
+                    {
+                        NormalAtack();
+                    }
                 }
             }
         }
-    }
 
-    protected override void OnWakeUp(Vector3 _position, Quaternion _rotation)
-    {
+        protected override void OnWakeUp(Vector3 _position, Quaternion _rotation)
+        {
+        }
     }
 }

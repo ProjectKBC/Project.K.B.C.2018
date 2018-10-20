@@ -1,4 +1,4 @@
-﻿namespace RiaBehavior
+﻿namespace RiaBehaviorSystem
 {
     /* Author : ketty
  * Last Update : 2018/09/07 flanny
@@ -11,7 +11,7 @@
     /// 敵の生成や出現を管理するクラス
     /// </summary>
     [System.Serializable]
-    public class RBEnemyManager : RiaBehaviorChildManager<RBEnemy>
+    public class RBEnemyChildManager : RiaBehaviorChildManager<RBEnemy>
     {
         private static readonly int AppearZPos = 100;
 
@@ -158,10 +158,6 @@
                     pass += interval;
                 }
             }
-
-            for (int i = 0; i < straightRBEnemies.Length; ++i) { straightRBEnemies[i].Run(); }
-            for (int i = 0; i < quadraticRBEnemies.Length; ++i) { quadraticRBEnemies[i].Run(); }
-            for (int i = 0; i < circleRBEnemies.Length; ++i) { circleRBEnemies[i].Run(); }
         }
 
         // public GameObject CreateEnemy(GameObject _obj)

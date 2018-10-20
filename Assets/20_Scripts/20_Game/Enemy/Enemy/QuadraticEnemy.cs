@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 public sealed class QuadraticEnemy : Enemy
@@ -18,8 +18,8 @@ public sealed class QuadraticEnemy : Enemy
         public float MaxY;
     }
 
-    [SerializeField]
-    private QuadraticEnemyDebugParam debug = null;
+    // [SerializeField]
+    // private QuadraticEnemyDebugParam debug = null;
 
     // protected override void Awake()
     // {

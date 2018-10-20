@@ -46,6 +46,10 @@ namespace Ria
 
         protected override void OnInit()
         {
+        }
+
+        private void Start()
+        {
             this.stateManager.Add(State.Initialize, this.initAct);
             this.stateManager.Add(State.Play, this.playAct);
             this.stateManager.Add(State.Pause, this.pauseAct);
@@ -53,7 +57,7 @@ namespace Ria
 
             this.SetState(State.Initialize);
         }
-        
+
         private void Update()
         {
             this.stateManager.Update();

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Ria;
 using UnityEngine;
 
 public class SinEnemy : Enemy {

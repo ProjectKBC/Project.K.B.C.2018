@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Ria
 {
     public class PauseAction : StateAction
     {
-        private GameManager gm;
+        //private GameManager gm;
 
         public PauseAction()
         {
@@ -13,7 +13,7 @@ namespace Ria
         public override void Start()
         {
             Debug.Log("PauseAction_Start");
-            this.gm = GameManager.Instance;
+            //this.gm = GameManager.Instance;
         }
 
         public override void Update()

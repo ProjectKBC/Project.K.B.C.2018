@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -68,10 +68,10 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
     [System.Serializable]
     private class Images
     {
-        public Image StandBack;
-        public Image StandFront;
-        public Image Kana;
-        public Image Alp;
+        public Image StandBack = null;
+        public Image StandFront = null;
+        public Image Kana = null;
+        public Image Alp = null;
 
         public void SetNameImages(Sprite _kana, Sprite _alp)
         {

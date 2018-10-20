@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,7 +49,7 @@ public class ChildBee : Enemy {
 	protected override void Update()
 	{
 		base.Update();
-		float nowPass = Mathf.Floor (this.ElapsedTime * 10) / 10;
+		//float nowPass = Mathf.Floor (this.ElapsedTime * 10) / 10;
 
 
 		//Debug.Log(this.movePosDataCount < this.movePosData.Length);

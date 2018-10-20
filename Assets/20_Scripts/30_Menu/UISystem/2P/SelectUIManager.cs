@@ -20,13 +20,13 @@ public class SelectUIManager : SingletonMonoBehaviour<SelectUIManager>
 
     // ステートマシン系
     private StateManager<State> stateManager = new StateManager<State>();
-    private State currentState;
+    private State currentState = State.CharacterSelect;
     private CharacterSelectState charaAct = new CharacterSelectState();
     private StageSelectState stageAct = new StageSelectState();
 
-    private PlayerCharacterEnum pc1;
-    private PlayerCharacterEnum pc2;
-    private StageEnum stage;
+    private PlayerCharacterEnum pc1 = PlayerCharacterEnum.length_empty;
+    private PlayerCharacterEnum pc2 = PlayerCharacterEnum.length_empty;
+    private StageEnum stage = StageEnum.length_empty;
 
     public void TransitionToStageSelect(PlayerCharacterEnum _pc1, PlayerCharacterEnum _pc2)
     {
