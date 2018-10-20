@@ -1,4 +1,21 @@
 ﻿using UnityEngine;
+// 現状スーパークラスに共通して必要なパラメータ
+// ・通常ショットのキー
+// ・特殊ショットのキー
+// ・スキルのキー
+// ・移動スピード
+// ・HP
+// ・エネミーのタグ(それぞれのプレイヤーがそれぞれのエネミーのみに干渉するように)
+// ・相手プレイヤーのステータス(相手のステータスに干渉するスキル用)
+// ・上記のパラメータにアクセス出来るプロパティ
+// ・移動キー(上)
+// ・移動キー(左)
+// ・移動キー(下)
+// ・移動キー(右)
+// 最初に行う処理
+// ・PlayerManagerから取得したキーの設定
+// ・プレイヤーのエネミーの認識
+// ・プレイヤーの相手プレイヤーのステータスの取得
 
 public class PlayerData : MonoBehaviour
 {
@@ -23,6 +40,14 @@ public class PlayerData : MonoBehaviour
     private KeyCode moveLeftKey;
     private KeyCode moveDownKey;
     private KeyCode moveRightKey;
+
+    private Vector3 pos;
+    private static int pl1AreaLeftLine = -80;
+    private static int pl1AreaRightLine = -8;
+    private static int pl2AreaLeftLine = -pl1AreaRightLine;
+    private static int pl2AreaRightLine = -pl1AreaLeftLine;
+    private static int playAreaTopLine = 44;
+    private static int playAreaBottomLine = -55;
 
     protected virtual void Start()
     {
@@ -60,6 +85,19 @@ public class PlayerData : MonoBehaviour
         if (Input.GetKey(this.moveLeftKey)) { this.transform.position += Vector3.left * MoveSpeed * Time.deltaTime; }
         if (Input.GetKey(this.moveDownKey)) { this.transform.position += Vector3.down * MoveSpeed * Time.deltaTime; }
         if (Input.GetKey(this.moveRightKey)) { this.transform.position += Vector3.right * MoveSpeed * Time.deltaTime; }
+
+        pos = this.transform.position;
+
+        switch (this.tag)
+        {
+            case "Player1":
+                this.transform.position = new Vector3(Mathf.Clamp(pos.x, pl1AreaLeftLine, pl1AreaRightLine), Mathf.Clamp(pos.y, playAreaBottomLine, playAreaTopLine), pos.z);
+                break;
+
+            case "Player2":
+                this.transform.position = new Vector3(Mathf.Clamp(pos.x, pl2AreaLeftLine, pl2AreaRightLine), Mathf.Clamp(pos.y, playAreaBottomLine, playAreaTopLine), pos.z);
+                break;
+        }
     }
 
 }
