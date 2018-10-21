@@ -42,9 +42,10 @@ public sealed class UFA2Script : RiaCharacterScript
 
         var pos = status.trans_.position;
         pos.y -= Time.deltaTime * 60 * this.moveSpeed;
-        pos.x = Mathf.Sin(Time.time) * 15 + offset;
+		pos.x = Mathf.Sin(Time.time) * 15 + offset;
+		pos.x = Mathf.Sin(status.playElapsedTime) * 15 + offset;
 
-        status.trans_.position = pos;
+		status.trans_.position = pos;
     }
 
     protected override void OnEnd(RiaCharacterStatus _status)

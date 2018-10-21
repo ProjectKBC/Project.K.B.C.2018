@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-namespace Ria
+namespace Game
 {
     public class PlayAction : StateAction
     {

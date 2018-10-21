@@ -1,26 +1,40 @@
 using UnityEngine;
 
-public sealed class RiaStageManager : SingletonMonoBehaviour<RiaStageManager>
+namespace Game.Stage
 {
-    private PlayerCharacterEnum pc1;
-    private PlayerCharacterEnum pc2;
-    private StageEnum stage;
+	public sealed class RiaStageManager : MonoBehaviour
+	{
+		private RiaStageFactory factory = null;
+		private StageEnum stage = StageEnum.length_empty;
+		private float mainElapsedTime = 0;
+		private float bossElapsedTime = 0;
 
-    [SerializeField]
-    private RiaStageFactory factory = null;
-
-    protected override void OnInit()
-    {
-		SelectUIManager.SelectedData(out this.pc1, out this.pc2, out this.stage);
-
-		if (this.pc1 == PlayerCharacterEnum.length_empty || this.pc1 == PlayerCharacterEnum.random ||
-			this.pc2 == PlayerCharacterEnum.length_empty || this.pc2 == PlayerCharacterEnum.random ||
-			this.stage == StageEnum.length_empty)
+		public void Init()
 		{
-            Debug.LogError("PlayerCharacter または Stage が以上です。", this.gameObject);
-			Debug.Break();
-        }
+			this.factory = new RiaStageFactory();
+			this.stage = GameManager.Instance.CommonData.stage;
+			this.mainElapsedTime = 0;
+			this.bossElapsedTime = 0;
 
-        this.factory.CreateStage(this.stage);
-    }
+			this.factory.CreateStage(this.stage);
+		}
+
+		public void ReadyLoop()
+		{
+			// todo: 待機状態
+			// アニメーションはせず、静止描画とか？
+		}
+
+		public void MainLoop()
+		{
+			this.mainElapsedTime += Time.deltaTime;
+			// 
+		}
+
+		public void BossLoop()
+		{
+			this.bossElapsedTime += Time.deltaTime;
+			//
+		}
+	}
 }

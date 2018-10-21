@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : SingletonMonoBehaviour<T>
 {
@@ -59,7 +59,9 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : Single
             return;
         }
 
-        Debug.LogError("<color=#f00>" + typeof(T) + "</color> is duplicated");
+		Destroy(this);
+
+		Debug.LogError("<color=#f00>" + typeof(T) + "</color> is duplicated");
         Debug.Break();
     }
     

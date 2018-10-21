@@ -111,20 +111,34 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
 
     [SerializeField]
     private Images pl1Images = null;
-    [Space(8)]
-    [SerializeField]
-    private Images pl2Images = null;
-    [Space(16)]
-    [SerializeField, Header("NextToStageSelect")]
-    private Image nextToStageSelectImage = null;
-    [SerializeField]
-    private float nextToStageSelectIntervalTime = 0.5f;
 
-    // private fields
-    private float elapsedTime;
+    [Space(8)]
+
+	[SerializeField]
+    private Images pl2Images = null;
+
+	[Space(16)]
+
+	[SerializeField, Header("NextToStageSelect")]
+	private Image nextToStageSelectImage = null;
+
+	[SerializeField]
+	private float nextToStageSelectIntervalTime = 0.5f;
+
+	[SerializeField, Header("PrevToTitle")]
+	private Image prevToTitleImage = null;
+
+	[SerializeField]
+	private float prevToTitleIntervalTime = 0.5f;
+
+	// private fields
+	private float elapsedTime;
     private SelecterStates pl1States;
     private SelecterStates pl2States;
     private float allSelectedTime;
+	private float dispPrevToTitleWindowTime;
+
+	private bool IsPrevToTitleWindow { get { return this.prevToTitleImage.enabled; } }
 
     protected override void OnInit()
     {
@@ -147,8 +161,9 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         this.pl2States.IsSelected = false;
         this.pl2States.PlayerCharacter = PlayerCharacterEnum.length_empty;
 
-        this.nextToStageSelectImage.enabled = false;
-        this.allSelectedTime = 0;
+		this.nextToStageSelectImage.enabled = false;
+		this.prevToTitleImage.enabled = false;
+		this.allSelectedTime = 0;
 
         // selectorの初期化
         for (int i = 0; i < this.charaSelectorSets.Length; ++i)
@@ -515,19 +530,26 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
     /// <param name="_pl">押したプレイヤー</param>
     /// <returns>正常に処理されたか</returns>
     private bool ReturnAction(Player _pl)
-    {
-        if (this.pl1States.IsSelected && this.pl2States.IsSelected &&
-           (this.nextToStageSelectIntervalTime <= this.elapsedTime - this.allSelectedTime))
-        {
-            var chara1 = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
-            var chara2 = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
+	{
+		if (this.IsPrevToTitleWindow)
+		{
+			this.prevToTitleImage.enabled = false;
+			this.dispPrevToTitleWindowTime = 0;
+			return true;
+		}
 
-            SelectUIManager.Instance.TransitionToStageSelect(chara1, chara2);
+		if (this.pl1States.IsSelected && this.pl2States.IsSelected &&
+		   (this.nextToStageSelectIntervalTime <= this.elapsedTime - this.allSelectedTime))
+		{
+			var chara1 = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
+			var chara2 = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
 
-            return true;
-        }
+			SelectUIManager.Instance.TransitionToStageSelect(chara1, chara2);
 
-        var result = ReturnFunc(_pl);
+			return true;
+		}
+
+		var result = ReturnFunc(_pl);
 
         if (this.pl1States.IsSelected && this.pl2States.IsSelected)
         {
@@ -535,7 +557,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
             this.allSelectedTime = this.elapsedTime;
         }
 
-        return result;
+		return result;
     }
 
     private bool ReturnFunc(Player _pl)
@@ -609,20 +631,36 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
     /// <param name="_pl">押したプレイヤー</param>
     /// <returns>正常に処理されたか</returns>
     private bool CancelAction(Player _pl)
-    {
-        CancelFunc(_pl);
+	{
+		var state = (_pl == Player.pl1) ? this.pl1States : this.pl2States;
+		if (!state.IsSelected)
+		{
+			if (this.IsPrevToTitleWindow &&
+			   (this.prevToTitleIntervalTime <= this.elapsedTime - this.dispPrevToTitleWindowTime))
+			{
+				SelectUIManager.Instance.TransitionToTitleScene();
+			}
+			else
+			{
+				this.dispPrevToTitleWindowTime = this.elapsedTime;
+				this.prevToTitleImage.enabled = true;
+			}
+			return true;
+		}
+
+		bool result = CancelFunc(_pl);
 
         if (!this.pl1States.IsSelected || !this.pl2States.IsSelected)
         {
             this.nextToStageSelectImage.enabled = false;
         }
-
-        return true;
+		
+        return result;
     }
 
     private bool CancelFunc(Player _pl)
-    {
-        SelecterStates state = null;
+	{
+		SelecterStates state = null;
         Images images = null;
         Sprite sprite = null;
         if (_pl == Player.pl1)
@@ -636,12 +674,6 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
             state = this.pl2States;
             images = this.pl2Images;
             sprite = this.sprites.StandBackNormal2;
-        }
-        
-        if (!state.IsSelected)
-        {
-            // todo: 対戦を終了します [選択を続ける]　[*前の画面に戻る]
-            return true;
         }
 
         state.PlayerCharacter = PlayerCharacterEnum.length_empty;

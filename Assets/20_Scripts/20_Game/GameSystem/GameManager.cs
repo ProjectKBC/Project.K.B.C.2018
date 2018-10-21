@@ -1,13 +1,16 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-namespace Ria
+namespace Game
 {
+	using Game.Stage;
+
     public sealed class GameManager : SingletonMonoBehaviour<GameManager>
     {
         public enum State
         {
             Initialize,
+			Ready,
             Play,
             Pause,
             Finalize,
@@ -19,11 +22,16 @@ namespace Ria
         private StateManager<State> stateManager = new StateManager<State>();
         private State currentState;
         private InitializeAction initAct = new InitializeAction();
+		private ReadyAction readyAct = new ReadyAction();
         private PlayAction playAct = new PlayAction();
         private PauseAction pauseAct = new PauseAction();
         private FinalizeAction finalAct = new FinalizeAction();
 
-        [SerializeField]
+		[SerializeField, Header("CommonData")]
+		private CommonData commonData = null;
+		public CommonData CommonData { get { return this.commonData; } }
+
+		[SerializeField, Header("Managers")]
         private UFAActorManager ufaManagerPL1 = null;
         public UFAActorManager UFAManagerPL1 { get { return this.ufaManagerPL1; } }
 
@@ -31,58 +39,68 @@ namespace Ria
         private UFAActorManager ufaManagerPL2 = null;
         public UFAActorManager UFAManagerPL2 { get { return this.ufaManagerPL2; } }
 
-        // Loading系
+		[SerializeField]
+		private RiaStageManager stageManager = null;
+		public RiaStageManager StageManager { get { return this.stageManager; } }
 
-        // Play系
+		// Loading系
 
-        // Pause系
+		// Play系
 
-        // Result系
+		// Pause系
 
-        public void ChageState(State _state)
+		// Result系
+
+		public void ChageState(State _state)
         {
             this.stateManager.SetState(_state);
         }
 
         protected override void OnInit()
         {
-        }
+		}
 
         private void Start()
         {
             this.stateManager.Add(State.Initialize, this.initAct);
-            this.stateManager.Add(State.Play, this.playAct);
-            this.stateManager.Add(State.Pause, this.pauseAct);
+			this.stateManager.Add(State.Ready, this.readyAct);
+			this.stateManager.Add(State.Play, this.playAct);
+			this.stateManager.Add(State.Pause, this.pauseAct);
             this.stateManager.Add(State.Finalize, this.finalAct);
 
             this.SetState(State.Initialize);
         }
 
         private void Update()
-        {
-            this.stateManager.Update();
+		{
+			this.stateManager.Update();
 
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                int tmpI = ((int)this.currentState + 1) % (int)State.Length;
-                State tmp = (State)Enum.ToObject(typeof(State), tmpI);
-                this.SetState(tmp);
-            }
+			DebugTest();
+		}
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (this.currentState == State.Play)
-                {
-                    this.SetState(State.Pause);
-                }
-                else if (this.currentState == State.Pause)
-                {
-                    this.SetState(State.Play);
-                }
-            }
-        }
+		private void DebugTest()
+		{
+			if (Input.GetKeyDown(KeyCode.Return))
+			{
+				int tmpI = ((int)this.currentState + 1) % (int)State.Length;
+				State tmp = (State)Enum.ToObject(typeof(State), tmpI);
+				this.SetState(tmp);
+			}
 
-        private void SetState(State _state)
+			if (Input.GetKeyDown(KeyCode.Space))
+			{
+				if (this.currentState == State.Play)
+				{
+					this.SetState(State.Pause);
+				}
+				else if (this.currentState == State.Pause)
+				{
+					this.SetState(State.Play);
+				}
+			}
+		}
+
+		private void SetState(State _state)
         {
             this.currentState = _state;
             this.stateManager.SetState(_state);

@@ -2,18 +2,6 @@ using UnityEngine;
 
 public class SelectUIManager : SingletonMonoBehaviour<SelectUIManager>
 {
-    public static void SelectedData (
-        out PlayerCharacterEnum _pc1,
-        out PlayerCharacterEnum _pc2,
-        out StageEnum _stage)
-    {
-        var self = SelectUIManager.Instance;
-
-        _pc1 = self.pc1;
-        _pc2 = self.pc2;
-        _stage = self.stage;
-    }
-
     public enum State
     {
         CharacterSelect,
@@ -27,8 +15,14 @@ public class SelectUIManager : SingletonMonoBehaviour<SelectUIManager>
 
     [SerializeField]
     private GameObject charaCanvas = null;
+
     [SerializeField]
     private GameObject stageCanvas = null;
+
+	[Space(16)]
+
+	[SerializeField]
+	private CommonData commonData = null;
 
     // ステートマシン系
     private StateManager<State> stateManager = new StateManager<State>();
@@ -42,23 +36,51 @@ public class SelectUIManager : SingletonMonoBehaviour<SelectUIManager>
 
     public void TransitionToStageSelect(PlayerCharacterEnum _pc1, PlayerCharacterEnum _pc2)
     {
-        this.pc1 = _pc1;
-        this.pc2 = _pc2;
+		if (_pc1 == PlayerCharacterEnum.length_empty || _pc1 == PlayerCharacterEnum.random)
+		{
+			Debug.Log("PlayerCharacter1 の値が不正です");
+			_pc1 = PlayerCharacterEnum.airos;
+		}
+
+		if (_pc2 == PlayerCharacterEnum.length_empty || _pc2 == PlayerCharacterEnum.random)
+		{
+			Debug.Log("PlayerCharacter2 の値が不正です");
+			_pc2 = PlayerCharacterEnum.airos;
+		}
+
+		this.commonData.playerCharacter1 = _pc1;
+		this.commonData.playerCharacter2 = _pc2;
 
 		this.currentState = State.StageSelect;
 		this.stateManager.SetState(this.currentState);
 	}
 
-    public void TransitionToCharactetSelect()
+	public void TransitionToTitleScene()
 	{
+		this.commonData.playerCharacter1 = PlayerCharacterEnum.length_empty;
+		this.commonData.playerCharacter2 = PlayerCharacterEnum.length_empty;
+		this.commonData.stage = StageEnum.length_empty;
+
+		FadeManager.Instance.LoadScene(2.0f, SceneEnum.Title.ToDescription(), () => {
+			Destroy(this);
+		});
+	}
+
+	public void TransitionToCharactetSelect()
+	{
+		this.commonData.playerCharacter1 = PlayerCharacterEnum.length_empty;
+		this.commonData.playerCharacter2 = PlayerCharacterEnum.length_empty;
+
 		this.currentState = State.CharacterSelect;
 		this.stateManager.SetState(this.currentState);
 	}
 
-    public void TransitionToGameScene(StageEnum _stage)
+	public void TransitionToGameScene(StageEnum _stage)
     {
-        this.stage = _stage;
-        // todo: シーン遷移と値の受け渡し
+		this.commonData.stage = _stage;
+		FadeManager.Instance.LoadScene(2.0f, SceneEnum.Game.ToDescription(), () => {
+			Destroy(this);
+		});
     }
 
     protected override void OnInit()

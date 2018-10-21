@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.Remoting.Messaging;
 
 using UnityEditor;
@@ -27,7 +27,10 @@ public class CharaSelectManagerEditor : Editor
     private SerializedProperty nextToStageSelectImageProp;
     private SerializedProperty nextToStageSelectIntervalTimeProp;
 
-    private bool isOpen_ = true;
+	private SerializedProperty prevToTitleImageProp;
+	private SerializedProperty prevToTitleIntervalTimeProp;
+
+	private bool isOpen_ = true;
     private int currentIndex;
 
     private void OnEnable()
@@ -49,7 +52,10 @@ public class CharaSelectManagerEditor : Editor
 
         this.nextToStageSelectImageProp = serializedObject.FindProperty("nextToStageSelectImage");
         this.nextToStageSelectIntervalTimeProp = serializedObject.FindProperty("nextToStageSelectIntervalTime");
-    }
+
+		this.prevToTitleImageProp = serializedObject.FindProperty("prevToTitleImage");
+		this.prevToTitleIntervalTimeProp = serializedObject.FindProperty("prevToTitleIntervalTime");
+	}
 
     public override void OnInspectorGUI()
     {
@@ -138,9 +144,12 @@ public class CharaSelectManagerEditor : Editor
         EditorGUILayout.PropertyField(this.pl1ImagesProp, true);
         EditorGUILayout.PropertyField(this.pl2ImagesProp, true);
 
-        EditorGUILayout.PropertyField(this.nextToStageSelectImageProp, true);
-        EditorGUILayout.PropertyField(this.nextToStageSelectIntervalTimeProp, true);
+		EditorGUILayout.PropertyField(this.nextToStageSelectImageProp, true);
+		EditorGUILayout.PropertyField(this.nextToStageSelectIntervalTimeProp, true);
 
-        serializedObject.ApplyModifiedProperties();
+		EditorGUILayout.PropertyField(this.prevToTitleImageProp, true);
+		EditorGUILayout.PropertyField(this.prevToTitleIntervalTimeProp, true);
+
+		serializedObject.ApplyModifiedProperties();
     }
 }

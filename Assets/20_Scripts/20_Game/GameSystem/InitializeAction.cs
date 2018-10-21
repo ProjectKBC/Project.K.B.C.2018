@@ -1,32 +1,43 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-namespace Ria
+namespace Game
 {
-    public class InitializeAction : StateAction
-    {
-        private GameManager gm;
+	public class InitializeAction : StateAction
+	{
+		private GameManager gm;
 
-        public InitializeAction()
-        {
-        }
+		public InitializeAction()
+		{
+		}
 
-        public override void Start()
-        {
-            Debug.Log("InitializeAction_Start");
-            this.gm = GameManager.Instance;
+		public override void Start()
+		{
+			Debug.Log("InitializeAction_Start");
+			this.gm = GameManager.Instance;
 
-            this.gm.UFAManagerPL1.Init();
-            this.gm.UFAManagerPL2.Init();
-        }
+			// Todo: ロード画面の生成
 
-        public override void Update()
-        {
-            //Debug.Log("InitializeAction_Update");
-        }
+			// Todo: Stageの生成
 
-        public override void End()
-        {
-            //Debug.Log("InitializeAction_End");
-        }
-    }
+			// Todo: Playerの生成
+
+			// Todo: Enemyの生成
+			this.gm.UFAManagerPL1.Init();
+			this.gm.UFAManagerPL2.Init();
+
+			// Todo: Bulletの生成
+
+			// Todo: ロード画面の解除
+		}
+
+		public override void Update()
+		{
+			//Debug.Log("InitializeAction_Update");
+		}
+
+		public override void End()
+		{
+			//Debug.Log("InitializeAction_End");
+		}
+	}
 }
