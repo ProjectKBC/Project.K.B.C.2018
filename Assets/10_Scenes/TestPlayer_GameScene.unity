@@ -1285,6 +1285,8 @@ MonoBehaviour:
     type: 2}
   circleEnemy: {fileID: 1385024300171112, guid: 62bef1773a1204d1fbcf5538edc02042,
     type: 2}
+  stayEnemy: {fileID: 0}
+  sinEnemy: {fileID: 0}
   beeEnemy: {fileID: 0}
   Enemy1Patterns: 
   Enemy2Patterns: 
@@ -1634,7 +1636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1: 1
-  player2: 0
+  player2: 3
   pl1ButtleKey:
     normalShotKey: 122
     specialShotKey: 120
