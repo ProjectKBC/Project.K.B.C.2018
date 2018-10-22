@@ -24,7 +24,7 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 		Pose,
 	}
 
-	public bool GetKey(KeyType _keyType, PlayerNumber _playerNumber)
+	public bool GetPush(KeyType _keyType, PlayerNumber _playerNumber)
 	{
 		var config = (_playerNumber == PlayerNumber.player1) ?
 			this.player1Congif : this.player2Congif;
@@ -188,7 +188,7 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 
 		return false;
 	}
-	public bool GetPush(KeyType _keyType, PlayerNumber _playerNumber)
+	public bool GetPushUp(KeyType _keyType, PlayerNumber _playerNumber)
 	{
 		var config = (_playerNumber == PlayerNumber.player1) ?
 			this.player1Congif : this.player2Congif;

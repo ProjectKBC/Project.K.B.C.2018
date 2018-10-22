@@ -1,24 +1,10 @@
-using Game.Player;
 using UnityEngine;
+using RiaActorSystem;
 
 namespace Game.Enemy
 {
-	public class EnemyActorManager : RiaActorManager
+	public sealed class EnemyActorManager : RiaActorManager
 	{
-		[SerializeField]
-		private PlayerNumber playerNumber = PlayerNumber.player1;
-
-		[SerializeField]
-		private EnemyActorFactory factory = null;
-
-		[Space(16)]
-
-		[SerializeField]
-		private PlayerActorManager playerActorManager = null;
-
-		[SerializeField]
-		private PlayerActorManager rivalPlayerActorManager = null;
-
 		protected override void OnInitialize()
 		{
 		}

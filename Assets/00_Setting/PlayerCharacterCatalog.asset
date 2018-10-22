@@ -8,11 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4d323f1294d1e34aa325045c4de65b2, type: 3}
-  m_Name: UFA1Script
+  m_Script: {fileID: 11500000, guid: bdc296d7f69af7749954a0141c2a602b, type: 3}
+  m_Name: PlayerCharacterCatalog
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: e9115d56c3d16764588f83e74a5bcd21, type: 3}
-  maxHitPoint: 1
-  moveSpeed: 1
-  hitDamagePoint: 1
-  survivalTime: 5
+  airosScript: {fileID: 11400000, guid: 9b3d52f728b4c864e87813d59143d6d1, type: 2}

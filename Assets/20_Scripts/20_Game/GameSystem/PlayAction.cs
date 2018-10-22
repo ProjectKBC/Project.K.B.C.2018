@@ -32,16 +32,8 @@ namespace Game
 				this.gm.PL2Managers.stageManager.BossLoop();
 			}
 
-			// Playerの更新
-			this.gm.PL1Managers.playerManager.Play();
-			this.gm.PL2Managers.playerManager.Play();
-
-			// Todo: Enemyの更新
-			this.gm.PL1Managers.ufaManager.Play();
-			this.gm.PL2Managers.ufaManager.Play();
-
-			this.gm.PL1Managers.enemyManager.Play();
-			this.gm.PL2Managers.enemyManager.Play();
+			this.gm.PL1Managers.PlayActorManagers();
+			this.gm.PL2Managers.PlayActorManagers();
 
 			// Todo: Bulletの更新
 		}

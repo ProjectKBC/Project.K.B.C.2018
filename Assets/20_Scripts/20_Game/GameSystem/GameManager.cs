@@ -33,15 +33,12 @@ namespace Game
 		public class Managers
 		{
 			public RiaStageManager stageManager;
-			public UFAActorManager ufaManager;
 			public PlayerActorManager playerManager;
 			public EnemyActorManager enemyManager;
 
 			public void PlayActorManagers()
 			{
-				this.ufaManager.Play();
 				this.playerManager.Play();
-				this.enemyManager.Play();
 			}
 		}
 
@@ -56,6 +53,20 @@ namespace Game
 		[SerializeField]
 		private Managers pl2Managers = null;
 		public Managers PL2Managers { get { return this.pl2Managers; } }
+
+		public PlayerActorManager GetPlayerActorManager(PlayerNumber _playerNumber)
+		{
+			return (_playerNumber == PlayerNumber.player1) ?
+				this.pl1Managers.playerManager :
+				this.pl2Managers.playerManager;
+		}
+
+		public EnemyActorManager GetEnemyActorManager(PlayerNumber _playerNumber)
+		{
+			return (_playerNumber == PlayerNumber.player1) ?
+				this.pl1Managers.enemyManager :
+				this.pl2Managers.enemyManager;
+		}
 
 		// Loading系
 

@@ -30,11 +30,8 @@ namespace Game
 			this.gm.PL2Managers.playerManager.Init();
 
 			// Todo: Enemyの生成
-			this.gm.PL1Managers.ufaManager.Init();
-			this.gm.PL2Managers.ufaManager.Init();
-
-			this.gm.PL1Managers.enemyManager.Init();
-			this.gm.PL2Managers.enemyManager.Init();
+			//this.gm.PL1Managers.enemyManager.Init();
+			//this.gm.PL2Managers.enemyManager.Init();
 
 			// Todo: Bulletの生成
 		}
@@ -42,8 +39,6 @@ namespace Game
 		public override void Update()
 		{
 			//Debug.Log("InitializeAction_Update");
-			this.gm.PL1Managers.playerManager.SecondInit();
-			this.gm.PL2Managers.playerManager.SecondInit();
 
 			// Todo: ロード画面の解除
 
