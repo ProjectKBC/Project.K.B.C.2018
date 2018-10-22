@@ -1,4 +1,4 @@
-﻿/* Author : flanny7
+/* Author : flanny7
  * Update : 2018/10/19
 */
 
@@ -8,8 +8,8 @@ public sealed class RiaActor : MonoBehaviour
 {
     public bool IsActive { get; private set; }
 
-    private RiaCharacterStatus status;
-    public RiaCharacterScript Script { get; private set; }
+    public RiaCharacterStatus Status { get; private set; }
+	public RiaCharacterScript Script { get; private set; }
 
     private GameObject go_;
 
@@ -23,10 +23,10 @@ public sealed class RiaActor : MonoBehaviour
     public void WakeUp(RiaCharacterStatus _status, RiaCharacterScript _script,
         Vector3 _position, Quaternion? _rotation = null, Vector3? _scale = null)
     {
-        this.status = _status;
+        this.Status = _status;
         this.Script = _script;
         
-        this.Script.Init(this.status, _position, _rotation, _scale);
+        this.Script.Init(this.Status, _position, _rotation, _scale);
         this.SetActive(true);
     }
 
@@ -34,12 +34,12 @@ public sealed class RiaActor : MonoBehaviour
     {
         if (!IsActive) { return; }
 
-        this.Script.Play(this.status);
+        this.Script.Play(this.Status);
     }
 
     public void Sleep()
     {
-        this.Script.End(this.status);
+        this.Script.End(this.Status);
         this.SetActive(false);
     }
 

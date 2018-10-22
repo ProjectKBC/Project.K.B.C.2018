@@ -27,7 +27,8 @@ namespace Game
 			// todo: Playerのループ(待機アニメーションかな)
 
 			// Stageのループ(だぶん待機状態)
-			this.gm.StageManager.ReadyLoop();
+			this.gm.PL1Managers.stageManager.ReadyLoop();
+			this.gm.PL2Managers.stageManager.ReadyLoop();
 
 			// カウントダウン
 			if (5 < this.elapsedTime)

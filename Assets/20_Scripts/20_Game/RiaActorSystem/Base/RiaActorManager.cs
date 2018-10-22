@@ -1,37 +1,29 @@
-﻿using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
-public abstract class RiaActorManager : MonoBehaviour// : SingletonMonoBehaviour<RiaActorManager>
+public abstract class RiaActorManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] objects = new GameObject[0];
+    private RiaActor[] actors = new RiaActor[0];
 
     public float PlayElapsedTime { get; protected set; }
-    protected GameObject[] Objects { get { return this.objects; } set { this.objects = value; } }
-    protected RiaActor[] Actors { get; set; }
+    protected RiaActor[] Actors { get { return this.actors; } set { this.actors = value; } }
 
     private bool isInit = false;
 
     public void Init()
     {
-        Actors = new RiaActor[objects.Length];
-        for (int i = 0; i < objects.Length; ++i)
+        for (int i = 0; i < actors.Length; ++i)
         {
-            Actors[i] = objects[i].GetComponent<RiaActor>();
-            if (Actors[i] == null)
-            {
-                Debug.LogError(
-                    "<color=#f00>" + objects[i].name + "has not " + typeof(RiaActor) + ".</color>",
-                    objects[i]);
-            }
-
-            Actors[i].Init();
+			actors[i].Init();
         }
+		
+		this.isInit = true;
 
-        this.PlayElapsedTime = 0f;
+		this.PlayElapsedTime = 0f;
 
         this.OnInitialize();
-
-        this.isInit = true;
     }
 
     public void Play()
@@ -63,6 +55,11 @@ public abstract class RiaActorManager : MonoBehaviour// : SingletonMonoBehaviour
         Debug.LogWarning("キャパシティーを超えました", this.gameObject);
         return null;
     }
+
+	public RiaActor[] GetActiveActors()
+	{
+		return this.Actors.Where(x => x.IsActive == true).ToArray<RiaActor>();
+	}
 
     protected abstract void OnInitialize();
     protected abstract void OnUpdate();

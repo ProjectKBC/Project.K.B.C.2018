@@ -4,14 +4,17 @@ namespace Game.Stage
 {
 	public sealed class RiaStageManager : MonoBehaviour
 	{
+		[SerializeField]
+		private PlayerNumber playerNumber = PlayerNumber.player1;
+		[SerializeField]
 		private RiaStageFactory factory = null;
+
 		private StageEnum stage = StageEnum.length_empty;
 		private float mainElapsedTime = 0;
 		private float bossElapsedTime = 0;
 
 		public void Init()
 		{
-			this.factory = new RiaStageFactory();
 			this.stage = GameManager.Instance.CommonData.stage;
 			this.mainElapsedTime = 0;
 			this.bossElapsedTime = 0;

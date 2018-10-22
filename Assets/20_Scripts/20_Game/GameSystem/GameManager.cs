@@ -4,6 +4,8 @@ using UnityEngine;
 namespace Game
 {
 	using Game.Stage;
+	using Game.Player;
+	using Game.Enemy;
 
     public sealed class GameManager : SingletonMonoBehaviour<GameManager>
     {
@@ -27,21 +29,33 @@ namespace Game
         private PauseAction pauseAct = new PauseAction();
         private FinalizeAction finalAct = new FinalizeAction();
 
+		[System.Serializable]
+		public class Managers
+		{
+			public RiaStageManager stageManager;
+			public UFAActorManager ufaManager;
+			public PlayerActorManager playerManager;
+			public EnemyActorManager enemyManager;
+
+			public void PlayActorManagers()
+			{
+				this.ufaManager.Play();
+				this.playerManager.Play();
+				this.enemyManager.Play();
+			}
+		}
+
 		[SerializeField, Header("CommonData")]
 		private CommonData commonData = null;
 		public CommonData CommonData { get { return this.commonData; } }
 
 		[SerializeField, Header("Managers")]
-        private UFAActorManager ufaManagerPL1 = null;
-        public UFAActorManager UFAManagerPL1 { get { return this.ufaManagerPL1; } }
-
-        [SerializeField]
-        private UFAActorManager ufaManagerPL2 = null;
-        public UFAActorManager UFAManagerPL2 { get { return this.ufaManagerPL2; } }
+		private Managers pl1Managers = null;
+		public Managers PL1Managers { get { return this.pl1Managers; } }
 
 		[SerializeField]
-		private RiaStageManager stageManager = null;
-		public RiaStageManager StageManager { get { return this.stageManager; } }
+		private Managers pl2Managers = null;
+		public Managers PL2Managers { get { return this.pl2Managers; } }
 
 		// Loading系
 
