@@ -6,7 +6,7 @@ public class AnomaPlayer : PlayerData {
 	[SerializeField]
 	private GameObject normalBulletPrefab = null;
 	[SerializeField]
-	private int normalShotInterval = 2;
+	private float normalShotInterval = 2.0f;
 	[SerializeField]
 	private GameObject spBulletPrefab = null;
 	[SerializeField]

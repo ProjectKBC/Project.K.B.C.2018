@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4553817350793772}
-  - component: {fileID: 114903300288413108}
+  - component: {fileID: 114563285047447894}
   - component: {fileID: 212609988083324398}
   m_Layer: 0
   m_Name: Kaoru
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114903300288413108
+--- !u!114 &114563285047447894
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,18 +49,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1635173387965292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85da9f209e3b748b4bbbff970d1219b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 49a5c4e690b9e4e25841d1f84e27bd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  normalBulletPrefab: {fileID: 1196284274841118, guid: cbef0a9bf41432a4f8997c50ed2003fc,
+  normalBulletPrefab: {fileID: 1047989897566778, guid: cc572ab2903414e33899ff1f1abe96f0,
     type: 2}
-  normalShotInterval: 3
-  spShotRange: 30
-  searchTime: 0.5
-  searchNumOfTimes: 3
-  spShotCoolTime: 1.5
-  skillTime: 5
+  normalShotInterval: 0.5
 --- !u!212 &212609988083324398
 SpriteRenderer:
   m_ObjectHideFlags: 1
