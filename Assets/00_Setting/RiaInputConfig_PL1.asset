@@ -24,14 +24,16 @@ MonoBehaviour:
     LowSpeed: 304
     Pose: 32
   buttonString:
-    Return: 
-    Cancel: 
-    Up: 
-    Down: 
-    Right: 
-    Left: 
-    NormalShot: 
-    SpecialShot: 
-    Skil: 
-    LowSpeed: 
-    Pose: 
+    Return: "Player1_\u25CB"
+    Cancel: "Player1_\xD7"
+    Up: Player1_Y
+    Down: Player1_Y
+    Right: Player1_X
+    Left: Player1_X
+    NormalShot: "Player1_\u25CB"
+    SpecialShot: "Player1_\xD7"
+    Skil: "Player1_\u25A1"
+    LowSpeeds:
+    - Player1_R2
+    - Player1_L2
+    Pose: "Player1_\u25B3"

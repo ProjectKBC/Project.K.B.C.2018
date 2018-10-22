@@ -31,7 +31,7 @@ public class RiaInputConfig : ScriptableObject
 		public string NormalShot;
 		public string SpecialShot;
 		public string Skil;
-		public string LowSpeed;
+		public string[] LowSpeeds = new string[2];
 		public string Pose;
 	}
 
