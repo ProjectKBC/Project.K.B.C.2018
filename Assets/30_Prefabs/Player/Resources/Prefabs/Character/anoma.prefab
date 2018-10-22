@@ -53,9 +53,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  normalBulletPrefab: {fileID: 1360264066062156, guid: 6c61164bda23f4fcb84667a047b7910b,
+  normalBulletPrefab: {fileID: 1587259063027164, guid: ac2a95ee92dfe4d4d90793a7f2513d44,
     type: 2}
   normalShotInterval: 2
+  spBulletPrefab: {fileID: 1010962156435104, guid: cc7be787ffd7e4ab58c688cd57e39421,
+    type: 2}
+  spShotChargeTime: 4
 --- !u!212 &212109937422649230
 SpriteRenderer:
   m_ObjectHideFlags: 1

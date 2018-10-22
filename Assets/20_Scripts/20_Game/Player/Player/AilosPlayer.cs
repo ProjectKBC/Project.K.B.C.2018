@@ -78,10 +78,7 @@ public class AilosPlayer : PlayerData
 
     private void NormalShot()
     {
-        if (Input.GetKey(NormalShotKey))
-        {
-            CreateBullet();
-        }
+        if (Input.GetKey(NormalShotKey)) { CreateBullet(); }
     }
 
     private void SpecialShot()

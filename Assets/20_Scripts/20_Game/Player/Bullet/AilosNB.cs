@@ -2,7 +2,7 @@
 
 public class AilosNB : MonoBehaviour {
     [SerializeField]
-    private float shotSpeed = 60.0f;
+    private float shotSpeed = 80.0f;
     private Vector3 shotStartPos;
     [SerializeField]
     private float shotRange = 70.0f;
