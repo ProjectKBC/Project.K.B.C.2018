@@ -11,10 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/10_Scenes/CommonScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/10_Scenes/Test_GameSystem.unity
-    guid: b1a5945533b663348b730ea1d3a45b92
   - enabled: 1
-    path: Assets/10_Scenes/TestEnemy_GameScene.unity
-    guid: 9954f75565967a246872a88c32daa45d
+    path: Assets/10_Scenes/Test_TitleScene.unity
+    guid: 13c1322573ac74119a9e381668c5102b
+  - enabled: 1
+    path: Assets/10_Scenes/Test_SelectScene.unity
+    guid: 43096be342577db4ba926035eeae3550
+  - enabled: 1
+    path: Assets/10_Scenes/GameScene.unity
+    guid: b97955d31dd525c408b1b1e9aa149fec
   m_configObjects: {}

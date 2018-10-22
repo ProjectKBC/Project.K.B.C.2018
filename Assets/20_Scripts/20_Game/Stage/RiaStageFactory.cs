@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-[System.Serializable]
-public class RiaStageFactory
+namespace Game.Stage
 {
-    public void CreateStage(StageEnum _stage)
-    {
+	[System.Serializable]
+	public class RiaStageFactory
+	{
+		public void CreateStage(StageEnum _stage)
+		{
 
-    }
+		}
+	}
 }

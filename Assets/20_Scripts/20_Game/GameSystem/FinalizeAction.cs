@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ria
+namespace Game
 {
     public class FinalizeAction : StateAction
     {

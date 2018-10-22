@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
 public enum PlayerCharacterEnum
 {
@@ -26,16 +26,4 @@ public enum PlayerCharacterEnum
     veronica,
     [Description("length")]
     length_empty,
-}
-
-static class PlayerCharacterEnumExtend
-{
-    // 拡張メソッド
-    static string GetString(this PlayerCharacterEnum _enum)
-    {
-        var gm = _enum.GetType().GetMember(_enum.ToString());
-        var attributes = gm[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-        var description = ((DescriptionAttribute)attributes[0]).Description;
-        return description;
-    }
 }

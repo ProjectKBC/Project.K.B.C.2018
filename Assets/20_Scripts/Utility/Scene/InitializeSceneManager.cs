@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class InitializeSceneManager : MonoBehaviour
@@ -6,7 +6,7 @@ public class InitializeSceneManager : MonoBehaviour
     [SerializeField]
     private string commonSceneName = "CommonScene";
     [SerializeField]
-    private string firstSceneName = "TitleScene";
+    private SceneEnum firstLoadScene = SceneEnum.Title;
 
     private bool isFirstUpdate;
 
@@ -20,6 +20,6 @@ public class InitializeSceneManager : MonoBehaviour
     {
         if (isFirstUpdate) { this.isFirstUpdate = false; return; }
 
-        SceneManager.LoadScene(this.firstSceneName);
+        SceneManager.LoadScene(this.firstLoadScene.ToDescription());
     }
 }

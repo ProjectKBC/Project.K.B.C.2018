@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
 public enum StageEnum
 {
@@ -14,16 +14,4 @@ public enum StageEnum
     stage5,
     [Description("length")]
     length_empty,
-}
-
-static class StageEnumExtend
-{
-    // 拡張メソッド
-    static string GetString(this StageEnum _enum)
-    {
-        var gm = _enum.GetType().GetMember(_enum.ToString());
-        var attributes = gm[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-        var description = ((DescriptionAttribute)attributes[0]).Description;
-        return description;
-    }
 }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public sealed class UFAActorManager : RiaActorManager
 {
@@ -6,7 +6,7 @@ public sealed class UFAActorManager : RiaActorManager
     private PlayerNumber playerNumber = PlayerNumber.player1;
 
     [SerializeField]
-    RiaUFAActorFactory factory = null;
+    private UFAActorFactory factory = null;
 
     [SerializeField]
     private float createUFASpan = 1.0f;
@@ -36,7 +36,7 @@ public sealed class UFAActorManager : RiaActorManager
             if (countUFA == 0)
             {
                 this.factory.CreateUFA(
-                    RiaUFAActorFactory.UFACategory.UFA1,
+                    UFAActorFactory.UFACategory.UFA1,
                     this.playerNumber,
                     actor,
                     pos);
@@ -44,7 +44,7 @@ public sealed class UFAActorManager : RiaActorManager
             else
             {
                 this.factory.CreateUFA(
-                    RiaUFAActorFactory.UFACategory.UFA2,
+                    UFAActorFactory.UFACategory.UFA2,
                     this.playerNumber,
                     actor,
                     pos);
