@@ -39,7 +39,7 @@ public class AilosPlayer : PlayerData
     [SerializeField]
     private GameObject normalBulletPrefab = null;
     [SerializeField]
-    private int normalShotInterval = 3;
+    private float normalShotInterval = 3.0f;
     [SerializeField]
     private float spShotRange = 30.0f;
     [SerializeField]
@@ -78,10 +78,7 @@ public class AilosPlayer : PlayerData
 
     private void NormalShot()
     {
-        if (Input.GetKey(NormalShotKey))
-        {
-            CreateBullet();
-        }
+        if (Input.GetKey(NormalShotKey)) { CreateBullet(); }
     }
 
     private void SpecialShot()
