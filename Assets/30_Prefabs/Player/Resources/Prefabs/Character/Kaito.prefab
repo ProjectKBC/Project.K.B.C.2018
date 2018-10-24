@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4240480821169286}
-  - component: {fileID: 114562323439825098}
+  - component: {fileID: 114269508156410492}
   - component: {fileID: 212493766085863444}
   m_Layer: 0
   m_Name: Kaito
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114562323439825098
+--- !u!114 &114269508156410492
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1987118039184316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85da9f209e3b748b4bbbff970d1219b7, type: 3}
+  m_Script: {fileID: 11500000, guid: c1fb0af2dd19848a0a266ddfab5c35ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30

@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4626794559469478}
-  - component: {fileID: 114114275102262574}
+  - component: {fileID: 114135156576548940}
   m_Layer: 0
-  m_Name: AilosNB
+  m_Name: AirosNB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114114275102262574
+--- !u!114 &114135156576548940
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,10 +146,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1196284274841118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a91ddbd96804d8486a41f9486fb7e5, type: 3}
+  m_Script: {fileID: 11500000, guid: f6bf1eec3eb314e61b9a876b1958ab99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSpeed: 60
+  shotSpeed: 80
   shotRange: 70
 --- !u!212 &212115405207342370
 SpriteRenderer:

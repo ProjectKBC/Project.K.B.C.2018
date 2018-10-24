@@ -18,7 +18,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     // プレイヤーが選べるキャラクター
     public enum PlayerEnum
     {
-        Ailos,
+        Airos,
         Anoma,
         Emilia,
         Held,
