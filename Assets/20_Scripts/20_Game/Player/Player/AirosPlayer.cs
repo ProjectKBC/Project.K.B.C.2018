@@ -32,7 +32,7 @@ using UnityEngine;
 // ・特殊ショットを撃つ関数の呼び出し
 // ・スキルを発動する関数の呼び出し
 
-public class AilosPlayer : PlayerData
+public class AirosPlayer : PlayerData
 {
     private static readonly float AlphaMaxValue = 0.75f;
 

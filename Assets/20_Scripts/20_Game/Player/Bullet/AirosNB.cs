@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class AilosNB : MonoBehaviour {
+public class AirosNB : MonoBehaviour {
     [SerializeField]
     private float shotSpeed = 80.0f;
     private Vector3 shotStartPos;
