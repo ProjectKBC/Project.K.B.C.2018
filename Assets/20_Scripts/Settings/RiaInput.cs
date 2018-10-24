@@ -1,8 +1,9 @@
 using UnityEngine;
 
+// todo: Up, Down, Right, Leftがおかしい
 public class RiaInput : SingletonMonoBehaviour<RiaInput>
 {
-	private const float AxisMargin = 0.5f;
+	private const float AxisMargin = 0.9f;
 	[SerializeField]
 	private RiaInputConfig player1Congif = null;
 	[SerializeField]
@@ -21,9 +22,9 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 		SpecialShot,
 		Skil,
 		LowSpeed,
-		Pose,
+		Pause,
 	}
-
+	
 	public bool GetPush(KeyType _keyType, PlayerNumber _playerNumber)
 	{
 		var config = (_playerNumber == PlayerNumber.player1) ?
@@ -71,7 +72,7 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 				return
 					(Input.GetKey(config.keyCode.LowSpeed));
 
-			case KeyType.Pose:
+			case KeyType.Pause:
 				return
 					(Input.GetKey(config.keyCode.Pose));
 		}
@@ -126,7 +127,7 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 				return
 					(Input.GetKeyDown(config.keyCode.LowSpeed));
 
-			case KeyType.Pose:
+			case KeyType.Pause:
 				return
 					(Input.GetKeyDown(config.keyCode.Pose));
 		}
@@ -181,7 +182,7 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 				return
 					(Input.GetKeyUp(config.keyCode.LowSpeed));
 
-			case KeyType.Pose:
+			case KeyType.Pause:
 				return
 					(Input.GetKeyUp(config.keyCode.Pose));
 		}
@@ -250,7 +251,7 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 					 Input.GetButton(config.buttonString.LowSpeeds[0]) ||
 					 Input.GetButton(config.buttonString.LowSpeeds[1]));
 
-			case KeyType.Pose:
+			case KeyType.Pause:
 				return
 					(Input.GetKey(config.keyCode.Pose) ||
 					 Input.GetButton(config.buttonString.Pose));
@@ -317,7 +318,7 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 					 Input.GetButtonDown(config.buttonString.LowSpeeds[0]) ||
 					 Input.GetButtonDown(config.buttonString.LowSpeeds[1]));
 
-			case KeyType.Pose:
+			case KeyType.Pause:
 				return
 					(Input.GetKeyDown(config.keyCode.Pose) ||
 					 Input.GetButtonDown(config.buttonString.Pose));
@@ -384,7 +385,7 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 					 Input.GetButtonUp(config.buttonString.LowSpeeds[0]) ||
 					 Input.GetButtonUp(config.buttonString.LowSpeeds[1]));
 
-			case KeyType.Pose:
+			case KeyType.Pause:
 				return
 					(Input.GetKeyUp(config.keyCode.Pose) ||
 					 Input.GetButtonUp(config.buttonString.Pose));

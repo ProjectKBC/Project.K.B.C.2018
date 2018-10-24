@@ -32,6 +32,13 @@ namespace Game
 				this.gm.PL2Managers.stageManager.BossLoop();
 			}
 
+			// Pauseへの移動
+			if (RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Pause, PlayerNumber.player1) ||
+			    RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Pause, PlayerNumber.player2))
+			{
+				this.gm.ChageState(GameManager.State.Pause);
+			}
+
 			this.gm.PL1Managers.PlayActorManagers();
 			this.gm.PL2Managers.PlayActorManagers();
 

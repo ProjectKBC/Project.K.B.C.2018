@@ -11,6 +11,7 @@ namespace Game.Player
 
 		public AirosPlayer(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
+			Debug.Log("airos");
 			this.Script = _script as AirosPlayerScript;
 
 			nsParam = new NormalShotParam();
@@ -22,7 +23,6 @@ namespace Game.Player
 		public class NormalShotParam
 		{
 			public float shotTime = 0;
-			public int shotCount = 0;
 		}
 
 		// 特殊ショット
@@ -64,8 +64,11 @@ namespace Game.Player
 
 		protected override void OnPlay()
 		{
-			Move();
+			this.Move();
 
+			this.NormalShot();
+			this.SpecialShot();
+			this.Skill();
 		}
 
 		protected override void OnEnd()
@@ -81,20 +84,18 @@ namespace Game.Player
 			var param = this.nsParam;
 			var script = this.Script.nsParam;
 
-			// 時間更新
-			param.shotTime += Time.deltaTime;
-
 			// キー入力
 			if (RiaInput.Instance.GetPush(RiaInput.KeyType.NormalShot, this.PlayerNumber))
 			{
+				Debug.Log(this.PlayerNumber + " : normalShot");
+
 				// ショットの時間間隔
 				var shotElapsedTime = this.playElapsedTime - param.shotTime;
-				if (script.shotInterval < shotElapsedTime)
+				if (script.shotInterval <= shotElapsedTime)
 				{
-					CreateBullet();
+					param.shotTime = this.playElapsedTime;
 
-					param.shotTime = 0;
-					++param.shotCount;
+					CreateBullet();
 				}
 			}
 		}
@@ -107,10 +108,7 @@ namespace Game.Player
 		{
 			var param = this.ssParam;
 			var script = this.Script.ssParam;
-
-			// ショットの時間更新
-			param.shotTime += Time.deltaTime;
-
+			
 			// ショットの時間間隔
 			var shotElapsedTime = this.playElapsedTime - param.shotTime;
 			if (shotElapsedTime < script.shotCoolTime) { return; }
@@ -118,7 +116,8 @@ namespace Game.Player
 			// サーチ開始
 			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
-				param.searchTime = 0;
+				Debug.Log("サーチ開始");
+				param.searchTime = this.playElapsedTime;
 				param.searchEnemyCount = 0;
 				param.targetEnemys = new RiaCharacter[script.searchNumOfTimes];
 			}
@@ -130,11 +129,13 @@ namespace Game.Player
 				if (script.searchNumOfTimes <= param.searchEnemyCount) { return; }
 
 				// サーチ時間の更新
-				param.searchTime += Time.deltaTime;
+				var searchElapsedTime = this.playElapsedTime - param.searchTime;
 
 				// サーチの時間間隔
-				if (script.searchTime <= param.searchTime)
+				if (script.searchTime <= searchElapsedTime)
 				{
+					param.searchTime = this.playElapsedTime;
+
 					++param.searchEnemyCount;
 					param.targetEnemys[param.searchEnemyCount - 1] = NearSearchEnemy(script.shotRange);
 					param.searchTime = 0;
@@ -144,12 +145,14 @@ namespace Game.Player
 			// ショット！
 			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
+				Debug.Log(this.PlayerNumber + " : specialShot");
+
 				for (int i = 0; i < param.searchEnemyCount; ++i)
 				{
 					// todo: enemyにする
 					// todo: ダメージ処理
 
-					param.shotTime = 0;
+					param.shotTime = this.playElapsedTime;
 				}
 			}
 		}
@@ -165,6 +168,7 @@ namespace Game.Player
 
 			if (RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Skil, this.PlayerNumber) && !param.isUsing)
 			{
+				Debug.Log(this.PlayerNumber + " : skil");
 				param.isUsing = true;
 				//_status.rivalPlayerStatus.SetMoveSpeedRate(1.0f);
 			}
@@ -198,8 +202,13 @@ namespace Game.Player
 
 		private void CreateBullet()
 		{
-			GameObject normalBullets = GameObject.Instantiate(Script.nsParam.bulletPrefab);
-			normalBullets.transform.position = this.Trans.position;
+			var normalBullet = GameObject.Instantiate(Script.nsParam.bulletPrefab);
+
+
+			var pos = this.Trans.position;
+			//pos.z = 100;
+			normalBullet.transform.position = pos;
+			Debug.Log(normalBullet.transform.position);
 		}
 
 		private RiaCharacter NearSearchEnemy(float _searchRadius)

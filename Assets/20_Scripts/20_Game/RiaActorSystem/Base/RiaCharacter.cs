@@ -28,6 +28,8 @@ namespace RiaActorSystem
 			this.Actor = this.Go.GetComponent<RiaActor>();
 			this.Script = _script;
 
+			this.PlayerNumber = _playerNumber;
+
 			this.playElapsedTime = 0;
 		}
 
