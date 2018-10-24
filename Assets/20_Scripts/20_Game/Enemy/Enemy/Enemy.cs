@@ -175,7 +175,7 @@ public abstract class Enemy : MonoBehaviour
     public void BulletAppear(GameObject _bullet)
     {
         //GameObject bullet = this.SearchAvailableBullet();
-        _bullet.transform.position = this.Trans.position;
+        //_bullet.transform.position = this.Trans.position;
         _bullet.gameObject.SetActive(true);
     }
 

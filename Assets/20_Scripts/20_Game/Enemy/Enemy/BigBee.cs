@@ -8,7 +8,10 @@ public class BigBee : Enemy
     public enum Barrage
     {
         Fan,
-        Funnel
+	    DoubleFan,
+        Funnel,
+	    Beam,
+	    Divide
     }
 
     protected Vector3[] FanPosition;
@@ -18,13 +21,23 @@ public class BigBee : Enemy
 
     [SerializeField]
     private GameObject childBee;
+	[SerializeField]
+	private GameObject rightBee;
+	[SerializeField]
+	private GameObject leftBee;
+	[SerializeField]
+	private GameObject beamPrefab;
     [SerializeField]
     private int normalBulletPool;
+	
 
-    [SerializeField] private Barrage[] barrage;
+    [SerializeField]
+    private Barrage[] barrage;
 
     private List<GameObject> childBees;
+	private List<GameObject> beams;
     private int childBeePool = 5;
+	private int beamPool = 3;
 
     private int barrageCount = 0;
 
@@ -36,7 +49,14 @@ public class BigBee : Enemy
     protected override void Start()
     {
         this.CreateNormalBullet(this.NomalBullet, out this.NormalBullets, this.normalBulletPool);
-        this.CreateNormalBullet(this.childBee, out this.childBees, this.childBeePool);
+        //this.CreateNormalBullet(this.childBee, out this.childBees, this.childBeePool);
+	    this.CreateNormalBullet(this.beamPrefab, out this.beams, this.beamPool);
+	    this.rightBee = Instantiate(this.rightBee);
+	    this.rightBee.SetActive(false);
+	    this.rightBee.transform.position = SpownPos;
+	    this.leftBee = Instantiate(this.leftBee);
+	    this.leftBee.SetActive(false);
+	    this.leftBee.transform.position = SpownPos;
     }
 
     protected override void Update()
@@ -53,20 +73,7 @@ public class BigBee : Enemy
             {
                 if (this.barrageCount < this.barrage.Length)
                 {
-                    switch (this.barrage[this.barrageCount].ToString())
-                    {
-                        case "Fan":
-                            this.fanNum = UnityEngine.Random.Range(5, 13);
-                            this.Fan(fanNum);
-                            break;
-                        
-                        case "Funnel":
-                            this.Funnel();
-                            break;
-                    }
-
-                    this.Pass += this.PassInterval;
-                    barrageCount++;
+                    this.QueenAttack();
                 }
             }
         }
@@ -85,31 +92,105 @@ public class BigBee : Enemy
 
     }
 
-    protected void AppearChildBee()
-    {
-        
-    }
+	protected void QueenAttack()
+	{
+		switch (this.barrage[this.barrageCount].ToString())
+		{
+			case "Fan":
+				this.Fan(11);
+				break;
+			
+			case "DoubleFan":
+				this.fanNum = UnityEngine.Random.Range(8, 10);
+				this.RightFan(this.fanNum);
+				this.LeftFan(this.fanNum);
+				break;
+
+			case "Funnel":
+				this.Funnel(this.rightBee);
+				this.Funnel(this.leftBee);
+				break;
+			
+			case "Beam":
+				this.Beam();
+				break;
+			
+			case "Divide":
+				this.Beam();
+				this.Fan(10);
+				break;
+		}           
+
+		this.Pass += this.PassInterval;
+		barrageCount++;
+	}
 
     protected void Fan(int _fanNum)
     {
-        int appearSpace = (this.maxRad - this.minRad) / (_fanNum + 1);
-        for (float i = 1.0f; i <= _fanNum; i += 1.0f)
+        int appearSpace = (this.maxRad - this.minRad) / _fanNum;
+        for (float i = 0.0f; i <= _fanNum; i += 1.0f)
         {
             GameObject bullet = this.SearchAvailableBullet(NormalBullets);
+	        bullet.transform.position = this.Trans.position;
             bullet.transform.rotation = new Quaternion(0.7f, 0.0f, 0.0f, 0.7f);
-            bullet.transform.Rotate(new Vector3(0, 1, 0), this.minRad + i * appearSpace);
+	        bullet.transform.Rotate(new Vector3(0, 1, 0), this.minRad + i * appearSpace);
             this.BulletAppear(bullet);
         }
 
     }
 
-    protected void Funnel()
+	protected void RightFan(int _fanNum)
+	{
+		Vector3 pos = this.Trans.position;
+		pos.x += 10.5f;
+		Debug.Log(pos);
+		int appearSpace = (this.maxRad - this.minRad) / _fanNum;
+		/*
+		for (float i = 0.0f; i <= _fanNum; i += 1.0f)
+		{
+			GameObject bullet = this.SearchAvailableBullet(NormalBullets);
+			bullet.transform.position = pos;
+			bullet.transform.rotation = new Quaternion(0.7f, 0.0f, 0.0f, 0.7f);
+			bullet.transform.Rotate(new Vector3(0, 1, 0), this.minRad + i * appearSpace);
+			this.BulletAppear(bullet);
+		}
+		*/
+
+	}
+	
+	protected void LeftFan(int _fanNum)
+	{
+		Vector3 pos = this.Trans.position;
+		pos.x -= 10.5f;
+		Debug.Log(pos);
+		int appearSpace = (this.maxRad - this.minRad) / _fanNum;
+		/*
+		for (float i = 0.0f; i <= _fanNum; i += 1.0f)
+		{
+			GameObject bullet = this.SearchAvailableBullet(NormalBullets);
+			bullet.transform.position = pos;
+			bullet.transform.rotation = new Quaternion(0.7f, 0.0f, 0.0f, 0.7f);
+			bullet.transform.Rotate(new Vector3(0, 1, 0), this.minRad + i * appearSpace);
+			this.BulletAppear(bullet);
+		}
+		*/
+
+	}
+
+	protected void Beam()
+	{
+		Vector3 pos;
+		GameObject beam = this.SearchAvailableBullet(this.beams);
+		beam.transform.position = this.Trans.position;
+		this.BulletAppear(beam);
+	}
+
+    protected void Funnel(GameObject _funnel)
     {
-        for (int i = 0; i < this.childBees.Count; i ++)
-        {
-            GameObject funnel = this.SearchAvailableBullet(this.childBees);
-            funnel.transform.position = this.Trans.position;
-            this.BulletAppear(funnel);
-        }
+        _funnel.transform.position = this.Trans.position;
+        this.BulletAppear(_funnel);
     }
+	
+	//protected void 
+	
 }

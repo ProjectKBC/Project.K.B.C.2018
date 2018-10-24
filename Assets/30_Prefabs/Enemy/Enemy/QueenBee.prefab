@@ -96,12 +96,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBurstAttack: 0
-  fixHitPoint: 0
-  moveSpeedRate: 0
-  nomalBulletSpeed: 0
-  nomalBullet: {fileID: 0}
+  fixHitPoint: 5
+  moveSpeedRate: 5
+  nomalBulletSpeed: 5
+  nomalBullet: {fileID: 1569959322399528, guid: 1534cc8606c614a4fbf49469f74aa65c,
+    type: 2}
   passInterval: 1.5
   BurstBulletNumber: 3
-  childBee: {fileID: 0}
-  normalBulletPool: 0
-  barrage: 
+  childBee: {fileID: 1322727195575722, guid: 498f82f6b11c24d28858135347ba6560, type: 2}
+  beamPrefab: {fileID: 1252430766500588, guid: 6f0bd05e4c12a40479f27159077ab840, type: 2}
+  normalBulletPool: 40
+  barrage: 00000000

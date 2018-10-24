@@ -67,6 +67,6 @@ MonoBehaviour:
     type: 2}
   stayEnemy: {fileID: 1269887116242392, guid: 6bdae7b70d03f427eb7dd586fe273778, type: 2}
   sinEnemy: {fileID: 1798963835953624, guid: ddad949e046154e9f8c4300fe2fef1bf, type: 2}
-  beeEnemy: {fileID: 1219794632921424, guid: cf63c1a60f36041e187e6831096054ff, type: 2}
+  beeEnemy: {fileID: 1790198519970540, guid: 62d4139e03dd14d13b5893aad95b4dce, type: 2}
   Enemy1Patterns: 
   Enemy2Patterns: 

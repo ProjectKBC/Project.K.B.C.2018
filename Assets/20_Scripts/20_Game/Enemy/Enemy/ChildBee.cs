@@ -31,6 +31,15 @@ public class ChildBee : Enemy {
 	private int movePosDataCount = 0;
 	
 	protected Vector3 VectorMyselfPosition;
+	protected Vector3 PlayerPosition;
+	protected Vector3 MyselfPosition;
+	protected Quaternion MyselfRotate;
+	protected Vector3 RotateDistance;
+
+	private int minRad = -60;
+	private int maxRad = 60;
+
+	private float t = 0;
 
 
 	
@@ -55,10 +64,35 @@ public class ChildBee : Enemy {
 		//Debug.Log(this.movePosDataCount < this.movePosData.Length);
 		
 		// 移動しきってなかったら
+		
 		if (this.movePosDataCount < this.movePosDatas.Length)
 		{
 			SecondMovePosition(this.movePosDatas[this.movePosDataCount]);
 		}
+		else
+		{
+			if (this.PlayerPosition.Equals(null))
+			{
+				if (this.tag.Equals("Enemy1"))
+				{
+					this.PlayerPosition = PlayerManager.GameObjectPl1.transform.position;
+					Debug.Log(this.PlayerPosition);
+				}
+				else if (this.tag.Equals("Enemy2"))
+				{
+					this.PlayerPosition = PlayerManager.GameObjectPl2.transform.position;
+				}
+
+				this.MyselfPosition = this.Trans.position;
+				this.MyselfRotate = this.Trans.rotation;
+
+			}
+			
+			transform.rotation = Quaternion.Slerp (this.Trans.rotation, Quaternion.LookRotation (PlayerManager.GameObjectPl1.transform.position - this.MyselfPosition), 0.3f);
+
+			//LookPlayer();
+		}
+
 	}
 
 	private void SecondMovePosition(GoPosData _movePosDatas)
@@ -114,5 +148,24 @@ public class ChildBee : Enemy {
 				_movePosDatas.PosY - this.Trans.position.y, this.Trans.position.z).normalized;
 			_movePosDatas.MoveFlag = true;
 		}
+	}
+
+	private void LookPlayer()
+	{
+		Debug.Log(this.RotateDistance.y);
+		this.Trans.Rotate(new Vector3(0, 1, 0), this.RotateDistance.y);
+	}
+	
+	private void Fan(int _fanNum)
+	{
+		int appearSpace = (this.maxRad - this.minRad) / (_fanNum + 1);
+		for (float i = 1.0f; i <= _fanNum; i += 1.0f)
+		{
+			GameObject bullet = this.SearchAvailableBullet(NormalBullets);
+			bullet.transform.rotation = new Quaternion(0.7f, 0.0f, 0.0f, 0.7f);
+			bullet.transform.Rotate(new Vector3(0, 1, 0), this.minRad + i * appearSpace);
+			this.BulletAppear(bullet);
+		}
+
 	}
 }

@@ -118,9 +118,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBurstAttack: 0
-  fixHitPoint: 0
-  moveSpeedRate: 0
-  nomalBulletSpeed: 0
-  nomalBullet: {fileID: 0}
+  fixHitPoint: 1
+  moveSpeedRate: 5
+  nomalBulletSpeed: 5
+  nomalBullet: {fileID: 1721000224869594, guid: 1f2f751af4cee4fed94bf5b5787316dc,
+    type: 2}
   passInterval: 1.5
   BurstBulletNumber: 3
