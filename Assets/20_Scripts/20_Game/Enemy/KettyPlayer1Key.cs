@@ -21,6 +21,7 @@ public class KettyPlayer1Key : MonoBehaviour {
 			}
 		}
 		*/
+		
 
 	}
 
@@ -101,6 +102,21 @@ public class KettyPlayer1Key : MonoBehaviour {
 		if (Input.GetButtonDown("Player1_L2"))
 		{
 			Debug.Log("Player1_L2が押された");
+		}
+		
+		if (Input.GetButtonDown("Player1_Select"))
+		{
+			Debug.Log("Player1_Selectが押された");
+		}
+		
+		if (Input.GetButtonDown("Player1_Start"))
+		{
+			Debug.Log("Player1_Startが押された");
+		}
+		
+		if (Input.GetButtonDown("Player1_PS"))
+		{
+			Debug.Log("Player1_PSが押された");
 		}
 	}
 }
