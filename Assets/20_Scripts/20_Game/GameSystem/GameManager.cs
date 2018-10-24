@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Game
 {
 	using Game.Stage;
+	using Game.UI;
 	using Game.Player;
 	using Game.Enemy;
 
@@ -45,6 +46,10 @@ namespace Game
 		[SerializeField, Header("CommonData")]
 		private CommonData commonData = null;
 		public CommonData CommonData { get { return this.commonData; } }
+
+		[SerializeField, Header("UIController")]
+		private GameUIController uIController = null;
+		public GameUIController UIController { get { return this.uIController; } }
 
 		[SerializeField, Header("Managers")]
 		private Managers pl1Managers = null;
@@ -105,23 +110,11 @@ namespace Game
 
 		private void DebugTest()
 		{
-			if (Input.GetKeyDown(KeyCode.Return))
+			if (Input.GetKeyDown(KeyCode.Alpha1))
 			{
 				int tmpI = ((int)this.currentState + 1) % (int)State.Length;
 				State tmp = (State)Enum.ToObject(typeof(State), tmpI);
 				this.SetState(tmp);
-			}
-
-			if (Input.GetKeyDown(KeyCode.Space))
-			{
-				if (this.currentState == State.Play)
-				{
-					this.SetState(State.Pause);
-				}
-				else if (this.currentState == State.Pause)
-				{
-					this.SetState(State.Play);
-				}
 			}
 		}
 

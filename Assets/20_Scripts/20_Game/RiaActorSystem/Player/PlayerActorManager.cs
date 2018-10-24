@@ -16,6 +16,7 @@ namespace Game.Player
 
 		protected override void OnInitialize()
 		{
+			Debug.Log("create player : " + this.playerNumber);
 			this.factory.Create(this.playerNumber, this.GetFreeActor(), this.spownPosition);
 		}
 
