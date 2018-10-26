@@ -17,7 +17,7 @@ MonoBehaviour:
   nsParam:
     bulletPrefab: {fileID: 1587259063027164, guid: ac2a95ee92dfe4d4d90793a7f2513d44,
       type: 2}
-    shotInterval: 2
+    shotInterval: 0.1
   ssParam:
     bulletPrefab: {fileID: 1010962156435104, guid: cc7be787ffd7e4ab58c688cd57e39421,
       type: 2}

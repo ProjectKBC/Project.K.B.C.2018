@@ -99,13 +99,13 @@ namespace Game.Player
 			var script = this.Script.ssParam;
 
 			// キー入力
-			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
 				param.chargeTimeCount += Time.deltaTime;
 			}
 
 			// キー入力
-			if (RiaInput.Instance.GetPushUp(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetKeyUp(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
 				if (script.shotChargeTime <= param.chargeTimeCount)
 				{
@@ -113,7 +113,7 @@ namespace Game.Player
 
 					CreateSpecialBullet();
 				}
-				param.chargeTimeCount = this.playElapsedTime;
+				param.chargeTimeCount = 0;
 			}
 		}
 

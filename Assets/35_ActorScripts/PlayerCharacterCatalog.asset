@@ -8,7 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e4f564ebe8e8894296337fd5bdc5956, type: 3}
+  m_Script: {fileID: 0}
   m_Name: PlayerCharacterCatalog
   m_EditorClassIdentifier: 
-  airosScript: {fileID: 11400000, guid: 93a15c88c089855409d5110c61ce2ed6, type: 2}

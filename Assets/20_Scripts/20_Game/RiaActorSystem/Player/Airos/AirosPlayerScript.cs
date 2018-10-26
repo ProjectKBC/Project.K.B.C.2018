@@ -13,7 +13,7 @@ namespace Game.Player
 		public class NormalShotParam
 		{
 			public GameObject bulletPrefab = null;
-			public float shotInterval = 3;
+			public float shotInterval = 0.15f;
 		}
 
 		[System.Serializable]
