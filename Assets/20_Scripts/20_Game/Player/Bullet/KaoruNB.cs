@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KaoruNB : MonoBehaviour {
 	[SerializeField]
-	private float shotSpeed = 100.0f;
+	private float shotSpeed = 4.0f;
 	private Vector3 shotStartPos;
 	private float screenTopPoint = 65.0f;
 
@@ -15,7 +15,7 @@ public class KaoruNB : MonoBehaviour {
 
 	private void Update()
 	{
-		this.transform.position += Vector3.up * shotSpeed * Time.deltaTime;
+		this.transform.position += Vector3.up * shotSpeed * Time.deltaTime * 60;
 
 		if (screenTopPoint < this.transform.position.y) { Destroy(gameObject); }
 	}

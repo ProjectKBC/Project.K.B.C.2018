@@ -2,7 +2,7 @@
 
 public class AirosNB : MonoBehaviour {
     [SerializeField]
-    private float shotSpeed = 80.0f;
+    private float shotSpeed = 3.5f;
     private Vector3 shotStartPos;
     [SerializeField]
     private float shotRange = 70.0f;
@@ -14,7 +14,7 @@ public class AirosNB : MonoBehaviour {
 
     private void Update()
     {
-        this.transform.position += Vector3.up * shotSpeed * Time.deltaTime;
+        this.transform.position += Vector3.up * shotSpeed * Time.deltaTime * 60;
 
         if (shotRange < Mathf.Abs(shotStartPos.y - this.transform.position.y))
         {
