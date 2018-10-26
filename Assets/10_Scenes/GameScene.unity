@@ -1240,8 +1240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344bf7edd9d7f454b99470a89eab8465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poseWindow:
-    pushIntervalTime: 0.033333335
+  pauseWindow:
+    pushIntervalTime: 1.5
     parentMainWindowObject: {fileID: 1385228503}
     continueButton:
       image: {fileID: 692436591}
