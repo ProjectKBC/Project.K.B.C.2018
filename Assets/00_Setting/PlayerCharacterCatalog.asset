@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc296d7f69af7749954a0141c2a602b, type: 3}
   m_Name: PlayerCharacterCatalog
   m_EditorClassIdentifier: 
-  airosScript: {fileID: 11400000, guid: 9b3d52f728b4c864e87813d59143d6d1, type: 2}
-  anomaScript: {fileID: 11400000, guid: df6b3278bc46d41d6952f5218b0062bc, type: 2}
+  airosScript: {fileID: 11400000, guid: 6907fc28d1f884b088fe1d9bbf499e3b, type: 2}
+  anomaScript: {fileID: 11400000, guid: a679e6e5c058749c49e929931e7fee54, type: 2}

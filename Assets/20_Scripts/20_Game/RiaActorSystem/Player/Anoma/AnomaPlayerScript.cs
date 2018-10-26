@@ -3,7 +3,7 @@ using RiaActorSystem;
 
 namespace Game.Player
 {
-	[CreateAssetMenu(menuName = "RiaActorSystem/Player/AnomaPlayerScriot", fileName = "AnomaPlayerScriot")]
+	[CreateAssetMenu(menuName = "RiaActorSystem/Player/AnomaPlayerScript", fileName = "AnomaPlayerScript")]
 	public sealed class AnomaPlayerScript : RiaPlayerScript
 	{
 		public readonly PlayerCharacterEnum playerCharacter = PlayerCharacterEnum.anoma;

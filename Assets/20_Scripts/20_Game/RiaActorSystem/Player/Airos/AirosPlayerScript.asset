@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 650febcc31032c84c8dde78446f60bff, type: 3}
-  m_Name: AirosPlayerScriot
+  m_Name: AirosPlayerScript
   m_EditorClassIdentifier: 
   maxHitPoint: 1
   moveSpeed: 2

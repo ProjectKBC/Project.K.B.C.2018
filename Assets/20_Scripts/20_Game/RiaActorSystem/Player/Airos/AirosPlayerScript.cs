@@ -3,7 +3,7 @@ using RiaActorSystem;
 
 namespace Game.Player
 {
-	[CreateAssetMenu(menuName = "RiaActorSystem/Player/AirosPlayerScriot", fileName = "AirosPlayerScriot")]
+	[CreateAssetMenu(menuName = "RiaActorSystem/Player/AirosPlayerScript", fileName = "AirosPlayerScript")]
 	public sealed class AirosPlayerScript : RiaPlayerScript
 	{
 		public readonly PlayerCharacterEnum playerCharacter = PlayerCharacterEnum.airos;
