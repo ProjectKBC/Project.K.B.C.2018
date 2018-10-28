@@ -42,7 +42,7 @@ public sealed class QuadraticEnemy : Enemy
     
     protected override void Start()
     {
-        CreateBullet(this.NormalBullet);
+	    this.CreateBullet(this.NormalBullet);
     }
     
     protected override void Update()

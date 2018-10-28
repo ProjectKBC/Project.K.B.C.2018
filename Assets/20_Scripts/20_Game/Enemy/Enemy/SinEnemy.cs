@@ -16,9 +16,9 @@ public class SinEnemy : Enemy {
 
 	protected override void Update () {
 		base.Update();
-		if (this.Trans.position.y > ordinaryForwardBorder)
+		if (this.Trans.position.y > this.ordinaryYForwardBorder)
 		{
-			this.ForwardEnemy(ordinaryForwardBorder);
+			this.YForwardEnemy(this.ordinaryYForwardBorder);
 		}
 		else
 		{

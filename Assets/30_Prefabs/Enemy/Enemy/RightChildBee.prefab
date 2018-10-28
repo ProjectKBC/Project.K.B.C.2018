@@ -101,7 +101,7 @@ MonoBehaviour:
   nomalBulletSpeed: 5
   nomalBullet: {fileID: 1417648256310878, guid: 038c93bcf6edc48ca9a038a5d1faf423,
     type: 2}
-  passInterval: 1.5
+  passInterval: 0.5
   BurstBulletNumber: 3
   movePosDatas:
   - Second: 0.3

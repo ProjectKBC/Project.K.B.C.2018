@@ -17,7 +17,7 @@ public class StayEnemy : Enemy
 	
 	protected override void Start()
 	{
-		CreateBullet(this.NormalBullet);
+		this.CreateBullet(this.NormalBullet);
 	}
 	
 	protected override void Update()
@@ -29,9 +29,9 @@ public class StayEnemy : Enemy
 		}
 		else
 		{
-			if (this.Trans.position.y > ordinaryForwardBorder)
+			if (this.Trans.position.y > ordinaryYForwardBorder)
 			{
-				ForwardEnemy(ordinaryForwardBorder);
+				this.YForwardEnemy(ordinaryYForwardBorder);
 			}
 			if (ElapsedTime >= this.Pass)
 			{

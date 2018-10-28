@@ -8,6 +8,8 @@ public abstract class Enemy : MonoBehaviour
     // gameobject と transform はキャッシュをとる by flanny
     protected static readonly Vector3 SpownPos = new Vector3(0, 0, 200);
     protected static readonly float Bottom = -80.0f;
+	protected static readonly float Right = 120.0f;
+	protected static readonly float Left = -120.0f;
     protected static readonly float Top = 120.0f;
 
     public int HitPoint { get; protected set; }
@@ -57,7 +59,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected int BurstBulletNumber = 3;
 
     protected int bulletPool = 20;
-    protected float ordinaryForwardBorder = 35.0f;
+    protected float ordinaryYForwardBorder = 35.0f;
     protected float ordinaryForwardSpeed = 40.0f;
     protected int BurstCount;
     protected float burstBulletInterval = 0.2f;
@@ -111,12 +113,24 @@ public abstract class Enemy : MonoBehaviour
             this.HideEnemy();
         }
 
+	    if (this.Trans.position.x < Left)
+	    {
+		    this.HideEnemy();
+	    }
+	    
+	    if (Right < this.Trans.position.x)
+	    {
+		    this.HideEnemy();
+	    }
+
 	    /*
         if (this.Trans.position.y > Top)
         {
             this.HideEnemy();
         }
         */
+	    
+	    
     }
 
     public void CreateBullet(GameObject _obj)
@@ -127,7 +141,6 @@ public abstract class Enemy : MonoBehaviour
         {
             var bullet = Instantiate(_obj);
             bullet.tag = this.tag;
-            //bullet.transform.SetParent(this.transform, true);
             this.HideBullet(bullet);
             this.NormalBullets.Add(bullet);
         }
@@ -167,7 +180,7 @@ public abstract class Enemy : MonoBehaviour
         _bullet.gameObject.SetActive(true);
     }
 
-    public void ForwardEnemy(float _borderY)
+    public void YForwardEnemy(float _borderY)
     {
         // ある程度まで前進する
         /*
@@ -182,10 +195,26 @@ public abstract class Enemy : MonoBehaviour
         pos.y += -this.ordinaryForwardSpeed * Time.deltaTime;
         this.Trans.position = pos;
     }
-
+	
+	public void XForwardEnemy(float _borderX)
+	{
+		// ある程度まで前進する
+		/*
+		if (this.Trans.position.y > _borderY)
+		{
+		    Vector3 pos = this.Trans.position;
+		    pos.y -= this.ordinaryForwardSpeed + Time.deltaTime;
+		    this.Trans.position = pos;
+		}
+		*/
+		Vector3 pos = this.Trans.position;
+		pos.x += -this.ordinaryForwardSpeed * Time.deltaTime;
+		this.Trans.position = pos;
+	}
+	
     public void NormalAtack()
     {
-        this.BulletAppear(SearchAvailableBullet());
+        this.BulletAppear(this.SearchAvailableBullet());
         this.Pass += PassInterval;
     }
 
@@ -214,7 +243,7 @@ public abstract class Enemy : MonoBehaviour
 
     public void BurstAttack()
     {
-        this.BulletAppear(SearchAvailableBullet());
+        this.BulletAppear(this.SearchAvailableBullet());
         this.BurstCount -= 1;
         if (this.BurstCount <= 0)
         {

@@ -9,10 +9,10 @@ public sealed class StraightEnemy : Enemy
     {
     }
 
-	
+	/*
 	[SerializeField]
 	private float ordinaryForwardBorder;
-	
+	*/
 
     // protected override void Awake()
     // {
@@ -26,7 +26,7 @@ public sealed class StraightEnemy : Enemy
     
     protected override void Start()
     {
-        this.CreateBullet(this.NormalBullet);
+	    this.CreateBullet(this.NormalBullet);
     }
 
     protected override void Update()
@@ -36,9 +36,9 @@ public sealed class StraightEnemy : Enemy
 
         // _
         //float nowPass = Mathf.Floor (this.ElapsedTime * 10) / 10;
-        if (this.Trans.position.y > ordinaryForwardBorder)
+        if (this.Trans.position.y > ordinaryYForwardBorder)
         {
-            this.ForwardEnemy(this.ordinaryForwardBorder);
+            this.YForwardEnemy(this.ordinaryYForwardBorder);
         }
         else
         {

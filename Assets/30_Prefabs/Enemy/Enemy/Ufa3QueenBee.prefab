@@ -283,4 +283,6 @@ MonoBehaviour:
   leftBee: {fileID: 1818613163984742, guid: f7200fb588da24f22bb7643f9e068b94, type: 2}
   beamPrefab: {fileID: 1252430766500588, guid: 6f0bd05e4c12a40479f27159077ab840, type: 2}
   normalBulletPool: 100
-  barrage: 020000000100000001000000010000000300000001000000
+  barrageConfigs:
+  - Barrage: 5
+    Second: 1.5

@@ -67,7 +67,7 @@ public class ChildBee : Enemy {
 		
 		if (this.movePosDataCount < this.movePosDatas.Length)
 		{
-			SecondMovePosition(this.movePosDatas[this.movePosDataCount]);
+			this.SecondMovePosition(this.movePosDatas[this.movePosDataCount]);
 		}
 		else
 		{
@@ -88,7 +88,7 @@ public class ChildBee : Enemy {
 
 			}
 			
-			transform.rotation = Quaternion.Slerp (this.Trans.rotation, Quaternion.LookRotation (PlayerManager.GameObjectPl1.transform.position - this.MyselfPosition), 0.3f);
+			//transform.rotation = Quaternion.Slerp (this.Trans.rotation, Quaternion.LookRotation (PlayerManager.GameObjectPl1.transform.position - this.MyselfPosition), 0.3f);
 
 			//LookPlayer();
 		}

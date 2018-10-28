@@ -41,7 +41,7 @@ public class CircleEnemy : Enemy
     
     protected override void Start()
     {
-        this.CreateBullet(this.NormalBullet);
+	    this.CreateBullet(this.NormalBullet);
     }
     
     protected override void Update()
@@ -52,7 +52,7 @@ public class CircleEnemy : Enemy
 	    //Debug.Log(this.Trans.position.y + "あああ" + this.circleShape.CenterPoint.y);
 	    if (this.Trans.position.y > this.circleShape.CenterPoint.y && this.forwardFlag)
 	    {
-		    this.ForwardEnemy(this.circleShape.CenterPoint.y);
+		    this.YForwardEnemy(this.circleShape.CenterPoint.y);
 	    }
 	    else
 	    {

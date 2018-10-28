@@ -1363,7 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6157cf80bf37e458708eeae7b60029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 6
+  interval: 1
   enemyManagerAppearParam:
     StraightHorizontalPos: {x: 0, y: 0}
     StraightHorizontalPosInterval: {x: 0, y: 0}
@@ -1376,6 +1376,10 @@ MonoBehaviour:
     CoasterPosInterval: {x: 20, y: 20}
   straightEnemy: {fileID: 1417616512233444, guid: 7e7ed47eb222742deab1c70fdeecb694,
     type: 2}
+  rightSideEnemy: {fileID: 1210153888343336, guid: 5042522200dc84a6384468bc12389a34,
+    type: 2}
+  leftSideEnemy: {fileID: 1786194510170548, guid: 463570ac45d0d4f90aa1e96878312dea,
+    type: 2}
   quadraticEnemy: {fileID: 1173151150058956, guid: 03e24c53e782d4940bdc9f84babc43f6,
     type: 2}
   circleEnemy: {fileID: 1705388037023850, guid: 28d5a52ffc2794401afeed1a0f3013f2,
@@ -1385,7 +1389,7 @@ MonoBehaviour:
   stayEnemy: {fileID: 1269887116242392, guid: 6bdae7b70d03f427eb7dd586fe273778, type: 2}
   sinEnemy: {fileID: 1798963835953624, guid: ddad949e046154e9f8c4300fe2fef1bf, type: 2}
   beeEnemy: {fileID: 1790198519970540, guid: 62d4139e03dd14d13b5893aad95b4dce, type: 2}
-  Enemy1Patterns: 00000000070000000000000002000000070000000000000002000000040000000200000008000000
+  Enemy1Patterns: 04000000
   Enemy2Patterns: 
   Enemy1Data:
     PlayerType: 
@@ -1394,6 +1398,8 @@ MonoBehaviour:
     EnemyCount: 0
     EnemyPatterns: 
     StraightEnemys: []
+    RightSideEnemys: []
+    LeftSideEnemys: []
     QuadraticEnemys: []
     CircleEnemys: []
     CoasterEnemys:
@@ -1420,6 +1426,8 @@ MonoBehaviour:
     EnemyCount: 0
     EnemyPatterns: 
     StraightEnemys: []
+    RightSideEnemys: []
+    LeftSideEnemys: []
     QuadraticEnemys: []
     CircleEnemys: []
     CoasterEnemys: []

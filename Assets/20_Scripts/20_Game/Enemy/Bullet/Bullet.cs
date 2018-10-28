@@ -100,7 +100,6 @@ public class Bullet : MonoBehaviour
 		}
 		this.VectorMyselfPlayer = new Vector3 (this.PlayerPosition.x - this.MyAppearPosition.x,
 			this.PlayerPosition.y - this.MyAppearPosition.y, this.MyAppearPosition.z).normalized;
-		Debug.Log(this.PlayerPosition + "aaa" + this.Trans.position + "iii" + this.VectorMyselfPlayer);
 	}
         
     /*
