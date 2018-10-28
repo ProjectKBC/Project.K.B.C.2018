@@ -5,23 +5,25 @@ public class CircleEnemy : Enemy
 {
     [SuppressMessage("ReSharper", "StyleCop.SA1401")]
     [System.Serializable]
-    public class CircleEnemyDebugParam
+    public class CircleEnemyParam
     {
         // = 150.0f
         public float Radius;
         // // = (-375.0f, 600.0f)
         // public Vector2 centerPos;
         // = (0, 100.0f)
-        public Vector2 EndStraightPos;
+	    
+        public Vector2 CenterPoint;
     }
 
     public Vector2 CenterPos { get { return centerPos; } set { this.centerPos = value; } }
 
     [SerializeField]
-    private CircleEnemyDebugParam debug = null;
+    private CircleEnemyParam circleShape = null;
 
     private float rotationInterval = 0;
     private Vector2 centerPos = Vector2.zero;
+	private bool forwardFlag = true;
 
     // protected override void Awake()
     // {
@@ -39,20 +41,27 @@ public class CircleEnemy : Enemy
     
     protected override void Start()
     {
-        CreateBullet(this.NomalBullet);
+        this.CreateBullet(this.NormalBullet);
     }
     
     protected override void Update()
     {
-        base.Update();
-
-        // ElapsedTimeはEnemyで宣言されているので、Enemy内で更新すべき
-        // this.ElapsedTime += Time.deltaTime;
-
-        // CircleMove(this.centerX, this.centerY, 150, rotationInterval);
-        CircleMove(
-            this.debug.Radius,
-            this.debug.EndStraightPos);
+        //base.Update();
+	    this.ElapsedTime += Time.deltaTime;
+	    this.ShotForm();
+	    //Debug.Log(this.Trans.position.y + "あああ" + this.circleShape.CenterPoint.y);
+	    if (this.Trans.position.y > this.circleShape.CenterPoint.y && this.forwardFlag)
+	    {
+		    this.ForwardEnemy(this.circleShape.CenterPoint.y);
+	    }
+	    else
+	    {
+		    this.forwardFlag = false;
+		    this.CircleMove(this.circleShape.Radius);
+	    }
+	    this.Dead();
+	    //NomalAttack ();
+	    this.BeyondLine();
     }
 
     // protected override void OnDisable()
@@ -64,23 +73,24 @@ public class CircleEnemy : Enemy
     /// 
     /// </summary>
     /// <param name="_radius"></param>
-    /// <param name="_endStraightPos"></param>
-    /// <param name="_straightSpeed"></param>
-    protected void CircleMove(float _radius, Vector2 _endStraightPos, float _straightSpeed = 10)
+    protected void CircleMove(float _radius)
     {
-        Vector3 pos = Trans.position;
+        Vector3 pos = this.Trans.position;
 
-        pos.x = this.centerPos.x + (_radius * Mathf.Cos(this.rotationInterval));
-        pos.y = this.centerPos.y + (_radius * Mathf.Sin(this.rotationInterval));
+        pos.x = this.circleShape.CenterPoint.x + _radius * (Mathf.Cos(this.rotationInterval));
+        pos.y = this.circleShape.CenterPoint.y + _radius * (Mathf.Sin(this.rotationInterval));
 
+	    /*
         if (_endStraightPos.y < this.CenterPos.y)
         {
             var tmpPos = this.CenterPos;
             tmpPos.y += -1 * _straightSpeed * Time.deltaTime;
             this.CenterPos = tmpPos;
         }
+        */
 
         this.rotationInterval += this.MoveSpeedRate * Time.deltaTime;
+	
 
         this.transform.position = pos;
     }

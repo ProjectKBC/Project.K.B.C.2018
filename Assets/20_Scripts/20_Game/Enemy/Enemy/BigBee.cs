@@ -48,7 +48,7 @@ public class BigBee : Enemy
 
     protected override void Start()
     {
-        this.CreateNormalBullet(this.NomalBullet, out this.NormalBullets, this.normalBulletPool);
+        this.CreateNormalBullet(this.NormalBullet, out this.NormalBullets, this.normalBulletPool);
         //this.CreateNormalBullet(this.childBee, out this.childBees, this.childBeePool);
 	    this.CreateNormalBullet(this.beamPrefab, out this.beams, this.beamPool);
 	    this.rightBee = Instantiate(this.rightBee);
@@ -61,15 +61,16 @@ public class BigBee : Enemy
 
     protected override void Update()
     {
+	    this.ElapsedTime += Time.deltaTime;
         base.Update();
-        float nowPass = Mathf.Floor(this.ElapsedTime * 10) / 10;
+//        float nowPass = Mathf.Floor(this.ElapsedTime * 10) / 10;
         if (this.Trans.position.y > ordinaryForwardBorder)
         {
             ForwardEnemy(ordinaryForwardBorder);
         }
         else
         {
-            if (nowPass >= this.Pass)
+            if (ElapsedTime >= this.Pass)
             {
                 if (this.barrageCount < this.barrage.Length)
                 {
@@ -131,7 +132,7 @@ public class BigBee : Enemy
         for (float i = 0.0f; i <= _fanNum; i += 1.0f)
         {
             GameObject bullet = this.SearchAvailableBullet(NormalBullets);
-	        bullet.transform.position = this.Trans.position;
+	        //bullet.transform.position = this.Trans.position;
             bullet.transform.rotation = new Quaternion(0.7f, 0.0f, 0.0f, 0.7f);
 	        bullet.transform.Rotate(new Vector3(0, 1, 0), this.minRad + i * appearSpace);
             this.BulletAppear(bullet);
@@ -143,18 +144,15 @@ public class BigBee : Enemy
 	{
 		Vector3 pos = this.Trans.position;
 		pos.x += 10.5f;
-		Debug.Log(pos);
 		int appearSpace = (this.maxRad - this.minRad) / _fanNum;
-		/*
 		for (float i = 0.0f; i <= _fanNum; i += 1.0f)
 		{
 			GameObject bullet = this.SearchAvailableBullet(NormalBullets);
 			bullet.transform.position = pos;
 			bullet.transform.rotation = new Quaternion(0.7f, 0.0f, 0.0f, 0.7f);
 			bullet.transform.Rotate(new Vector3(0, 1, 0), this.minRad + i * appearSpace);
-			this.BulletAppear(bullet);
+			bullet.gameObject.SetActive(true);
 		}
-		*/
 
 	}
 	
@@ -164,16 +162,14 @@ public class BigBee : Enemy
 		pos.x -= 10.5f;
 		Debug.Log(pos);
 		int appearSpace = (this.maxRad - this.minRad) / _fanNum;
-		/*
 		for (float i = 0.0f; i <= _fanNum; i += 1.0f)
 		{
 			GameObject bullet = this.SearchAvailableBullet(NormalBullets);
 			bullet.transform.position = pos;
 			bullet.transform.rotation = new Quaternion(0.7f, 0.0f, 0.0f, 0.7f);
 			bullet.transform.Rotate(new Vector3(0, 1, 0), this.minRad + i * appearSpace);
-			this.BulletAppear(bullet);
+			bullet.gameObject.SetActive(true);
 		}
-		*/
 
 	}
 
@@ -181,13 +177,13 @@ public class BigBee : Enemy
 	{
 		Vector3 pos;
 		GameObject beam = this.SearchAvailableBullet(this.beams);
-		beam.transform.position = this.Trans.position;
+		//beam.transform.position = this.Trans.position;
 		this.BulletAppear(beam);
 	}
 
     protected void Funnel(GameObject _funnel)
     {
-        _funnel.transform.position = this.Trans.position;
+        //_funnel.transform.position = this.Trans.position;
         this.BulletAppear(_funnel);
     }
 	

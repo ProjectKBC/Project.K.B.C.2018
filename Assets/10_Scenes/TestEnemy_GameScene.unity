@@ -1363,25 +1363,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6157cf80bf37e458708eeae7b60029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 2
-  enemyManagerDebug:
+  interval: 6
+  enemyManagerAppearParam:
     StraightHorizontalPos: {x: 0, y: 0}
     StraightHorizontalPosInterval: {x: 0, y: 0}
     QuadraticPos: {x: 0, y: 0}
     QuadraticPosInterval: {x: 0, y: 0}
-    CirclePos: {x: 0, y: 0}
+    CirclePos: {x: -42.5, y: 40}
     CirclePosInterval: {x: 0, y: 0}
+    CoasterPos: {x: -20, y: 80}
+    Radius: 20
+    CoasterPosInterval: {x: 20, y: 20}
   straightEnemy: {fileID: 1417616512233444, guid: 7e7ed47eb222742deab1c70fdeecb694,
     type: 2}
   quadraticEnemy: {fileID: 1173151150058956, guid: 03e24c53e782d4940bdc9f84babc43f6,
     type: 2}
   circleEnemy: {fileID: 1705388037023850, guid: 28d5a52ffc2794401afeed1a0f3013f2,
     type: 2}
+  coasterEnemy: {fileID: 1236087943991986, guid: ed9fae3a801fb47f6a138ab142879d16,
+    type: 2}
   stayEnemy: {fileID: 1269887116242392, guid: 6bdae7b70d03f427eb7dd586fe273778, type: 2}
   sinEnemy: {fileID: 1798963835953624, guid: ddad949e046154e9f8c4300fe2fef1bf, type: 2}
   beeEnemy: {fileID: 1790198519970540, guid: 62d4139e03dd14d13b5893aad95b4dce, type: 2}
-  Enemy1Patterns: 06000000
+  Enemy1Patterns: 00000000070000000000000002000000070000000000000002000000040000000200000008000000
   Enemy2Patterns: 
+  Enemy1Data:
+    PlayerType: 
+    EnemyStartPos: {x: 0, y: 0, z: 0}
+    PoolEnemy: 0
+    EnemyCount: 0
+    EnemyPatterns: 
+    StraightEnemys: []
+    QuadraticEnemys: []
+    CircleEnemys: []
+    CoasterEnemys:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    StayEnemys: []
+    SinEnemys: []
+    BeeEnemy: {fileID: 0}
+    EnemyAppearPass: 0
+    RightPosX: 0
+    LeftPosX: 0
+  Enemy2Data:
+    PlayerType: 
+    EnemyStartPos: {x: 0, y: 0, z: 0}
+    PoolEnemy: 0
+    EnemyCount: 0
+    EnemyPatterns: 
+    StraightEnemys: []
+    QuadraticEnemys: []
+    CircleEnemys: []
+    CoasterEnemys: []
+    StayEnemys: []
+    SinEnemys: []
+    BeeEnemy: {fileID: 0}
+    EnemyAppearPass: 0
+    RightPosX: 0
+    LeftPosX: 0
 --- !u!4 &1034435781
 Transform:
   m_ObjectHideFlags: 0
@@ -1389,11 +1436,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1034435779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42, y: 65, z: 100}
+  m_LocalPosition: {x: 0, y: 70, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1108302271
 GameObject:
@@ -1728,9 +1775,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1: 1
-  player2: 3
+  player2: 1
   pl1ButtleKey:
-    normalShotKey: 122
+    normalShotKey: 273
     specialShotKey: 120
     skillKey: 99
     moveUpKey: 119
@@ -1741,7 +1788,7 @@ MonoBehaviour:
     normalShotKey: 98
     specialShotKey: 110
     skillKey: 109
-    moveUpKey: 273
+    moveUpKey: 57
     moveLeftKey: 276
     moveDownKey: 274
     moveRightKey: 275
@@ -1751,12 +1798,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1329087905}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1386905596
 GameObject:

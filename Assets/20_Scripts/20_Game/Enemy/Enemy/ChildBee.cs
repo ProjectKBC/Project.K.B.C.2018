@@ -52,7 +52,7 @@ public class ChildBee : Enemy {
 
 	protected override void Start()
 	{
-		this.CreateBullet(this.NomalBullet);
+		this.CreateBullet(this.NormalBullet);
 	}
 
 	protected override void Update()
