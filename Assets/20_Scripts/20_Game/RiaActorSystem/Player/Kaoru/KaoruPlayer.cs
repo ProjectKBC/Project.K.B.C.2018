@@ -3,14 +3,14 @@ using RiaActorSystem;
 
 namespace Game.Player
 {
-	public sealed class AnomaPlayer : RiaPlayer
+	public sealed class KaoruPlayer : RiaPlayer
 	{
-		private new AnomaPlayerScript Script;
+		private new KaoruPlayerScript Script;
 
-		public AnomaPlayer(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
+		public KaoruPlayer(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
-			Debug.Log("anoma");
-			this.Script = _script as AnomaPlayerScript;
+			Debug.Log("kaoru");
+			this.Script = _script as KaoruPlayerScript;
 
 			nsParam = new NormalShotParam();
 			ssParam = new SpecialShotParam();
@@ -26,13 +26,13 @@ namespace Game.Player
 		// 特殊ショット
 		public class SpecialShotParam
 		{
-			public float chargeTimeCount = 0;
+			
 		}
 
 		// スキル
 		public class SkilParam
 		{
-			
+
 		}
 
 		public NormalShotParam nsParam;
@@ -93,26 +93,7 @@ namespace Game.Player
 		/// <param name="_status"></param>
 		private void SpecialShot()
 		{
-			var param = this.ssParam;
-			var script = this.Script.ssParam;
-
-			// キー入力
-			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
-			{
-				param.chargeTimeCount += Time.deltaTime;
-			}
-
-			// キー入力
-			if (RiaInput.Instance.GetKeyUp(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
-			{
-				if (script.shotChargeTime <= param.chargeTimeCount)
-				{
-					Debug.Log(this.PlayerNumber + " : specialShot");
-
-					CreateSpecialBullet();
-				}
-				param.chargeTimeCount = 0;
-			}
+			
 		}
 
 		/// <summary>
@@ -121,7 +102,7 @@ namespace Game.Player
 		/// <param name="_status"></param>
 		private void Skill()
 		{
-			
+
 		}
 
 		private void CreateNormalBullet()
@@ -134,15 +115,5 @@ namespace Game.Player
 			Debug.Log(normalBullet.transform.position);
 		}
 
-		private void CreateSpecialBullet()
-		{
-			var specialBullet = GameObject.Instantiate(Script.ssParam.bulletPrefab);
-
-			var playerPos = this.Trans.position;
-			var shotPos = new Vector3(playerPos.x, playerPos.y += 20, playerPos.z);
-			//pos.z = 100;
-			specialBullet.transform.position = shotPos;
-			Debug.Log(specialBullet.transform.position);
-		}
 	}
 }

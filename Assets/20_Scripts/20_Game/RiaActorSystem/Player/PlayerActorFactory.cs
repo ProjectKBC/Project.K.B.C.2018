@@ -42,6 +42,8 @@ namespace Game.Player
 					break;
 
 				case PlayerCharacterEnum.kaoru:
+					script = this.catalog.kaoruScript;
+					character = new KaoruPlayer(_actor.gameObject, script, _playerNumber);
 					break;
 
 				case PlayerCharacterEnum.laxa:

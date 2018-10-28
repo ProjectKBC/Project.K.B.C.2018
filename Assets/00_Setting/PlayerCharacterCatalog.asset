@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   airosScript: {fileID: 11400000, guid: 6907fc28d1f884b088fe1d9bbf499e3b, type: 2}
   anomaScript: {fileID: 11400000, guid: a679e6e5c058749c49e929931e7fee54, type: 2}
+  kaoruScript: {fileID: 11400000, guid: b84051b93751f4945b567c2369750267, type: 2}

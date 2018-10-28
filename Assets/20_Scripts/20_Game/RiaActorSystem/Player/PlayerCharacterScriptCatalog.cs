@@ -10,5 +10,7 @@ namespace Game.Player
 		public AirosPlayerScript airosScript = null;
 		[SerializeField]
 		public AnomaPlayerScript anomaScript = null;
+		[SerializeField]
+		public KaoruPlayerScript kaoruScript = null;
 	}
 }
