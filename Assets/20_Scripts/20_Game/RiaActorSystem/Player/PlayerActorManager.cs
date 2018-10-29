@@ -1,3 +1,7 @@
+/* Author: flanny7
+ * Update: 2018/10/23
+*/
+
 using UnityEngine;
 using RiaActorSystem;
 

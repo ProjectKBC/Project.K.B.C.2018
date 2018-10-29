@@ -1,4 +1,9 @@
+/* Author: flanny7
+ * Update: 2018/10/28
+*/
+
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Game
@@ -7,8 +12,10 @@ namespace Game
 	using Game.UI;
 	using Game.Player;
 	using Game.Enemy;
+	using Game.Bullet.Player;
+	using Game.Bullet.Enemy;
 
-    public sealed class GameManager : SingletonMonoBehaviour<GameManager>
+	public sealed class GameManager : SingletonMonoBehaviour<GameManager>
     {
         public enum State
         {
@@ -36,11 +43,6 @@ namespace Game
 			public RiaStageManager stageManager;
 			public PlayerActorManager playerManager;
 			public EnemyActorManager enemyManager;
-
-			public void PlayActorManagers()
-			{
-				this.playerManager.Play();
-			}
 		}
 
 		[SerializeField, Header("CommonData")]
@@ -59,18 +61,69 @@ namespace Game
 		private Managers pl2Managers = null;
 		public Managers PL2Managers { get { return this.pl2Managers; } }
 
+		// 検索系
+		/// Player
 		public PlayerActorManager GetPlayerActorManager(PlayerNumber _playerNumber)
 		{
-			return (_playerNumber == PlayerNumber.player1) ?
-				this.pl1Managers.playerManager :
-				this.pl2Managers.playerManager;
+			var manager =
+				(_playerNumber == PlayerNumber.player1) ? this.pl1Managers.playerManager :
+				(_playerNumber == PlayerNumber.player2) ? this.pl2Managers.playerManager :
+				null;
+
+			if (!manager.IsInit)
+			{
+				Debug.LogError("初期化していません。", manager.gameObject);
+				return null;
+			}
+
+			return manager;
 		}
 
+		public RiaPlayer GetPlayer(PlayerNumber _playerNumber)
+		{
+			var manager = (_playerNumber == PlayerNumber.player1) ? this.pl1Managers.playerManager :
+						  (_playerNumber == PlayerNumber.player2) ? this.pl2Managers.playerManager :
+						  null;
+
+			if (manager == null || !manager.IsInit)
+			{
+				Debug.LogError("存在しないか、初期化していません。", manager.gameObject);
+				return null;
+			}
+
+			return manager.GetActiveActors()[0].Character as RiaPlayer;
+		}
+
+		/// Enemy
 		public EnemyActorManager GetEnemyActorManager(PlayerNumber _playerNumber)
 		{
-			return (_playerNumber == PlayerNumber.player1) ?
-				this.pl1Managers.enemyManager :
-				this.pl2Managers.enemyManager;
+			var manager =
+				(_playerNumber == PlayerNumber.player1) ? this.pl1Managers.enemyManager :
+				(_playerNumber == PlayerNumber.player2) ? this.pl2Managers.enemyManager :
+				null;
+
+			if (!manager.IsInit)
+			{
+				Debug.LogError("初期化していません。", manager.gameObject);
+				return null;
+			}
+
+			return manager;
+		}
+		
+		public RiaEnemy[] GetEnemys(PlayerNumber _playerNumber)
+		{
+			var manager = (_playerNumber == PlayerNumber.player1) ? this.pl1Managers.playerManager :
+						  (_playerNumber == PlayerNumber.player2) ? this.pl2Managers.playerManager :
+						  null;
+
+			if (manager == null || !manager.IsInit)
+			{
+				Debug.LogError("存在しないか、初期化していません。", manager.gameObject);
+				return null;
+			}
+
+			return manager.GetActiveActors().Select(x => (x.Character as RiaEnemy)).ToArray();
 		}
 
 		// Loading系
@@ -81,10 +134,41 @@ namespace Game
 
 		// Result系
 
+		/// <summary>
+		/// ゲーム内フェーズを切り替える
+		/// </summary>
+		/// <param name="_state"></param>
 		public void ChageState(State _state)
         {
             this.stateManager.SetState(_state);
         }
+
+		// スコア系
+
+		/// <summary>
+		/// scoreを加算する by flanny7
+		/// </summary>
+		/// <param name="_baseScore">基本スコア</param>
+		/// <param name="_playerNumber"></param>
+		public void AddScore(int _baseScore, PlayerNumber _playerNumber)
+		{
+			if (_playerNumber == PlayerNumber.player1)
+			{
+				this.commonData.player1Score += this.ScoreCalc(_baseScore);
+			}
+			else if (_playerNumber == PlayerNumber.player2)
+			{
+				this.commonData.player2Score += this.ScoreCalc(_baseScore);
+			}
+		}
+
+		public void ResetScore()
+		{
+			this.commonData.player1Score = 0;
+			this.commonData.player2Score = 0;
+		}
+
+		// メイン
 
         protected override void OnInit()
         {
@@ -123,5 +207,11 @@ namespace Game
             this.currentState = _state;
             this.stateManager.SetState(_state);
         }
+
+		private int ScoreCalc(int _baseScore)
+		{
+			// todo: 倍率とかの計算式
+			return (int)Mathf.Floor(_baseScore);
+		}
     }
 }

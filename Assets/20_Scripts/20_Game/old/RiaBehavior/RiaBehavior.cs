@@ -1,4 +1,4 @@
-﻿namespace RiaBehaviorSystem
+namespace RiaBehaviorSystem
 {
     using UnityEngine;
 

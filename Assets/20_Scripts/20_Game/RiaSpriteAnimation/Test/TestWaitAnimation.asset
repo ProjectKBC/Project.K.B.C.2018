@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: TestWaitAnimation
   m_EditorClassIdentifier: 
   isLoop: 1
-  updateFrame: 4
+  updateFrame: 8
   sprites:
   - {fileID: 21300000, guid: 6fe1e7d414dc5fb41ba4c4a13046e65d, type: 3}
   - {fileID: 21300000, guid: 5b153df553f93704a88aab6ffc24ad71, type: 3}

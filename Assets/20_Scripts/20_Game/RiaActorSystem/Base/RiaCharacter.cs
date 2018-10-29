@@ -1,5 +1,5 @@
 /* Author : flanny7
- * Update : 2018/10/22
+ * Update : 2018/10/29
 */
 
 using UnityEngine;
@@ -12,10 +12,12 @@ namespace RiaActorSystem
 	[System.Serializable]
 	public abstract class RiaCharacter
 	{
+		// プレイヤー番号
 		public PlayerNumber PlayerNumber { get; protected set; }
-
-		protected RiaCharacterScript Script;
-
+		public PlayerNumber RivalPlayerNumber { get; protected set; }
+		
+		// キャッシュ
+		public RiaCharacterScript Script { get; protected set; }
 		public GameObject Go { get; protected set; }
 		public Transform Trans { get; protected set; }
 		public RiaActor Actor { get; protected set; }
@@ -29,6 +31,7 @@ namespace RiaActorSystem
 			this.Script = _script;
 
 			this.PlayerNumber = _playerNumber;
+			this.RivalPlayerNumber = (this.PlayerNumber == PlayerNumber.player1) ? PlayerNumber.player2 : PlayerNumber.player1;
 
 			this.playElapsedTime = 0;
 		}

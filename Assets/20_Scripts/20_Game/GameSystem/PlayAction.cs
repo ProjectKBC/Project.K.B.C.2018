@@ -2,11 +2,17 @@ using UnityEngine;
 
 namespace Game
 {
+	using Game.Stage;
+	using Game.Player;
+	using Game.Enemy;
+
     public class PlayAction : StateAction
     {
         private GameManager gm;
+		private RiaStageManager pl1SM;
+		private RiaStageManager pl2SM;
 
-        public PlayAction()
+		public PlayAction()
         {
         }
 
@@ -14,23 +20,26 @@ namespace Game
         {
             Debug.Log("PlayAction_Start");
             this.gm = GameManager.Instance;
-        }
 
-        public override void Update()
+			this.pl1SM = this.gm.PL1Managers.stageManager;
+			this.pl2SM = this.gm.PL2Managers.stageManager;
+		}
+
+		public override void Update()
         {
-			//Debug.Log("PlayAction_Update")
+			// Debug.Log("PlayAction_Update");
 
 			// Todo: Stageの更新
 			if (true /* isBoss */)
 			{
-				this.gm.PL1Managers.stageManager.MainLoop();
-				this.gm.PL2Managers.stageManager.MainLoop();
+				this.pl1SM.MainLoop();
+				this.pl1SM.MainLoop();
 			}
-			else
-			{
-				this.gm.PL1Managers.stageManager.BossLoop();
-				this.gm.PL2Managers.stageManager.BossLoop();
-			}
+			//else
+			//{
+			//	this.pl1SM.BossLoop();
+			//	this.pl1SM.BossLoop();
+			//}
 
 			// Pauseへの移動
 			if (RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Pause, PlayerNumber.player1) ||
@@ -39,10 +48,11 @@ namespace Game
 				this.gm.ChageState(GameManager.State.Pause);
 			}
 
-			this.gm.PL1Managers.PlayActorManagers();
-			this.gm.PL2Managers.PlayActorManagers();
+			this.gm.PL1Managers.playerManager.Play();
+			this.gm.PL2Managers.playerManager.Play();
 
-			// Todo: Bulletの更新
+			this.gm.PL1Managers.enemyManager.Play();
+			this.gm.PL2Managers.enemyManager.Play();
 		}
 
 		public override void End()
