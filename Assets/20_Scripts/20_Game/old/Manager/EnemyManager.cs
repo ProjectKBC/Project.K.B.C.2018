@@ -20,8 +20,8 @@ namespace Ria
 		    StraightHorizontal,
 		    StraightVertical,
 		    Straights,
-		    RightSides,
-		    LeftSides,
+		    ToLeftSide,
+		    ToRightSide,
 		    Quadratic,
 		    Circle,
 		    Coaster,
@@ -40,8 +40,8 @@ namespace Ria
 
 		    public EnemyPattern[] EnemyPatterns;
 		    public GameObject[] StraightEnemys;
-		    public GameObject[] RightSideEnemys;
-		    public GameObject[] LeftSideEnemys;
+		    public GameObject[] ToLeftSideEnemys;
+		    public GameObject[] ToRightSideEnemys;
 		    public GameObject[] QuadraticEnemys;
 		    public GameObject[] CircleEnemys;
 		    public GameObject[] CoasterEnemys;
@@ -58,8 +58,8 @@ namespace Ria
 			    this.EnemyPatterns = _enemyPatterns;
 			    this.PoolEnemy = _poolEnemy;
 			    this.StraightEnemys = new GameObject[this.PoolEnemy];
-			    this.RightSideEnemys = new GameObject[this.PoolEnemy];
-			    this.LeftSideEnemys = new GameObject[this.PoolEnemy];
+			    this.ToLeftSideEnemys = new GameObject[this.PoolEnemy];
+			    this.ToRightSideEnemys = new GameObject[this.PoolEnemy];
 			    this.QuadraticEnemys = new GameObject[this.PoolEnemy];
 			    this.CircleEnemys = new GameObject[this.PoolEnemy];
 			    this.CoasterEnemys = new GameObject[this.PoolEnemy];
@@ -127,8 +127,8 @@ namespace Ria
         [Space(16)] [SerializeField] private EnemyManagerAppearParam enemyManagerAppearParam = null;
 
         [SerializeField] private GameObject straightEnemy = null;
-	    [SerializeField] private GameObject rightSideEnemy = null;
-	    [SerializeField] private GameObject leftSideEnemy = null;
+	    [SerializeField] private GameObject toLeftSideEnemy = null;
+	    [SerializeField] private GameObject toRightSideEnemy = null;
 	    [SerializeField] private GameObject quadraticEnemy = null;
         [SerializeField] private GameObject circleEnemy = null;
 	    [SerializeField] private GameObject coasterEnemy = null;
@@ -179,11 +179,11 @@ namespace Ria
                 _enemyData.StraightEnemys[i] = this.CreateEnemy(this.straightEnemy);
 	            _enemyData.StraightEnemys[i].tag = _enemyData.PlayerType;
 	            
-	            _enemyData.RightSideEnemys[i] = this.CreateEnemy(this.rightSideEnemy);
-	            _enemyData.RightSideEnemys[i].tag = _enemyData.PlayerType;
+	            _enemyData.ToLeftSideEnemys[i] = this.CreateEnemy(this.toLeftSideEnemy);
+	            _enemyData.ToLeftSideEnemys[i].tag = _enemyData.PlayerType;
 	            
-	            _enemyData.LeftSideEnemys[i] = this.CreateEnemy(this.leftSideEnemy);
-	            _enemyData.LeftSideEnemys[i].tag = _enemyData.PlayerType;
+	            _enemyData.ToRightSideEnemys[i] = this.CreateEnemy(this.toRightSideEnemy);
+	            _enemyData.ToRightSideEnemys[i].tag = _enemyData.PlayerType;
 	            
                 _enemyData.CircleEnemys[i] = this.CreateEnemy(this.circleEnemy);
 	            _enemyData.CircleEnemys[i].tag = _enemyData.PlayerType;
@@ -233,16 +233,16 @@ namespace Ria
 			                    this.enemyManagerAppearParam.StraightHorizontalPosInterval);
 		                    break;
 	                    
-	                    case "RightSides":
-		                    RightSides(
+	                    case "ToLeftSide":
+		                    ToLeftSide(
 			                    10,
 			                    _enemyData,
 			                    this.enemyManagerAppearParam.StraightHorizontalPos,
 			                    this.enemyManagerAppearParam.StraightHorizontalPosInterval);
 		                    break;
 	                    
-	                    case "LeftSides":
-		                    LeftSides(
+	                    case "ToRightSide":
+		                    ToRightSide(
 			                    10,
 			                    _enemyData,
 			                    this.enemyManagerAppearParam.StraightHorizontalPos,
@@ -378,12 +378,12 @@ namespace Ria
 		    }
 	    }
 	    
-	    public void RightSides(int _appearNum,PlayersEnemyData _enemyData, Vector2 _appearPos,
+	    public void ToLeftSide(int _appearNum,PlayersEnemyData _enemyData, Vector2 _appearPos,
 		    Vector2 _posInterval)
 	    {
 		    int appearCount = 0;
 
-		    for (int i = 0; i < _enemyData.RightSideEnemys.Length; i++)
+		    for (int i = 0; i < _enemyData.ToLeftSideEnemys.Length; i++)
 		    {
 			    float rand = Random.Range(0, 40);
 			    if (appearCount >= _appearNum)
@@ -391,12 +391,12 @@ namespace Ria
 				    break;
 			    }
 
-			    if (!_enemyData.RightSideEnemys[i].activeSelf)
+			    if (!_enemyData.ToLeftSideEnemys[i].activeSelf)
 			    {
 				    // 起点に設置
-				    _enemyData.RightSideEnemys[i].transform.position =
+				    _enemyData.ToLeftSideEnemys[i].transform.position =
 					    new Vector3(_enemyData.RightPosX + appearCount * 10, rand, _enemyData.EnemyStartPos.z);
-				    _enemyData.RightSideEnemys[i].SetActive(true);
+				    _enemyData.ToLeftSideEnemys[i].SetActive(true);
 				    appearCount++;
                     
 				    // 次の起点の間隔をあける
@@ -405,12 +405,12 @@ namespace Ria
 		    }
 	    }
 	    
-	    public void LeftSides(int _appearNum,PlayersEnemyData _enemyData, Vector2 _appearPos,
+	    public void ToRightSide(int _appearNum,PlayersEnemyData _enemyData, Vector2 _appearPos,
 		    Vector2 _posInterval)
 	    {
 		    int appearCount = 0;
 
-		    for (int i = 0; i < _enemyData.LeftSideEnemys.Length; i++)
+		    for (int i = 0; i < _enemyData.ToRightSideEnemys.Length; i++)
 		    {
 			    float rand = Random.Range(0, 40);
 			    if (appearCount >= _appearNum)
@@ -418,12 +418,12 @@ namespace Ria
 				    break;
 			    }
 
-			    if (!_enemyData.LeftSideEnemys[i].activeSelf)
+			    if (!_enemyData.ToRightSideEnemys[i].activeSelf)
 			    {
 				    // 起点に設置
-				    _enemyData.LeftSideEnemys[i].transform.position =
+				    _enemyData.ToRightSideEnemys[i].transform.position =
 					    new Vector3(_enemyData.LeftPosX - appearCount * 10, rand, _enemyData.EnemyStartPos.z);
-				    _enemyData.LeftSideEnemys[i].SetActive(true);
+				    _enemyData.ToRightSideEnemys[i].SetActive(true);
 				    appearCount++;
                     
 				    // 次の起点の間隔をあける

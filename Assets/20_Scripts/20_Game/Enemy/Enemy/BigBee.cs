@@ -76,7 +76,7 @@ public class BigBee : Enemy
 	    this.BeyondLine();
 	    if (this.Trans.position.y > this.ordinaryYForwardBorder)
         {
-            this.XForwardEnemy(this.ordinaryYForwardBorder);
+            this.YForwardEnemy(this.ordinaryYForwardBorder);
         }
         else
         {

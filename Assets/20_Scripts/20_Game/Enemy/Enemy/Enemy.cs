@@ -182,35 +182,10 @@ public abstract class Enemy : MonoBehaviour
 
     public void YForwardEnemy(float _borderY)
     {
-        // ある程度まで前進する
-        /*
-        if (this.Trans.position.y > _borderY)
-        {
-            Vector3 pos = this.Trans.position;
-            pos.y -= this.ordinaryForwardSpeed + Time.deltaTime;
-            this.Trans.position = pos;
-        }
-        */
         Vector3 pos = this.Trans.position;
         pos.y += -this.ordinaryForwardSpeed * Time.deltaTime;
         this.Trans.position = pos;
     }
-	
-	public void XForwardEnemy(float _borderX)
-	{
-		// ある程度まで前進する
-		/*
-		if (this.Trans.position.y > _borderY)
-		{
-		    Vector3 pos = this.Trans.position;
-		    pos.y -= this.ordinaryForwardSpeed + Time.deltaTime;
-		    this.Trans.position = pos;
-		}
-		*/
-		Vector3 pos = this.Trans.position;
-		pos.x += -this.ordinaryForwardSpeed * Time.deltaTime;
-		this.Trans.position = pos;
-	}
 	
     public void NormalAtack()
     {
@@ -220,7 +195,6 @@ public abstract class Enemy : MonoBehaviour
 
 	public void ShotForm()
 	{
-		//if (nowPass.Equals(this.Pass)) // ==やEqualsだと値も型も同じなのに挙動がおかしい、見えない小数がある？今はまだ原因不明
 		if (this.ElapsedTime >= this.Pass)
 		{
 			if (this.IsBurstAttack)

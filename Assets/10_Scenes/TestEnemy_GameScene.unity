@@ -1376,9 +1376,9 @@ MonoBehaviour:
     CoasterPosInterval: {x: 20, y: 20}
   straightEnemy: {fileID: 1417616512233444, guid: 7e7ed47eb222742deab1c70fdeecb694,
     type: 2}
-  rightSideEnemy: {fileID: 1210153888343336, guid: 5042522200dc84a6384468bc12389a34,
+  toLeftSideEnemy: {fileID: 1210153888343336, guid: 5042522200dc84a6384468bc12389a34,
     type: 2}
-  leftSideEnemy: {fileID: 1786194510170548, guid: 463570ac45d0d4f90aa1e96878312dea,
+  toRightSideEnemy: {fileID: 1786194510170548, guid: 463570ac45d0d4f90aa1e96878312dea,
     type: 2}
   quadraticEnemy: {fileID: 1173151150058956, guid: 03e24c53e782d4940bdc9f84babc43f6,
     type: 2}
@@ -1398,8 +1398,8 @@ MonoBehaviour:
     EnemyCount: 0
     EnemyPatterns: 
     StraightEnemys: []
-    RightSideEnemys: []
-    LeftSideEnemys: []
+    ToLeftSideEnemys: []
+    ToRightSideEnemys: []
     QuadraticEnemys: []
     CircleEnemys: []
     CoasterEnemys:
@@ -1426,8 +1426,8 @@ MonoBehaviour:
     EnemyCount: 0
     EnemyPatterns: 
     StraightEnemys: []
-    RightSideEnemys: []
-    LeftSideEnemys: []
+    ToLeftSideEnemys: []
+    ToRightSideEnemys: []
     QuadraticEnemys: []
     CircleEnemys: []
     CoasterEnemys: []
