@@ -22,7 +22,7 @@ namespace Game.Enemy
 			switch (_enemyCharacter)
 			{
 				case EnemyCharacterEnum.UAF1StraightEnemy:
-					script = this.catalog.ufa1StraightScript;
+					script = this.catalog.UFA1StraightScript;
 					character = new UFA1StraightEnemy(_actor.gameObject, script, _playerNumber);
 					break;
 
@@ -33,7 +33,7 @@ namespace Game.Enemy
 
 			if (character == null || !script)
 			{
-				Debug.LogError("Enemy[ " + _enemyCharacter + " ]が正常に生成されませんでした");
+				Debug.LogError(string.Format("Enemy[ {0} ]が正常に生成されませんでした", _enemyCharacter));
 				return;
 			}
 

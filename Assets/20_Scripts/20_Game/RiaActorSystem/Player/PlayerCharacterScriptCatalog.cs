@@ -12,6 +12,5 @@ namespace Game.Player
 	{
 		[SerializeField]
 		public AirosPlayerScript airosScript = null;
-
 	}
 }
