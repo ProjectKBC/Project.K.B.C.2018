@@ -44,6 +44,11 @@ namespace Game
 			if (pl2EM) { pl2EM.Init(); }
 
 			// Todo: Bulletの生成
+			var pl1EBM = this.gm.PL1Managers.enemyBulletManager;
+			if (pl1EBM) { pl1EBM.Init(); }
+
+			var pl2EBM = this.gm.PL2Managers.enemyBulletManager;
+			if (pl2EBM) { pl2EBM.Init(); }
 		}
 
 		public override void Update()

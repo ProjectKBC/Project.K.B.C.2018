@@ -3,7 +3,7 @@
 */
 
 using UnityEngine;
-using RiaSpriteAnimation;
+using RiaSpriteAnimationSystem;
 
 public class TestAnimation : MonoBehaviour
 {

@@ -20,7 +20,7 @@ namespace Game.Enemy
 		[SerializeField]
 		protected Sprite sprite;
 
-		public float MaxHitPoint { get { return this.maxHitPoint; } }
+		public float HitPointMax { get { return this.maxHitPoint; } }
 		public float MoveSpeedBase { get { return this.moveSpeedBase; } }
 		public float HitATK { get { return this.hitATK; } }
 		public int Score { get { return this.score; } }

@@ -8,6 +8,7 @@ using RiaActorSystem;
 namespace Game.Enemy
 {
 	using Game.Player;
+	using Game.Bullet.Enemy;
 	using Game.Bullet.Player;
 
 	public abstract class RiaEnemy : RiaCharacter
@@ -61,6 +62,7 @@ namespace Game.Enemy
 		protected SpriteRenderer spRender;
 		protected Collider2D collider;
 		protected Collider2DSupporter colliderSupporter;
+		protected EnemyBulletActorManager bulletManager;
 
 		public RiaEnemy(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
@@ -76,9 +78,11 @@ namespace Game.Enemy
 
 			this.colliderSupporter = this.Actor.ColliderSupporter;
 
+			this.bulletManager = GameManager.Instance.GetEnemyBulletActorManager(this.PlayerNumber);
+
 			// パラメータ
 			/// 体力
-			this.HitPoint = this.Script.MaxHitPoint;
+			this.HitPoint = this.Script.HitPointMax;
 
 			/// 画面外処理
 			this.areaLeftLine = (this.PlayerNumber == PlayerNumber.player1) ?

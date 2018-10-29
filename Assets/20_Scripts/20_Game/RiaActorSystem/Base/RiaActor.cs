@@ -1,8 +1,9 @@
 /* Author : flanny7
- * Update : 2018/10/22
+ * Update : 2018/10/30
 */
 
 using UnityEngine;
+using RiaSpriteAnimationSystem;
 
 namespace RiaActorSystem
 {
@@ -20,13 +21,15 @@ namespace RiaActorSystem
 
 		public GameObject Go { get; private set; }
 		public Transform Trans { get; private set; }
+		public RiaSpriteAnimator Animator { get; private set; }
 
 		public void Init()
 		{
 			this.ColliderSupporter = new Collider2DSupporter();
-
+			
 			this.Go = this.gameObject;
 			this.Trans = this.transform;
+			this.Animator = GetComponent<RiaSpriteAnimator>();
 
 			this.SetActive(false);
 		}

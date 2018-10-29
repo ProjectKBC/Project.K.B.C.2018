@@ -5,23 +5,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RiaSpriteAnimation
+namespace RiaSpriteAnimationSystem
 {
 	public sealed class RiaSpriteAnimator : MonoBehaviour
 	{
 		public bool IsStop() { return !this.currentAnim.IsPlaying; }
-
-		[System.Serializable]
-		public class AnimationMap
-		{
-			public string key;
-			public RiaSpriteAnimation animation;
-		}
-
+		
 		[SerializeField]
 		private SpriteRenderer spRender = null;
 		[SerializeField]
-		private AnimationMap[] animations = null;
+		private RiaSpriteAnimation[] animations = null;
 
 		private Dictionary<string, RiaSpriteAnimation> animDict = new Dictionary<string, RiaSpriteAnimation>();
 		private RiaSpriteAnimation currentAnim = null;
@@ -30,12 +23,12 @@ namespace RiaSpriteAnimation
 		{
 			for (var i = 0; i < this.animations.Length; ++i)
 			{
-				var anim = this.animations[i];
+				var animation = this.animations[i];
 
-				anim.animation.Init(this.spRender);
+				animation.Init(this.spRender);
 
 				// Dictionaryに映す 重いかな？？？ by flanny
-				this.animDict.Add(anim.key, anim.animation);
+				this.animDict.Add(animation.KeyName, animation);
 			}
 
 			this.currentAnim = this.animDict[_firstAnimKey];
@@ -58,6 +51,29 @@ namespace RiaSpriteAnimation
 		public void Stop()
 		{
 			this.currentAnim.Stop();
+		}
+
+		/// <summary>
+		/// Animationをスクリプトからセットしたいときに使う
+		/// </summary>
+		/// <param name="_animations"></param>
+		/// <param name="_firstAnimKey"></param>
+		public void SetAnimations(RiaSpriteAnimation[] _animations, string _firstAnimKey)
+		{
+			this.animDict.Clear();
+			this.animations = _animations;
+
+			for (var i = 0; i < this.animations.Length; ++i)
+			{
+				var animation = this.animations[i];
+
+				animation.Init(this.spRender);
+				
+				this.animDict.Add(animation.KeyName, animation);
+			}
+
+			this.currentAnim = this.animDict[_firstAnimKey];
+			this.currentAnim.Play();
 		}
 	}
 }

@@ -5,12 +5,19 @@ namespace Game
 	using Game.Stage;
 	using Game.Player;
 	using Game.Enemy;
+	using Game.Bullet.Enemy;
 
     public class PlayAction : StateAction
     {
         private GameManager gm;
 		private RiaStageManager pl1SM;
 		private RiaStageManager pl2SM;
+		private PlayerActorManager pl1PM;
+		private PlayerActorManager pl2PM;
+		private EnemyActorManager pl1EM;
+		private EnemyActorManager pl2EM;
+		private EnemyBulletActorManager pl1EBM;
+		private EnemyBulletActorManager pl2EBM;
 
 		public PlayAction()
         {
@@ -23,6 +30,12 @@ namespace Game
 
 			this.pl1SM = this.gm.PL1Managers.stageManager;
 			this.pl2SM = this.gm.PL2Managers.stageManager;
+			this.pl1PM = this.gm.PL1Managers.playerManager;
+			this.pl2PM = this.gm.PL2Managers.playerManager;
+			this.pl1EM = this.gm.PL1Managers.enemyManager;
+			this.pl2EM = this.gm.PL2Managers.enemyManager;
+			this.pl1EBM = this.gm.PL1Managers.enemyBulletManager;
+			this.pl2EBM = this.gm.PL2Managers.enemyBulletManager;
 		}
 
 		public override void Update()
@@ -32,8 +45,8 @@ namespace Game
 			// Todo: Stageの更新
 			if (true /* isBoss */)
 			{
-				this.pl1SM.MainLoop();
-				this.pl1SM.MainLoop();
+				if (this.pl1SM) { this.pl1SM.MainLoop(); }
+				if (this.pl2SM) { this.pl2SM.MainLoop(); }
 			}
 			//else
 			//{
@@ -48,11 +61,14 @@ namespace Game
 				this.gm.ChageState(GameManager.State.Pause);
 			}
 
-			this.gm.PL1Managers.playerManager.Play();
-			this.gm.PL2Managers.playerManager.Play();
+			if (this.pl1PM) { this.pl1PM.Play(); }
+			if (this.pl2PM) { this.pl2PM.Play(); }
 
-			this.gm.PL1Managers.enemyManager.Play();
-			this.gm.PL2Managers.enemyManager.Play();
+			if (this.pl1EM) { this.pl1EM.Play(); }
+			if (this.pl2EM) { this.pl2EM.Play(); }
+
+			if (this.pl1EBM) { this.pl1EBM.Play(); }
+			if (this.pl2EBM) { this.pl2EBM.Play(); }
 		}
 
 		public override void End()

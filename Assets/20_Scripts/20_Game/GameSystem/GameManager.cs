@@ -43,6 +43,7 @@ namespace Game
 			public RiaStageManager stageManager;
 			public PlayerActorManager playerManager;
 			public EnemyActorManager enemyManager;
+			public EnemyBulletActorManager enemyBulletManager;
 		}
 
 		[SerializeField, Header("CommonData")]
@@ -110,11 +111,11 @@ namespace Game
 
 			return manager;
 		}
-		
-		public RiaEnemy[] GetEnemys(PlayerNumber _playerNumber)
+
+		public RiaEnemy[] GetEnemies(PlayerNumber _playerNumber)
 		{
-			var manager = (_playerNumber == PlayerNumber.player1) ? this.pl1Managers.playerManager :
-						  (_playerNumber == PlayerNumber.player2) ? this.pl2Managers.playerManager :
+			var manager = (_playerNumber == PlayerNumber.player1) ? this.pl1Managers.enemyManager :
+						  (_playerNumber == PlayerNumber.player2) ? this.pl2Managers.enemyManager :
 						  null;
 
 			if (manager == null || !manager.IsInit)
@@ -124,6 +125,38 @@ namespace Game
 			}
 
 			return manager.GetActiveActors().Select(x => (x.Character as RiaEnemy)).ToArray();
+		}
+
+		/// EnemyBullet
+		public EnemyBulletActorManager GetEnemyBulletActorManager(PlayerNumber _playerNumber)
+		{
+			var manager =
+				(_playerNumber == PlayerNumber.player1) ? this.pl1Managers.enemyBulletManager :
+				(_playerNumber == PlayerNumber.player2) ? this.pl2Managers.enemyBulletManager :
+				null;
+
+			if (!manager.IsInit)
+			{
+				Debug.LogError("初期化していません。", manager.gameObject);
+				return null;
+			}
+
+			return manager;
+		}
+
+		public RiaEnemyBullet[] GetEnemyBullets(PlayerNumber _playerNumber)
+		{
+			var manager = (_playerNumber == PlayerNumber.player1) ? this.pl1Managers.enemyBulletManager :
+						  (_playerNumber == PlayerNumber.player2) ? this.pl2Managers.enemyBulletManager :
+						  null;
+
+			if (manager == null || !manager.IsInit)
+			{
+				Debug.LogError("存在しないか、初期化していません。", manager.gameObject);
+				return null;
+			}
+
+			return manager.GetActiveActors().Select(x => (x.Character as RiaEnemyBullet)).ToArray();
 		}
 
 		// Loading系

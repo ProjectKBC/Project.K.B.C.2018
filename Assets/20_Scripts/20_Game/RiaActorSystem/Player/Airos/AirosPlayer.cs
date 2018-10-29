@@ -263,7 +263,7 @@ namespace Game.Player
 			var isSearchFlag = false;
 
 			// スマートに敵機を持ってこれるようにした by flanny7
-			var enemys = GameManager.Instance.GetEnemys(this.PlayerNumber);
+			var enemys = GameManager.Instance.GetEnemies(this.PlayerNumber);
 
 			for (var i = 0; i < enemys.Length; ++i)
 			{

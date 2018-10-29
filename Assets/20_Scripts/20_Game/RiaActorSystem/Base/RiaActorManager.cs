@@ -1,5 +1,5 @@
 /* Author : flanny7
- * Update : 2018/10/22
+ * Update : 2018/10/30
 */
 
 using System.Linq;
@@ -10,7 +10,7 @@ namespace RiaActorSystem
 	public abstract class RiaActorManager : MonoBehaviour
 	{
 		[SerializeField]
-		private RiaActor[] actors = new RiaActor[0];
+		protected RiaActor[] actors = new RiaActor[0];
 		
 		public bool IsInit { get; private set; }
 

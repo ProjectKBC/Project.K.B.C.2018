@@ -2,18 +2,21 @@
 // Copyright C 2018 Yugo Fujioka　All rights reserved.
 
 /* Author: flanny7
- * Update: 2018/10/28
+ * Update: 2018/10/30
 */
 
 using UnityEngine;
 
-namespace RiaSpriteAnimation
+namespace RiaSpriteAnimationSystem
 {
 	[CreateAssetMenu(menuName = "RiaSpriteAnimation/Animation", fileName = "Animation")]
 	public sealed class RiaSpriteAnimation : ScriptableObject
 	{
 		public bool IsPlaying { get { return this.isPlaying; } }
+		public string KeyName { get { return this.keyName; } }
 
+		[SerializeField, Tooltip("")]
+		private string keyName = "";
 		[SerializeField, Tooltip("")]
 		private bool isLoop = true;
 		[SerializeField, Tooltip("更新フレーム")]

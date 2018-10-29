@@ -1,5 +1,5 @@
 /* Author: flanny7
- * Update: 2018/10/28
+ * Update: 2018/10/30
 */
 
 using UnityEngine;
@@ -10,24 +10,23 @@ namespace Game.Bullet.Enemy
 	using Game.Player;
 	using Game.Bullet.Player;
 
-	public class RiaEnemyBullet : RiaBullet
+	public abstract class RiaEnemyBullet : RiaBullet
 	{
+		// RiaCharacterの上書き
+		protected new RiaEnemyBulletScript Script;
+
+		// パラメータ
+
 		public RiaEnemyBullet(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
+			// RiaCharacterの上書き
+			this.Script = _script as RiaEnemyBulletScript;
+
 		}
 
-		protected override void OnInit()
-		{
-		}
-
-		protected override void OnWait()
-		{
-		}
-
-		protected override void OnEnd()
-		{
-		}
-
+		/// <summary>
+		/// 衝突処理 by flanny7
+		/// </summary>
 		protected override void OnCollision()
 		{
 			if (this.colliderSupporter.IsTriggerEnter2D)
@@ -37,22 +36,13 @@ namespace Game.Bullet.Enemy
 				for (var i = 0; i < go.Length; ++i)
 				{
 					var tag = go[i].tag;
-
-					var playerTag = (this.PlayerNumber == PlayerNumber.player1) ?
-						TagEnum.Player1.ToDescription() :
-						TagEnum.Player2.ToDescription();
-
-					var bulletTag = (this.PlayerNumber == PlayerNumber.player1) ?
-						TagEnum.PlayerBulet1.ToDescription() :
-						TagEnum.PlayerBulet2.ToDescription();
-
 					// 自機と衝突
-					if (tag == playerTag)
+					if (tag == this.playerTag)
 					{
 						this.isDead = true;
 					}
 					// 自機のショットと衝突
-					else if (tag == bulletTag)
+					else if (tag == this.playerBulletTag)
 					{
 						var bullet = go[i].GetComponent<RiaActor>().Character as RiaPlayerBullet;
 						var bulletScript = bullet.Script as RiaPlayerBulletScript;
@@ -62,19 +52,5 @@ namespace Game.Bullet.Enemy
 			}
 		}
 
-		protected override void OnDead()
-		{
-
-		}
-
-		protected override void OnDivision()
-		{
-
-		}
-
-		protected override void OnMove()
-		{
-
-		}
 	}
 }
