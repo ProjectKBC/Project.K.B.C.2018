@@ -10,7 +10,7 @@ namespace Game.Bullet
 {
 	public abstract class RiaBullet : RiaCharacter
 	{
-		private static readonly float deleteTime = 5.0f;
+		private static readonly float deleteTime = 0.01f;
 
 		// CharacterScriptの上書き
 		public new RiaBulletScript Script { get; protected set; }
@@ -24,7 +24,15 @@ namespace Game.Bullet
 		protected float MoveSpeed { get { return this.Script.MoveSpeedBase * this.moveSpeedRate; } }
 
 		/// 生死判定
-		public bool IsDead { get { return (this.HitPoint < 0) || this.isDead; } }
+		public bool IsDead
+		{
+			get
+			{
+				return (this.HitPoint <= 0) ||
+					   (this.Script.LifeTime <= this.playElapsedTime) ||
+					    this.isDead;
+			}
+		}
 		protected bool isDead = false;
 		private float outOfAreaElapsedTime = 0;
 		protected bool IsDelete
@@ -32,10 +40,10 @@ namespace Game.Bullet
 			get
 			{
 				var pos = this.Trans.position;
-				if (this.areaRightLine < pos.x /*右画面外*/ ||
-					pos.x < this.areaLeftLine  /*左画面外*/ ||
-					PlayableArea.playAreaTopLine < pos.y /*上画面外*/ ||
-					pos.y < PlayableArea.playAreaBottomLine  /*下画面外*/)
+				if (this.areaRightLine < pos.x - (this.Script.ColliderSize.x / 2) /*右画面外*/ ||
+					pos.x + (this.Script.ColliderSize.x / 2) < this.areaLeftLine  /*左画面外*/ ||
+					PlayableArea.playAreaTopLine < pos.y - (this.Script.ColliderSize.y / 2) /*上画面外*/ ||
+					pos.y + (this.Script.ColliderSize.x / 2) < PlayableArea.playAreaBottomLine  /*下画面外*/)
 				{
 					this.outOfAreaElapsedTime += Time.deltaTime;
 				}
@@ -51,6 +59,8 @@ namespace Game.Bullet
 		// タグ
 		protected string playerTag;
 		protected string playerBulletTag;
+		protected string enemyTag;
+		protected string enemyBulletTag;
 
 		// 画面外処理
 		protected float areaLeftLine;
@@ -88,8 +98,17 @@ namespace Game.Bullet
 				TagEnum.Player1.ToDescription() :
 				TagEnum.Player2.ToDescription();
 			this.playerBulletTag = (this.PlayerNumber == PlayerNumber.player1) ?
-				TagEnum.PlayerBulet1.ToDescription() :
-				TagEnum.PlayerBulet2.ToDescription();
+				TagEnum.PlayerBullet1.ToDescription() :
+				TagEnum.PlayerBullet2.ToDescription();
+			this.enemyTag = (this.PlayerNumber == PlayerNumber.player1) ?
+				TagEnum.Enemy1.ToDescription() :
+				TagEnum.Enemy2.ToDescription();
+			this.enemyBulletTag = (this.PlayerNumber == PlayerNumber.player1) ?
+				TagEnum.EnemyBullet1.ToDescription() :
+				TagEnum.EnemyBullet2.ToDescription();
+
+			// collider
+			this.Actor.GetComponent<CapsuleCollider2D>().size = this.Script.ColliderSize;
 		}
 
 		#endregion

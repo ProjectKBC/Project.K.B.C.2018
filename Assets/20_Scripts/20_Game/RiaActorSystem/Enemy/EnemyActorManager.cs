@@ -53,6 +53,13 @@ namespace Game.Enemy
 				this.factory.Create(EnemyCharacterEnum.UAF1StraightEnemy, this.playerNumber, this.GetFreeActor(), this.spownPosition);
 				this.spownTime -= this.spownInterval;
 			}
+
+			for (var i = 0; i < this.actors.Length; ++i)
+			{
+				this.actors[i].tag = (this.playerNumber == PlayerNumber.player1) ?
+					TagEnum.Enemy1.ToDescription() :
+					TagEnum.Enemy2.ToDescription();
+			}
 		}
 
 		/// <summary>

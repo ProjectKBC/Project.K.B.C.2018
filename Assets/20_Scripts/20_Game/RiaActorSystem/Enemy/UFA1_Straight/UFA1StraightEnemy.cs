@@ -75,17 +75,17 @@ namespace Game.Enemy
 
 		protected override void OnPlay()
 		{
-			// 攻撃処理
-			this.Shot();
+			//// 攻撃処理
+			//this.Shot();
 
-			// 移動処理
-			this.Move();
+			//// 移動処理
+			//this.Move();
 
-			// 衝突処理
-			this.Collision();
+			//// 衝突処理
+			//this.Collision();
 
-			// 生死処理
-			this.DeadCheck();
+			//// 生死処理
+			//this.DeadCheck();
 		}
 
 		protected override void OnEnd()

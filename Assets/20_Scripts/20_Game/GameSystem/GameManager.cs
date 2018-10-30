@@ -42,6 +42,7 @@ namespace Game
 		{
 			public RiaStageManager stageManager;
 			public PlayerActorManager playerManager;
+			public PlayerBulletActorManager playerBulletManager;
 			public EnemyActorManager enemyManager;
 			public EnemyBulletActorManager enemyBulletManager;
 		}
@@ -135,6 +136,38 @@ namespace Game
 			}
 
 			return manager.GetActiveActors().Select(x => (x.Character as RiaEnemy)).ToArray();
+		}
+
+		/// PlayerBullet
+		public PlayerBulletActorManager GetPlayerBulletActorManager(PlayerNumber _playerNumber)
+		{
+			var manager =
+				(_playerNumber == PlayerNumber.player1) ? this.pl1Managers.playerBulletManager :
+				(_playerNumber == PlayerNumber.player2) ? this.pl2Managers.playerBulletManager :
+				null;
+
+			if (!manager.IsInit)
+			{
+				Debug.LogError("初期化していません。", manager.gameObject);
+				return null;
+			}
+
+			return manager;
+		}
+
+		public RiaPlayerBullet[] GetPlayerBullets(PlayerNumber _playerNumber)
+		{
+			var manager = (_playerNumber == PlayerNumber.player1) ? this.pl1Managers.playerBulletManager :
+						  (_playerNumber == PlayerNumber.player2) ? this.pl2Managers.playerBulletManager :
+						  null;
+
+			if (manager == null || !manager.IsInit)
+			{
+				Debug.LogError("存在しないか、初期化していません。", manager.gameObject);
+				return null;
+			}
+
+			return manager.GetActiveActors().Select(x => (x.Character as RiaPlayerBullet)).ToArray();
 		}
 
 		/// EnemyBullet

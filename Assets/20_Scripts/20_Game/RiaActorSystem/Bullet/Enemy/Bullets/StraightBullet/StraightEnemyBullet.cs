@@ -35,20 +35,20 @@ namespace Game.Bullet.Enemy
 
 		protected override void OnPlay()
 		{
-			// 生成系処理
-			this.Division();
+			//// 生成系処理
+			//this.Division();
 
-			// 移動処理
-			this.Move();
+			//// 移動処理
+			//this.Move();
 
-			// アニメーション処理
-			this.Animation();
+			//// アニメーション処理
+			//this.Animation();
 
-			// 衝突処理
-			this.Collision();
+			//// 衝突処理
+			//this.Collision();
 
-			// 生死処理
-			this.DeadCheck();
+			//// 生死処理
+			//this.DeadCheck();
 		}
 
 		protected override void OnEnd()

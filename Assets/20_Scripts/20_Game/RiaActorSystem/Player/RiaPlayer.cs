@@ -10,6 +10,7 @@ namespace Game.Player
 {
 	using Game.Enemy;
 	using Game.Bullet.Enemy;
+	using Game.Bullet.Player;
 
 	public abstract class RiaPlayer : RiaCharacter
 	{
@@ -63,8 +64,22 @@ namespace Game.Player
 		protected Collider2DSupporter colliderSupporter;
 		protected CircleCollider2D circleCollider;
 		protected RiaSpriteAnimator animator;
-		protected RiaPlayer rivalPlayer;
+		private PlayerBulletActorManager bulletManger;
+		protected PlayerBulletActorManager BulletManger
+		{
+			get
+			{
+				if (this.bulletManger == null)
+				{
+					this.bulletManger = GameManager.Instance.GetPlayerBulletActorManager(this.PlayerNumber);
+				}
 
+				return this.bulletManger;
+			}
+
+			private set { this.bulletManger = value; }
+		}
+		private RiaPlayer rivalPlayer;
 		protected RiaPlayer RivalPlayer
 		{
 			get
@@ -77,7 +92,7 @@ namespace Game.Player
 				return this.rivalPlayer;
 			}
 
-			set { this.rivalPlayer = value; }
+			private set { this.rivalPlayer = value; }
 		}
 
 		#region Constructor
@@ -103,6 +118,8 @@ namespace Game.Player
 				GameObject.Instantiate<RiaSpriteAnimation>(this.Script.LeftGoAnimation),
 				};
 			this.animator.SetAnimations(anims, this.Script.WaitAnimation.KeyName);
+
+			this.bulletManger = null;
 
 			this.rivalPlayer = null;
 

@@ -29,6 +29,19 @@ namespace Game
 			var pl2SM = this.gm.PL1Managers.stageManager;
 			if (pl2SM) { pl2SM.Init(); }
 
+			// Todo: Bulletの生成
+			var pl1PBM = this.gm.PL1Managers.playerBulletManager;
+			if (pl1PBM) { pl1PBM.Init(); }
+
+			var pl2PBM = this.gm.PL2Managers.playerBulletManager;
+			if (pl2PBM) { pl2PBM.Init(); }
+
+			var pl1EBM = this.gm.PL1Managers.enemyBulletManager;
+			if (pl1EBM) { pl1EBM.Init(); }
+
+			var pl2EBM = this.gm.PL2Managers.enemyBulletManager;
+			if (pl2EBM) { pl2EBM.Init(); }
+
 			// Todo: Playerの生成
 			var pl1PM = this.gm.PL1Managers.playerManager;
 			if (pl1PM) { pl1PM.Init(); }
@@ -42,13 +55,6 @@ namespace Game
 
 			var pl2EM = this.gm.PL2Managers.enemyManager;
 			if (pl2EM) { pl2EM.Init(); }
-
-			// Todo: Bulletの生成
-			var pl1EBM = this.gm.PL1Managers.enemyBulletManager;
-			if (pl1EBM) { pl1EBM.Init(); }
-
-			var pl2EBM = this.gm.PL2Managers.enemyBulletManager;
-			if (pl2EBM) { pl2EBM.Init(); }
 
 			// Todo: UIのセッティング
 			var ui = this.gm.UIController;

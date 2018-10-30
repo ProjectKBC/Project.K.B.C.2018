@@ -8,10 +8,16 @@ namespace Game.Bullet.Player
 		// CharacterScriptの上書き
 		private new AirosNormalBulletScript Script;
 
+		// キャッシュ
+		private SpriteRenderer spRender;
+
 		public AirosNormalBullet(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
 			// CharacterScriptの上書き
 			this.Script = _script as AirosNormalBulletScript;
+
+			this.spRender = this.Actor.GetComponent<SpriteRenderer>();
+			this.spRender.sprite = this.Script.Sprite;
 		}
 
 		#region Override Function
@@ -38,6 +44,7 @@ namespace Game.Bullet.Player
 
 		public override void Move()
 		{
+			this.Trans.position += Vector3.up * this.MoveSpeed * Time.deltaTime * 60.0f;
 		}
 
 		public override void Animation()

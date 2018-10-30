@@ -100,8 +100,8 @@ namespace Game.Enemy
 				TagEnum.Player1.ToDescription() :
 				TagEnum.Player2.ToDescription();
 			this.playerBulletTag = (this.PlayerNumber == PlayerNumber.player1) ?
-				TagEnum.PlayerBulet1.ToDescription() :
-				TagEnum.PlayerBulet2.ToDescription();
+				TagEnum.PlayerBullet1.ToDescription() :
+				TagEnum.PlayerBullet2.ToDescription();
 		}
 
 		#endregion
@@ -167,6 +167,8 @@ namespace Game.Enemy
 				for (var i = 0; i < go.Length; ++i)
 				{
 					var tag = go[i].tag;
+
+					Debug.Log(tag);
 
 					// 自機のショットと衝突
 					if (tag == this.playerBulletTag)

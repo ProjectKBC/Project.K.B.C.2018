@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: UFA1StraightEnemyScript
   m_EditorClassIdentifier: 
   maxHitPoint: 1
-  moveSpeedBase: 0.5
+  moveSpeedBase: 0.25
   hitATK: 1
   score: 10
   sprite: {fileID: 21300000, guid: e9115d56c3d16764588f83e74a5bcd21, type: 3}
   shotParam:
-    shotInterval: 1
+    shotInterval: 5

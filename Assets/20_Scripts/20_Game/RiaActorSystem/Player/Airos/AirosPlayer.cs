@@ -76,22 +76,22 @@ namespace Game.Player
 		/// </summary>
 		protected override void OnPlay()
 		{
-			// 攻撃処理
-			this.NormalShot();
-			this.SpecialShot();
-			this.Skill();
+			//// 攻撃処理
+			//this.NormalShot();
+			//this.SpecialShot();
+			//this.Skill();
 
-			// 移動処理
-			this.Move();
+			//// 移動処理
+			//this.Move();
 
-			// 衝突処理
-			this.Collision();
+			//// 衝突処理
+			//this.Collision();
 
-			// 生死判定
-			if (this.IsDead)
-			{
-				this.Dead();
-			}
+			//// 生死判定
+			//if (this.IsDead)
+			//{
+			//	this.Dead();
+			//}
 		}
 
 		/// <summary>
@@ -133,7 +133,10 @@ namespace Game.Player
 				if (script.shotInterval <= shotElapsedTime)
 				{
 					param.shotTime = this.playElapsedTime;
-					CreateBullet();
+					this.BulletManger.CreateAirosBullet(
+						PlayerBulletActorManager.BulletType.Normal,
+						this.Trans.position);
+					//CreateBullet();
 				}
 			}
 		}
