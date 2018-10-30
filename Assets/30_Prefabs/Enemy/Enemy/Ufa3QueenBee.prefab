@@ -313,6 +313,22 @@ MonoBehaviour:
   - Barrage: 0
     Second: 20
   - Barrage: 1
-    Second: 21
-  - Barrage: 1
     Second: 22
+  - Barrage: 1
+    Second: 23
+  - Barrage: 0
+    Second: 24
+  - Barrage: 0
+    Second: 25
+  - Barrage: 5
+    Second: 26
+  - Barrage: 0
+    Second: 28
+  - Barrage: 0
+    Second: 29
+  - Barrage: 0
+    Second: 31
+  - Barrage: 1
+    Second: 32
+  - Barrage: 1
+    Second: 33

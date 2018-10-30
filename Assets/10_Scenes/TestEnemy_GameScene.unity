@@ -2677,7 +2677,7 @@ Prefab:
     - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
         type: 2}
       propertyPath: barrageConfigs.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4569737247996640, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2724,12 +2724,12 @@ Prefab:
     - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
         type: 2}
       propertyPath: barrageConfigs.Array.data[3].Second
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
         type: 2}
       propertyPath: barrageConfigs.Array.data[4].Second
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
         type: 2}
