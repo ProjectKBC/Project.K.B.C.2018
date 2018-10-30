@@ -97,6 +97,9 @@ namespace Game
 			if (this.pl1EBM) { this.pl1EBM.Collision(); }
 			if (this.pl1EBM) { this.pl2EBM.Collision(); }
 
+			// UI更新
+			this.gm.UIController.HPGageUpdate();
+
 			// 死亡処理
 			if (this.pl1PM) { this.pl1PM.DeadCheck(); }
 			if (this.pl2PM) { this.pl2PM.DeadCheck(); }

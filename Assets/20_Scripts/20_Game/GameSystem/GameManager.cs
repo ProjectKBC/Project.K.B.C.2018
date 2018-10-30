@@ -95,6 +95,16 @@ namespace Game
 			return manager.GetActiveActors()[0].Character as RiaPlayer;
 		}
 
+		public float GetPlayerHitPoint(PlayerNumber _playerNumber)
+		{
+			return this.GetPlayer(_playerNumber).HitPoint;
+		}
+
+		public float GetPlayerHitPointMax(PlayerNumber _playerNumber)
+		{
+			return (this.GetPlayer(_playerNumber).Actor.CharacterScript as RiaPlayerScript).HitPointMax;
+		}
+
 		/// Enemy
 		public EnemyActorManager GetEnemyActorManager(PlayerNumber _playerNumber)
 		{

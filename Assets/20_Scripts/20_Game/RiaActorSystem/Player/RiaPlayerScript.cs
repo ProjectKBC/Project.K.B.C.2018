@@ -38,7 +38,7 @@ namespace Game.Player
 
 		// パラメータ
 		/// 体力
-		public float MaxHitPoint { get { return this.maxHitPoint; } }
+		public float HitPointMax { get { return this.maxHitPoint; } }
 		/// 移動速度
 		public float MoveSpeedBase { get { return this.moveSpeedBase; } }
 		/// 無敵

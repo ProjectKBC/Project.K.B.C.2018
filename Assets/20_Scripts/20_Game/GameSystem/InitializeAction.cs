@@ -49,6 +49,10 @@ namespace Game
 
 			var pl2EBM = this.gm.PL2Managers.enemyBulletManager;
 			if (pl2EBM) { pl2EBM.Init(); }
+
+			// Todo: UIのセッティング
+			var ui = this.gm.UIController;
+			if (ui) { ui.Init(); }
 		}
 
 		public override void Update()

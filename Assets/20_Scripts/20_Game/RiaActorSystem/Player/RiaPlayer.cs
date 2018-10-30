@@ -109,7 +109,7 @@ namespace Game.Player
 
 			// パラメータ
 			/// 体力系
-			this.HitPoint = this.Script.MaxHitPoint;
+			this.HitPoint = this.Script.HitPointMax;
 
 			/// 移動速度系
 			this.MoveSpeedDebuffRate = 1.0f;
@@ -242,18 +242,17 @@ namespace Game.Player
 		{
 			if (this.colliderSupporter.IsTriggerEnter2D)
 			{
-				var targets = this.colliderSupporter.TriggerEnter2DGameObjects;
 
-				// 一番最初に衝突したものしか処理をしない
+				var targets = this.colliderSupporter.TriggerEnter2DGameObjects.GetItems(); ;
+				
 				for (var i = 0; i < targets.Length && i < 1; ++i)
 				{
-					var target = this.colliderSupporter.TriggerEnter2DGameObjects.GetItem(i);
-					var tag = target.tag;
+					var tag = targets[i].tag;
 
 					// 弾幕と衝突
 					if (tag == this.enemyBulletTag)
 					{
-						var bullet = target.GetComponent<RiaActor>().Character as RiaEnemyBullet;
+						var bullet = targets[i].GetComponent<RiaActor>().Character as RiaEnemyBullet;
 						var bulletScript = bullet.Script as RiaEnemyBulletScript;
 
 						this.Damaged(bulletScript.ATK);
@@ -262,7 +261,7 @@ namespace Game.Player
 					// 敵機と衝突
 					else if (tag == this.enemyTag)
 					{
-						var enemy = target.GetComponent<RiaActor>().Character as RiaEnemy;
+						var enemy = targets[i].GetComponent<RiaActor>().Character as RiaEnemy;
 						var enemyScript = enemy.Script as RiaEnemyScript;
 
 						this.Damaged(enemyScript.HitATK);
@@ -320,6 +319,7 @@ namespace Game.Player
 			// todo: 撃破SE
 			// todo: 相手の勝利宣言
 			this.Actor.Sleep();
+			Debug.Break();
 		}
 
 		/// <summary>
