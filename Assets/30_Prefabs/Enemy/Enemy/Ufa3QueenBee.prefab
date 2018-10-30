@@ -280,16 +280,17 @@ MonoBehaviour:
   BurstBulletNumber: 3
   childBeePrefab: {fileID: 1853246450649356, guid: a17f5ecc7d077431e9260463f85d8489,
     type: 2}
-  rightBee: {fileID: 0}
-  leftBee: {fileID: 0}
   beamPrefab: {fileID: 1406498115201466, guid: 63ad6cf7d13b649e0bdaf7311e0724b9, type: 2}
-  normalBulletPool: 20
   barrageConfigs:
-  - Barrage: 1
+  - Barrage: 2
     Second: 1
-  - Barrage: 1
-    Second: 2
-  - Barrage: 3
-    Second: 3
   - Barrage: 5
+    Second: 2
+  - Barrage: 1
+    Second: 3
+  - Barrage: 0
     Second: 4
+  - Barrage: 1
+    Second: 5
+  - Barrage: 3
+    Second: 6

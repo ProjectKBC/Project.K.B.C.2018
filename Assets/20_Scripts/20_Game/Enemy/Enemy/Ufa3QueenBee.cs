@@ -27,11 +27,7 @@ public class Ufa3QueenBee : Enemy
 	private int maxRad = 60;
 
 	[SerializeField] private GameObject childBeePrefab;
-	[SerializeField] private GameObject rightBee;
-	[SerializeField] private GameObject leftBee;
 	[SerializeField] private GameObject beamPrefab;
-	[SerializeField] private int normalBulletPool;
-
 	[SerializeField] private BossBarrageConfig[] barrageConfigs;
 
 	private int needlePoolNum = 100;
@@ -125,27 +121,27 @@ public class Ufa3QueenBee : Enemy
 		switch (this.barrageConfigs[this.barrageCount].Barrage.ToString())
 		{
 			case "Fan":
-				this.Fan(11);
+				this.Fan(11, this.barrageConfigs[this.barrageCount].Barrage);
 				break;
 
 			case "DoubleFan":
-				this.fanNum = UnityEngine.Random.Range(8, 10);
+				this.fanNum = Random.Range(8, 10);
 				this.RightFan(this.fanNum, this.barrageConfigs[this.barrageCount].Barrage);
 				this.LeftFan(this.fanNum, this.barrageConfigs[this.barrageCount].Barrage);
 				break;
 
 			case "Funnel":
-				this.Funnel(this.barrageConfigs[this.barrageCount].Barrage);
-				this.Funnel(this.barrageConfigs[this.barrageCount].Barrage);
+				this.Funnel(new Vector2(-15.0f, 40.0f), 0.3f,this.barrageConfigs[this.barrageCount].Barrage);
+				this.Funnel(new Vector2(-72.0f, 40.0f), 0.3f,this.barrageConfigs[this.barrageCount].Barrage);
 				break;
 
 			case "Beam":
-				this.Beam();
+				this.Beam(3.0f, this.barrageConfigs[this.barrageCount].Barrage);
 				break;
 
 			case "Divide":
-				this.Beam();
-				this.Fan(10);
+				this.Beam(3.0f, this.barrageConfigs[this.barrageCount].Barrage);
+				this.Fan(10, this.barrageConfigs[this.barrageCount].Barrage);
 				break;
 
 			case "Suicide":
@@ -157,17 +153,19 @@ public class Ufa3QueenBee : Enemy
 		this.barrageCount++;
 	}
 
-	protected void Fan(int _fanNum)
+	protected void Fan(int _fanNum, Barrage _barrage)
 	{
 		Vector3 pos = this.Trans.position;
 		int appearSpace = (this.maxRad - this.minRad) / _fanNum;
 		for (int i = 0; i < _fanNum; i += 1)
 		{
 			int needleNumber = this.SearchBullet(this.needles);
-			this.needles[needleNumber].Bullet.transform.position = pos;
-			this.needles[needleNumber].Bullet.transform.rotation = new Quaternion(0.7f, 0.0f, 0.0f, 0.7f);
-			this.needles[needleNumber].Bullet.transform.Rotate(new Vector3(0, 1, 0), this.minRad + i * appearSpace);
-			this.needles[needleNumber].Bullet.SetActive(true);
+			QueenBeeBullet bullet = this.needles[needleNumber];
+			bullet.BulletType = _barrage;
+			bullet.Bullet.transform.position = pos;
+			bullet.Bullet.transform.rotation = new Quaternion(0.7f, 0.0f, 0.0f, 0.7f);
+			bullet.Bullet.transform.Rotate(new Vector3(0, 1, 0), this.minRad + i * appearSpace);
+			bullet.Bullet.SetActive(true);
 		}
 	}
 
@@ -205,21 +203,29 @@ public class Ufa3QueenBee : Enemy
 		}
 	}
 
-	protected void Beam()
+	protected void Beam(float _attackTime, Barrage _barrage)
 	{
+		Vector3 pos = this.Trans.position;
 		int beamNumber = this.SearchBullet(this.beams);
 		QueenBeeBullet bullet = this.beams[beamNumber];
-		bullet.Bullet.transform.position = this.Trans.position;
+		bullet.BulletType = _barrage;
+		bullet.Bullet.transform.position = pos;
+		bullet.AttackTime = _attackTime;
 		bullet.Bullet.gameObject.SetActive(true);
 	}
 
-	protected void Funnel(Barrage _barrage)
+	protected void Funnel(Vector2 _toPos,float _moveSecond, Barrage _barrage)
 	{
 		Vector3 pos = this.Trans.position;
+		float distance = Vector2.Distance(pos, _toPos);
 		int childBeeNumber = this.SearchBullet(this.childBees);
 		QueenBeeBullet bullet = this.childBees[childBeeNumber];
 		bullet.BulletType = _barrage;
 		bullet.Bullet.transform.position = pos;
+		bullet.ToPos = _toPos;
+		bullet.ToMoveSpeed = distance / _moveSecond;
+		bullet.VectorMyselfPosition = new Vector2(_toPos.x - pos.x, _toPos.y - pos.y).normalized;
+		bullet.MovingFlag = true;
 		bullet.Bullet.gameObject.SetActive(true);
 	}
 
