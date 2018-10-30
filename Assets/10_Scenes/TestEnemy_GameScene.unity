@@ -606,53 +606,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &437407931
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4759819733001678, guid: 1a89cb83bd6764058aa49fbb1ed34c30, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -42
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759819733001678, guid: 1a89cb83bd6764058aa49fbb1ed34c30, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759819733001678, guid: 1a89cb83bd6764058aa49fbb1ed34c30, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759819733001678, guid: 1a89cb83bd6764058aa49fbb1ed34c30, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759819733001678, guid: 1a89cb83bd6764058aa49fbb1ed34c30, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759819733001678, guid: 1a89cb83bd6764058aa49fbb1ed34c30, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759819733001678, guid: 1a89cb83bd6764058aa49fbb1ed34c30, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759819733001678, guid: 1a89cb83bd6764058aa49fbb1ed34c30, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114486409154409982, guid: 1a89cb83bd6764058aa49fbb1ed34c30,
-        type: 2}
-      propertyPath: barrageConfigs.Array.data[0].Barrage
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1a89cb83bd6764058aa49fbb1ed34c30, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &514647223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,7 +1259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1034435780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1343,7 +1296,7 @@ MonoBehaviour:
     type: 2}
   stayEnemy: {fileID: 1269887116242392, guid: 6bdae7b70d03f427eb7dd586fe273778, type: 2}
   sinEnemy: {fileID: 1798963835953624, guid: ddad949e046154e9f8c4300fe2fef1bf, type: 2}
-  beeEnemy: {fileID: 1946687922}
+  beeEnemy: {fileID: 1654025074528718, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
   Enemy1Patterns: 0a000000
   Enemy2Patterns: 
   Enemy1Data:
@@ -2562,11 +2515,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1946687922 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1712796212018254, guid: 1a89cb83bd6764058aa49fbb1ed34c30,
-    type: 2}
-  m_PrefabInternal: {fileID: 437407931}
 --- !u!1 &1977273757
 GameObject:
   m_ObjectHideFlags: 0
