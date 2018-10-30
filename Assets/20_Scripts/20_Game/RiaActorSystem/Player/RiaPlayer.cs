@@ -39,21 +39,20 @@ namespace Game.Player
 		private float invincibleElapsedTime = 0;
 		private float invincibleBlinkingWaitTimeMax;
 		private float invincibleBlinkingWaitTime = 0f;
-
-		/// 生死判定
-		public bool IsDead { get { return (this.HitPoint <= 0); } }
-
-		/// Sprite（自機スプライト）系
+		private SpriteRenderer sprCore;
 		public float SpriteAlpha
 		{
 			get { return this.spRender.color.a; }
-			set
-			{
-				var c = this.spRender.color;
-				c.a = value;
-				this.spRender.color = c;
-			}
+			set	{ var c = this.spRender.color; c.a = value; this.spRender.color = c; }
 		}
+		public float CoreSpriteAlpha
+		{
+			get { return this.sprCore.color.a; }
+			set { var c = this.sprCore.color; c.a = value; this.sprCore.color = c; }
+		}
+
+		/// 生死判定
+		public bool IsDead { get { return (this.HitPoint <= 0); } }
 
 		// タグ
 		protected string enemyBulletTag;
@@ -133,6 +132,7 @@ namespace Game.Player
 			/// 無敵
 			this.invincibleElapsedTime = 0;
 			this.invincibleBlinkingWaitTime = 0;
+			this.sprCore = this.Trans.GetChild(0).GetComponent<SpriteRenderer>();
 
 			/// フレームレートとフレーム時間の算出 by flanny
 			var frameRate = (float)Application.targetFrameRate;
@@ -343,8 +343,14 @@ namespace Game.Player
 			if (this.invincibleBlinkingWaitTime <= Vector3.kEpsilon)
 			{
 				// 点滅の透過
-				this.SpriteAlpha = (this.SpriteAlpha == 0) ? 1 : 0.25f;
-				
+				var alp =
+					(this.SpriteAlpha == 1) ? 0.25f :
+					(this.SpriteAlpha == 0.25f) ? 1 :
+					0.25f;
+
+				this.SpriteAlpha = alp;
+				this.CoreSpriteAlpha = alp;
+
 				// 点滅待機時間のリセット
 				this.invincibleBlinkingWaitTime += this.invincibleBlinkingWaitTimeMax;
 			}
@@ -359,6 +365,7 @@ namespace Game.Player
 
 				// 点滅の修正
 				this.SpriteAlpha = 1;
+				this.CoreSpriteAlpha = 1;
 
 				// 当たり判定の復帰
 				this.circleCollider.enabled = true;

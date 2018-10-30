@@ -207,7 +207,7 @@ namespace Game.Player
 			// スキル発動 by flanny7
 			if (RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Skil, this.PlayerNumber) && !param.isUsing)
 			{
-				Debug.Log("skil");
+				//Debug.Log("skil");
 				// 使用フラグを立てる by flanny7
 				param.isUsing = true;
 				// デバフのリセット by flanny7
@@ -236,7 +236,7 @@ namespace Game.Player
 				// 対戦相手のプレイヤーに移動速度のデバフ by flanny7
 				this.RivalPlayer.MoveSpeedDebuffRate = Mathf.Lerp(script.debuffSpeedMin, 1, Mathf.Sin(param.elapsedTime / script.durationTime * 5));
 
-				Debug.Log(this.RivalPlayer.MoveSpeedDebuffRate);
+				//Debug.Log(this.RivalPlayer.MoveSpeedDebuffRate);
 
 				// スキルの時間切れ by flanny7
 				if (script.durationTime <= param.elapsedTime)

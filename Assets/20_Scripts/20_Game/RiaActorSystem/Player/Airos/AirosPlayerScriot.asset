@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoint: 5
   moveSpeedBase: 0.75
-  invincibleTimeMax: 2.3
+  invincibleTimeMax: 2.5
   invincibleBlinkingUpdateFrame: 6
   sprite: {fileID: 21300000, guid: 51bd70c6a2c58ba46ae1eb70a841940a, type: 3}
   circleColliderRadius: 0.45
