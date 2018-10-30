@@ -36,7 +36,7 @@ namespace Game.Bullet.Enemy
 		protected override void OnPlay()
 		{
 			// 生成系処理
-			this.OnDivision();
+			this.Division();
 
 			// 移動処理
 			this.Move();
@@ -55,36 +55,29 @@ namespace Game.Bullet.Enemy
 		{
 		}
 
-		// 細かいやつ
+        // 細かいやつ
 
-		/// <summary>
-		/// 
-		/// </summary>
-		protected override void OnDivision()
+        /// <summary>
+        /// 生成系処理 by flanny7
+        /// </summary>
+        public override void Division()
 		{
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		protected override void OnMove()
+		
+        /// <summary>
+        /// 移動処理 by flanny7
+        /// </summary>
+        public override void Move()
         {
             this.Trans.position += Vector3.down * this.MoveSpeed * Time.deltaTime * 60.0f;
         }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		protected override void OnAnimation()
+        /// <summary>
+        /// アニメーション処理 by flanny7
+        /// </summary>
+        public override void Animation()
 		{
 			this.animator.Run();
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		protected override void Dead()
-		{
 		}
 	}
 }

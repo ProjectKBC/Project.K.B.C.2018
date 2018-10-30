@@ -53,6 +53,8 @@ namespace Game.Player
 			skilParam = new SkilParam();
 		}
 
+		#region Override Function
+
 		/// <summary>
 		/// 初期化 by flanny7
 		/// </summary>
@@ -99,6 +101,27 @@ namespace Game.Player
 		{
 
 		}
+
+		/// <summary>
+		/// 攻撃処理 by flanny7
+		/// </summary>
+		public override void Shot()
+		{
+			this.NormalShot();
+			this.SpecialShot();
+			this.Skill();
+		}
+		
+		/// <summary>
+		/// アニメーション処理 by flanny7
+		/// </summary>
+		public override void Animation()
+		{
+		}
+
+		#endregion
+
+		#region Private Function
 
 		/// <summary>
 		/// 通常ショット by close96 (+ flanny7)
@@ -299,5 +322,7 @@ namespace Game.Player
 
 			return targetEnemyTrans;
 		}
+
+		#endregion
 	}
 }

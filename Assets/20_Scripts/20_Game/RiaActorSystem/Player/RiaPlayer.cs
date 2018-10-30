@@ -1,5 +1,5 @@
 /* Author : flanny7
- * Update : 2018/10/29
+ * Update : 2018/10/30
 */
 
 using UnityEngine;
@@ -76,7 +76,9 @@ namespace Game.Player
 
 			set { this.rivalPlayer = value; }
 		}
-		
+
+		#region Constructor
+
 		public RiaPlayer(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
 			// CharacterScriptの上書き
@@ -133,10 +135,14 @@ namespace Game.Player
 				frameTime * this.Script.InvincibleBlinkingUpdateFrame;
 		}
 
+		#endregion
+
+		#region Public Function
+
 		/// <summary>
-		/// 移動処理
+		/// 移動処理 by flanny7
 		/// </summary>
-		protected virtual void Move()
+		public virtual void Move()
 		{
 			// SlowMoveRate by flanny7
 			var slowRate = (RiaInput.Instance.GetPush(RiaInput.KeyType.LowSpeed, this.PlayerNumber)) ? SLOW_MOVE_RATE : 1.0f;
@@ -176,7 +182,7 @@ namespace Game.Player
 		/// <summary>
 		/// 衝突処理 by flanny7
 		/// </summary>
-		protected virtual void Collision()
+		public virtual void Collision()
 		{
 			if (this.colliderSupporter.IsTriggerEnter2D)
 			{
@@ -217,6 +223,21 @@ namespace Game.Player
 		}
 
 		/// <summary>
+		/// 死亡処理 by flanny7
+		/// </summary>
+		public virtual void DeadCheck()
+		{
+			if (IsDead)
+			{
+				this.Dead();
+			}
+		}
+
+		#endregion
+
+		#region Protected Function
+
+		/// <summary>
 		/// ダメージ処理 HitPointに-=する by flanny7
 		/// </summary>
 		/// <param name="_damagePoint"></param>
@@ -237,8 +258,10 @@ namespace Game.Player
 		/// <summary>
 		/// 死亡処理 by flanny7
 		/// </summary>
-		protected void Dead()
+		protected virtual void Dead()
 		{
+			// todo: 撃破FXの生成
+			// todo: 撃破SE
 			// todo: 相手の勝利宣言
 			this.Actor.Sleep();
 		}
@@ -291,5 +314,18 @@ namespace Game.Player
 			// 無敵時間の更新
 			this.invincibleElapsedTime += Time.deltaTime;
 		}
+
+		#endregion
+
+		/// <summary>
+		/// 攻撃処理 by fkanny7
+		/// </summary>
+		public abstract void Shot();
+
+		/// <summary>
+		/// アニメーション処理 by flanny7
+		/// </summary>
+		public abstract void Animation();
+
 	}
 }

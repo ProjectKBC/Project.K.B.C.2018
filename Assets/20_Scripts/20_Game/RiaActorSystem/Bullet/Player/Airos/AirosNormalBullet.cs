@@ -5,53 +5,49 @@ namespace Game.Bullet.Player
 {
 	public sealed class AirosNormalBullet : RiaPlayerBullet
 	{
+		// CharacterScriptの上書き
+		private new AirosNormalBulletScript Script;
+
 		public AirosNormalBullet(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
+			// CharacterScriptの上書き
+			this.Script = _script as AirosNormalBulletScript;
 		}
 
-		protected override void Dead()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		protected override void OnAnimation()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		protected override void OnCollision()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		protected override void OnDivision()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		protected override void OnEnd()
-		{
-			throw new System.NotImplementedException();
-		}
+		#region Override Function
 
 		protected override void OnInit()
 		{
-			throw new System.NotImplementedException();
-		}
-
-		protected override void OnMove()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		protected override void OnPlay()
-		{
-			throw new System.NotImplementedException();
 		}
 
 		protected override void OnWait()
 		{
-			throw new System.NotImplementedException();
 		}
+
+		protected override void OnPlay()
+		{
+		}
+
+		protected override void OnEnd()
+		{
+		}
+
+		public override void Division()
+		{
+		}
+
+		public override void Move()
+		{
+		}
+
+		public override void Animation()
+		{
+		}
+
+		protected override void OnCollision()
+		{
+		}
+
+		#endregion
 	}
 }

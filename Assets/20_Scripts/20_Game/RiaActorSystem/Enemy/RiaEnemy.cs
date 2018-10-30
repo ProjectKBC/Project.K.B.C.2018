@@ -1,5 +1,5 @@
 /* Author : flanny7
- * Update : 2018/10/27
+ * Update : 2018/10/30
 */
 
 using UnityEngine;
@@ -27,7 +27,8 @@ namespace Game.Enemy
 		protected float MoveSpeed { get { return this.Script.MoveSpeedBase * this.moveSpeedRate; } }
 		
 		/// 生死判定
-		protected bool IsDead { get { return (this.HitPoint <= 0); } }
+		protected bool IsDead { get { return (this.HitPoint <= 0 || isDead); } }
+		protected bool isDead = false;
 		private float outOfAreaElapsedTime = 0;
 		protected bool IsDelete
 		{
@@ -63,6 +64,8 @@ namespace Game.Enemy
 		protected Collider2D collider;
 		protected Collider2DSupporter colliderSupporter;
 		protected EnemyBulletActorManager bulletManager;
+
+		#region Constructor
 
 		public RiaEnemy(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
@@ -101,6 +104,39 @@ namespace Game.Enemy
 				TagEnum.PlayerBulet2.ToDescription();
 		}
 
+		#endregion
+
+		#region public Function
+
+		/// <summary>
+		/// 衝突処理 by flanny7
+		/// </summary>
+		public void Collision()
+		{
+			this.OnCollision();
+			this.Actor.ColliderSupporter.AfterUpdate();
+		}
+
+		/// <summary>
+		/// 死亡処理 by flanny7
+		/// </summary>
+		public void DeadCheck()
+		{
+			if (IsDead)
+			{
+				this.Dead();
+			}
+
+			if (IsDelete)
+			{
+				this.Delete();
+			}
+		}
+
+		#endregion
+
+		#region Protected Function
+
 		/// <summary>
 		/// ダメージ処理 HitPointに-=する by flanny7
 		/// </summary>
@@ -120,9 +156,9 @@ namespace Game.Enemy
 		}
 
 		/// <summary>
-		/// 衝突処理 by flanny7
+		/// 衝突処理(詳細) by flanny
 		/// </summary>
-		protected virtual void Collision()
+		protected virtual void OnCollision()
 		{
 			if (this.colliderSupporter.IsTriggerEnter2D)
 			{
@@ -131,7 +167,7 @@ namespace Game.Enemy
 				for (var i = 0; i < go.Length; ++i)
 				{
 					var tag = go[i].tag;
-					
+
 					// 自機のショットと衝突
 					if (tag == this.playerBulletTag)
 					{
@@ -139,34 +175,25 @@ namespace Game.Enemy
 						var bulletScript = bullet.Script as RiaPlayerBulletScript;
 
 						this.Damaged(bulletScript.ATK);
-						this.SendScore();
 					}
 					// 自機と衝突
 					else if (tag == this.playerTag)
 					{
-						this.DeadCheck();
+						this.isDead = true;
 					}
 				}
 			}
-
-			this.Actor.ColliderSupporter.AfterUpdate();
 		}
 
 		/// <summary>
 		/// 死亡処理 by flanny7
 		/// </summary>
-		protected void DeadCheck()
+		protected void Dead()
 		{
-			if (IsDead)
-			{
-				this.Dead();
-				this.Actor.Sleep();
-			}
-
-			if (IsDelete)
-			{
-				this.Delete();
-			}
+			// todo: 撃破FXの生成
+			// todo: 撃破SE
+			this.SendScore();
+			this.Actor.Sleep();
 		}
 
 		/// <summary>
@@ -185,8 +212,10 @@ namespace Game.Enemy
 			GameManager.Instance.AddScore(this.Script.Score, this.PlayerNumber);
 		}
 
-		protected abstract void Shot();
-		protected abstract void Move();
-		protected abstract void Dead();
+		#endregion
+
+		public abstract void Shot();
+		public abstract void Move();
+		public abstract void Animation();
 	}
 }

@@ -61,14 +61,49 @@ namespace Game
 				this.gm.ChageState(GameManager.State.Pause);
 			}
 
-			if (this.pl1PM) { this.pl1PM.Play(); }
-			if (this.pl2PM) { this.pl2PM.Play(); }
+			// 敵機生成処理
+			if (this.pl1EM) { this.pl1EM.Spown(); }
+			if (this.pl2EM) { this.pl2EM.Spown(); }
 
-			if (this.pl1EM) { this.pl1EM.Play(); }
-			if (this.pl2EM) { this.pl2EM.Play(); }
+			// 攻撃処理
+			if (this.pl1PM) { this.pl1PM.Shot(); }
+			if (this.pl2PM) { this.pl2PM.Shot(); }
+			if (this.pl1EM) { this.pl1EM.Shot(); }
+			if (this.pl2EM) { this.pl2EM.Shot(); }
+			if (this.pl1EBM) { this.pl1EBM.Division(); }
+			if (this.pl1EBM) { this.pl2EBM.Division(); }
 
-			if (this.pl1EBM) { this.pl1EBM.Play(); }
-			if (this.pl2EBM) { this.pl2EBM.Play(); }
+			// 移動処理
+			if (this.pl1PM) { this.pl1PM.Move(); }
+			if (this.pl2PM) { this.pl2PM.Move(); }
+			if (this.pl1EM) { this.pl1EM.Move(); }
+			if (this.pl2EM) { this.pl2EM.Move(); }
+			if (this.pl1EBM) { this.pl1EBM.Move(); }
+			if (this.pl1EBM) { this.pl2EBM.Move(); }
+
+			// アニメーション処理
+			if (this.pl1PM) { this.pl1PM.Animation(); }
+			if (this.pl2PM) { this.pl2PM.Animation(); }
+			if (this.pl1EM) { this.pl1EM.Animation(); }
+			if (this.pl2EM) { this.pl2EM.Animation(); }
+			if (this.pl1EBM) { this.pl1EBM.Animation(); }
+			if (this.pl1EBM) { this.pl2EBM.Animation(); }
+
+			// 衝突処理
+			if (this.pl1PM) { this.pl1PM.Collision(); }
+			if (this.pl2PM) { this.pl2PM.Collision(); }
+			if (this.pl1EM) { this.pl1EM.Collision(); }
+			if (this.pl2EM) { this.pl2EM.Collision(); }
+			if (this.pl1EBM) { this.pl1EBM.Collision(); }
+			if (this.pl1EBM) { this.pl2EBM.Collision(); }
+
+			// 死亡処理
+			if (this.pl1PM) { this.pl1PM.DeadCheck(); }
+			if (this.pl2PM) { this.pl2PM.DeadCheck(); }
+			if (this.pl1EM) { this.pl1EM.DeadCheck(); }
+			if (this.pl2EM) { this.pl2EM.DeadCheck(); }
+			if (this.pl1EBM) { this.pl1EBM.DeadCheck(); }
+			if (this.pl1EBM) { this.pl2EBM.DeadCheck(); }
 		}
 
 		public override void End()

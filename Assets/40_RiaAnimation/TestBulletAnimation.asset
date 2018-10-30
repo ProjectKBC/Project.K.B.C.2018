@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf24baad2646fe49b830dc5480dfd75, type: 3}
   m_Name: TestBulletAnimation
   m_EditorClassIdentifier: 
+  keyName: TestBullet
   isLoop: 1
   updateFrame: 4
   sprites:

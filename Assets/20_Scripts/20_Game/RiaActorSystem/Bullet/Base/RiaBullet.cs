@@ -60,6 +60,8 @@ namespace Game.Bullet
 		protected Collider2DSupporter colliderSupporter;
 		protected RiaSpriteAnimator animator;
 
+		#region Constructor
+
 		public RiaBullet(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
 			// CharacterScriptの上書き
@@ -89,30 +91,10 @@ namespace Game.Bullet
 				TagEnum.PlayerBulet1.ToDescription() :
 				TagEnum.PlayerBulet2.ToDescription();
 		}
-		
-		/// <summary>
-		/// 生成系処理 by flanny7
-		/// </summary>
-		public void Division()
-		{
-			this.OnDivision();
-		}
 
-		/// <summary>
-		/// 移動処理 by flanny7
-		/// </summary>
-		public void Move()
-		{
-			this.OnMove();
-		}
+		#endregion
 
-		/// <summary>
-		/// アニメーション処理 by flanny7
-		/// </summary>
-		public void Animation()
-		{
-			this.OnMove();
-		}
+		#region Public Function
 
 		/// <summary>
 		/// 衝突判定 by flanny7
@@ -131,13 +113,25 @@ namespace Game.Bullet
 			if (IsDead)
 			{
 				this.Dead();
-				this.Actor.Sleep();
 			}
 
 			if (IsDelete)
 			{
 				this.Delete();
 			}
+		}
+
+		#endregion
+
+		#region Protected Function
+
+		/// <summary>
+		/// 死亡処理 by flanny7
+		/// </summary>
+		protected void Dead()
+		{
+			// 消滅SE
+			this.Actor.Sleep();
 		}
 
 		/// <summary>
@@ -155,10 +149,11 @@ namespace Game.Bullet
 			this.HitPoint -= _damagePoint;
 		}
 
-		protected abstract void OnDivision();
-		protected abstract void OnMove();
-		protected abstract void OnAnimation();
+		#endregion
+		
+		public abstract void Division();
+		public abstract void Move();
+		public abstract void Animation();
 		protected abstract void OnCollision();
-		protected abstract void Dead();
 	}
 }

@@ -49,6 +49,8 @@ namespace Game.Enemy
 		
 		private Shooter shooter;
 
+		#region Constructor
+
 		public UFA1StraightEnemy(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
 			this.Script = _script as UFA1StraightEnemyScript;
@@ -56,8 +58,10 @@ namespace Game.Enemy
 			// bullet関係
 			this.shooter = new Shooter(this.Script.ShotParam, this.bulletManager, this.Trans);
 		}
-		
-		// メイン関数
+
+		#endregion
+
+		#region Override Function
 
 		protected override void OnInit()
 		{
@@ -88,23 +92,21 @@ namespace Game.Enemy
 		{
 
 		}
-
-		// 
 		
-		protected override void Shot()
+		public override void Shot()
 		{
 			this.shooter.Update();
 		}
 
-		protected override void Move()
+		public override void Move()
 		{
 			this.Trans.position += Vector3.down * this.MoveSpeed * Time.deltaTime * 60.0f;
 		}
 
-		protected override void Dead()
+		public override void Animation()
 		{
-			// todo: 爆発FXの生成
-			// todo: 撃破SE
 		}
+
+		#endregion
 	}
 }
