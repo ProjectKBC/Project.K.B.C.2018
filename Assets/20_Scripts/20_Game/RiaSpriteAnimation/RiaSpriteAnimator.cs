@@ -71,7 +71,7 @@ namespace RiaSpriteAnimationSystem
 				animation.Init(this.spRender);
 				
 				this.animDict.Add(animation.KeyName, animation);
-				Debug.Log(animation.KeyName + ": " + this.animDict[animation.KeyName]);
+				// Debug.Log(animation.KeyName + ": " + this.animDict[animation.KeyName]);
 			}
 
 			this.currentAnim = this.animDict[_firstAnimKey];

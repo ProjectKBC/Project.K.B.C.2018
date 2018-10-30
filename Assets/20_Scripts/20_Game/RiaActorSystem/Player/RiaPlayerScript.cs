@@ -1,5 +1,5 @@
 /* Author : flanny7
- * Update : 2018/10/29
+ * Update : 2018/10/30
 */
 
 using UnityEngine;
@@ -34,9 +34,7 @@ namespace Game.Player
 		protected float circleColliderRadius = 0.8f;
 		[Space(8)]
 		[SerializeField]
-		protected Animations pl1Animations = null;
-		[SerializeField]
-		protected Animations pl2Animations = null;
+		protected Animations animations = null;
 
 		// パラメータ
 		/// 体力
@@ -52,22 +50,10 @@ namespace Game.Player
 		public float CircleColliderRadius { get { return this.circleColliderRadius; } }
 		
 		// Animation
-		public RiaSpriteAnimation WaitAnimation(PlayerNumber _playerNumber)
-		{
-			return (_playerNumber == PlayerNumber.player1) ?
-				this.pl1Animations.waitAnimation : this.pl2Animations.waitAnimation;
-		}
+		public RiaSpriteAnimation WaitAnimation { get { return this.animations.waitAnimation; } }
 
-		public RiaSpriteAnimation RightGoAnimation(PlayerNumber _playerNumber)
-		{
-			return (_playerNumber == PlayerNumber.player1) ?
-				this.pl1Animations.rightGoAnimation : this.pl2Animations.rightGoAnimation;
-		}
+		public RiaSpriteAnimation RightGoAnimation { get { return this.animations.rightGoAnimation; } }
 
-		public RiaSpriteAnimation LeftGoAnimation(PlayerNumber _playerNumber)
-		{
-			return (_playerNumber == PlayerNumber.player1) ?
-				this.pl1Animations.leftGoAnimation : this.pl2Animations.leftGoAnimation;
-		}
+		public RiaSpriteAnimation LeftGoAnimation { get { return this.animations.leftGoAnimation; } }
 	}
 }

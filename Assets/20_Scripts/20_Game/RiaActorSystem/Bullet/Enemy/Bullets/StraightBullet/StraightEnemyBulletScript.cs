@@ -14,6 +14,6 @@ namespace Game.Bullet.Enemy
 		[SerializeField]
 		private RiaSpriteAnimation animation = null;
 
-		public RiaSpriteAnimation Animation { get { return this.animation; } }
+		public RiaSpriteAnimation Animation { get { return GameObject.Instantiate<RiaSpriteAnimation>(this.animation); } }
 	}
 }

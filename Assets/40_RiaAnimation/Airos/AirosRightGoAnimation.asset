@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faf24baad2646fe49b830dc5480dfd75, type: 3}
-  m_Name: pl1_AirosRightGoAnimation
+  m_Name: AirosRightGoAnimation
   m_EditorClassIdentifier: 
   keyName: right_go
   isLoop: 0

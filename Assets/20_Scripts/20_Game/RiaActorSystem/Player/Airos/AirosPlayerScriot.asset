@@ -17,14 +17,10 @@ MonoBehaviour:
   invincibleBlinkingUpdateFrame: 6
   sprite: {fileID: 21300000, guid: 51bd70c6a2c58ba46ae1eb70a841940a, type: 3}
   circleColliderRadius: 0.45
-  pl1Animations:
+  animations:
     waitAnimation: {fileID: 11400000, guid: 494ed12e9b0e1134e8571962e718258a, type: 2}
     rightGoAnimation: {fileID: 11400000, guid: 09e6e1171ae920b4fb16ce28ea7b49f1, type: 2}
     leftGoAnimation: {fileID: 11400000, guid: 73d6954a06a473c4c8cb1081b138de82, type: 2}
-  pl2Animations:
-    waitAnimation: {fileID: 11400000, guid: c7add130e00e03a42883cb1b4257c90b, type: 2}
-    rightGoAnimation: {fileID: 11400000, guid: 966fe7d66924d7b44be55cbd8c5b8dc0, type: 2}
-    leftGoAnimation: {fileID: 11400000, guid: 0779f03b8d3b22b4fb5812e20c1a48c3, type: 2}
   nsParam:
     bulletPrefab: {fileID: 1196284274841118, guid: cbef0a9bf41432a4f8997c50ed2003fc,
       type: 2}

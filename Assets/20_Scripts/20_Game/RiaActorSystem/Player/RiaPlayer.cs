@@ -99,11 +99,11 @@ namespace Game.Player
 
 			this.animator = this.Actor.Animator;
 			RiaSpriteAnimation[] anims = {
-					this.Script.WaitAnimation(this.PlayerNumber),
-					this.Script.RightGoAnimation(this.PlayerNumber),
-					this.Script.LeftGoAnimation(this.PlayerNumber)
+				GameObject.Instantiate<RiaSpriteAnimation>(this.Script.WaitAnimation),
+				GameObject.Instantiate<RiaSpriteAnimation>(this.Script.RightGoAnimation),
+				GameObject.Instantiate<RiaSpriteAnimation>(this.Script.LeftGoAnimation),
 				};
-			this.animator.SetAnimations(anims, this.Script.WaitAnimation(this.PlayerNumber).KeyName);
+			this.animator.SetAnimations(anims, this.Script.WaitAnimation.KeyName);
 
 			this.rivalPlayer = null;
 
@@ -208,7 +208,7 @@ namespace Game.Player
 			{
 				if (rightPushDown || leftPushUp)
 				{
-					this.animator.ChangeAnim(this.Script.RightGoAnimation(this.PlayerNumber).KeyName);
+					this.animator.ChangeAnim(this.Script.RightGoAnimation.KeyName);
 				}
 			}
 
@@ -217,7 +217,7 @@ namespace Game.Player
 			{
 				if (leftPushDown || rightPushUp)
 				{
-					this.animator.ChangeAnim(this.Script.LeftGoAnimation(this.PlayerNumber).KeyName);
+					this.animator.ChangeAnim(this.Script.LeftGoAnimation.KeyName);
 				}
 			}
 			
@@ -228,7 +228,7 @@ namespace Game.Player
 					(leftPushDown && rightPush) ||
 					(rightPushUp || leftPushUp))
 				{
-					this.animator.ChangeAnim(this.Script.WaitAnimation(this.PlayerNumber).KeyName);
+					this.animator.ChangeAnim(this.Script.WaitAnimation.KeyName);
 				}
 			}
 

@@ -9,13 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faf24baad2646fe49b830dc5480dfd75, type: 3}
-  m_Name: pl1_AirosRightBackAnimation
+  m_Name: AirosWaitAnimation
   m_EditorClassIdentifier: 
-  keyName: right_back
-  isLoop: 0
+  keyName: wait
+  isLoop: 1
   updateFrame: 4
   sprites:
-  - {fileID: 21300000, guid: 4fb0a380ae009ed479ae2bc1c1e26597, type: 3}
-  - {fileID: 21300000, guid: 49c64c3fc040189468008fc20a5bb902, type: 3}
-  - {fileID: 21300000, guid: ec429e142c3ace64db54fa8714268758, type: 3}
-  - {fileID: 21300000, guid: d136865280c6de3479903dcf8c4829d1, type: 3}
+  - {fileID: 21300000, guid: 51bd70c6a2c58ba46ae1eb70a841940a, type: 3}
