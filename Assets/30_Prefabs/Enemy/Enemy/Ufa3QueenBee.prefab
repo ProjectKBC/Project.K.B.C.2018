@@ -280,17 +280,39 @@ MonoBehaviour:
   BurstBulletNumber: 3
   childBeePrefab: {fileID: 1853246450649356, guid: a17f5ecc7d077431e9260463f85d8489,
     type: 2}
+  childNeedlePrefab: {fileID: 1704376204189542, guid: 667c46c425d21410c91595c80bc2f35e,
+    type: 2}
   beamPrefab: {fileID: 1406498115201466, guid: 63ad6cf7d13b649e0bdaf7311e0724b9, type: 2}
   barrageConfigs:
-  - Barrage: 2
+  - Barrage: 0
     Second: 1
-  - Barrage: 5
-    Second: 2
   - Barrage: 1
-    Second: 3
+    Second: 2
   - Barrage: 0
     Second: 4
   - Barrage: 1
     Second: 5
-  - Barrage: 3
-    Second: 6
+  - Barrage: 0
+    Second: 7
+  - Barrage: 1
+    Second: 8
+  - Barrage: 0
+    Second: 10
+  - Barrage: 1
+    Second: 11
+  - Barrage: 0
+    Second: 13
+  - Barrage: 1
+    Second: 14
+  - Barrage: 2
+    Second: 16
+  - Barrage: 0
+    Second: 18
+  - Barrage: 1
+    Second: 19
+  - Barrage: 0
+    Second: 20
+  - Barrage: 1
+    Second: 21
+  - Barrage: 1
+    Second: 22

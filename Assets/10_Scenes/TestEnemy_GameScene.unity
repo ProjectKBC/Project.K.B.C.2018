@@ -2667,6 +2667,166 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &2052359485
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569737247996640, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569737247996640, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569737247996640, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569737247996640, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569737247996640, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569737247996640, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569737247996640, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569737247996640, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[2].Second
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[3].Barrage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[3].Second
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[4].Second
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[5].Barrage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[5].Second
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[6].Second
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[7].Barrage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[7].Second
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[8].Second
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[9].Barrage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[9].Second
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[10].Barrage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[10].Second
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[11].Second
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654025074528718, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_Name
+      value: Ufa3QueenBee(1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[0].Barrage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[1].Barrage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[1].Second
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654025074528718, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_TagString
+      value: Enemy1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: childNeedlePrefab
+      value: 
+      objectReference: {fileID: 1704376204189542, guid: 667c46c425d21410c91595c80bc2f35e,
+        type: 2}
+    - target: {fileID: 114026659786584242, guid: 18c8c952ce4bd445dbf34d9b00526cdb,
+        type: 2}
+      propertyPath: barrageConfigs.Array.data[2].Barrage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654025074528718, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &2093413416
 GameObject:
   m_ObjectHideFlags: 0

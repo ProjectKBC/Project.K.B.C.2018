@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class QueenBeeBullet
 {
+	//定数
 	protected static readonly Vector3 SpownPos = new Vector3(0, 0, 200);
 	protected static readonly float Top = 80.0f;
 	protected static readonly float Bottom = -80.0f;
 	protected float LeftPosX;
 	protected float RightPosX;
+
+	//全ての弾に必要なパラメーター
 	protected float ElapsedTime { get; set; }
 	public Barrage BulletType { get; set; }
 	public string TagType;
@@ -16,18 +19,21 @@ public class QueenBeeBullet
 	public Vector3 StartPosition;
 	public GameObject Bullet;
 	public float BulletSpeed = 20.0f;
-	
-	//Beamに必要な
+	public int HitPoint { get; set; }
+
+	//Beamに必要なパラメーター
 	public float AttackTime;
 
-	//Funnelに必要な変数
+	//Funnelに必要なパラメーター
+	public QueenBeeBullet[] ChildNeedles { get; set; }
 	public Vector2 ToPos;
 	public float ToMoveSecond;
 	public float ToMoveSpeed;
 	public Vector2 VectorMyselfPosition;
 	public bool MovingFlag = false;
+	public bool Attack = false;
 
-	//Suicideに必要な変数
+	//Suicideに必要なパラメーター
 	public float MaxRadius { get; set; }
 	public float Angle;
 	public float SuicideSpeed = 3.0f;
@@ -75,17 +81,19 @@ public class QueenBeeBullet
 			case "DoubleFan":
 				this.Fan();
 				break;
-			
+
 			case "Beam":
 				this.Beam();
 				break;
 
 			case "Funnel":
 				this.Funnel();
+				this.RunLinkedAttack();
 				break;
 
 			case "Suicide":
 				this.Suicide();
+				this.RunLinkedAttack();
 				break;
 		}
 	}
@@ -109,21 +117,29 @@ public class QueenBeeBullet
 
 	private void Funnel()
 	{
+		this.Dead();
 		if (this.MovingFlag)
 		{
 			Vector3 pos = this.Trans.position;
-
 			pos.x += this.VectorMyselfPosition.x * this.ToMoveSpeed * Time.deltaTime;
 			pos.y += this.VectorMyselfPosition.y * this.ToMoveSpeed * Time.deltaTime;
 
 			this.Trans.position = pos;
+			
+			/*
+			float distance = Vector2.Distance(this.Trans.position, this.ToPos);
+
+			if (distance <= 0.0f)
+			{
+				this.MovingFlag = false;
+			}
+			*/
 
 			if (this.VectorMyselfPosition.x >= 0 && this.VectorMyselfPosition.y >= 0)
 			{
 				if (this.Trans.position.x >= this.ToPos.x && this.Trans.position.y >= this.ToPos.y)
 				{
 					this.MovingFlag = false;
-					//this.movePosDataCount += 1;
 				}
 			}
 			else if (this.VectorMyselfPosition.x < 0 && this.VectorMyselfPosition.y >= 0)
@@ -131,7 +147,6 @@ public class QueenBeeBullet
 				if (this.Trans.position.x < this.ToPos.x && this.Trans.position.y >= this.ToPos.y)
 				{
 					this.MovingFlag = false;
-					//this.movePosDataCount += 1;
 				}
 			}
 			else if (this.VectorMyselfPosition.x >= 0 && this.VectorMyselfPosition.y < 0)
@@ -139,7 +154,6 @@ public class QueenBeeBullet
 				if (this.Trans.position.x >= this.ToPos.x && this.Trans.position.y < this.ToPos.y)
 				{
 					this.MovingFlag = false;
-					//this.movePosDataCount += 1;
 				}
 			}
 			else if (this.VectorMyselfPosition.x < 0 && this.VectorMyselfPosition.y < 0)
@@ -147,24 +161,13 @@ public class QueenBeeBullet
 				if (this.Trans.position.x < this.ToPos.x && this.Trans.position.y < this.ToPos.y)
 				{
 					this.MovingFlag = false;
-					//this.movePosDataCount += 1;
 				}
 			}
 		}
-		/*
 		else
 		{
-			float d = (float) System.Math.Sqrt(System.Math.Pow(_movePosDatas.PosX - this.Trans.position.x, 2)
-			                                   + System.Math.Pow(_movePosDatas.PosY - this.Trans.position.y, 2));
-			                                   
-			float distance = Vector2.Distance(this.StartPosition, this.ToPos);
-
-			this.toMoveSpeed = distance / this.ToMoveSecond;
-			this.vectorMyselfPosition = new Vector2(this.ToPos.x - this.Trans.position.x,
-				this.ToPos.y - this.Trans.position.y).normalized;
-			this.movingFlag = true;
+			this.LinkedAttack();
 		}
-		*/
 	}
 
 	private void Beam()
@@ -198,6 +201,72 @@ public class QueenBeeBullet
 			        Mathf.Sin(this.Angle * this.SuicideSpeed + this.rotationRadian) * this.MaxRadius * 1.1f;
 			this.Trans.position = pos;
 			this.rotationRadian += 0.05f;
+			this.LinkedAttack();
+		}
+	}
+
+	private void LinkedAttack()
+	{
+		if (this.Attack)
+		{
+			Vector3 pos = this.Trans.position;
+			QueenBeeBullet bullet = this.ChildNeedles[this.SearchBullet(this.ChildNeedles)];
+			bullet.BulletType = Barrage.Fan;
+			bullet.Bullet.transform.position = pos;
+			Vector3 playerPos;
+			if (this.Bullet.tag.Equals("Enemy1"))
+			{
+				playerPos = PlayerManager.GameObjectPl1.transform.position;
+			}
+			else
+			{
+				playerPos = PlayerManager.GameObjectPl2.transform.position;
+			}
+
+			bullet.Trans.rotation = Quaternion.LookRotation(playerPos - this.Trans.position);
+			bullet.Trans.Translate(Vector3.forward * this.BulletSpeed * Time.deltaTime);
+			bullet.Bullet.SetActive(true);
+			this.Attack = false;
+		}
+	}
+
+	private void RunLinkedAttack()
+	{
+		for (int i = 0; i < this.ChildNeedles.Length; i++)
+		{
+			this.ChildNeedles[i].Run();
+		}
+	}
+
+	/*
+	private void GoPlayer()
+	{
+		Vector3 pos = this.Trans.position;
+		//Debug.Log(this.ChildNeedles.Length + "あああああ");
+		this.Trans.position = pos;
+		
+        Debug.Log(this.Trans.position);
+	}
+	*/
+
+	private int SearchBullet(QueenBeeBullet[] _bullets)
+	{
+		for (int i = 0; i < _bullets.Length; i++)
+		{
+			if (!_bullets[i].Bullet.gameObject.activeSelf)
+			{
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	private void Dead()
+	{
+		if (this.HitPoint <= 0)
+		{
+			this.HideBullet();
 		}
 	}
 
