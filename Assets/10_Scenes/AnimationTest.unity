@@ -144,12 +144,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spRender: {fileID: 1109168021}
   animations:
-  - key: wait
-    animation: {fileID: 11400000, guid: 68aafa8df927a44469b594599ace2487, type: 2}
-  - key: left
-    animation: {fileID: 11400000, guid: 91ceb1a7e3e47e34b99e52a24000838b, type: 2}
-  - key: right
-    animation: {fileID: 11400000, guid: 2e152e4c4ec2e2847a932af3d346a300, type: 2}
+  - {fileID: 11400000, guid: 494ed12e9b0e1134e8571962e718258a, type: 2}
+  - {fileID: 11400000, guid: 09e6e1171ae920b4fb16ce28ea7b49f1, type: 2}
+  - {fileID: 11400000, guid: e0e39df2ac7dffc4f93595269ec694d1, type: 2}
+  - {fileID: 11400000, guid: 73d6954a06a473c4c8cb1081b138de82, type: 2}
+  - {fileID: 11400000, guid: 97d5c5937813dfb49b277695a12eb93d, type: 2}
 --- !u!212 &1109168021
 SpriteRenderer:
   m_ObjectHideFlags: 0

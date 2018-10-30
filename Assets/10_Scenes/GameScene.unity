@@ -46026,10 +46026,10 @@ GameObject:
   m_Component:
   - component: {fileID: 746776795}
   - component: {fileID: 746776797}
+  - component: {fileID: 746776800}
   - component: {fileID: 746776798}
   - component: {fileID: 746776796}
   - component: {fileID: 746776799}
-  - component: {fileID: 746776800}
   m_Layer: 0
   m_Name: PL1_PlayerActor
   m_TagString: Player1
@@ -60722,9 +60722,9 @@ GameObject:
   - component: {fileID: 951552601}
   - component: {fileID: 951552603}
   - component: {fileID: 951552605}
+  - component: {fileID: 951552606}
   - component: {fileID: 951552602}
   - component: {fileID: 951552604}
-  - component: {fileID: 951552606}
   m_Layer: 0
   m_Name: PL2_PlayerActor
   m_TagString: Player2

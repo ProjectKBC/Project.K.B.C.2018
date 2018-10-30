@@ -9,7 +9,8 @@ namespace RiaSpriteAnimationSystem
 {
 	public sealed class RiaSpriteAnimator : MonoBehaviour
 	{
-		public bool IsStop() { return !this.currentAnim.IsPlaying; }
+		public bool IsStop { get { return !this.currentAnim.IsPlaying; } }
+		public RiaSpriteAnimation[] Animations { get { return this.animations; } }
 		
 		[SerializeField]
 		private SpriteRenderer spRender = null;
@@ -37,7 +38,7 @@ namespace RiaSpriteAnimationSystem
 
 		public void ChangeAnim(string _animKey)
 		{
-			Debug.Log("ChangeAnim: " + _animKey);
+			// Debug.Log("ChangeAnim: " + _animKey);
 			this.currentAnim.Stop();
 			this.currentAnim = this.animDict[_animKey];
 			this.currentAnim.Play();
@@ -70,6 +71,7 @@ namespace RiaSpriteAnimationSystem
 				animation.Init(this.spRender);
 				
 				this.animDict.Add(animation.KeyName, animation);
+				Debug.Log(animation.KeyName + ": " + this.animDict[animation.KeyName]);
 			}
 
 			this.currentAnim = this.animDict[_firstAnimKey];

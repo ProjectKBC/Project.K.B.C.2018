@@ -108,3 +108,19 @@ namespace RiaSpriteAnimationSystem
 		}
 	}
 }
+
+//public static class RiaSpriteAnimationExtension
+//{
+//	public static T DeepCopy<T>(this T src)
+//	{
+//		using (var memoryStream = new System.IO.MemoryStream())
+//		{
+//			var binaryFormatter
+//			  = new System.Runtime.Serialization
+//					.Formatters.Binary.BinaryFormatter();
+//			binaryFormatter.Serialize(memoryStream, src);
+//			memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
+//			return (T)binaryFormatter.Deserialize(memoryStream);
+//		}
+//	}
+//}

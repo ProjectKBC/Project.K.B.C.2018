@@ -4,19 +4,10 @@
 
 using UnityEngine;
 using RiaSpriteAnimationSystem;
+using System.Linq;
 
 public class TestAnimation : MonoBehaviour
 {
-	[SerializeField]
-	private string firstAnimationKey = "wait";
-
-	public enum AnimState
-	{
-		wait,
-		left,
-		right,
-	}
-
 	private RiaSpriteAnimator animator;
 
 	private static readonly KeyCode KeyLeft = KeyCode.A;
@@ -25,7 +16,7 @@ public class TestAnimation : MonoBehaviour
 	private void Start()
 	{
 		this.animator = GetComponent<RiaSpriteAnimator>();
-		this.animator.Init(this.firstAnimationKey);
+		this.animator.Init(this.animator.Animations.First().KeyName);
 	}
 
 	private void Update()
@@ -45,14 +36,14 @@ public class TestAnimation : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyRight) || Input.GetKeyUp(KeyLeft))
 			{
-				this.animator.ChangeAnim("right");
+				this.animator.ChangeAnim("right_go");
 			}
 		}
 		else if (currentPos.x < prevPos.x /*左に移動していたら*/)
 		{
 			if (Input.GetKeyDown(KeyLeft) || Input.GetKeyUp(KeyRight))
 			{
-				this.animator.ChangeAnim("left");
+				this.animator.ChangeAnim("left_go");
 			}
 		}
 		else /*移動していなければ*/

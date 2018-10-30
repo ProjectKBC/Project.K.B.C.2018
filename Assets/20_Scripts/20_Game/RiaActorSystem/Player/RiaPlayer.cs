@@ -4,6 +4,7 @@
 
 using UnityEngine;
 using RiaActorSystem;
+using RiaSpriteAnimationSystem;
 
 namespace Game.Player
 {
@@ -30,6 +31,8 @@ namespace Game.Player
 		/// 画面外処理系
 		protected float areaLeftLine;
 		protected float areaRightLine;
+
+		/// アニメーション系
 
 		/// 無敵系
 		protected bool isInvincible = false;
@@ -60,6 +63,7 @@ namespace Game.Player
 		protected SpriteRenderer spRender;
 		protected Collider2DSupporter colliderSupporter;
 		protected CircleCollider2D circleCollider;
+		protected RiaSpriteAnimator animator;
 		protected RiaPlayer rivalPlayer;
 
 		protected RiaPlayer RivalPlayer
@@ -92,6 +96,14 @@ namespace Game.Player
 
 			this.circleCollider = this.Go.GetComponent<CircleCollider2D>();
 			this.circleCollider.radius = this.Script.CircleColliderRadius;
+
+			this.animator = this.Actor.Animator;
+			RiaSpriteAnimation[] anims = {
+					this.Script.WaitAnimation(this.PlayerNumber),
+					this.Script.RightGoAnimation(this.PlayerNumber),
+					this.Script.LeftGoAnimation(this.PlayerNumber)
+				};
+			this.animator.SetAnimations(anims, this.Script.WaitAnimation(this.PlayerNumber).KeyName);
 
 			this.rivalPlayer = null;
 
@@ -145,25 +157,25 @@ namespace Game.Player
 		public virtual void Move()
 		{
 			// SlowMoveRate by flanny7
-			var slowRate = (RiaInput.Instance.GetPush(RiaInput.KeyType.LowSpeed, this.PlayerNumber)) ? SLOW_MOVE_RATE : 1.0f;
+			var slowRate = (RiaInput.Instance.GetKey(RiaInput.KeyType.LowSpeed, this.PlayerNumber)) ? SLOW_MOVE_RATE : 1.0f;
 
 			// Up
-			if (RiaInput.Instance.GetPush(RiaInput.KeyType.Up, this.PlayerNumber))
+			if (RiaInput.Instance.GetKey(RiaInput.KeyType.Up, this.PlayerNumber))
 			{
 				this.Trans.position += Vector3.up * this.MoveSpeed * Time.deltaTime * 60 * slowRate * this.MoveSpeedDebuffRate;
 			}
 			// Down
-			if (RiaInput.Instance.GetPush(RiaInput.KeyType.Down, this.PlayerNumber))
+			if (RiaInput.Instance.GetKey(RiaInput.KeyType.Down, this.PlayerNumber))
 			{
 				this.Trans.position += Vector3.down * this.MoveSpeed * Time.deltaTime * 60 * slowRate * this.MoveSpeedDebuffRate;
 			}
 			// Right
-			if (RiaInput.Instance.GetPush(RiaInput.KeyType.Right, this.PlayerNumber))
+			if (RiaInput.Instance.GetKey(RiaInput.KeyType.Right, this.PlayerNumber))
 			{
 				this.Trans.position += Vector3.right * this.MoveSpeed * Time.deltaTime * 60 * slowRate * this.MoveSpeedDebuffRate;
 			}
 			// Left
-			if (RiaInput.Instance.GetPush(RiaInput.KeyType.Left, this.PlayerNumber))
+			if (RiaInput.Instance.GetKey(RiaInput.KeyType.Left, this.PlayerNumber))
 			{
 				this.Trans.position += Vector3.left * this.MoveSpeed * Time.deltaTime * 60 * slowRate * this.MoveSpeedDebuffRate;
 			}
@@ -179,6 +191,50 @@ namespace Game.Player
 					pos.z);
 		}
 		
+		/// <summary>
+		/// アニメーション処理 by flanny7
+		/// </summary>
+		public virtual void Animation()
+		{
+			var rightPushDown = RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Right, this.PlayerNumber);
+			var leftPushDown = RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Left, this.PlayerNumber);
+			var rightPushUp = RiaInput.Instance.GetKeyUp(RiaInput.KeyType.Right, this.PlayerNumber);
+			var leftPushUp = RiaInput.Instance.GetKeyUp(RiaInput.KeyType.Left, this.PlayerNumber);
+			var rightPush = RiaInput.Instance.GetKey(RiaInput.KeyType.Right, this.PlayerNumber);
+			var leftPush = RiaInput.Instance.GetKey(RiaInput.KeyType.Left, this.PlayerNumber);
+
+			// 右に移動していたら
+			if (rightPush && !leftPush)
+			{
+				if (rightPushDown || leftPushUp)
+				{
+					this.animator.ChangeAnim(this.Script.RightGoAnimation(this.PlayerNumber).KeyName);
+				}
+			}
+
+			// 左に移動していたら
+			if (leftPush && !rightPush)
+			{
+				if (leftPushDown || rightPushUp)
+				{
+					this.animator.ChangeAnim(this.Script.LeftGoAnimation(this.PlayerNumber).KeyName);
+				}
+			}
+			
+			// 移動していなければ
+			if ((rightPush && leftPush) || (!rightPush && !leftPush))
+			{	
+				if ((rightPushDown && leftPush) ||
+					(leftPushDown && rightPush) ||
+					(rightPushUp || leftPushUp))
+				{
+					this.animator.ChangeAnim(this.Script.WaitAnimation(this.PlayerNumber).KeyName);
+				}
+			}
+
+			this.animator.Run();
+		}
+
 		/// <summary>
 		/// 衝突処理 by flanny7
 		/// </summary>
@@ -321,11 +377,6 @@ namespace Game.Player
 		/// 攻撃処理 by fkanny7
 		/// </summary>
 		public abstract void Shot();
-
-		/// <summary>
-		/// アニメーション処理 by flanny7
-		/// </summary>
-		public abstract void Animation();
-
 	}
 }
+ 
