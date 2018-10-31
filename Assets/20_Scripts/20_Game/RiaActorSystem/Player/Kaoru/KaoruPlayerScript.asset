@@ -11,9 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f41ec8ededd4a7ba33f09d09069660, type: 3}
   m_Name: KaoruPlayerScript
   m_EditorClassIdentifier: 
-  maxHitPoint: 1
-  moveSpeed: 2
+  maxHitPoint: 5
+  moveSpeedBase: 0.75
+  invincibleTimeMax: 2.5
+  invincibleBlinkingUpdateFrame: 6
   sprite: {fileID: 21300000, guid: 6225bbf46c5104e4482dc1ec831ba503, type: 3}
+  circleColliderRadius: 0.45
+  animations:
+    waitAnimation: {fileID: 11400000, guid: 9e721acdef3fc8245a5e7733695a0da7, type: 2}
+    rightGoAnimation: {fileID: 11400000, guid: eb44adbbaa8ec6e4595f48c9feae2615, type: 2}
+    leftGoAnimation: {fileID: 11400000, guid: 28617b3e77bc4e34da051898a724207a, type: 2}
   nsParam:
     bulletPrefab: {fileID: 1047989897566778, guid: cc572ab2903414e33899ff1f1abe96f0,
       type: 2}

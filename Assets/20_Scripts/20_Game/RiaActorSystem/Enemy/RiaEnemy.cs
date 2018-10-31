@@ -168,7 +168,7 @@ namespace Game.Enemy
 				{
 					var tag = go[i].tag;
 
-					Debug.Log(tag);
+					//Debug.Log(tag);
 
 					// 自機のショットと衝突
 					if (tag == this.playerBulletTag)

@@ -14,5 +14,5 @@ MonoBehaviour:
   playerCharacter1: 1
   playerCharacter2: 6
   stage: 0
-  player1Score: 0
-  player2Score: 0
+  player1Score: 10
+  player2Score: 20

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using RiaActorSystem;
 
 namespace Game.Player
@@ -51,16 +51,20 @@ namespace Game.Player
 
 		protected override void OnPlay()
 		{
-			this.Move();
+			//this.Move();
 
-			this.NormalShot();
-			this.SpecialShot();
-			this.Skill();
 		}
 
 		protected override void OnEnd()
 		{
 
+		}
+		
+		public override void Shot()
+		{
+			this.NormalShot();
+			this.SpecialShot();
+			this.Skill();
 		}
 
 		/// <summary>

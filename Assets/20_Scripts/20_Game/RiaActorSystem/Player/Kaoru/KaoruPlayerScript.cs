@@ -6,7 +6,7 @@ namespace Game.Player
 	[CreateAssetMenu(menuName = "RiaActorSystem/Player/KaoruPlayerScript", fileName = "KaoruPlayerScript")]
 	public sealed class KaoruPlayerScript : RiaPlayerScript
 	{
-		public readonly PlayerCharacterEnum playerCharacter = PlayerCharacterEnum.anoma;
+		public readonly PlayerCharacterEnum playerCharacter = PlayerCharacterEnum.kaoru;
 
 		[System.Serializable]
 		public class NormalShotParam
@@ -18,7 +18,8 @@ namespace Game.Player
 		[System.Serializable]
 		public class SpecialShotParam
 		{
-			
+			public GameObject bulletPrefab = null;
+			public float shotCoolTime = 5;
 		}
 
 		[System.Serializable]

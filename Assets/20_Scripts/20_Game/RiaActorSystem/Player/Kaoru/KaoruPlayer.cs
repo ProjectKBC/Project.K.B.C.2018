@@ -26,7 +26,8 @@ namespace Game.Player
 		// 特殊ショット
 		public class SpecialShotParam
 		{
-			
+			public GameObject specialBullet;
+			public bool existsGranade = false;
 		}
 
 		// スキル
@@ -41,7 +42,7 @@ namespace Game.Player
 
 		protected override void OnInit()
 		{
-
+			
 		}
 
 		protected override void OnWait()
@@ -51,16 +52,23 @@ namespace Game.Player
 
 		protected override void OnPlay()
 		{
-			this.Move();
+			//this.Move();
 
-			this.NormalShot();
-			this.SpecialShot();
-			this.Skill();
+			//this.NormalShot();
+			//this.SpecialShot();
+			//this.Skill();
 		}
 
 		protected override void OnEnd()
 		{
 
+		}
+
+		public override void Shot()
+		{
+			this.NormalShot();
+			this.SpecialShot();
+			this.Skill();
 		}
 
 		/// <summary>
@@ -93,7 +101,29 @@ namespace Game.Player
 		/// <param name="_status"></param>
 		private void SpecialShot()
 		{
-			
+			var param = this.ssParam;
+			var script = this.Script.ssParam;
+
+			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.SpecialShot, this.PlayerNumber) &&
+				param.existsGranade)
+			{
+				Debug.Log(this.PlayerNumber + " : specialShot");
+
+				param.specialBullet.GetComponent<Animator>().enabled = true;
+			}
+
+			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.SpecialShot, this.PlayerNumber) &&
+			    !param.existsGranade)
+			{
+				CreateSpecialBullet();
+				param.existsGranade = true;
+			}
+
+			if(!param.specialBullet)
+			{
+				param.existsGranade = false;
+			}
+
 		}
 
 		/// <summary>
@@ -113,6 +143,16 @@ namespace Game.Player
 			//pos.z = 100;
 			normalBullet.transform.position = pos;
 			Debug.Log(normalBullet.transform.position);
+		}
+
+		private void CreateSpecialBullet()
+		{
+			ssParam.specialBullet = GameObject.Instantiate(Script.ssParam.bulletPrefab);
+
+			var pos = this.Trans.position;
+			//pos.z = 100;
+			ssParam.specialBullet.transform.position = pos;
+			Debug.Log(ssParam.specialBullet.transform.position);
 		}
 
 	}
