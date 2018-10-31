@@ -11,32 +11,20 @@ public class SinEnemy : Enemy {
 
 	protected override void Start()
 	{
-		CreateBullet(this.NomalBullet);
+		this.CreateBullet(this.NormalBullet);
 	}
 
 	protected override void Update () {
 		base.Update();
-		
-		float nowPass = Mathf.Floor (this.ElapsedTime * 10) / 10;
-		if (this.Trans.position.y > ordinaryForwardBorder)
+		if (this.Trans.position.y > this.ordinaryYForwardBorder)
 		{
-			ForwardEnemy(ordinaryForwardBorder);
+			this.YForwardEnemy(this.ordinaryYForwardBorder);
 		}
 		else
 		{
-			SinMove();
+			this.SinMove();
 		}
-		if (nowPass >= this.Pass)
-		{
-			if (IsBurstAttack)
-			{
-				BurstAttack ();
-			}
-			else
-			{
-				NormalAtack ();
-			}
-		}
+		
 	}
 
 	private void SinMove()

@@ -54,22 +54,14 @@ public class Bullet : MonoBehaviour
 
     public void OnEnable()
     {
-        if (this.tag.Equals("Enemy1"))
-        {
-            this.PlayerPosition = PlayerManager.GameObjectPl1.transform.position;
-        }
-        else if (this.tag.Equals("Enemy2"))
-        {
-            this.PlayerPosition = PlayerManager.GameObjectPl2.transform.position;
-        }
-        this.VectorMyselfPlayer = new Vector3 (this.PlayerPosition.x - this.MyAppearPosition.x,
-            this.PlayerPosition.y - this.MyAppearPosition.y, this.MyAppearPosition.y).normalized;
-        /*
-        this.MyAppearPositionX = Trans.position.x;
-        this.MyAppearPositionY = Trans.position.y;
-        this.PlayerPositionX = PlayerManager.GameObjectPl1.transform.position.x;
-        this.PlayerPositionY = PlayerManager.GameObjectPl1.transform.position.y;
-        */
+	    MyAppearPosition = this.Trans.position;
+	    this.CalculationDifference();
+	    /*
+	    this.MyAppearPositionX = Trans.position.x;
+	    this.MyAppearPositionY = Trans.position.y;
+	    this.PlayerPositionX = PlayerManager.GameObjectPl1.transform.position.x;
+	    this.PlayerPositionY = PlayerManager.GameObjectPl1.transform.position.y;
+	    */
     }
 
     protected virtual void Update()
@@ -89,12 +81,26 @@ public class Bullet : MonoBehaviour
                 GoPlayer();
                 break;
         }
-        BeyondLine();
+        this.BeyondLine();
     }
 
     public void OnDisable()
     {
     }
+
+	public void CalculationDifference()
+	{
+		if (this.tag.Equals("Enemy1"))
+		{
+			this.PlayerPosition = PlayerManager.GameObjectPl1.transform.position;
+		}
+		else if (this.tag.Equals("Enemy2"))
+		{
+			this.PlayerPosition = PlayerManager.GameObjectPl2.transform.position;
+		}
+		this.VectorMyselfPlayer = new Vector3 (this.PlayerPosition.x - this.MyAppearPosition.x,
+			this.PlayerPosition.y - this.MyAppearPosition.y, this.MyAppearPosition.z).normalized;
+	}
         
     /*
     public void GoPlayer(float _enemyX, float _enemyY, float _playerX, float _playerY)
@@ -153,7 +159,7 @@ public class Bullet : MonoBehaviour
                                            || this.Trans.position.x < this.LeftPosX ||
                                            this.Trans.position.x > this.RightPosX)
         {
-            HideBullet();
+            this.HideBullet();
         }
     }
 

@@ -9,71 +9,82 @@ namespace Ria
 {
     using System.Diagnostics.CodeAnalysis;
 
-    public enum EnemyPattern
-    {
-        StraightHorizontal,
-        StraightVertical,
-        Quadratic,
-        Circle,
-        Stay,
-        Sin,
-        Bee
-    }
-
-    public class PlayersEnemyData
-    {
-        public string PlayerType;
-        public Vector3 EnemyStartPos;
-        public int PoolEnemy;
-        public int EnemyCount;
-
-        public EnemyPattern[] EnemyPatterns;
-        public GameObject[] StraightEnemys;
-        public GameObject[] QuadraticEnemys;
-        public GameObject[] CircleEnemys;
-        public GameObject[] StayEnemys;
-        public GameObject[] SinEnemys;
-        public GameObject BeeEnemy;
-        public float EnemyAppearPass;
-        public float RightPosX;
-        public float LeftPosX;
-
-        public PlayersEnemyData(string _playerType, EnemyPattern[] _enemyPatterns, int _poolEnemy)
-        {
-            this.PlayerType = _playerType;
-            this.EnemyPatterns = _enemyPatterns;
-            this.PoolEnemy = _poolEnemy;
-            this.StraightEnemys = new GameObject[this.PoolEnemy];
-            this.QuadraticEnemys = new GameObject[this.PoolEnemy];
-            this.CircleEnemys = new GameObject[this.PoolEnemy];
-            this.StayEnemys = new GameObject[this.PoolEnemy];
-            this.SinEnemys = new GameObject[this.PoolEnemy];
-
-            this.BeeEnemy = new GameObject();
-            this.EnemyCount = 0;
-            this.EnemyAppearPass = 0;
-
-            if (_playerType.Equals("Enemy1"))
-            {
-                this.EnemyStartPos = new Vector3(-42.5f, 60, 100);
-                this.RightPosX = -3.0f;
-                this.LeftPosX = -85.0f;
-            }
-            else if (_playerType.Equals("Enemy2"))
-            {
-                this.EnemyStartPos = new Vector3(42.5f, 60, 100);
-                this.RightPosX = 85.0f;
-                this.LeftPosX = 3.0f;
-            }
-        }
-    }
-
     /// <summary>
     /// 敵の生成や出現を管理するクラス
     /// </summary>
     [System.Serializable]
     public class EnemyManager : MonoBehaviour
     {
+	    public enum EnemyPattern
+	    {
+		    StraightHorizontal,
+		    StraightVertical,
+		    Straights,
+		    ToLeftSide,
+		    ToRightSide,
+		    Quadratic,
+		    Circle,
+		    Coaster,
+		    Stay,
+		    Sin,
+		    Bee
+	    }
+	    
+	    [System.Serializable]
+	    public class PlayersEnemyData
+	    {
+		    public string PlayerType;
+		    public Vector3 EnemyStartPos;
+		    public int PoolEnemy;
+		    public int EnemyCount;
+
+		    public EnemyPattern[] EnemyPatterns;
+		    public GameObject[] StraightEnemys;
+		    public GameObject[] ToLeftSideEnemys;
+		    public GameObject[] ToRightSideEnemys;
+		    public GameObject[] QuadraticEnemys;
+		    public GameObject[] CircleEnemys;
+		    public GameObject[] CoasterEnemys;
+		    public GameObject[] StayEnemys;
+		    public GameObject[] SinEnemys;
+		    public GameObject BeeEnemy;
+		    public float EnemyAppearPass;
+		    public float RightPosX;
+		    public float LeftPosX;
+
+		    public PlayersEnemyData(string _playerType, EnemyPattern[] _enemyPatterns, int _poolEnemy)
+		    {
+			    this.PlayerType = _playerType;
+			    this.EnemyPatterns = _enemyPatterns;
+			    this.PoolEnemy = _poolEnemy;
+			    this.StraightEnemys = new GameObject[this.PoolEnemy];
+			    this.ToLeftSideEnemys = new GameObject[this.PoolEnemy];
+			    this.ToRightSideEnemys = new GameObject[this.PoolEnemy];
+			    this.QuadraticEnemys = new GameObject[this.PoolEnemy];
+			    this.CircleEnemys = new GameObject[this.PoolEnemy];
+			    this.CoasterEnemys = new GameObject[this.PoolEnemy];
+			    this.StayEnemys = new GameObject[this.PoolEnemy];
+			    this.SinEnemys = new GameObject[this.PoolEnemy];
+
+			    this.BeeEnemy = new GameObject();
+			    this.EnemyCount = 0;
+			    this.EnemyAppearPass = 0;
+
+			    if (_playerType.Equals("Enemy1"))
+			    {
+				    this.EnemyStartPos = new Vector3(-42.5f, 60, 100);
+				    this.RightPosX = -3.0f;
+				    this.LeftPosX = -85.0f;
+			    }
+			    else if (_playerType.Equals("Enemy2"))
+			    {
+				    this.EnemyStartPos = new Vector3(42.5f, 60, 100);
+				    this.RightPosX = 85.0f;
+				    this.LeftPosX = 3.0f;
+			    }
+		    }
+	    }
+	    
         private static readonly int AppearZPos = 100;
 
         // 使われていないのでコメントアウトした by flanny
@@ -84,13 +95,12 @@ namespace Ria
         /// </summary>
         [SuppressMessage("ReSharper", "StyleCop.SA1401")]
         [System.Serializable]
-        public class EnemyManagerDebugParam
+        public class EnemyManagerAppearParam
         {
             // = (-475, transform.position.y);
             public Vector2 StraightHorizontalPos;
 
-            // = (100, 0);
-            public Vector2 StraightHorizontalPosInterval;
+	        public Vector2 StraightHorizontalPosInterval;
 
             // = (-780, 560);
             public Vector2 QuadraticPos;
@@ -101,19 +111,27 @@ namespace Ria
             // = (-375, transform.position.y);
             public Vector2 CirclePos;
 
-            // = (100, 0);
-            public Vector2 CirclePosInterval;
+	        public Vector2 CirclePosInterval;
+	        
+	        public Vector2 CoasterPos;
+
+	        public float Radius;
+
+	        public Vector2 CoasterPosInterval;
         }
 
         // 何のIntervalなのか教えて by flanny
         [SerializeField] private float interval = 5;
-        private int poolEnemy = 10;
+        private int poolEnemy = 20;
 
-        [Space(16)] [SerializeField] private EnemyManagerDebugParam enemyManagerDebug = null;
+        [Space(16)] [SerializeField] private EnemyManagerAppearParam enemyManagerAppearParam = null;
 
         [SerializeField] private GameObject straightEnemy = null;
-        [SerializeField] private GameObject quadraticEnemy = null;
+	    [SerializeField] private GameObject toLeftSideEnemy = null;
+	    [SerializeField] private GameObject toRightSideEnemy = null;
+	    [SerializeField] private GameObject quadraticEnemy = null;
         [SerializeField] private GameObject circleEnemy = null;
+	    [SerializeField] private GameObject coasterEnemy = null;
         [SerializeField] private GameObject stayEnemy = null;
         [SerializeField] private GameObject sinEnemy = null;
 
@@ -142,10 +160,8 @@ namespace Ria
         {
             this.elapsedTime += Time.deltaTime;
 
-            // ここの計算がすごく怖い どういう意味？ by flanny
-            var nowPass = Mathf.Floor(this.elapsedTime * 10) / 10;
-            EnemyAppear(nowPass, this.Enemy1Data);
-            EnemyAppear(nowPass, this.Enemy2Data);
+            this.EnemyAppear(this.elapsedTime, this.Enemy1Data);
+            this.EnemyAppear(this.elapsedTime, this.Enemy2Data);
         }
 
         public GameObject CreateEnemy(GameObject _obj)
@@ -160,20 +176,32 @@ namespace Ria
         {
             for (int i = 0; i < _enemyData.PoolEnemy; i++)
             {
-                _enemyData.StraightEnemys[i] = CreateEnemy(this.straightEnemy);
-                _enemyData.CircleEnemys[i] = CreateEnemy(this.circleEnemy);
-                _enemyData.QuadraticEnemys[i] = CreateEnemy(this.quadraticEnemy);
-                _enemyData.StraightEnemys[i].tag = _enemyData.PlayerType;
-                _enemyData.CircleEnemys[i].tag = _enemyData.PlayerType;
+                _enemyData.StraightEnemys[i] = this.CreateEnemy(this.straightEnemy);
+	            _enemyData.StraightEnemys[i].tag = _enemyData.PlayerType;
+	            
+	            _enemyData.ToLeftSideEnemys[i] = this.CreateEnemy(this.toLeftSideEnemy);
+	            _enemyData.ToLeftSideEnemys[i].tag = _enemyData.PlayerType;
+	            
+	            _enemyData.ToRightSideEnemys[i] = this.CreateEnemy(this.toRightSideEnemy);
+	            _enemyData.ToRightSideEnemys[i].tag = _enemyData.PlayerType;
+	            
+                _enemyData.CircleEnemys[i] = this.CreateEnemy(this.circleEnemy);
+	            _enemyData.CircleEnemys[i].tag = _enemyData.PlayerType;
+	            
+	            _enemyData.CoasterEnemys[i] = this.CreateEnemy(this.coasterEnemy);
+	            _enemyData.CoasterEnemys[i].tag = _enemyData.PlayerType;
+
+                _enemyData.QuadraticEnemys[i] = this.CreateEnemy(this.quadraticEnemy);
                 _enemyData.QuadraticEnemys[i].tag = _enemyData.PlayerType;
 
-                _enemyData.StayEnemys[i] = CreateEnemy(this.stayEnemy);
+                _enemyData.StayEnemys[i] = this.CreateEnemy(this.stayEnemy);
                 _enemyData.StayEnemys[i].tag = _enemyData.PlayerType;
-                _enemyData.SinEnemys[i] = CreateEnemy(this.sinEnemy);
+	            
+                _enemyData.SinEnemys[i] = this.CreateEnemy(this.sinEnemy);
                 _enemyData.SinEnemys[i].tag = _enemyData.PlayerType;
             }
 
-            _enemyData.BeeEnemy = CreateEnemy(this.beeEnemy);
+            _enemyData.BeeEnemy = this.CreateEnemy(this.beeEnemy);
             _enemyData.BeeEnemy.tag = _enemyData.PlayerType;
         }
 
@@ -187,46 +215,88 @@ namespace Ria
                     {
                         case "StraightHorizontal":
                             StraightHorizontal(
-                                5,
+                                7,
                                 _enemyData,
-                                this.enemyManagerDebug.StraightHorizontalPos,
-                                this.enemyManagerDebug.StraightHorizontalPosInterval);
+                                this.enemyManagerAppearParam.StraightHorizontalPos,
+                                this.enemyManagerAppearParam.StraightHorizontalPosInterval);
                             break;
 
                         case "StraightVertical":
                             StraightVertical();
                             break;
+                        
+	                    case "Straights":
+		                    Straights(
+			                    10,
+			                    _enemyData,
+			                    this.enemyManagerAppearParam.StraightHorizontalPos,
+			                    this.enemyManagerAppearParam.StraightHorizontalPosInterval);
+		                    break;
+	                    
+	                    case "ToLeftSide":
+		                    ToLeftSide(
+			                    10,
+			                    _enemyData,
+			                    this.enemyManagerAppearParam.StraightHorizontalPos,
+			                    this.enemyManagerAppearParam.StraightHorizontalPosInterval);
+		                    break;
+	                    
+	                    case "ToRightSide":
+		                    ToRightSide(
+			                    10,
+			                    _enemyData,
+			                    this.enemyManagerAppearParam.StraightHorizontalPos,
+			                    this.enemyManagerAppearParam.StraightHorizontalPosInterval);
+		                    break;
 
                         case "Quadratic":
                             Quadratic(
                                 3,
                                 _enemyData,
-                                this.enemyManagerDebug.QuadraticPos,
-                                this.enemyManagerDebug.QuadraticPosInterval);
+                                this.enemyManagerAppearParam.QuadraticPos,
+                                this.enemyManagerAppearParam.QuadraticPosInterval);
                             break;
 
                         case "Circle":
                             Circle(
                                 1,
                                 _enemyData,
-                                this.enemyManagerDebug.CirclePos,
-                                this.enemyManagerDebug.CirclePosInterval);
+                                this.enemyManagerAppearParam.CirclePos,
+                                this.enemyManagerAppearParam.CirclePosInterval);
                             break;
+                        
+	                    case "Coaster":
+		                    /*
+		                    Coaster(
+			                    20,
+			                    _enemyData,
+			                    this.enemyManagerAppearParam.Radius,
+			                    this.enemyManagerAppearParam.CoasterPos,
+			                    this.enemyManagerAppearParam.CoasterPosInterval);
+			                    */
+		                    
+		                    Quadratic(
+			                    10,
+			                    _enemyData,
+			                    this.enemyManagerAppearParam.CoasterPos,
+			                    this.enemyManagerAppearParam.CirclePosInterval);
+		                    break;
+		                    break;
                         
                         case "Stay":
                             Stay(
                                 5,
                                 _enemyData,
-                                this.enemyManagerDebug.StraightHorizontalPos,
-                                this.enemyManagerDebug.StraightHorizontalPosInterval);
+                                this.enemyManagerAppearParam.StraightHorizontalPos,
+                                this.enemyManagerAppearParam.StraightHorizontalPosInterval);
                             break;
                         
                         case "Sin":
                             Sin(
                                 3,
                                 _enemyData,
-                                this.enemyManagerDebug.StraightHorizontalPos,
-                                this.enemyManagerDebug.StraightHorizontalPosInterval);
+                                this.enemyManagerAppearParam.StraightHorizontalPos,
+                                this.enemyManagerAppearParam.StraightHorizontalPosInterval);
                             break;
 
                         case "Bee":
@@ -277,6 +347,90 @@ namespace Ria
                 }
             }
         }
+
+	    public void Straights(int _appearNum,PlayersEnemyData _enemyData, Vector2 _appearPos,
+		    Vector2 _posInterval)
+	    {
+		    //float appearLeftPosX = _enemyData.LeftPosX + appearSpace;
+		    int appearCount = 0;
+		    float appearSpace = System.Math.Abs(_enemyData.LeftPosX - _enemyData.RightPosX) / (_appearNum + 1);
+		    float appearLeftPosX = _enemyData.LeftPosX + appearSpace;
+
+		    for (int i = 0; i < _enemyData.StraightEnemys.Length; i++)
+		    {
+			    float rand = Random.Range(_enemyData.EnemyStartPos.x + 20, _enemyData.EnemyStartPos.x - 20);
+			    if (appearCount >= _appearNum)
+			    {
+				    break;
+			    }
+
+			    if (!_enemyData.StraightEnemys[i].activeSelf)
+			    {
+				    // 起点に設置
+				    _enemyData.StraightEnemys[i].transform.position =
+					    new Vector3(rand, _enemyData.EnemyStartPos.y + appearCount * 15, _enemyData.EnemyStartPos.z);
+				    _enemyData.StraightEnemys[i].SetActive(true);
+				    appearCount++;
+                    
+				    // 次の起点の間隔をあける
+				    _appearPos += _posInterval;
+			    }
+		    }
+	    }
+	    
+	    public void ToLeftSide(int _appearNum,PlayersEnemyData _enemyData, Vector2 _appearPos,
+		    Vector2 _posInterval)
+	    {
+		    int appearCount = 0;
+
+		    for (int i = 0; i < _enemyData.ToLeftSideEnemys.Length; i++)
+		    {
+			    float rand = Random.Range(0, 40);
+			    if (appearCount >= _appearNum)
+			    {
+				    break;
+			    }
+
+			    if (!_enemyData.ToLeftSideEnemys[i].activeSelf)
+			    {
+				    // 起点に設置
+				    _enemyData.ToLeftSideEnemys[i].transform.position =
+					    new Vector3(_enemyData.RightPosX + appearCount * 10, rand, _enemyData.EnemyStartPos.z);
+				    _enemyData.ToLeftSideEnemys[i].SetActive(true);
+				    appearCount++;
+                    
+				    // 次の起点の間隔をあける
+				    _appearPos += _posInterval;
+			    }
+		    }
+	    }
+	    
+	    public void ToRightSide(int _appearNum,PlayersEnemyData _enemyData, Vector2 _appearPos,
+		    Vector2 _posInterval)
+	    {
+		    int appearCount = 0;
+
+		    for (int i = 0; i < _enemyData.ToRightSideEnemys.Length; i++)
+		    {
+			    float rand = Random.Range(0, 40);
+			    if (appearCount >= _appearNum)
+			    {
+				    break;
+			    }
+
+			    if (!_enemyData.ToRightSideEnemys[i].activeSelf)
+			    {
+				    // 起点に設置
+				    _enemyData.ToRightSideEnemys[i].transform.position =
+					    new Vector3(_enemyData.LeftPosX - appearCount * 10, rand, _enemyData.EnemyStartPos.z);
+				    _enemyData.ToRightSideEnemys[i].SetActive(true);
+				    appearCount++;
+                    
+				    // 次の起点の間隔をあける
+				    _appearPos += _posInterval;
+			    }
+		    }
+	    }
 
         public void StraightVertical()
         {
@@ -369,7 +523,7 @@ namespace Ria
                 if (!_enemyData.CircleEnemys[i].activeSelf)
                 {
                     // 起点に設置
-                    _enemyData.CircleEnemys[i].transform.position = new Vector3(_appearPos.x, _appearPos.y, AppearZPos);
+                    _enemyData.CircleEnemys[i].transform.position = new Vector3(_enemyData.EnemyStartPos.x, _enemyData.EnemyStartPos.y, AppearZPos);
                     _enemyData.CircleEnemys[i].GetComponent<CircleEnemy>().CenterPos = this.transform.position;
                     _enemyData.CircleEnemys[i].SetActive(true);
                     appearCount++;
@@ -379,6 +533,33 @@ namespace Ria
                 }
             }
         }
+	    
+	    public void Coaster(int _appearNum, PlayersEnemyData _enemyData,float _radius, Vector2 _appearPos, Vector2 _posInterval)
+	    {
+		    int appearCount = 0;
+		    float inter = 180.0f;
+
+		    for (int i = 0; i < _enemyData.CoasterEnemys.Length; i++)
+		    {
+			    if (appearCount >= _appearNum)
+			    {
+				    break;
+			    }
+
+			    if (!_enemyData.CoasterEnemys[i].activeSelf)
+			    {
+				    // 起点に設置
+				    _enemyData.CoasterEnemys[i].transform.position = new Vector3(_appearPos.x + appearCount * _posInterval.x, _appearPos.y, AppearZPos);
+				    _enemyData.CoasterEnemys[i].GetComponent<CircleEnemy>().CenterPos = _appearPos;
+				    _enemyData.CoasterEnemys[i].SetActive(true);
+				    appearCount++;
+
+				    // 次の起点の間隔をあける
+				    _appearPos += _posInterval * Time.deltaTime;
+				    inter += 1.0f;
+			    }
+		    }
+	    }
 
         public void Stay(int _appearNum, PlayersEnemyData _enemyData, Vector2 _appearPos,
             Vector2 _posInterval)

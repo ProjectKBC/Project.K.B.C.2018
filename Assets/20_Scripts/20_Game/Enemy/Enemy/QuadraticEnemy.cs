@@ -18,6 +18,11 @@ public sealed class QuadraticEnemy : Enemy
         public float MaxY;
     }
 
+	[SerializeField]
+	private bool xAxis;
+	[SerializeField]
+	private Vector2 maxPos;
+
     // [SerializeField]
     // private QuadraticEnemyDebugParam debug = null;
 
@@ -37,7 +42,7 @@ public sealed class QuadraticEnemy : Enemy
     
     protected override void Start()
     {
-        CreateBullet(this.NomalBullet);
+	    this.CreateBullet(this.NormalBullet);
     }
     
     protected override void Update()
@@ -48,7 +53,7 @@ public sealed class QuadraticEnemy : Enemy
         // this.ElapsedTime += Time.deltaTime;
 
         // _
-        QuadraticMove(this.Trans.position.x, this.Trans.position.y, -10, 0);
+        QuadraticMove(this.Trans.position.x, this.Trans.position.y, this.maxPos.x, this.maxPos.y);
     }
 
     // protected override void OnDisable()
@@ -65,11 +70,25 @@ public sealed class QuadraticEnemy : Enemy
     /// <param name="_maxY"></param>
     private void QuadraticMove(float _passingX, float _passingY, float _maxX, float _maxY)
     {
-        float progress = (_passingX - _maxX) / ((_passingY - _maxY) * (_passingY - _maxY));
-        Vector3 pos = this.Trans.position;
+	    if (this.xAxis)
+	    {
+		    Debug.Log("あああ");
+		    float progress = _passingY / ((_passingX - _maxX) * (_passingX - _maxX)) + _maxY;
+		    Vector3 pos = this.Trans.position;
 
-        pos.y += -this.MoveSpeedRate * Time.deltaTime;
-        pos.x = (progress * (pos.y - _maxY) * (pos.y - _maxY)) + _maxX;
-        this.Trans.position = pos;
+		    pos.x = -this.MoveSpeedRate * Time.deltaTime;
+		    pos.y += (progress * (pos.x - _maxX) * (pos.x - _maxX)) + _maxY;
+		    this.Trans.position = pos;
+	    }
+	    
+	    if (!this.xAxis)
+	    {
+		    float progress = (_passingX - _maxX) / ((_passingY - _maxY) * (_passingY - _maxY));
+		    Vector3 pos = this.Trans.position;
+
+		    pos.y += -this.MoveSpeedRate * Time.deltaTime;
+		    pos.x = (progress * (pos.y - _maxY) * (pos.y - _maxY)) + _maxX;
+		    this.Trans.position = pos;
+	    }
     }
 }

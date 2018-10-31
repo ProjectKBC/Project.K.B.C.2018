@@ -9,6 +9,11 @@ public sealed class StraightEnemy : Enemy
     {
     }
 
+	/*
+	[SerializeField]
+	private float ordinaryForwardBorder;
+	*/
+
     // protected override void Awake()
     // {
     //     base.Awake();
@@ -21,7 +26,7 @@ public sealed class StraightEnemy : Enemy
     
     protected override void Start()
     {
-        CreateBullet(this.NomalBullet);
+	    this.CreateBullet(this.NormalBullet);
     }
 
     protected override void Update()
@@ -30,27 +35,17 @@ public sealed class StraightEnemy : Enemy
         // this.ElapsedTime += UnityEngine.Time.deltaTime;
 
         // _
-        float nowPass = Mathf.Floor (this.ElapsedTime * 10) / 10;
-        if (this.Trans.position.y > ordinaryForwardBorder)
+        //float nowPass = Mathf.Floor (this.ElapsedTime * 10) / 10;
+        if (this.Trans.position.y > ordinaryYForwardBorder)
         {
-            ForwardEnemy(ordinaryForwardBorder);
+            this.YForwardEnemy(this.ordinaryYForwardBorder);
         }
         else
         {
-            StraightMove();
-            //NormalAtack();
+            this.StraightMove();
         }
-        if (nowPass >= this.Pass)
-        {
-            if (IsBurstAttack)
-            {
-                BurstAttack ();
-            }
-            else
-            {
-                NormalAtack ();
-            }
-        }
+
+	    this.GoBeyondLine();
     }
 
     // protected override void OnDisable()
@@ -67,5 +62,15 @@ public sealed class StraightEnemy : Enemy
         pos.y += -this.MoveSpeedRate * Time.deltaTime;
         this.Trans.position = pos;
     }
+
+	private void GoBeyondLine(float _border = 0.0f)
+	{
+		if (this.Trans.position.y < _border)
+		{
+			Vector3 pos = this.Trans.position;
+			pos.y += -this.ordinaryForwardSpeed * Time.deltaTime;
+			this.Trans.position = pos;
+		}
+	}
 
 }

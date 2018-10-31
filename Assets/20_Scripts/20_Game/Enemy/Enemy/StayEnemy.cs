@@ -17,25 +17,23 @@ public class StayEnemy : Enemy
 	
 	protected override void Start()
 	{
-		CreateBullet(this.NomalBullet);
+		this.CreateBullet(this.NormalBullet);
 	}
 	
 	protected override void Update()
 	{
-		base.Update();
-		float nowPass = Mathf.Floor(this.ElapsedTime * 10) / 10;
-		
-		if (nowPass >= this.stayTime)
+		ElapsedTime += Time.deltaTime;
+		if (ElapsedTime >= this.stayTime)
 		{
 			base.BackMove();
 		}
 		else
 		{
-			if (this.Trans.position.y > ordinaryForwardBorder)
+			if (this.Trans.position.y > ordinaryYForwardBorder)
 			{
-				ForwardEnemy(ordinaryForwardBorder);
+				this.YForwardEnemy(ordinaryYForwardBorder);
 			}
-			if (nowPass >= this.Pass)
+			if (ElapsedTime >= this.Pass)
 			{
 				if (IsBurstAttack)
 				{
