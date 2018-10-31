@@ -262,6 +262,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &262372096
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4514257557274090, guid: 33e17c928158c4549bd5ccbaba8b8b67, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -72.573715
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514257557274090, guid: 33e17c928158c4549bd5ccbaba8b8b67, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 40.382477
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514257557274090, guid: 33e17c928158c4549bd5ccbaba8b8b67, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514257557274090, guid: 33e17c928158c4549bd5ccbaba8b8b67, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514257557274090, guid: 33e17c928158c4549bd5ccbaba8b8b67, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514257557274090, guid: 33e17c928158c4549bd5ccbaba8b8b67, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514257557274090, guid: 33e17c928158c4549bd5ccbaba8b8b67, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514257557274090, guid: 33e17c928158c4549bd5ccbaba8b8b67, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 33e17c928158c4549bd5ccbaba8b8b67, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &280949487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,7 +1340,7 @@ MonoBehaviour:
   sinEnemy: {fileID: 1798963835953624, guid: ddad949e046154e9f8c4300fe2fef1bf, type: 2}
   beeEnemy: {fileID: 1654025074528718, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
   Enemy1Patterns: 0a000000
-  Enemy2Patterns: 
+  Enemy2Patterns: 0a000000
   Enemy1Data:
     PlayerType: 
     EnemyStartPos: {x: 0, y: 0, z: 0}
