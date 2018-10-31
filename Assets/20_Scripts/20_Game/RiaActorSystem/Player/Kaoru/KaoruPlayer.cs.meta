@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: bdc296d7f69af7749954a0141c2a602b
+guid: c356ef51a189746d197e3ad20652bc33
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - airosScript: {instanceID: 0}
-  - anomaScript: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

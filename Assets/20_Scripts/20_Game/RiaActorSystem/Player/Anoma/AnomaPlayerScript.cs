@@ -1,34 +1,31 @@
-using UnityEngine;
+﻿using UnityEngine;
 using RiaActorSystem;
 
 namespace Game.Player
 {
-	[CreateAssetMenu(menuName = "RiaActorSystem/Player/AirosPlayerScript", fileName = "AirosPlayerScript")]
-	public sealed class AirosPlayerScript : RiaPlayerScript
+	[CreateAssetMenu(menuName = "RiaActorSystem/Player/AnomaPlayerScript", fileName = "AnomaPlayerScript")]
+	public sealed class AnomaPlayerScript : RiaPlayerScript
 	{
-		public readonly PlayerCharacterEnum playerCharacter = PlayerCharacterEnum.airos;
-		public readonly float AlphaMaxValue = 0.75f;
+		public readonly PlayerCharacterEnum playerCharacter = PlayerCharacterEnum.anoma;
 
 		[System.Serializable]
 		public class NormalShotParam
 		{
 			public GameObject bulletPrefab = null;
-			public float shotInterval = 0.15f;
+			public float shotInterval = 0.1f;
 		}
 
 		[System.Serializable]
 		public class SpecialShotParam
 		{
-			public float shotRange = 30.0f;
-			public float searchTime = 0.5f;
-			public int searchNumOfTimes = 3;
-			public float shotCoolTime = 1.5f;
+			public GameObject bulletPrefab = null;
+			public float shotChargeTime = 3;
 		}
 
 		[System.Serializable]
 		public class SkilParam
 		{
-			public float coolTime = 5.0f;
+			
 		}
 
 		// 通常ショット

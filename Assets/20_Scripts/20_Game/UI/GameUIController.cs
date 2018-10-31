@@ -7,7 +7,7 @@ namespace Game.UI
 	public class GameUIController : SingletonMonoBehaviour<GameUIController>
 	{
 		[System.Serializable]
-		public class PoseWindow
+		public class PauseWindow
 		{
 			[System.Serializable]
 			public class Screen
@@ -56,8 +56,8 @@ namespace Game.UI
 			{
 				this.elapsedTime = 0;
 
-				this.currentState = PoseWindow.State.Continue;
-				this.prevState = PoseWindow.State.Continue;
+				this.currentState = PauseWindow.State.Continue;
+				this.prevState = PauseWindow.State.Continue;
 
 				this.parentMainWindowObject.SetActive(false);
 			}
@@ -66,8 +66,8 @@ namespace Game.UI
 			{
 				this.elapsedTime = 0;
 
-				this.currentState = PoseWindow.State.Continue;
-				this.prevState = PoseWindow.State.Lenght;
+				this.currentState = PauseWindow.State.Continue;
+				this.prevState = PauseWindow.State.Lenght;
 
 				this.restartScreen.IsDisp = false;
 				this.prevToSelectScreen.IsDisp = false;
@@ -191,40 +191,40 @@ namespace Game.UI
 
 				switch (this.currentState)
 				{
-					case PoseWindow.State.Continue:
+					case PauseWindow.State.Continue:
 						this.ChageButtonState(
-							PoseWindow.State.Continue,
-							PoseWindow.ButtonSet.State.Active);
+							PauseWindow.State.Continue,
+							PauseWindow.ButtonSet.State.Active);
 						this.ChageButtonState(
-							PoseWindow.State.Restart,
-							PoseWindow.ButtonSet.State.Normal);
+							PauseWindow.State.Restart,
+							PauseWindow.ButtonSet.State.Normal);
 						this.ChageButtonState(
-							PoseWindow.State.PrevToSelect,
-							PoseWindow.ButtonSet.State.Normal);
+							PauseWindow.State.PrevToSelect,
+							PauseWindow.ButtonSet.State.Normal);
 						return;
 
-					case PoseWindow.State.Restart:
+					case PauseWindow.State.Restart:
 						this.ChageButtonState(
-							PoseWindow.State.Continue,
-							PoseWindow.ButtonSet.State.Normal);
+							PauseWindow.State.Continue,
+							PauseWindow.ButtonSet.State.Normal);
 						this.ChageButtonState(
-							PoseWindow.State.Restart,
-							PoseWindow.ButtonSet.State.Active);
+							PauseWindow.State.Restart,
+							PauseWindow.ButtonSet.State.Active);
 						this.ChageButtonState(
-							PoseWindow.State.PrevToSelect,
-							PoseWindow.ButtonSet.State.Normal);
+							PauseWindow.State.PrevToSelect,
+							PauseWindow.ButtonSet.State.Normal);
 						return;
 
-					case PoseWindow.State.PrevToSelect:
+					case PauseWindow.State.PrevToSelect:
 						this.ChageButtonState(
-							PoseWindow.State.Continue,
-							PoseWindow.ButtonSet.State.Normal);
+							PauseWindow.State.Continue,
+							PauseWindow.ButtonSet.State.Normal);
 						this.ChageButtonState(
-							PoseWindow.State.Restart,
-							PoseWindow.ButtonSet.State.Normal);
+							PauseWindow.State.Restart,
+							PauseWindow.ButtonSet.State.Normal);
 						this.ChageButtonState(
-							PoseWindow.State.PrevToSelect,
-							PoseWindow.ButtonSet.State.Active);
+							PauseWindow.State.PrevToSelect,
+							PauseWindow.ButtonSet.State.Active);
 						return;
 				}
 			}
@@ -247,26 +247,26 @@ namespace Game.UI
 		}
 
 		[SerializeField, Header("Pause Window")]
-		private PoseWindow poseWindow = null;
+		private PauseWindow pauseWindow = null;
 
 		protected override void OnInit()
 		{
-			this.poseWindow.Init();
+			this.pauseWindow.Init();
 		}
 
 		public void PauseStart()
 		{
-			this.poseWindow.WakeUp();
+			this.pauseWindow.WakeUp();
 		}
 
 		public void PauseUpdate()
 		{
-			this.poseWindow.Update();
+			this.pauseWindow.Update();
 		}
 
 		public void PauseEnd()
 		{
-			this.poseWindow.Sleep();
+			this.pauseWindow.Sleep();
 		}
 	}
 }
