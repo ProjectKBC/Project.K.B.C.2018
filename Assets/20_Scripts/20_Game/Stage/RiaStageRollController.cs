@@ -27,7 +27,7 @@ public class RiaStageRollController
 		// 経過時間の更新
 		this.elapsedTime += Time.deltaTime;
 
-		meshRender.material.SetTextureOffset("_MainTex", new Vector2(0f, this.Offset));
+		this.meshRender.material.SetTextureOffset("_MainTex", new Vector2(0f, this.Offset));
 	}
 
 	public void ChangeMaterial(StageEnum _type, bool _isBoss)

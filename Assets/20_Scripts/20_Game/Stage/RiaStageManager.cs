@@ -28,6 +28,7 @@ namespace Game.Stage
 			this.mainElapsedTime = 0;
 			this.bossElapsedTime = 0;
 
+			this.rollController.Init();
 			this.rollController.ChangeMaterial(this.stage, false);
 
 			this.factory.CreateStage(this.stage);

@@ -52,8 +52,8 @@ namespace Game
 		public CommonData CommonData { get { return this.commonData; } }
 
 		[SerializeField, Header("UIController")]
-		private GameUIController uIController = null;
-		public GameUIController UIController { get { return this.uIController; } }
+		private GameUIManager uiManager = null;
+		public GameUIManager UIManager { get { return this.uiManager; } }
 
 		[SerializeField, Header("Managers")]
 		private Managers pl1Managers = null;

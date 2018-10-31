@@ -57,7 +57,7 @@ namespace Game
 			if (pl2EM) { pl2EM.Init(); }
 
 			// Todo: UIのセッティング
-			var ui = this.gm.UIController;
+			var ui = this.gm.UIManager;
 			if (ui) { ui.Init(); }
 		}
 
