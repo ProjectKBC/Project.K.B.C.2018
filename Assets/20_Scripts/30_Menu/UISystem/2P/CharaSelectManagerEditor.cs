@@ -1,9 +1,7 @@
-using System;
-using System.Runtime.Remoting.Messaging;
-
 using UnityEditor;
 using UnityEngine;
-using UnityEditorInternal;
+
+#if UNITY_EDITOR
 
 [CustomEditor(typeof(CharaSelectManager))]
 public class CharaSelectManagerEditor : Editor
@@ -153,3 +151,5 @@ public class CharaSelectManagerEditor : Editor
 		serializedObject.ApplyModifiedProperties();
     }
 }
+
+#endif

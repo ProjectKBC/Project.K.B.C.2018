@@ -1,3 +1,7 @@
+/* Author: flanny7
+ * Update: 2018/10/30
+*/
+
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +10,8 @@ namespace Game.UI
 {
 	public class GameUIController : SingletonMonoBehaviour<GameUIController>
 	{
+		#region PauseWindow
+
 		[System.Serializable]
 		public class PauseWindow
 		{
@@ -38,7 +44,7 @@ namespace Game.UI
 				Lenght = 3,
 			}
 
-			public float pushIntervalTime = 1.5f;
+			public float pushIntervalTime = 1/30;
 			public GameObject parentMainWindowObject = null;
 			public ButtonSet continueButton = null;
 			[Space(8)]
@@ -84,7 +90,7 @@ namespace Game.UI
 				this.parentMainWindowObject.SetActive(false);
 			}
 
-			public void Update()
+			public void Run()
 			{	
 				this.elapsedTime += Time.deltaTime;
 				
@@ -246,13 +252,65 @@ namespace Game.UI
 			}
 		}
 
+		#endregion
+
+		#region HPGage
+		[System.Serializable]
+		public class HPGage
+		{
+			[SerializeField]
+			private Image imgLiveColor;
+
+			public PlayerNumber PlayerNumber { get; set; }
+			public float HitPoint { get { return GameManager.Instance.GetPlayerHitPoint(this.PlayerNumber); } }
+			public float HitPointMax { get; private set; }
+			public float PrevHitPoint { get; private set; }
+
+			public void Init(PlayerNumber _playerNumber)
+			{
+				this.PlayerNumber = _playerNumber;
+				this.imgLiveColor.fillAmount = 1.0f;
+				this.HitPointMax = GameManager.Instance.GetPlayerHitPointMax(this.PlayerNumber);
+			}
+
+			public void Run()
+			{
+				// キャッシュ
+				var hp = this.HitPoint;
+
+				var rate = Mathf.Ceil(hp) / this.HitPointMax;
+				this.imgLiveColor.fillAmount = rate;
+			}
+		}
+		#endregion
+
 		[SerializeField, Header("Pause Window")]
 		private PauseWindow pauseWindow = null;
+		
+		[SerializeField, Header("HitPointGage")]
+		private HPGage hpgPlayer1 = null;
+		[SerializeField]
+		private HPGage hpgPlayer2 = null;
+
+		#region Override Function
 
 		protected override void OnInit()
 		{
-			this.pauseWindow.Init();
 		}
+
+		#endregion
+
+		#region Public Function
+
+		public void Init()
+		{
+			this.pauseWindow.Init();
+
+			this.hpgPlayer1.Init(PlayerNumber.player1);
+			this.hpgPlayer2.Init(PlayerNumber.player2);
+		}
+
+		// Pause系
 
 		public void PauseStart()
 		{
@@ -261,12 +319,22 @@ namespace Game.UI
 
 		public void PauseUpdate()
 		{
-			this.pauseWindow.Update();
+			this.pauseWindow.Run();
 		}
 
 		public void PauseEnd()
 		{
 			this.pauseWindow.Sleep();
 		}
+
+		// HPGage系
+		
+		public void HPGageUpdate()
+		{
+			this.hpgPlayer1.Run();
+			this.hpgPlayer2.Run();
+		}
+
+		#endregion
 	}
 }

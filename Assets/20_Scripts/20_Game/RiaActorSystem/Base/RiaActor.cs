@@ -1,8 +1,9 @@
 /* Author : flanny7
- * Update : 2018/10/22
+ * Update : 2018/10/30
 */
 
 using UnityEngine;
+using RiaSpriteAnimationSystem;
 
 namespace RiaActorSystem
 {
@@ -16,14 +17,19 @@ namespace RiaActorSystem
 
 		public RiaCharacter Character { get; private set; }
 		public RiaCharacterScript CharacterScript { get; private set; }
+		public Collider2DSupporter ColliderSupporter { get; private set; }
 
 		public GameObject Go { get; private set; }
 		public Transform Trans { get; private set; }
+		public RiaSpriteAnimator Animator { get; private set; }
 
 		public void Init()
 		{
+			this.ColliderSupporter = new Collider2DSupporter();
+			
 			this.Go = this.gameObject;
 			this.Trans = this.transform;
+			this.Animator = GetComponent<RiaSpriteAnimator>();
 
 			this.SetActive(false);
 		}
@@ -46,7 +52,6 @@ namespace RiaActorSystem
 		public void Play()
 		{
 			if (!IsActive) { return; }
-
 			this.Character.Play();
 		}
 
@@ -68,6 +73,21 @@ namespace RiaActorSystem
 		{
 			this.Go.SetActive(_isActive);
 			this.IsActive = _isActive;
+		}
+
+		public void OnTriggerEnter2D(Collider2D _collision)
+		{
+			this.ColliderSupporter.CollectionTriggerEnter2D(_collision);
+		}
+
+		public void OnTriggerStay2D(Collider2D _collision)
+		{
+			this.ColliderSupporter.CollectionTriggerStay2D(_collision);
+		}
+
+		public void OnTriggerExit2D(Collider2D _collision)
+		{
+			this.ColliderSupporter.CollectionTriggerExit2D(_collision);
 		}
 	}
 }

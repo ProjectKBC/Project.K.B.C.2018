@@ -7,7 +7,6 @@ namespace Game.Player
 	public sealed class AirosPlayerScript : RiaPlayerScript
 	{
 		public readonly PlayerCharacterEnum playerCharacter = PlayerCharacterEnum.airos;
-		public readonly float AlphaMaxValue = 0.75f;
 
 		[System.Serializable]
 		public class NormalShotParam
@@ -19,16 +18,21 @@ namespace Game.Player
 		[System.Serializable]
 		public class SpecialShotParam
 		{
-			public float shotRange = 30.0f;
-			public float searchTime = 0.5f;
-			public int searchNumOfTimes = 3;
 			public float shotCoolTime = 1.5f;
+			[Space(8), Header("サーチ")]
+			public float searchInterval = 0.5f;
+			public int searchCountMax = 3;
+			public float searchAreaRange = 30.0f;
 		}
 
 		[System.Serializable]
 		public class SkilParam
 		{
-			public float coolTime = 5.0f;
+			[Header("")]
+			public float durationTime = 5.0f;
+			[Space(8), Header("効果")]
+			public float alphaMaxValue = 0.75f;
+			public float debuffSpeedMin = 0.5f;
 		}
 
 		// 通常ショット

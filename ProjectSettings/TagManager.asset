@@ -8,7 +8,10 @@ TagManager:
   - Player2
   - Enemy1
   - Enemy2
-  - notPlayableArea
+  - PlayerBullet1
+  - PlayerBullet2
+  - EnemyBullet1
+  - EnemyBullet2
   layers:
   - Default
   - TransparentFX

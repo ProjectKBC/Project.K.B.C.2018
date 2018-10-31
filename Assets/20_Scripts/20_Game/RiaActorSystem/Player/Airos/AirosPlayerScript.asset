@@ -11,17 +11,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650febcc31032c84c8dde78446f60bff, type: 3}
   m_Name: AirosPlayerScript
   m_EditorClassIdentifier: 
-  maxHitPoint: 1
-  moveSpeed: 2
+  maxHitPoint: 5
+  moveSpeedBase: 0.75
+  invincibleTimeMax: 2.5
+  invincibleBlinkingUpdateFrame: 6
   sprite: {fileID: 21300000, guid: 51bd70c6a2c58ba46ae1eb70a841940a, type: 3}
+  circleColliderRadius: 0.45
+  animations:
+    waitAnimation: {fileID: 11400000, guid: 494ed12e9b0e1134e8571962e718258a, type: 2}
+    rightGoAnimation: {fileID: 11400000, guid: 09e6e1171ae920b4fb16ce28ea7b49f1, type: 2}
+    leftGoAnimation: {fileID: 11400000, guid: 73d6954a06a473c4c8cb1081b138de82, type: 2}
   nsParam:
     bulletPrefab: {fileID: 1196284274841118, guid: cbef0a9bf41432a4f8997c50ed2003fc,
       type: 2}
     shotInterval: 0.15
   ssParam:
-    shotRange: 30
-    searchTime: 0.5
-    searchNumOfTimes: 3
     shotCoolTime: 1.5
+    searchInterval: 0.5
+    searchCountMax: 3
+    searchAreaRange: 30
   skilParam:
-    coolTime: 5
+    durationTime: 5
+    alphaMaxValue: 0.75
+    debuffSpeedMin: 0.5

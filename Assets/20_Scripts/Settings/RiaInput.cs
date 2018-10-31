@@ -25,7 +25,7 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 		Pause,
 	}
 	
-	public bool GetPush(KeyType _keyType, PlayerNumber _playerNumber)
+	public bool GetKey(KeyType _keyType, PlayerNumber _playerNumber)
 	{
 		var config = (_playerNumber == PlayerNumber.player1) ?
 			this.player1Congif : this.player2Congif;
@@ -189,7 +189,8 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 
 		return false;
 	}
-	public bool GetPushUp(KeyType _keyType, PlayerNumber _playerNumber)
+
+	public bool GetPush(KeyType _keyType, PlayerNumber _playerNumber)
 	{
 		var config = (_playerNumber == PlayerNumber.player1) ?
 			this.player1Congif : this.player2Congif;
@@ -259,6 +260,73 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 
 		return false;
 	}
+	
+	public bool GetPushUp(KeyType _keyType, PlayerNumber _playerNumber)
+	{
+		var config = (_playerNumber == PlayerNumber.player1) ?
+			this.player1Congif : this.player2Congif;
+
+		switch (_keyType)
+		{
+			case KeyType.Return:
+				return
+					(Input.GetKeyUp(config.keyCode.Return) ||
+					 Input.GetButtonUp(config.buttonString.Return));
+
+			case KeyType.Cancel:
+				return
+					(Input.GetKeyUp(config.keyCode.Cancel) ||
+					 Input.GetButtonUp(config.buttonString.Cancel));
+
+			case KeyType.Up:
+				return
+					(Input.GetKeyUp(config.keyCode.Up) ||
+					 Input.GetButtonUp(config.buttonString.Up));
+
+			case KeyType.Down:
+				return
+					(Input.GetKeyUp(config.keyCode.Down) ||
+					 Input.GetButtonUp(config.buttonString.Down));
+
+			case KeyType.Right:
+				return
+					(Input.GetKeyUp(config.keyCode.Right) ||
+					 Input.GetButtonUp(config.buttonString.Right));
+
+			case KeyType.Left:
+				return
+					(Input.GetKeyUp(config.keyCode.Left) ||
+					 Input.GetButtonUp(config.buttonString.Left));
+
+			case KeyType.NormalShot:
+				return
+					(Input.GetKeyUp(config.keyCode.NormalShot) ||
+					 Input.GetButtonUp(config.buttonString.NormalShot));
+
+			case KeyType.SpecialShot:
+				return
+					(Input.GetKeyUp(config.keyCode.SpecialShot) ||
+					 Input.GetButtonUp(config.buttonString.SpecialShot));
+
+			case KeyType.Skil:
+				return
+					(Input.GetKeyUp(config.keyCode.Skil) ||
+					 Input.GetButtonUp(config.buttonString.Skil));
+
+			case KeyType.LowSpeed:
+				return
+					(Input.GetKeyUp(config.keyCode.LowSpeed) ||
+					 Input.GetButtonUp(config.buttonString.LowSpeeds[0]) ||
+					 Input.GetButtonUp(config.buttonString.LowSpeeds[1]));
+
+			case KeyType.Pause:
+				return
+					(Input.GetKeyUp(config.keyCode.Pose) ||
+					 Input.GetButtonUp(config.buttonString.Pose));
+		}
+
+		return false;
+	}
 
 	public bool GetPushDown(KeyType _keyType, PlayerNumber _playerNumber)
 	{
@@ -322,73 +390,6 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 				return
 					(Input.GetKeyDown(config.keyCode.Pose) ||
 					 Input.GetButtonDown(config.buttonString.Pose));
-		}
-
-		return false;
-	}
-
-	public bool GetRelease(KeyType _keyType, PlayerNumber _playerNumber)
-	{
-		var config = (_playerNumber == PlayerNumber.player1) ?
-			this.player1Congif : this.player2Congif;
-
-		switch (_keyType)
-		{
-			case KeyType.Return:
-				return
-					(Input.GetKeyUp(config.keyCode.Return) ||
-					 Input.GetButtonUp(config.buttonString.Return));
-
-			case KeyType.Cancel:
-				return
-					(Input.GetKeyUp(config.keyCode.Cancel) ||
-					 Input.GetButtonUp(config.buttonString.Cancel));
-
-			case KeyType.Up:
-				return
-					(Input.GetKeyUp(config.keyCode.Up) ||
-					 Input.GetButtonUp(config.buttonString.Up));
-
-			case KeyType.Down:
-				return
-					(Input.GetKeyUp(config.keyCode.Down) ||
-					 Input.GetButtonUp(config.buttonString.Down));
-
-			case KeyType.Right:
-				return
-					(Input.GetKeyUp(config.keyCode.Right) ||
-					 Input.GetButtonUp(config.buttonString.Right));
-
-			case KeyType.Left:
-				return
-					(Input.GetKeyUp(config.keyCode.Left) ||
-					 Input.GetButtonUp(config.buttonString.Left));
-
-			case KeyType.NormalShot:
-				return
-					(Input.GetKeyUp(config.keyCode.NormalShot) ||
-					 Input.GetButtonUp(config.buttonString.NormalShot));
-
-			case KeyType.SpecialShot:
-				return
-					(Input.GetKeyUp(config.keyCode.SpecialShot) ||
-					 Input.GetButtonUp(config.buttonString.SpecialShot));
-
-			case KeyType.Skil:
-				return
-					(Input.GetKeyUp(config.keyCode.Skil) ||
-					 Input.GetButtonUp(config.buttonString.Skil));
-
-			case KeyType.LowSpeed:
-				return
-					(Input.GetKeyUp(config.keyCode.LowSpeed) ||
-					 Input.GetButtonUp(config.buttonString.LowSpeeds[0]) ||
-					 Input.GetButtonUp(config.buttonString.LowSpeeds[1]));
-
-			case KeyType.Pause:
-				return
-					(Input.GetKeyUp(config.keyCode.Pose) ||
-					 Input.GetButtonUp(config.buttonString.Pose));
 		}
 
 		return false;

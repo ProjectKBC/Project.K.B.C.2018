@@ -5,20 +5,11 @@ using System.Linq;
 
 namespace Game.Player
 {
+	using Game.Bullet.Player;
+	using Game.Enemy;
+
 	public sealed class AirosPlayer : RiaPlayer
 	{
-		private new AirosPlayerScript Script;
-
-		public AirosPlayer(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
-		{
-			Debug.Log("airos");
-			this.Script = _script as AirosPlayerScript;
-
-			nsParam = new NormalShotParam();
-			ssParam = new SpecialShotParam();
-			skilParam = new SkilParam();
-		}
-
 		// 通常ショット
 		public class NormalShotParam
 		{
@@ -30,54 +21,103 @@ namespace Game.Player
 		{
 			public float shotTime = 0;
 
-			public RiaCharacter[] targetEnemys = new RiaCharacter[0];
+			public Transform[] targetEnemyTranses = new Transform[0];
 			public float searchTime = 0;
-			public int searchEnemyCount = 0;
+			public int searchCount = 0;
 		}
 
 		// スキル
 		public class SkilParam
 		{
 			public bool isUsing = false;
-
-			public float timeCount = 0;
-
-			public float rivalPlayerMoveSpeed;
-
-			public float speedChangeRate = 0;
+			public float elapsedTime = 0;
 			public float alphaValue = 0;
 		}
 
+		// CharacterScriptの上書き
+		private new AirosPlayerScript Script;
+
+		// パラメータ
 		public NormalShotParam nsParam;
 		public SpecialShotParam ssParam;
 		public SkilParam skilParam;
 
+		public AirosPlayer(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
+		{
+			// CharacterScriptの上書き
+			this.Script = _script as AirosPlayerScript;
+
+			// パラメータ
+			nsParam = new NormalShotParam();
+			ssParam = new SpecialShotParam();
+			skilParam = new SkilParam();
+		}
+
+		#region Override Function
+
+		/// <summary>
+		/// 初期化 by flanny7
+		/// </summary>
 		protected override void OnInit()
 		{
 
 		}
 
+		/// <summary>
+		/// 待機時の更新処理 by flanny7
+		/// </summary>
 		protected override void OnWait()
 		{
 
 		}
 
+		/// <summary>
+		/// 更新処理 by flanny7
+		/// </summary>
 		protected override void OnPlay()
 		{
-			this.Move();
+			//// 攻撃処理
+			//this.NormalShot();
+			//this.SpecialShot();
+			//this.Skill();
 
-			this.NormalShot();
-			this.SpecialShot();
-			this.Skill();
+			//// 移動処理
+			//this.Move();
+
+			//// 衝突処理
+			//this.Collision();
+
+			//// 生死判定
+			//if (this.IsDead)
+			//{
+			//	this.Dead();
+			//}
 		}
 
+		/// <summary>
+		/// 破棄処理 by flanny7
+		/// </summary>
 		protected override void OnEnd()
 		{
 
 		}
 
 		/// <summary>
-		/// 通常ショット
+		/// 攻撃処理 by flanny7
+		/// </summary>
+		public override void Shot()
+		{
+			this.NormalShot();
+			this.SpecialShot();
+			this.Skill();
+		}
+		
+		#endregion
+
+		#region Private Function
+
+		/// <summary>
+		/// 通常ショット by close96 (+ flanny7)
 		/// </summary>
 		private void NormalShot()
 		{
@@ -85,27 +125,28 @@ namespace Game.Player
 			var script = this.Script.nsParam;
 
 			// キー入力
-			if (RiaInput.Instance.GetPush(RiaInput.KeyType.NormalShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetKey(RiaInput.KeyType.NormalShot, this.PlayerNumber))
 			{
-				Debug.Log(this.PlayerNumber + " : normalShot");
-
-				// ショットの時間間隔
+				// 経過時間の更新
 				var shotElapsedTime = this.playElapsedTime - param.shotTime;
+
 				if (script.shotInterval <= shotElapsedTime)
 				{
 					param.shotTime = this.playElapsedTime;
-
-					CreateBullet();
+					this.BulletManger.CreateAirosBullet(
+						PlayerBulletActorManager.BulletType.Normal,
+						this.Trans.position);
+					//CreateBullet();
 				}
 			}
 		}
 
 		/// <summary>
-		/// 特殊ショット
+		/// 特殊ショット by close96 (+ flanny7)
 		/// </summary>
-		/// <param name="_status"></param>
 		private void SpecialShot()
 		{
+			// キャッシュ的な
 			var param = this.ssParam;
 			var script = this.Script.ssParam;
 			
@@ -118,128 +159,166 @@ namespace Game.Player
 			{
 				Debug.Log("サーチ開始");
 				param.searchTime = this.playElapsedTime;
-				param.searchEnemyCount = 0;
-				param.targetEnemys = new RiaCharacter[script.searchNumOfTimes];
+				param.searchCount = 0;
+				param.targetEnemyTranses = new Transform[script.searchCountMax];
 			}
 
 			// サーチ中
-			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetKey(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
-				if (!NearSearchEnemy(script.shotRange)) { return; }
-				if (script.searchNumOfTimes <= param.searchEnemyCount) { return; }
+				var searchedEnemyTransformes = NearSearchEnemyTransform(script.searchAreaRange);
+
+				if (!searchedEnemyTransformes) { return; }
+				if (script.searchCountMax <= param.searchCount) { return; }
 
 				// サーチ時間の更新
 				var searchElapsedTime = this.playElapsedTime - param.searchTime;
 
 				// サーチの時間間隔
-				if (script.searchTime <= searchElapsedTime)
+				if (script.searchInterval <= searchElapsedTime)
 				{
 					param.searchTime = this.playElapsedTime;
 
-					++param.searchEnemyCount;
-					param.targetEnemys[param.searchEnemyCount - 1] = NearSearchEnemy(script.shotRange);
+					++param.searchCount;
+					param.targetEnemyTranses[param.searchCount - 1] = searchedEnemyTransformes;
 					param.searchTime = 0;
 				}
 			}
 
-			// ショット！
-			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+			// サーチ終了→ショット
+			if (RiaInput.Instance.GetPushUp(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
-				Debug.Log(this.PlayerNumber + " : specialShot");
-
-				for (int i = 0; i < param.searchEnemyCount; ++i)
+				for (int i = 0; i < param.targetEnemyTranses.Length; ++i)
 				{
-					// todo: enemyにする
-					// todo: ダメージ処理
-
-					param.shotTime = this.playElapsedTime;
+					// todo: bullet生成
+					CreateBullet(param.targetEnemyTranses[i].position);
+					// todo: FX生成
+					Debug.Log(param.targetEnemyTranses[i].position);
 				}
+				param.shotTime = this.playElapsedTime;
 			}
 		}
 
 		/// <summary>
-		/// スキル
+		/// スキル by close96 (+ flanny7)
 		/// </summary>
-		/// <param name="_status"></param>
 		private void Skill()
 		{
 			var param = this.skilParam;
 			var script = this.Script.skilParam;
 
+			// スキル発動 by flanny7
 			if (RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Skil, this.PlayerNumber) && !param.isUsing)
 			{
-				Debug.Log(this.PlayerNumber + " : skil");
+				//Debug.Log("skil");
+				// 使用フラグを立てる by flanny7
 				param.isUsing = true;
-				//_status.rivalPlayerStatus.SetMoveSpeedRate(1.0f);
+				// デバフのリセット by flanny7
+				this.RivalPlayer.MoveSpeedDebuffRate = 1.0f;
 			}
 
+			// スキルの実部処理 by flanny7
 			if (param.isUsing)
 			{
-				// 時間の更新
-				param.timeCount += Time.deltaTime;
+				// 経過時間の更新 by flanny7
+				param.elapsedTime += Time.deltaTime;
 
 				var beforeAlphaValue = param.alphaValue;
 
-				// このアルファ値の変動で画面が上手い具合にフェードするか正直わかんない
-				param.alphaValue = Mathf.Lerp(0, this.Script.AlphaMaxValue, Time.deltaTime);
+				// このアルファ値の変動で画面が上手い具合にフェードするか正直わかんない by close96
+				//param.alphaValue = Mathf.Lerp(0, this.Script.AlphaMaxValue, Time.deltaTime);
 
-				// アルファ値の変動に伴う相手プレイヤーのスピードの調整もよくわかんない
-				param.speedChangeRate = (beforeAlphaValue <= param.alphaValue) ?
-					1 - param.alphaValue :
-					1 + (param.alphaValue * 2);
+				// 点滅だから経過時間を変数にsin使えばよくね by flanny7
+				param.alphaValue = Mathf.Lerp(0, script.alphaMaxValue, Mathf.Sin(param.elapsedTime / script.durationTime * 5));
 
-				//_status.rivalPlayerStatus.SetMoveSpeedRate(param.speedChangeRate);
+				// アルファ値の変動に伴う相手プレイヤーのスピードの調整もよくわかんない by close96
+				//param.speedChangeRate = (beforeAlphaValue <= param.alphaValue) ?
+				//	1 - param.alphaValue :
+				//	1 + (param.alphaValue * 2);
+				
+				// 対戦相手のプレイヤーに移動速度のデバフ by flanny7
+				this.RivalPlayer.MoveSpeedDebuffRate = Mathf.Lerp(script.debuffSpeedMin, 1, Mathf.Sin(param.elapsedTime / script.durationTime * 5));
 
-				if (script.coolTime <= param.timeCount)
+				//Debug.Log(this.RivalPlayer.MoveSpeedDebuffRate);
+
+				// スキルの時間切れ by flanny7
+				if (script.durationTime <= param.elapsedTime)
 				{
-					param.timeCount = 0;
+					// パラメータの初期化 by flanny7
+					param.elapsedTime = 0;
 					param.alphaValue = 0;
-					//_status.rivalPlayerStatus.SetMoveSpeedRate(1.0f);
+
+					// デバフの解除 by flanny7
+					this.RivalPlayer.MoveSpeedDebuffRate = 1.0f;
+
+					// 使用フラグのリセット by flanny7
 					param.isUsing = false;
 				}
 			}
 		}
 
-		private void CreateBullet()
+		// todo: BulletManagerから生成できるようにする by flanny7
+		private void CreateBullet(Vector3? _pos = null)
 		{
 			var normalBullet = GameObject.Instantiate(Script.nsParam.bulletPrefab);
-
-
-			var pos = this.Trans.position;
-			//pos.z = 100;
-			normalBullet.transform.position = pos;
-			Debug.Log(normalBullet.transform.position);
+			normalBullet.transform.position = _pos ?? this.Trans.position;
 		}
 
-		private RiaCharacter NearSearchEnemy(float _searchRadius)
+		/// <summary>
+		/// 自分から近い距離にいる敵機を返す by close96
+		/// </summary>
+		/// <param name="_searchRadius"></param>
+		/// <returns></returns>
+		private Transform NearSearchEnemyTransform(float _searchRadius)
 		{
 			var param = this.ssParam;
 			var script = this.Script.ssParam;
 
-			SortedDictionary<float, RiaCharacter> searchEnemys = new SortedDictionary<float, RiaCharacter>();
-			RiaCharacter targetEnemy = null;
-			bool isSearchFlag = false;
+			// todo: SortedDictionaryを使わずに by flanny7
+			SortedDictionary<float, RiaEnemy> searchEnemys = 
+				new SortedDictionary<float, RiaEnemy>();
 
-			//var enemys = GameManager.ParentManager.EnemyActorManager.GetActiveActors();
-			var rivalPlayerNumber = (this.PlayerNumber == PlayerNumber.player1) ?
-					PlayerNumber.player2 : PlayerNumber.player1;
+			Transform targetEnemyTrans = null;
+			var isSearchFlag = false;
 
-			var enemys = GameManager.Instance.GetEnemyActorManager(rivalPlayerNumber).GetActiveCharacter();
+			// スマートに敵機を持ってこれるようにした by flanny7
+			var enemys = GameManager.Instance.GetEnemies(this.PlayerNumber);
 
-			foreach (var enemy in enemys)
+			for (var i = 0; i < enemys.Length; ++i)
 			{
+				var enemy = enemys[i];
+
 				// サーチ済みの敵は省く
-				if (0 <= System.Array.IndexOf(param.targetEnemys, enemy)) { continue; }
-				float tmpDistance = Vector3.Distance(enemy.Trans.position, this.Trans.position);
-				if (tmpDistance <= _searchRadius)
+				if (0 <= System.Array.IndexOf(param.targetEnemyTranses, enemy)) { continue; }
+
+				var distance = Vector3.Distance(enemy.Trans.position, this.Trans.position);
+				if (distance <= _searchRadius)
 				{
-					searchEnemys.Add(Vector3.Distance(enemy.Trans.position, this.Trans.position), enemy);
+					Debug.Log("search", enemy.Go);
+					searchEnemys.Add(distance, enemy);
 					isSearchFlag = true;
 				}
 			}
+			
+			// foreachよりforが軽いのぜ by flanny7
+			//foreach (var enemy in enemys)
+			//{
+			//	// サーチ済みの敵は省く
+			//	if (0 <= System.Array.IndexOf(param.targetEnemys, enemy)) { continue; }
+			//	float tmpDistance = Vector3.Distance(enemy.Trans.position, this.Trans.position);
+			//	if (tmpDistance <= _searchRadius)
+			//	{
+			//      // Vector3.Distanceの計算が1つムダなのぜ by flanny7
+			//		searchEnemys.Add(Vector3.Distance(enemy.Trans.position, this.Trans.position), enemy);
+			//		isSearchFlag = true;
+			//	}
+			//}
 
-			if (isSearchFlag) { targetEnemy = searchEnemys.First().Value; }
-			return targetEnemy;
+			if (isSearchFlag) { targetEnemyTrans = searchEnemys.First().Value.Trans; }
+
+			return targetEnemyTrans;
 		}
+
+		#endregion
 	}
 }
