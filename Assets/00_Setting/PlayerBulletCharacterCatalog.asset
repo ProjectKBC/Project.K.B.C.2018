@@ -16,3 +16,8 @@ MonoBehaviour:
       type: 2}
     airosNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
       type: 2}
+  anomaNormalBullet:
+    anomaNormalBulletRight: {fileID: 11400000, guid: d53272dce8a96451ca6f2a25a1872618,
+      type: 2}
+    anomaNormalBulletLeft: {fileID: 11400000, guid: ea78d8b13c5874f09a69ba4d824918d8,
+      type: 2}

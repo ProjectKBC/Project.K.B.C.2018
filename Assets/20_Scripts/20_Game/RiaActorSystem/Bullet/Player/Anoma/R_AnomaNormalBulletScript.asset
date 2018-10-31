@@ -8,14 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5914b33110cd1544dae04e518aa6f5e2, type: 3}
-  m_Name: L_AirosNormalBulletScript
+  m_Script: {fileID: 11500000, guid: 00aa3a78aa1bb468295c10bdb2b2f38f, type: 3}
+  m_Name: R_AnomaNormalBulletScript
   m_EditorClassIdentifier: 
   hitPointMax: 1
-  atk: 0.5
-  moveSpeedBase: 4
+  atk: 0.75
+  moveSpeedBase: 6
   lifeTime: 0.75
   canCollision: 0
   colliderSize: {x: 1.5, y: 3}
   isPenetration: 0
-  sprite: {fileID: 21300000, guid: dd80981a4e34e0940b2654dcfe7359e6, type: 3}
+  sprite: {fileID: 21300000, guid: 965427ec65754481885d32e7c1701a8a, type: 3}

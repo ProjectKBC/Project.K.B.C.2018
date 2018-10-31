@@ -3,20 +3,10 @@ using RiaActorSystem;
 
 namespace Game.Player
 {
+	using Game.Bullet.Player;
+
 	public sealed class AnomaPlayer : RiaPlayer
 	{
-		private new AnomaPlayerScript Script;
-
-		public AnomaPlayer(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
-		{
-			Debug.Log("anoma");
-			this.Script = _script as AnomaPlayerScript;
-
-			nsParam = new NormalShotParam();
-			ssParam = new SpecialShotParam();
-			skilParam = new SkilParam();
-		}
-
 		// 通常ショット
 		public class NormalShotParam
 		{
@@ -32,12 +22,27 @@ namespace Game.Player
 		// スキル
 		public class SkilParam
 		{
-			
+
 		}
 
+		// CharacterScriptの上書き
+		private new AnomaPlayerScript Script;
+
+		// パラメータ
 		public NormalShotParam nsParam;
 		public SpecialShotParam ssParam;
 		public SkilParam skilParam;
+
+		public AnomaPlayer(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
+		{
+			// CharacterScriptの上書き
+			this.Script = _script as AnomaPlayerScript;
+
+			// パラメータ
+			nsParam = new NormalShotParam();
+			ssParam = new SpecialShotParam();
+			skilParam = new SkilParam();
+		}
 
 		protected override void OnInit()
 		{
@@ -85,8 +90,9 @@ namespace Game.Player
 				if (script.shotInterval <= shotElapsedTime)
 				{
 					param.shotTime = this.playElapsedTime;
-
-					CreateNormalBullet();
+					this.BulletManger.CreateAnomaBullet(
+						PlayerBulletActorManager.BulletType.Normal,
+						this.Trans.position);
 				}
 			}
 		}
@@ -126,16 +132,6 @@ namespace Game.Player
 		private void Skill()
 		{
 			
-		}
-
-		private void CreateNormalBullet()
-		{
-			var normalBullet = GameObject.Instantiate(Script.nsParam.bulletPrefab);
-
-			var pos = this.Trans.position;
-			//pos.z = 100;
-			normalBullet.transform.position = pos;
-			Debug.Log(normalBullet.transform.position);
 		}
 
 		private void CreateSpecialBullet()

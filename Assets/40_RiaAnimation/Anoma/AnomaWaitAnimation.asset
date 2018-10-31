@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf24baad2646fe49b830dc5480dfd75, type: 3}
   m_Name: AnomaWaitAnimation
   m_EditorClassIdentifier: 
-  keyName: 
+  keyName: wait
   isLoop: 1
-  updateFrame: 0
-  sprites: []
+  updateFrame: 4
+  sprites:
+  - {fileID: 21300000, guid: 76fb54e78e8e94ee2b3f9fa695fd900a, type: 3}

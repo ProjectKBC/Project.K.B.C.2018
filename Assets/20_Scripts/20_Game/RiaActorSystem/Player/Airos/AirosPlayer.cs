@@ -136,7 +136,6 @@ namespace Game.Player
 					this.BulletManger.CreateAirosBullet(
 						PlayerBulletActorManager.BulletType.Normal,
 						this.Trans.position);
-					//CreateBullet();
 				}
 			}
 		}
@@ -191,7 +190,7 @@ namespace Game.Player
 				for (int i = 0; i < param.targetEnemyTranses.Length; ++i)
 				{
 					// todo: bullet生成
-					CreateBullet(param.targetEnemyTranses[i].position);
+					// CreateBullet(param.targetEnemyTranses[i].position);
 					// todo: FX生成
 					Debug.Log(param.targetEnemyTranses[i].position);
 				}
@@ -255,13 +254,6 @@ namespace Game.Player
 					param.isUsing = false;
 				}
 			}
-		}
-
-		// todo: BulletManagerから生成できるようにする by flanny7
-		private void CreateBullet(Vector3? _pos = null)
-		{
-			var normalBullet = GameObject.Instantiate(Script.nsParam.bulletPrefab);
-			normalBullet.transform.position = _pos ?? this.Trans.position;
 		}
 
 		/// <summary>

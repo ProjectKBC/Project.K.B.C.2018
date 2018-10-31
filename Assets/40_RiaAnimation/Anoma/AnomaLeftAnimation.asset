@@ -9,9 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faf24baad2646fe49b830dc5480dfd75, type: 3}
-  m_Name: Animation
+  m_Name: AnomaLeftAnimation
   m_EditorClassIdentifier: 
-  keyName: 
-  isLoop: 1
-  updateFrame: 0
-  sprites: []
+  keyName: left_go
+  isLoop: 0
+  updateFrame: 4
+  sprites:
+  - {fileID: 21300000, guid: 82f6605228357491087339b32b9c5b7f, type: 3}
+  - {fileID: 21300000, guid: 79e883ed3fa3043f8a7d6815129fff0b, type: 3}
+  - {fileID: 21300000, guid: 76a3ed44d20d040be91badd1c529a333, type: 3}
+  - {fileID: 21300000, guid: 71e05a3b7c806489d8928090bc7c11c3, type: 3}
