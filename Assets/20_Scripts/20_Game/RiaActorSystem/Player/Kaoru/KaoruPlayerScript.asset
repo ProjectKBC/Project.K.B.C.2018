@@ -25,3 +25,7 @@ MonoBehaviour:
     bulletPrefab: {fileID: 1047989897566778, guid: cc572ab2903414e33899ff1f1abe96f0,
       type: 2}
     shotInterval: 0.07
+  ssParam:
+    bulletPrefab: {fileID: 1848425634894356, guid: 0c4d9412cac5a4346ae4b54340e50607,
+      type: 2}
+    shotCoolTime: 5
