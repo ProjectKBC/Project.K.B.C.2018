@@ -17,6 +17,9 @@ namespace Game.UI
 		[SerializeField]
 		private HPGageController hpgPlayer2 = null;
 
+		[SerializeField, Header("Result Window")]
+		private ResultWindowController resultWindow = null;
+
 		#region Override Function
 
 		protected override void OnInit()
