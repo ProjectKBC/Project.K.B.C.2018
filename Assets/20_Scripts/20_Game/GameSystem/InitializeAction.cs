@@ -26,7 +26,7 @@ namespace Game
 			var pl1SM = this.gm.PL1Managers.stageManager;
 			if (pl1SM) { pl1SM.Init(); }
 
-			var pl2SM = this.gm.PL1Managers.stageManager;
+			var pl2SM = this.gm.PL2Managers.stageManager;
 			if (pl2SM) { pl2SM.Init(); }
 
 			// Todo: Bulletの生成
