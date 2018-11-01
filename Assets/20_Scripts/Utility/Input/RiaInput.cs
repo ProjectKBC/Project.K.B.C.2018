@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // todo: Up, Down, Right, Leftがおかしい
@@ -8,6 +9,25 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 	private RiaInputConfig player1Congif = null;
 	[SerializeField]
 	private RiaInputConfig player2Congif = null;
+	
+	struct RiaAxisInputs
+	{
+		public RiaAxisInput up;
+		public RiaAxisInput down;
+		public RiaAxisInput right;
+		public RiaAxisInput left;
+
+		public RiaAxisInputs(float _margin, RiaInputConfig _config)
+		{
+			this.up = new RiaAxisInput(_margin, true, _config.buttonString.Up);
+			this.down = new RiaAxisInput(_margin, false, _config.buttonString.Down);
+			this.right = new RiaAxisInput(_margin, true, _config.buttonString.Right);
+			this.left = new RiaAxisInput(_margin, false, _config.buttonString.Left);
+		}
+	}
+
+	private RiaAxisInputs axisPL1;
+	private RiaAxisInputs axisPL2;
 
 	public enum KeyType
 	{
@@ -24,6 +44,34 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 		LowSpeed,
 		Pause,
 	}
+	
+	protected override void OnInit()
+	{
+		DontDestroyOnLoad(this.gameObject);
+
+		if (!this.player1Congif || !this.player2Congif)
+		{
+			Debug.LogError("configがありません", this);
+		}
+		
+		this.axisPL1 = new RiaAxisInputs(AxisMargin, this.player1Congif);
+		this.axisPL2 = new RiaAxisInputs(AxisMargin, this.player2Congif);
+	}
+
+	private void LateUpdate()
+	{
+		this.axisPL1.up.LastUpdate();
+		this.axisPL1.down.LastUpdate();
+		this.axisPL1.right.LastUpdate();
+		this.axisPL1.left.LastUpdate();
+		
+		this.axisPL2.up.LastUpdate();
+		this.axisPL2.down.LastUpdate();
+		this.axisPL2.right.LastUpdate();
+		this.axisPL2.left.LastUpdate();
+	}
+
+	#region GetKey
 	
 	public bool GetKey(KeyType _keyType, PlayerNumber _playerNumber)
 	{
@@ -190,12 +238,15 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 		return false;
 	}
 
+	#endregion
+
+	#region GetPush
+	
 	public bool GetPush(KeyType _keyType, PlayerNumber _playerNumber)
 	{
-		Debug.Log("a");
-		var config = (_playerNumber == PlayerNumber.player1) ?
-			this.player1Congif : this.player2Congif;
-
+		var config = (_playerNumber == PlayerNumber.player1) ? this.player1Congif : this.player2Congif;
+		var axis = (_playerNumber == PlayerNumber.player1) ? this.axisPL1 : this.axisPL2;
+		
 		switch (_keyType)
 		{
 			case KeyType.Return:
@@ -209,24 +260,16 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 					 Input.GetButton(config.buttonString.Cancel));
 
 			case KeyType.Up:
-				return
-					(Input.GetKey(config.keyCode.Up) ||
-					 AxisMargin < Input.GetAxis(config.buttonString.Up));
+				return (Input.GetKey(config.keyCode.Up) || axis.up.Push());
 
 			case KeyType.Down:
-				return
-					(Input.GetKey(config.keyCode.Down) ||
-					 Input.GetAxis(config.buttonString.Down) < AxisMargin);
+				return (Input.GetKey(config.keyCode.Down) || axis.down.Push());
 
 			case KeyType.Right:
-				return
-					(Input.GetKey(config.keyCode.Right) ||
-					 AxisMargin < Input.GetAxis(config.buttonString.Right));
+				return (Input.GetKey(config.keyCode.Right) || axis.right.Push());
 
 			case KeyType.Left:
-				return
-					(Input.GetKey(config.keyCode.Left) ||
-					 Input.GetAxis(config.buttonString.Left) < AxisMargin);
+				return (Input.GetKey(config.keyCode.Left) || axis.left.Push());
 
 			case KeyType.NormalShot:
 				return
@@ -260,8 +303,8 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 	
 	public bool GetPushUp(KeyType _keyType, PlayerNumber _playerNumber)
 	{
-		var config = (_playerNumber == PlayerNumber.player1) ?
-			this.player1Congif : this.player2Congif;
+		var config = (_playerNumber == PlayerNumber.player1) ? this.player1Congif : this.player2Congif;
+		var axis = (_playerNumber == PlayerNumber.player1) ? this.axisPL1 : this.axisPL2;
 
 		switch (_keyType)
 		{
@@ -276,24 +319,16 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 					 Input.GetButtonUp(config.buttonString.Cancel));
 
 			case KeyType.Up:
-				return
-					(Input.GetKeyUp(config.keyCode.Up)/* ||
-					 Input.GetButtonUp(config.buttonString.Up)*/);
+				return (Input.GetKeyUp(config.keyCode.Up) || axis.up.PushUp());
 
 			case KeyType.Down:
-				return
-					(Input.GetKeyUp(config.keyCode.Down)/* ||
-					 Input.GetButtonUp(config.buttonString.Down)*/);
+				return (Input.GetKeyUp(config.keyCode.Down) || axis.down.PushUp());
 
 			case KeyType.Right:
-				return
-					(Input.GetKeyUp(config.keyCode.Right)/* ||
-					 Input.GetButtonUp(config.buttonString.Right)*/);
+				return (Input.GetKeyUp(config.keyCode.Right) || axis.right.PushUp());
 
 			case KeyType.Left:
-				return
-					(Input.GetKeyUp(config.keyCode.Left)/* ||
-					 Input.GetButtonUp(config.buttonString.Left)*/);
+				return (Input.GetKeyUp(config.keyCode.Left) || axis.left.PushUp());
 
 			case KeyType.NormalShot:
 				return
@@ -327,8 +362,8 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 
 	public bool GetPushDown(KeyType _keyType, PlayerNumber _playerNumber)
 	{
-		var config = (_playerNumber == PlayerNumber.player1) ?
-			this.player1Congif : this.player2Congif;
+		var config = (_playerNumber == PlayerNumber.player1) ? this.player1Congif : this.player2Congif;
+		var axis = (_playerNumber == PlayerNumber.player1) ? this.axisPL1 : this.axisPL2;
 
 		switch (_keyType)
 		{
@@ -343,24 +378,16 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 					 Input.GetButtonDown(config.buttonString.Cancel));
 
 			case KeyType.Up:
-				return
-					(Input.GetKeyDown(config.keyCode.Up)/* ||
-					 Input.GetButtonDown(config.buttonString.Up)*/);
+				return (Input.GetKeyDown(config.keyCode.Up) || axis.up.PushDown());
 
 			case KeyType.Down:
-				return
-					(Input.GetKeyDown(config.keyCode.Down)/* ||
-					 Input.GetButtonDown(config.buttonString.Down)*/);
+				return (Input.GetKeyDown(config.keyCode.Down) || axis.down.PushDown());
 
 			case KeyType.Right:
-				return
-					(Input.GetKeyDown(config.keyCode.Right)/* ||
-					 Input.GetButtonDown(config.buttonString.Right)*/);
+				return (Input.GetKeyDown(config.keyCode.Right) || axis.right.PushDown());
 
 			case KeyType.Left:
-				return
-					(Input.GetKeyDown(config.keyCode.Left)/* ||
-					 Input.GetButtonDown(config.buttonString.Left)*/);
+				return (Input.GetKeyDown(config.keyCode.Left) || axis.left.PushDown());
 
 			case KeyType.NormalShot:
 				return
@@ -391,13 +418,6 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 
 		return false;
 	}
-	protected override void OnInit()
-	{
-		DontDestroyOnLoad(this.gameObject);
-
-		if (!this.player1Congif || !this.player2Congif)
-		{
-			Debug.LogError("configがありません", this);
-		}
-	}
+	
+	#endregion
 }
