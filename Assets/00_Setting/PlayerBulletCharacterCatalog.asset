@@ -21,3 +21,8 @@ MonoBehaviour:
       type: 2}
     anomaNormalBulletLeft: {fileID: 11400000, guid: ea78d8b13c5874f09a69ba4d824918d8,
       type: 2}
+  kaoruNormalBullet:
+    kaoruNormalBulletRight: {fileID: 11400000, guid: 06a8313217d914d3584e187e510b686e,
+      type: 2}
+    kaoruNormalBulletLeft: {fileID: 11400000, guid: ca3f945c043954692a1bc39ae791d1b9,
+      type: 2}

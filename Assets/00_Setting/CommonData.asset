@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: CommonData
   m_EditorClassIdentifier: 
   playerCharacter1: 1
-  playerCharacter2: 2
+  playerCharacter2: 6
   stage: 0
   player1Score: 0
-  player2Score: 0
+  player2Score: 10

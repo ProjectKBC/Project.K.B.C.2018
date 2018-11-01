@@ -42,5 +42,22 @@ namespace Game.Bullet.Player
 			pos.x += (_type == "right") ? 2 : -2;
 			_actor.WakeUp(character, script, pos, _rotation, _scale);
 		}
+
+		public void CreateKaoruNormalBullet(
+			PlayerNumber _playerNumber,
+			RiaActor _actor,
+			string _type,
+			Vector3 _position,
+			Quaternion? _rotation = null,
+			Vector3? _scale = null)
+		{
+			var script = (_type == "right") ?
+				this.catalog.KaoruNormalBullet.kaoruNormalBulletRight as RiaPlayerBulletScript :
+					this.catalog.KaoruNormalBullet.kaoruNormalBulletLeft as RiaPlayerBulletScript;
+			var character = new KaoruNormalBullet(_actor.gameObject, script, _playerNumber);
+			var pos = _position;
+			pos.x += (_type == "right") ? 1.5f : -1.5f;
+			_actor.WakeUp(character, script, pos, _rotation, _scale);
+		}
 	}
 }
