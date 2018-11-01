@@ -213,10 +213,10 @@ namespace Game.Player
 		/// </summary>
 		public virtual void Animation()
 		{
-			var rightPushDown = RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Right, this.PlayerNumber);
-			var leftPushDown = RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Left, this.PlayerNumber);
-			var rightPushUp = RiaInput.Instance.GetKeyUp(RiaInput.KeyType.Right, this.PlayerNumber);
-			var leftPushUp = RiaInput.Instance.GetKeyUp(RiaInput.KeyType.Left, this.PlayerNumber);
+			var rightPushDown = RiaInput.Instance.GetPushDown(RiaInput.KeyType.Right, this.PlayerNumber);
+			var leftPushDown = RiaInput.Instance.GetPushDown(RiaInput.KeyType.Left, this.PlayerNumber);
+			var rightPushUp = RiaInput.Instance.GetPushUp(RiaInput.KeyType.Right, this.PlayerNumber);
+			var leftPushUp = RiaInput.Instance.GetPushUp(RiaInput.KeyType.Left, this.PlayerNumber);
 			var rightPush = RiaInput.Instance.GetPush(RiaInput.KeyType.Right, this.PlayerNumber);
 			var leftPush = RiaInput.Instance.GetPush(RiaInput.KeyType.Left, this.PlayerNumber);
 

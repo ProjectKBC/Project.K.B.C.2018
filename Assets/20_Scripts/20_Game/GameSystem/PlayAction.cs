@@ -60,8 +60,8 @@ namespace Game
 			//}
 
 			// Pauseへの移動
-			if (RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Pause, PlayerNumber.player1) ||
-			    RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Pause, PlayerNumber.player2))
+			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Pause, PlayerNumber.player1) ||
+			    RiaInput.Instance.GetPushDown(RiaInput.KeyType.Pause, PlayerNumber.player2))
 			{
 				this.gm.ChageState(GameManager.State.Pause);
 			}

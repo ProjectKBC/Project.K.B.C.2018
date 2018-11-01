@@ -125,7 +125,7 @@ namespace Game.Player
 			var script = this.Script.nsParam;
 
 			// キー入力
-			if (RiaInput.Instance.GetKey(RiaInput.KeyType.NormalShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetPush(RiaInput.KeyType.NormalShot, this.PlayerNumber))
 			{
 				// 経過時間の更新
 				var shotElapsedTime = this.playElapsedTime - param.shotTime;
@@ -164,7 +164,7 @@ namespace Game.Player
 			}
 
 			// サーチ中
-			if (RiaInput.Instance.GetKey(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
 				var searchedEnemyTransformes = NearSearchEnemyTransform(script.searchAreaRange);
 
@@ -208,7 +208,7 @@ namespace Game.Player
 			var script = this.Script.skilParam;
 
 			// スキル発動 by flanny7
-			if (RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Skil, this.PlayerNumber) && !param.isUsing)
+			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Skil, this.PlayerNumber) && !param.isUsing)
 			{
 				//Debug.Log("skil");
 				// 使用フラグを立てる by flanny7

@@ -106,8 +106,8 @@ namespace Game.UI
 		{
 			// 決定時
 			if (this.pushIntervalTime <= this.elapsedTime &&
-				(RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Return, PlayerNumber.player1) ||
-				 RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Return, PlayerNumber.player2)))
+				(RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player1) ||
+				 RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player2)))
 			{
 				// todo: 決定音
 
@@ -146,8 +146,8 @@ namespace Game.UI
 			}
 			// キャンセル
 			else if (this.pushIntervalTime <= this.elapsedTime &&
-					 (RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Cancel, PlayerNumber.player1) ||
-					  RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Cancel, PlayerNumber.player2)))
+					 (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player1) ||
+					  RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player2)))
 			{
 				// キャンセル音
 
@@ -178,15 +178,15 @@ namespace Game.UI
 
 			if (this.restartScreen.IsDisp || this.prevToSelectScreen.IsDisp) { return; }
 
-			if (RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Down, PlayerNumber.player1) ||
-				RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Down, PlayerNumber.player2))
+			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Down, PlayerNumber.player1) ||
+				RiaInput.Instance.GetPushDown(RiaInput.KeyType.Down, PlayerNumber.player2))
 			{
 				var currentStateIndex = (int)this.currentState;
 				var nextStateIndex = (currentStateIndex + 1) % (int)State.Lenght;
 				this.currentState = (State)Enum.ToObject(typeof(State), nextStateIndex);
 			}
-			else if (RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Up, PlayerNumber.player1) ||
-					 RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Up, PlayerNumber.player2))
+			else if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Up, PlayerNumber.player1) ||
+					 RiaInput.Instance.GetPushDown(RiaInput.KeyType.Up, PlayerNumber.player2))
 			{
 				var currentStateIndex = (int)this.currentState;
 				var prevStateIndex = ((int)State.Lenght + currentStateIndex - 1) % (int)State.Lenght;

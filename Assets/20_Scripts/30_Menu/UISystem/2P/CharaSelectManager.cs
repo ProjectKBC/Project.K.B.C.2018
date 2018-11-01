@@ -3,12 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
 
-public enum Player
-{
-    pl1,
-    pl2,
-}
-
 public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManager>
 {
     [System.Serializable]
@@ -174,10 +168,10 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
             UpdateCursor(i);
         }
 
-        UpdateStand(Player.pl1);
-        UpdateStand(Player.pl2);
-        UpdateNames(Player.pl1);
-        UpdateNames(Player.pl2);
+        UpdateStand(PlayerNumber.player1);
+        UpdateStand(PlayerNumber.player2);
+        UpdateNames(PlayerNumber.player1);
+        UpdateNames(PlayerNumber.player2);
     }
 
     public void Init()
@@ -219,27 +213,31 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         // Player1
         if (!this.pl1States.IsSelected)
         {
-            MoveCursorFunc(Player.pl1);
+            MoveCursorFunc(PlayerNumber.player1);
         }
 
         // Player2
         if (!this.pl2States.IsSelected)
         {
-            MoveCursorFunc(Player.pl2);
+            MoveCursorFunc(PlayerNumber.player2);
         }
 
     }
 
-    private void MoveCursorFunc(Player _pl)
+    private void MoveCursorFunc(PlayerNumber _pl)
     {
-        SelecterStates states = (_pl == Player.pl1) ? this.pl1States :
-                                (_pl == Player.pl2) ? this.pl2States : null;
-        PlayerKey key = (_pl == Player.pl1) ? this.pl1key :
-                        (_pl == Player.pl2) ? this.pl2key : new PlayerKey();
+        SelecterStates states = (_pl == PlayerNumber.player1) ? this.pl1States :
+                                (_pl == PlayerNumber.player2) ? this.pl2States : null;
+//        PlayerKey key = (_pl == PlayerNumber.player1) ? this.pl1key :
+//                        (_pl == PlayerNumber.player2) ? this.pl2key : new PlayerKey();
 
         // いずれの方向キーも押されていない
-        if (!Input.GetKey(key.UpKey) && !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey) && !Input.GetKey(key.LeftKey))
-        {
+//        if (!Input.GetKey(key.UpKey) && !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey) && !Input.GetKey(key.LeftKey))
+        if (!RiaInput.Instance.GetPush(RiaInput.KeyType.Up, _pl) &&
+            !RiaInput.Instance.GetPush(RiaInput.KeyType.Down, _pl) &&
+            !RiaInput.Instance.GetPush(RiaInput.KeyType.Return, _pl) &&
+            !RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl))
+	    {
             states.KeyIntervalStartTime = -1;
             states.RapidKeyWaitStartTime = -1;
             states.IsFirstCursorMove = false;
@@ -267,29 +265,71 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
             states.IsFirstCursorMove = true;
         }
 
-        var isUp = Input.GetKey(key.UpKey) &&
-                   !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey) && !Input.GetKey(key.LeftKey);
+//        var isUp = Input.GetKey(key.UpKey) &&
+//                   !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey) && !Input.GetKey(key.LeftKey);
+//
+//        var isDown = Input.GetKey(key.DownKey) &&
+//                     !Input.GetKey(key.UpKey) && !Input.GetKey(key.RightKey) && !Input.GetKey(key.LeftKey);
+//
+//        var isRight = Input.GetKey(key.RightKey) &&
+//                      !Input.GetKey(key.UpKey) && !Input.GetKey(key.DownKey) && !Input.GetKey(key.LeftKey);
+//
+//        var isLeft = Input.GetKey(key.LeftKey) &&
+//                     !Input.GetKey(key.UpKey) && !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey);
+//
+//        var isUpLeft = Input.GetKey(key.UpKey) && Input.GetKey(key.LeftKey) &&
+//                       !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey);
+//
+//        var isUpRight = Input.GetKey(key.UpKey) && Input.GetKey(key.RightKey) &&
+//                         !Input.GetKey(key.DownKey) && !Input.GetKey(key.LeftKey);
+//
+//        var isDownLeft = Input.GetKey(key.DownKey) && Input.GetKey(key.LeftKey) &&
+//                          !Input.GetKey(key.UpKey) && !Input.GetKey(key.RightKey);
+//
+//        var isDownRight = Input.GetKey(key.DownKey) && Input.GetKey(key.RightKey) &&
+//                           !Input.GetKey(key.UpKey) && !Input.GetKey(key.LeftKey);
 
-        var isDown = Input.GetKey(key.DownKey) &&
-                     !Input.GetKey(key.UpKey) && !Input.GetKey(key.RightKey) && !Input.GetKey(key.LeftKey);
+	    // todo: ビットマスクでもっとスマートに書ける by flanny7
+	    
+	    var isUp = RiaInput.Instance.GetPush(RiaInput.KeyType.Up, _pl) &&
+	               !RiaInput.Instance.GetPush(RiaInput.KeyType.Down, _pl) &&
+	               !RiaInput.Instance.GetPush(RiaInput.KeyType.Right, _pl) &&
+	               !RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl);
 
-        var isRight = Input.GetKey(key.RightKey) &&
-                      !Input.GetKey(key.UpKey) && !Input.GetKey(key.DownKey) && !Input.GetKey(key.LeftKey);
+	    var isDown = !RiaInput.Instance.GetPush(RiaInput.KeyType.Up, _pl) &&
+				     RiaInput.Instance.GetPush(RiaInput.KeyType.Down, _pl) &&
+				     !RiaInput.Instance.GetPush(RiaInput.KeyType.Right, _pl) &&
+				     !RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl);
 
-        var isLeft = Input.GetKey(key.LeftKey) &&
-                     !Input.GetKey(key.UpKey) && !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey);
+	    var isRight = !RiaInput.Instance.GetPush(RiaInput.KeyType.Up, _pl) &&
+	                  !RiaInput.Instance.GetPush(RiaInput.KeyType.Down, _pl) &&
+	                  RiaInput.Instance.GetPush(RiaInput.KeyType.Right, _pl) &&
+	                  !RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl);
 
-        var isUpLeft = Input.GetKey(key.UpKey) && Input.GetKey(key.LeftKey) &&
-                       !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey);
+	    var isLeft = !RiaInput.Instance.GetPush(RiaInput.KeyType.Up, _pl) &&
+	                 !RiaInput.Instance.GetPush(RiaInput.KeyType.Down, _pl) &&
+	                 !RiaInput.Instance.GetPush(RiaInput.KeyType.Right, _pl) &&
+	                 RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl);
 
-        var isUpRight = Input.GetKey(key.UpKey) && Input.GetKey(key.RightKey) &&
-                         !Input.GetKey(key.DownKey) && !Input.GetKey(key.LeftKey);
+	    var isUpRight = RiaInput.Instance.GetPush(RiaInput.KeyType.Up, _pl) &&
+	                   !RiaInput.Instance.GetPush(RiaInput.KeyType.Down, _pl) &&
+	                   RiaInput.Instance.GetPush(RiaInput.KeyType.Right, _pl) &&
+	                   !RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl);
 
-        var isDownLeft = Input.GetKey(key.DownKey) && Input.GetKey(key.LeftKey) &&
-                          !Input.GetKey(key.UpKey) && !Input.GetKey(key.RightKey);
+	    var isUpLeft = RiaInput.Instance.GetPush(RiaInput.KeyType.Up, _pl) &&
+	                   !RiaInput.Instance.GetPush(RiaInput.KeyType.Down, _pl) &&
+	                   !RiaInput.Instance.GetPush(RiaInput.KeyType.Right, _pl) &&
+	                   RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl);
 
-        var isDownRight = Input.GetKey(key.DownKey) && Input.GetKey(key.RightKey) &&
-                           !Input.GetKey(key.UpKey) && !Input.GetKey(key.LeftKey);
+	    var isDownRight = !RiaInput.Instance.GetPush(RiaInput.KeyType.Up, _pl) &&
+	                      RiaInput.Instance.GetPush(RiaInput.KeyType.Down, _pl) &&
+	                      RiaInput.Instance.GetPush(RiaInput.KeyType.Right, _pl) &&
+	                      !RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl);
+
+	    var isDownLeft = !RiaInput.Instance.GetPush(RiaInput.KeyType.Up, _pl) &&
+					     RiaInput.Instance.GetPush(RiaInput.KeyType.Down, _pl) &&
+					     !RiaInput.Instance.GetPush(RiaInput.KeyType.Right, _pl) &&
+					     RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl);
 
         var index = states.NowIndex;
         
@@ -445,27 +485,31 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
             states.KeyIntervalStartTime = this.elapsedTime;
         }
     }
-
+	
     private void ActionCursor()
     {
-        if (Input.GetKeyDown(this.pl1key.ReturnKey))
+//        if (Input.GetKeyDown(this.pl1key.ReturnKey))
+	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player1))
         {
-            this.ReturnAction(Player.pl1);
+            this.ReturnAction(PlayerNumber.player1);
         }
 
-        if (Input.GetKeyDown(this.pl1key.CancelKey))
+//        if (Input.GetKeyDown(this.pl1key.CancelKey))
+	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player1))
         {
-            this.CancelAction(Player.pl1);
+            this.CancelAction(PlayerNumber.player1);
         }
 
-        if (Input.GetKeyDown(this.pl2key.ReturnKey))
+//        if (Input.GetKeyDown(this.pl2key.ReturnKey))
+	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player2))
         {
-            this.ReturnAction(Player.pl2);
+            this.ReturnAction(PlayerNumber.player2);
         }
 
-        if (Input.GetKeyDown(this.pl2key.CancelKey))
+//        if (Input.GetKeyDown(this.pl2key.CancelKey))
+	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player2))
         {
-            this.CancelAction(Player.pl2);
+            this.CancelAction(PlayerNumber.player2);
         }
     }
 
@@ -473,7 +517,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
     /// カーソルを1つ進める
     /// </summary>
     /// <param name="_pl">操作したプレイヤー</param>
-    private void NextContent(Player _pl)
+    private void NextContent(PlayerNumber _pl)
     {
         NextContent(_pl, 1);
     }
@@ -483,10 +527,10 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
     /// </summary>
     /// <param name="_pl">操作したプレイヤー</param>
     /// <param name="_advance">進める数</param>
-    private void NextContent(Player _pl, int _advance)
+    private void NextContent(PlayerNumber _pl, int _advance)
     {
-        SelecterStates state = (_pl == Player.pl1) ? this.pl1States :
-                               (_pl == Player.pl2) ? this.pl2States : null;
+        SelecterStates state = (_pl == PlayerNumber.player1) ? this.pl1States :
+                               (_pl == PlayerNumber.player2) ? this.pl2States : null;
 
         var prevIndex = state.NowIndex;
         state.NowIndex = (state.NowIndex + _advance) % this.charaSelectorSets.Length;
@@ -500,7 +544,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
     /// カーソルを1つ戻す
     /// </summary>
     /// <param name="_pl">操作したプレイヤー</param>
-    private void PrevContent(Player _pl)
+    private void PrevContent(PlayerNumber _pl)
     {
         PrevContent(_pl, 1);
     }
@@ -510,10 +554,10 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
     /// </summary>
     /// <param name="_pl">操作したプレイヤー</param>
     /// <param name="_advance">戻す数</param>
-    private void PrevContent(Player _pl, int _advance)
+    private void PrevContent(PlayerNumber _pl, int _advance)
     {
-        SelecterStates state = (_pl == Player.pl1) ? this.pl1States :
-                               (_pl == Player.pl2) ? this.pl2States : null;
+        SelecterStates state = (_pl == PlayerNumber.player1) ? this.pl1States :
+                               (_pl == PlayerNumber.player2) ? this.pl2States : null;
 
         var prevIndex = state.NowIndex;
         state.NowIndex =
@@ -529,7 +573,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
     /// </summary>
     /// <param name="_pl">押したプレイヤー</param>
     /// <returns>正常に処理されたか</returns>
-    private bool ReturnAction(Player _pl)
+    private bool ReturnAction(PlayerNumber _pl)
 	{
 		if (this.IsPrevToTitleWindow)
 		{
@@ -560,21 +604,21 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
 		return result;
     }
 
-    private bool ReturnFunc(Player _pl)
+    private bool ReturnFunc(PlayerNumber _pl)
     {
         SelecterStates state = null;
         PlayerCharacterEnum pc = PlayerCharacterEnum.length_empty;
         Images images = null;
         Sprite sprite = null;
 
-        if (_pl == Player.pl1)
+        if (_pl == PlayerNumber.player1)
         {
             state = this.pl1States;
             pc = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
             images = this.pl1Images;
             sprite = this.sprites.StandBackActive1;
         }
-        if (_pl == Player.pl2)
+        if (_pl == PlayerNumber.player2)
         {
             state = this.pl2States;
             pc = this.charaSelectorSets[this.pl2States.NowIndex].PlayerCharacter;
@@ -630,9 +674,9 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
     /// </summary>
     /// <param name="_pl">押したプレイヤー</param>
     /// <returns>正常に処理されたか</returns>
-    private bool CancelAction(Player _pl)
+    private bool CancelAction(PlayerNumber _pl)
 	{
-		var state = (_pl == Player.pl1) ? this.pl1States : this.pl2States;
+		var state = (_pl == PlayerNumber.player1) ? this.pl1States : this.pl2States;
 		if (!state.IsSelected)
 		{
 			if (this.IsPrevToTitleWindow &&
@@ -658,18 +702,18 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         return result;
     }
 
-    private bool CancelFunc(Player _pl)
+    private bool CancelFunc(PlayerNumber _pl)
 	{
 		SelecterStates state = null;
         Images images = null;
         Sprite sprite = null;
-        if (_pl == Player.pl1)
+        if (_pl == PlayerNumber.player1)
         {
             state = this.pl1States;
             images = this.pl1Images;
             sprite = this.sprites.StandBackNormal1;
         }
-        if (_pl == Player.pl2)
+        if (_pl == PlayerNumber.player2)
         {
             state = this.pl2States;
             images = this.pl2Images;
@@ -730,21 +774,21 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         }
     }
 
-    private void UpdateStand(Player _pl)
+    private void UpdateStand(PlayerNumber _pl)
     {
         CharaSelectorSet set = new CharaSelectorSet();
         SelecterStates state = null;
         Images images = null;
         Sprite sprite = null;
 
-        if (_pl == Player.pl1)
+        if (_pl == PlayerNumber.player1)
         {
             state = this.pl1States;
             set = this.charaSelectorSets[state.NowIndex];
             images = this.pl1Images;
             sprite = set.StandPL1;
         }
-        if (_pl == Player.pl2)
+        if (_pl == PlayerNumber.player2)
         {
             state = this.pl2States;
             set = this.charaSelectorSets[state.NowIndex];
@@ -764,20 +808,20 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         }
     }
 
-    private void UpdateNames(Player _pl)
+    private void UpdateNames(PlayerNumber _pl)
     {
         SelecterStates state = null;
         CharaSelectorSet set = new CharaSelectorSet();
         Images images = null;
 
-        if (_pl == Player.pl1)
+        if (_pl == PlayerNumber.player1)
         {
             state = this.pl1States;
             set = this.charaSelectorSets[state.NowIndex];
             images = this.pl1Images;
             
         }
-        if (_pl == Player.pl2)
+        if (_pl == PlayerNumber.player2)
         {
             state = this.pl2States;
             set = this.charaSelectorSets[state.NowIndex];

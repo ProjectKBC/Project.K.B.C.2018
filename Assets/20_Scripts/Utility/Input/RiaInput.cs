@@ -290,7 +290,9 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 				return
 					(Input.GetKey(config.keyCode.LowSpeed) ||
 					 Input.GetButton(config.buttonString.LowSpeeds[0]) ||
-					 Input.GetButton(config.buttonString.LowSpeeds[1]));
+					 Input.GetButton(config.buttonString.LowSpeeds[1]) ||
+					 Input.GetButton(config.buttonString.LowSpeeds[2]) ||
+					 Input.GetButton(config.buttonString.LowSpeeds[3]));
 
 			case KeyType.Pause:
 				return
@@ -349,7 +351,9 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 				return
 					(Input.GetKeyUp(config.keyCode.LowSpeed) ||
 					 Input.GetButtonUp(config.buttonString.LowSpeeds[0]) ||
-					 Input.GetButtonUp(config.buttonString.LowSpeeds[1]));
+					 Input.GetButtonUp(config.buttonString.LowSpeeds[1]) ||
+					 Input.GetButtonUp(config.buttonString.LowSpeeds[2]) ||
+					 Input.GetButtonUp(config.buttonString.LowSpeeds[3]));
 
 			case KeyType.Pause:
 				return
@@ -408,7 +412,9 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 				return
 					(Input.GetKeyDown(config.keyCode.LowSpeed) ||
 					 Input.GetButtonDown(config.buttonString.LowSpeeds[0]) ||
-					 Input.GetButtonDown(config.buttonString.LowSpeeds[1]));
+					 Input.GetButtonDown(config.buttonString.LowSpeeds[1]) ||
+					 Input.GetButtonDown(config.buttonString.LowSpeeds[2]) ||
+					 Input.GetButtonDown(config.buttonString.LowSpeeds[3]));
 
 			case KeyType.Pause:
 				return
