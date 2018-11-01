@@ -192,6 +192,7 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 
 	public bool GetPush(KeyType _keyType, PlayerNumber _playerNumber)
 	{
+		Debug.Log("a");
 		var config = (_playerNumber == PlayerNumber.player1) ?
 			this.player1Congif : this.player2Congif;
 
@@ -210,25 +211,21 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 			case KeyType.Up:
 				return
 					(Input.GetKey(config.keyCode.Up) ||
-					 Input.GetButton(config.buttonString.Up) ||
 					 AxisMargin < Input.GetAxis(config.buttonString.Up));
 
 			case KeyType.Down:
 				return
 					(Input.GetKey(config.keyCode.Down) ||
-					 Input.GetButton(config.buttonString.Down) ||
 					 Input.GetAxis(config.buttonString.Down) < AxisMargin);
 
 			case KeyType.Right:
 				return
 					(Input.GetKey(config.keyCode.Right) ||
-					 Input.GetButton(config.buttonString.Right) ||
 					 AxisMargin < Input.GetAxis(config.buttonString.Right));
 
 			case KeyType.Left:
 				return
 					(Input.GetKey(config.keyCode.Left) ||
-					 Input.GetButton(config.buttonString.Left) ||
 					 Input.GetAxis(config.buttonString.Left) < AxisMargin);
 
 			case KeyType.NormalShot:
@@ -280,23 +277,23 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 
 			case KeyType.Up:
 				return
-					(Input.GetKeyUp(config.keyCode.Up) ||
-					 Input.GetButtonUp(config.buttonString.Up));
+					(Input.GetKeyUp(config.keyCode.Up)/* ||
+					 Input.GetButtonUp(config.buttonString.Up)*/);
 
 			case KeyType.Down:
 				return
-					(Input.GetKeyUp(config.keyCode.Down) ||
-					 Input.GetButtonUp(config.buttonString.Down));
+					(Input.GetKeyUp(config.keyCode.Down)/* ||
+					 Input.GetButtonUp(config.buttonString.Down)*/);
 
 			case KeyType.Right:
 				return
-					(Input.GetKeyUp(config.keyCode.Right) ||
-					 Input.GetButtonUp(config.buttonString.Right));
+					(Input.GetKeyUp(config.keyCode.Right)/* ||
+					 Input.GetButtonUp(config.buttonString.Right)*/);
 
 			case KeyType.Left:
 				return
-					(Input.GetKeyUp(config.keyCode.Left) ||
-					 Input.GetButtonUp(config.buttonString.Left));
+					(Input.GetKeyUp(config.keyCode.Left)/* ||
+					 Input.GetButtonUp(config.buttonString.Left)*/);
 
 			case KeyType.NormalShot:
 				return
@@ -347,23 +344,23 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 
 			case KeyType.Up:
 				return
-					(Input.GetKeyDown(config.keyCode.Up) ||
-					 Input.GetButtonDown(config.buttonString.Up));
+					(Input.GetKeyDown(config.keyCode.Up)/* ||
+					 Input.GetButtonDown(config.buttonString.Up)*/);
 
 			case KeyType.Down:
 				return
-					(Input.GetKeyDown(config.keyCode.Down) ||
-					 Input.GetButtonDown(config.buttonString.Down));
+					(Input.GetKeyDown(config.keyCode.Down)/* ||
+					 Input.GetButtonDown(config.buttonString.Down)*/);
 
 			case KeyType.Right:
 				return
-					(Input.GetKeyDown(config.keyCode.Right) ||
-					 Input.GetButtonDown(config.buttonString.Right));
+					(Input.GetKeyDown(config.keyCode.Right)/* ||
+					 Input.GetButtonDown(config.buttonString.Right)*/);
 
 			case KeyType.Left:
 				return
-					(Input.GetKeyDown(config.keyCode.Left) ||
-					 Input.GetButtonDown(config.buttonString.Left));
+					(Input.GetKeyDown(config.keyCode.Left)/* ||
+					 Input.GetButtonDown(config.buttonString.Left)*/);
 
 			case KeyType.NormalShot:
 				return
