@@ -106,6 +106,17 @@ namespace Game
 			return (this.GetPlayer(_playerNumber).Actor.CharacterScript as RiaPlayerScript).HitPointMax;
 		}
 
+		public int GetPlayerScore(PlayerNumber _playerNumber)
+		{
+			int score = (_playerNumber == PlayerNumber.player1) ? this.commonData.player1Score :
+			            (_playerNumber == PlayerNumber.player2) ? this.commonData.player2Score :
+						-1;
+
+			if (score == -1) { Debug.LogError("存在しないです"); }
+
+			return score;
+		}
+
 		/// Enemy
 		public EnemyActorManager GetEnemyActorManager(PlayerNumber _playerNumber)
 		{

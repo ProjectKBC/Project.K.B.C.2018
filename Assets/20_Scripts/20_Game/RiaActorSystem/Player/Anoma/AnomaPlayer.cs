@@ -83,10 +83,9 @@ namespace Game.Player
 			// キー入力
 			if (RiaInput.Instance.GetPush(RiaInput.KeyType.NormalShot, this.PlayerNumber))
 			{
-				Debug.Log(this.PlayerNumber + " : normalShot");
-
-				// ショットの時間間隔
+				// 経過時間の更新
 				var shotElapsedTime = this.playElapsedTime - param.shotTime;
+
 				if (script.shotInterval <= shotElapsedTime)
 				{
 					param.shotTime = this.playElapsedTime;
