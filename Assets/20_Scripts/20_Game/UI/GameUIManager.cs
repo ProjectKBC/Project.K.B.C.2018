@@ -8,6 +8,8 @@ namespace Game.UI
 {
 	public class GameUIManager : SingletonMonoBehaviour<GameUIManager>
 	{
+		[SerializeField, Header("Count Down")]
+		private CountDownController countDown = null;
 		
 		[SerializeField, Header("Pause Window")]
 		private PauseWindow pauseWindow = null;
@@ -36,6 +38,23 @@ namespace Game.UI
 
 			this.hpgPlayer1.Init(PlayerNumber.player1);
 			this.hpgPlayer2.Init(PlayerNumber.player2);
+		}
+
+		// CountDown系
+
+		public void CountDownStart()
+		{
+			this.countDown.Start();
+		}
+
+		public void CountDownUpdate(string _text)
+		{
+			this.countDown.Update(_text);
+		}
+
+		public void CountDownEnd()
+		{
+			this.countDown.End();
 		}
 
 		// Pause系
