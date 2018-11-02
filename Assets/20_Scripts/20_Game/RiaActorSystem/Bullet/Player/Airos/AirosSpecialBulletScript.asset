@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63e8851195de456dbaf1da52056fb72, type: 3}
+  m_Name: AirosSpecialBulletScript
+  m_EditorClassIdentifier: 
+  hitPointMax: 1
+  atk: 2
+  moveSpeedBase: 1
+  lifeTime: 1
+  canCollision: 0
+  colliderSize: {x: 1, y: 1}
+  isPenetration: 0
+  animation: {fileID: 11400000, guid: faff9ba2a6f844021ad1c39d1fdde76f, type: 2}

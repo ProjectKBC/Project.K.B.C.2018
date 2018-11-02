@@ -26,6 +26,19 @@ namespace Game.Bullet.Player
 			_actor.WakeUp(character, script, pos, _rotation, _scale);
 		}
 
+		public void CreateAirosSpecialBullet(
+			PlayerNumber _playerNumber,
+			RiaActor _actor,
+			Vector3 _position,
+			Quaternion? _rotation = null,
+			Vector3? _scale = null)
+		{
+			var script = this.catalog.AirosSpecialBullet.airosSpecialBullet as RiaPlayerBulletScript;
+			var character = new AirosSpecialBullet(_actor.gameObject, script, _playerNumber);
+			var pos = _position;
+			_actor.WakeUp(character, script, pos, _rotation, _scale);
+		}
+
 		public void CreateAnomaNormalBullet(
 			PlayerNumber _playerNumber,
 			RiaActor _actor,

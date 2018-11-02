@@ -191,6 +191,9 @@ namespace Game.Player
 				{
 					// todo: bullet生成
 					// CreateBullet(param.targetEnemyTranses[i].position);
+					this.BulletManger.CreateAirosBullet(
+						PlayerBulletActorManager.BulletType.Special,
+						param.targetEnemyTranses[i].position);
 					// todo: FX生成
 					Debug.Log(param.targetEnemyTranses[i].position);
 				}

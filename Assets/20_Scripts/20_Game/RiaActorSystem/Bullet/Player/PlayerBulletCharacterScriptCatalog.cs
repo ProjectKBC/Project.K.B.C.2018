@@ -18,6 +18,12 @@ namespace Game.Bullet.Player
 		}
 
 		[System.Serializable]
+		public class AirosSpecialBulletSet
+		{
+			public RiaPlayerBulletScript airosSpecialBullet;
+		}
+
+		[System.Serializable]
 		public class AnomaNormalBulletSet
 		{
 			public RiaPlayerBulletScript anomaNormalBulletRight;
@@ -35,6 +41,11 @@ namespace Game.Bullet.Player
 		private AirosNormalBulletSet airosNormalBullet;
 
 		public AirosNormalBulletSet AirosNormalBullet { get { return this.airosNormalBullet; } }
+
+		[SerializeField]
+		private AirosSpecialBulletSet airosSpecialBullet;
+
+		public AirosSpecialBulletSet AirosSpecialBullet { get { return this.airosSpecialBullet; } }
 
 		[SerializeField]
 		private AnomaNormalBulletSet anomaNormalBullet;

@@ -55,7 +55,7 @@ namespace Game.Bullet.Player
 					break;
 
 				case BulletType.Special:
-
+					this.factory.CreateAirosSpecialBullet(this.playerNumber, GetFreeActor(), _pos);
 					break;
 
 				case BulletType.Skill:
