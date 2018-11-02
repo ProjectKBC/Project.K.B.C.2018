@@ -122,6 +122,7 @@ namespace Game
 
 			// UI更新
 			this.gm.UIController.HPGageUpdate();
+			this.gm.UIController.ScoreUpdate();
 
 			// 死亡処理
 			if (this.pl1PM) { this.pl1PM.DeadCheck(); }

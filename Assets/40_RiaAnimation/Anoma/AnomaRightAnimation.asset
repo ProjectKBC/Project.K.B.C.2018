@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf24baad2646fe49b830dc5480dfd75, type: 3}
+  m_Name: AnomaRightAnimation
+  m_EditorClassIdentifier: 
+  keyName: right_go
+  isLoop: 0
+  updateFrame: 4
+  sprites:
+  - {fileID: 21300000, guid: 02bb2f0b181fe4f62a8b8f5de714d2d7, type: 3}
+  - {fileID: 21300000, guid: 0ee5e86ab936944b5a39c41a444579ad, type: 3}
+  - {fileID: 21300000, guid: 94a99999a71f14a61a9b2abb3e248056, type: 3}
+  - {fileID: 21300000, guid: c2cba2f55de1d4da3bd47d7fedea59ee, type: 3}

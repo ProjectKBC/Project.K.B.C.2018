@@ -22,8 +22,6 @@ MonoBehaviour:
     rightGoAnimation: {fileID: 11400000, guid: 09e6e1171ae920b4fb16ce28ea7b49f1, type: 2}
     leftGoAnimation: {fileID: 11400000, guid: 73d6954a06a473c4c8cb1081b138de82, type: 2}
   nsParam:
-    bulletPrefab: {fileID: 1196284274841118, guid: cbef0a9bf41432a4f8997c50ed2003fc,
-      type: 2}
     shotInterval: 0.15
   ssParam:
     shotCoolTime: 1.5

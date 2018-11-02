@@ -55,6 +55,25 @@ namespace Game.Bullet.Player
 					break;
 
 				case BulletType.Special:
+					this.factory.CreateAirosSpecialBullet(this.playerNumber, GetFreeActor(), _pos);
+					break;
+
+				case BulletType.Skill:
+
+					break;
+			}
+		}
+
+		public void CreateAnomaBullet(BulletType _type, Vector3 _pos)
+		{
+			switch (_type)
+			{
+				case BulletType.Normal:
+					this.factory.CreateAnomaNormalBullet(this.playerNumber, GetFreeActor(), "right", _pos);
+					this.factory.CreateAnomaNormalBullet(this.playerNumber, GetFreeActor(), "left", _pos);
+					break;
+
+				case BulletType.Special:
 
 					break;
 
@@ -64,6 +83,24 @@ namespace Game.Bullet.Player
 			}
 		}
 
+		public void CreateKaoruBullet(BulletType _type, Vector3 _pos)
+		{
+			switch (_type)
+			{
+				case BulletType.Normal:
+					this.factory.CreateKaoruNormalBullet(this.playerNumber, GetFreeActor(), "right", _pos);
+					this.factory.CreateKaoruNormalBullet(this.playerNumber, GetFreeActor(), "left", _pos);
+					break;
+
+				case BulletType.Special:
+
+					break;
+
+				case BulletType.Skill:
+
+					break;
+			}
+		}
 		#endregion
 	}
 }

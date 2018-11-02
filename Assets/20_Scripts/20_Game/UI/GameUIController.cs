@@ -292,6 +292,11 @@ namespace Game.UI
 		[SerializeField]
 		private HPGage hpgPlayer2 = null;
 
+		[SerializeField, Header("Score")]
+		private ScoreController scorePlayer1 = null;
+		[SerializeField]
+		private ScoreController scorePlayer2 = null;
+
 		#region Override Function
 
 		protected override void OnInit()
@@ -308,6 +313,9 @@ namespace Game.UI
 
 			this.hpgPlayer1.Init(PlayerNumber.player1);
 			this.hpgPlayer2.Init(PlayerNumber.player2);
+
+			this.scorePlayer1.Init(PlayerNumber.player1);
+			this.scorePlayer2.Init(PlayerNumber.player2);
 		}
 
 		// Pause系
@@ -333,6 +341,14 @@ namespace Game.UI
 		{
 			this.hpgPlayer1.Run();
 			this.hpgPlayer2.Run();
+		}
+
+		// Score系
+
+		public void ScoreUpdate()
+		{
+			this.scorePlayer1.Run();
+			this.scorePlayer2.Run();
 		}
 
 		#endregion
