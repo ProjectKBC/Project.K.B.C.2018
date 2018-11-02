@@ -100,7 +100,10 @@ namespace Game.Enemy
 
 		public override void Move()
 		{
-			this.Trans.position += Vector3.down * this.MoveSpeed * Time.deltaTime * 60.0f;
+			if (this.Trans.position.y > this.Script.OrdinaryYForwardBorder)
+			{
+				this.YForwardEnemy(this.Script.OrdinaryYForwardBorder);
+			}			this.Trans.position += Vector3.down * this.MoveSpeed * Time.deltaTime * 60.0f;
 		}
 
 		public override void Animation()

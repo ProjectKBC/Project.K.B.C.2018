@@ -14,5 +14,20 @@ namespace Game.Bullet.Enemy
 		private RiaEnemyBulletScript straightEnemyBulletScript = null;
 
 		public RiaEnemyBulletScript StraightEnemyBulletScript { get { return this.straightEnemyBulletScript; } }
+		
+		[SerializeField]
+		private RiaEnemyBulletScript stayEnemyBulletScript = null;
+
+		public RiaEnemyBulletScript StayEnemyBulletScript { get { return this.stayEnemyBulletScript; } }
+		
+		[SerializeField]
+		private RiaEnemyBulletScript sinEnemyBulletScript = null;
+
+		public RiaEnemyBulletScript SinEnemyBulletScript { get { return this.sinEnemyBulletScript; } }
+		
+		[SerializeField]
+		private RiaEnemyBulletScript toLeftSideEnemyBulletScript = null;
+
+		public RiaEnemyBulletScript ToLeftSideEnemyBulletScript { get { return this.toLeftSideEnemyBulletScript; } }
 	}
 }

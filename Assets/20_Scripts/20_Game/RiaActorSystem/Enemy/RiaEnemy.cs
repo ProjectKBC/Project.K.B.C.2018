@@ -14,6 +14,8 @@ namespace Game.Enemy
 	public abstract class RiaEnemy : RiaCharacter
 	{
 		private static readonly float deleteTime = 5.0f;
+		
+		protected float elapsedTime;
 
 		// CharacterScriptの上書き
 		public new RiaEnemyScript Script { get; protected set; }
@@ -25,6 +27,13 @@ namespace Game.Enemy
 		/// 移動速度系
 		protected float moveSpeedRate = 1;
 		protected float MoveSpeed { get { return this.Script.MoveSpeedBase * this.moveSpeedRate; } }
+		
+		//移動系
+		[SerializeField]
+		private float ordinaryYForwardBorder;
+		private float rightXForwardBorder;
+		private float leftXForwardBorder;
+
 		
 		/// 生死判定
 		protected bool IsDead { get { return (this.HitPoint <= 0 || isDead); } }
@@ -64,6 +73,8 @@ namespace Game.Enemy
 		protected Collider2D collider;
 		protected Collider2DSupporter colliderSupporter;
 		protected EnemyBulletActorManager bulletManager;
+		
+		protected float ordinaryForwardSpeed = 40.0f;
 
 		#region Constructor
 
@@ -131,6 +142,35 @@ namespace Game.Enemy
 			{
 				this.Delete();
 			}
+		}
+		
+		protected void BackMove()
+		{
+			var pos = this.Trans.position;
+			pos.y += this.ordinaryForwardSpeed * Time.deltaTime;
+			this.Trans.position = pos;
+		}
+		
+		//public void XForwardEnemy(float _borderX)
+		protected void XForwardEnemy(float _borderX)
+		{
+			Vector3 pos = this.Trans.position;
+			pos.x -= this.ordinaryForwardSpeed * Time.deltaTime;
+			this.Trans.position = pos;
+		}
+		
+		protected void YForwardEnemy(float _borderY)
+		{
+			Vector3 pos = this.Trans.position;
+			pos.y += -this.ordinaryForwardSpeed * Time.deltaTime;
+			this.Trans.position = pos;
+		}
+		
+		protected void ToSideMove()
+		{
+			var pos = this.Trans.position;
+			pos.x -= this.moveSpeedRate * Time.deltaTime;
+			this.Trans.position = pos;
 		}
 
 		#endregion
