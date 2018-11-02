@@ -10,6 +10,9 @@ namespace Game.Enemy
 	[CreateAssetMenu(menuName = "RiaActorSystem/Enemy/UFA1StraightEnemyScript", fileName = "UFA1StraightEnemyScript")]
 	public class UFA1StraightEnemyScript : RiaEnemyScript
 	{
+		[SerializeField]
+		private float ordinaryYForwardBorder;
+		
 		[System.Serializable]
 		public struct ShooterParam
 		{
@@ -20,5 +23,10 @@ namespace Game.Enemy
 		private ShooterParam shotParam;
 
 		public ShooterParam ShotParam { get { return this.shotParam; } }
+		
+		public float OrdinaryYForwardBorder
+		{
+			get { return this.ordinaryYForwardBorder; }
+		}
 	}
 }

@@ -16,22 +16,34 @@ namespace Game.Enemy
 		private EnemyActorFactory factory = null;
 
 		[SerializeField]
+		private EnemySpownner stage1Spownner;
+		
+		[SerializeField]
 		private float spownInterval = 1.0f;
 
 		private float elapsedTime;
 		private float spownTime;
 		private Vector3 spownPosition;
+		private EnemySpownner currentSponer;
 
 		protected override void OnInitialize()
 		{
 			Debug.Log("create enemy : " + this.playerNumber);
 
-			this.elapsedTime = 0;
-			this.spownTime = 0;
-
-			this.spownPosition = (this.playerNumber == PlayerNumber.player1) ?
-				new Vector3(-44, 80, 0) :
-				new Vector3(44, 80, 0);
+//			this.elapsedTime = 0;
+//			this.spownTime = 0;
+//
+//			this.spownPosition = (this.playerNumber == PlayerNumber.player1) ?
+//				new Vector3(-44, 80, 0) :
+//				new Vector3(44, 80, 0);
+			
+			//if (GameManager.Instance.CommonData.stage == StageEnum.stage1)
+			{
+				this.currentSponer = GameObject.Instantiate<EnemySpownner>(this.stage1Spownner);
+			}
+			
+			// 初期化すること！
+			this.currentSponer.Init(this.factory, this.playerNumber, this);
 		}
 
 		protected override void OnUpdate()
@@ -44,23 +56,31 @@ namespace Game.Enemy
 		/// </summary>
 		public void Spown()
 		{
-			var deltaTime = Time.deltaTime;
-			this.elapsedTime += deltaTime;
-			this.spownTime += deltaTime;
-
-			if (this.spownInterval <= this.spownTime)
-			{
-				this.factory.Create(EnemyCharacterEnum.UAF1StraightEnemy, this.playerNumber, this.GetFreeActor(), this.spownPosition);
-				this.spownTime -= this.spownInterval;
-			}
-
-			for (var i = 0; i < this.actors.Length; ++i)
-			{
-				this.actors[i].tag = (this.playerNumber == PlayerNumber.player1) ?
-					TagEnum.Enemy1.ToDescription() :
-					TagEnum.Enemy2.ToDescription();
-			}
+			this.currentSponer.Spown();
+			
+//			var deltaTime = Time.deltaTime;
+//			this.elapsedTime += deltaTime;
+//			this.spownTime += deltaTime;
+//
+//			if (this.spownInterval <= this.spownTime)
+//			{
+//				this.factory.Create(EnemyCharacterEnum.UAF1StraightEnemy, this.playerNumber, this.GetFreeActor(), this.spownPosition);
+//				this.spownTime -= this.spownInterval;
+//			}
+//
+//			for (var i = 0; i < this.actors.Length; ++i)
+//			{
+//				this.actors[i].tag = (this.playerNumber == PlayerNumber.player1) ?
+//					TagEnum.Enemy1.ToDescription() :
+//					TagEnum.Enemy2.ToDescription();
+//			}
 		}
+
+		public RiaActor GetFreeActorForSpowner()
+		{
+			return this.GetFreeActor();
+		}
+		
 
 		/// <summary>
 		/// 攻撃処理 by flanny7

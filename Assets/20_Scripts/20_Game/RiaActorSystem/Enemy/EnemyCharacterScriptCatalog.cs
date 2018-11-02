@@ -12,6 +12,24 @@ namespace Game.Enemy
 	{
 		[SerializeField]
 		public RiaEnemyScript UFA1StraightScript = null;
+		
+		[SerializeField]
+		public RiaEnemyScript UFA1StayScript = null;
+		
+		[SerializeField]
+		public RiaEnemyScript UFA1SinScript = null;
+		
+		[SerializeField]
+		public RiaEnemyScript UFA1ToLeftSideEnemy = null;
+		
+		[SerializeField]
+		public RiaEnemyScript UFA1ToRightSideEnemy = null;
+		
+		[SerializeField]
+		public RiaEnemyScript UFA1OutTOInEnemy = null;
+		
+		[SerializeField]
+		public RiaEnemyScript UFA1InToOutEnemy = null;
 
 	}
 }
