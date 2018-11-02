@@ -335,7 +335,7 @@ namespace Game.Player
 			// todo: 撃破FXの生成
 			// todo: 撃破SE
 			// todo: 相手の勝利宣言
-			this.Actor.Sleep();
+			// this.Actor.Sleep();
 			GameManager.Instance.FinishBattle(this.RivalPlayerNumber);
 		}
 

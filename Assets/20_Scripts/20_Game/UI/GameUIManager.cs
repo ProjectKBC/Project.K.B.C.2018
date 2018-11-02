@@ -10,7 +10,12 @@ namespace Game.UI
 	{
 		[SerializeField, Header("Count Down")]
 		private CountDownController countDown = null;
-		
+
+		[SerializeField, Header("Score")]
+		private ScoreController scorePlayer1 = null;
+		[SerializeField]
+		private ScoreController scorePlayer2 = null;
+
 		[SerializeField, Header("Pause Window")]
 		private PauseWindow pauseWindow = null;
 		
@@ -38,6 +43,9 @@ namespace Game.UI
 
 			this.hpgPlayer1.Init(PlayerNumber.player1);
 			this.hpgPlayer2.Init(PlayerNumber.player2);
+
+			this.scorePlayer1.Init(PlayerNumber.player1);
+			this.scorePlayer2.Init(PlayerNumber.player2);
 		}
 
 		// CountDown系
@@ -55,6 +63,14 @@ namespace Game.UI
 		public void CountDownEnd()
 		{
 			this.countDown.End();
+		}
+
+		// Score系
+
+		public void ScoreUpdate()
+		{
+			this.scorePlayer1.Run();
+			this.scorePlayer2.Run();
 		}
 
 		// Pause系
