@@ -6,7 +6,7 @@ TextureImporter:
     21300002: alp_airos
     21300004: kana_emilia
     21300006: alp_emilia
-    21300008: name_images_4
+    21300008: kana_anoma
     21300010: alp_anoma
     21300012: kana_altveg
     21300014: alp_altveg
@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: name_images_4
+      name: kana_anoma
       rect:
         serializedVersion: 2
         x: 0

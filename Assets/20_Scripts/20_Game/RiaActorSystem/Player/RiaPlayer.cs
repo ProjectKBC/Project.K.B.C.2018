@@ -336,7 +336,7 @@ namespace Game.Player
 			// todo: 撃破SE
 			// todo: 相手の勝利宣言
 			this.Actor.Sleep();
-			Debug.Break();
+			GameManager.Instance.FinishBattle(this.RivalPlayerNumber);
 		}
 
 		/// <summary>

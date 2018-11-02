@@ -23,6 +23,7 @@ namespace Game
 			Ready,
             Play,
             Pause,
+	        Result,
             Finalize,
 
             Length,
@@ -34,8 +35,12 @@ namespace Game
         private InitializeAction initAct = new InitializeAction();
 		private ReadyAction readyAct = new ReadyAction();
         private PlayAction playAct = new PlayAction();
-        private PauseAction pauseAct = new PauseAction();
+	    private PauseAction pauseAct = new PauseAction();
+	    private ResultAction resultAct = new ResultAction();
         private FinalizeAction finalAct = new FinalizeAction();
+
+	    public PlayerNumber Winner { get; private set; }
+	    private bool isFinishedBattle = false;
 
 		[System.Serializable]
 		public class Managers
@@ -72,7 +77,7 @@ namespace Game
 				(_playerNumber == PlayerNumber.player2) ? this.pl2Managers.playerManager :
 				null;
 
-			if (!manager.IsInit)
+			if (manager != null && !manager.IsInit)
 			{
 				Debug.LogError("初期化していません。", manager.gameObject);
 				return null;
@@ -103,7 +108,7 @@ namespace Game
 
 		public float GetPlayerHitPointMax(PlayerNumber _playerNumber)
 		{
-			return (this.GetPlayer(_playerNumber).Actor.CharacterScript as RiaPlayerScript).HitPointMax;
+			return ((RiaPlayerScript) this.GetPlayer(_playerNumber).Actor.CharacterScript).HitPointMax;
 		}
 
 		/// Enemy
@@ -114,7 +119,7 @@ namespace Game
 				(_playerNumber == PlayerNumber.player2) ? this.pl2Managers.enemyManager :
 				null;
 
-			if (!manager.IsInit)
+			if (manager != null && !manager.IsInit)
 			{
 				Debug.LogError("初期化していません。", manager.gameObject);
 				return null;
@@ -146,7 +151,7 @@ namespace Game
 				(_playerNumber == PlayerNumber.player2) ? this.pl2Managers.playerBulletManager :
 				null;
 
-			if (!manager.IsInit)
+			if (manager != null && !manager.IsInit)
 			{
 				Debug.LogError("初期化していません。", manager.gameObject);
 				return null;
@@ -178,7 +183,7 @@ namespace Game
 				(_playerNumber == PlayerNumber.player2) ? this.pl2Managers.enemyBulletManager :
 				null;
 
-			if (!manager.IsInit)
+			if (manager != null && !manager.IsInit)
 			{
 				Debug.LogError("初期化していません。", manager.gameObject);
 				return null;
@@ -244,6 +249,20 @@ namespace Game
 			this.commonData.player2Score = 0;
 		}
 
+	    // 勝利条件系
+
+	    public void FinishBattle(PlayerNumber _winner)
+	    {
+		    this.Winner = _winner;
+		    this.isFinishedBattle = true;
+		    this.ChageState(State.Result);
+	    }
+
+	    public void ResetBattle()
+	    {
+		    this.isFinishedBattle = false;
+	    }
+	    
 		// メイン
 
         protected override void OnInit()
@@ -256,7 +275,8 @@ namespace Game
 			this.stateManager.Add(State.Ready, this.readyAct);
 			this.stateManager.Add(State.Play, this.playAct);
 			this.stateManager.Add(State.Pause, this.pauseAct);
-            this.stateManager.Add(State.Finalize, this.finalAct);
+	        this.stateManager.Add(State.Result, this.resultAct);
+	        this.stateManager.Add(State.Finalize, this.finalAct);
 
             this.SetState(State.Initialize);
         }

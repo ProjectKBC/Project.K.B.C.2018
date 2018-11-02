@@ -62,7 +62,24 @@ namespace Game.UI
 			this.hpgPlayer1.Run();
 			this.hpgPlayer2.Run();
 		}
+		
+		// Result系
 
+		public void ResultStart(PlayerNumber _winner)
+		{
+			this.resultWindow.Start(_winner);
+		}
+
+		public void ResultUpdate(PlayerNumber _winner)
+		{
+			this.resultWindow.Update(_winner);
+		}
+
+		public void ResultEnd()
+		{
+			this.resultWindow.End();
+		}
+		
 		#endregion
 	}
 }

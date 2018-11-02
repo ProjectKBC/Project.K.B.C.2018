@@ -16,6 +16,8 @@ namespace Game
 			Debug.Log("ReadyAction_Start");
 			this.gm = GameManager.Instance;
 
+			this.gm.ResetBattle();
+			
 			this.elapsedTime = 0;
 		}
 

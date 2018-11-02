@@ -41,8 +41,6 @@ public class ChildBee : Enemy {
 
 	private float t = 0;
 
-
-	
 	//private int bulletPool = 10;
 
 	protected override void Awake()
