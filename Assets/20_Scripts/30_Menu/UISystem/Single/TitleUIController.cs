@@ -61,14 +61,16 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
 
         this.MoveSelect();
 
-        if (Input.GetKeyDown(this.keyConfig.returnKey))
+        if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player1) ||
+			RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player2))
         {
             this.contents[this.nowIndex].ReturnAction();
 
 			// todo: 決定音
 		}
 
-		if (Input.GetKeyDown(this.keyConfig.cancelKey))
+		if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player1) ||
+			RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player2))
         {
 			// this.contents[this.nowIndex].CancelAction();
 
@@ -82,21 +84,27 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
 
     private void MoveSelect()
     {
-        if (Input.GetKeyDown(this.keyConfig.nextKey))
+        if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Down, PlayerNumber.player1) ||
+			RiaInput.Instance.GetPushDown(RiaInput.KeyType.Down, PlayerNumber.player2))
         {
             this.NextContent();
             this.nextKeyPressedTime = this.elapsedTime;
         }
-		else if (Input.GetKeyDown(this.keyConfig.prevKey))
+		else if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Up, PlayerNumber.player1) ||
+				 RiaInput.Instance.GetPushDown(RiaInput.KeyType.Up, PlayerNumber.player2))
         {
             this.PrevContent();
             this.prevKeyPressedTime = this.elapsedTime;
         }
-		else if (Input.GetKey(this.keyConfig.nextKey) && this.pressedWaitTime <= this.elapsedTime - this.nextKeyPressedTime)
+		else if ((RiaInput.Instance.GetPushDown(RiaInput.KeyType.Down, PlayerNumber.player1) ||
+				  RiaInput.Instance.GetPushDown(RiaInput.KeyType.Down, PlayerNumber.player2)) &&
+			      this.pressedWaitTime <= this.elapsedTime - this.nextKeyPressedTime)
         {
             this.NextContent();
         }
-		else if (Input.GetKey(this.keyConfig.prevKey) && this.pressedWaitTime <= this.elapsedTime - this.prevKeyPressedTime)
+		else if ((RiaInput.Instance.GetPushDown(RiaInput.KeyType.Up, PlayerNumber.player1) ||
+				  RiaInput.Instance.GetPushDown(RiaInput.KeyType.Up, PlayerNumber.player2)) &&
+				  this.pressedWaitTime <= this.elapsedTime - this.prevKeyPressedTime)
         {
             this.PrevContent();
         }

@@ -82,22 +82,30 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
     {
         this.elapsedTime += Time.deltaTime;
 
-        if (Input.GetKeyDown(this.pl1key.NextKey) || Input.GetKeyDown(this.pl2key.NextKey))
+//        if (Input.GetKeyDown(this.pl1key.NextKey) || Input.GetKeyDown(this.pl2key.NextKey))
+	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Right, PlayerNumber.player1) || 
+	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Right, PlayerNumber.player2))
         {
             NextStage();
         }
 
-        if (Input.GetKeyDown(this.pl1key.PrevKey) || Input.GetKeyDown(this.pl2key.PrevKey))
+//        if (Input.GetKeyDown(this.pl1key.PrevKey) || Input.GetKeyDown(this.pl2key.PrevKey))
+	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Left, PlayerNumber.player1) || 
+	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Left, PlayerNumber.player2))
         {
             PrevStage();
         }
 
-        if (Input.GetKeyDown(this.pl1key.ReturnKey) || Input.GetKeyDown(this.pl2key.ReturnKey))
+//        if (Input.GetKeyDown(this.pl1key.ReturnKey) || Input.GetKeyDown(this.pl2key.ReturnKey))
+	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player1) || 
+	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player2))
         {
             ReturnAction();
         }
 
-        if (Input.GetKeyDown(this.pl1key.CancelKey) || Input.GetKeyDown(this.pl2key.CancelKey))
+//        if (Input.GetKeyDown(this.pl1key.CancelKey) || Input.GetKeyDown(this.pl2key.CancelKey))
+	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player1) || 
+	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player2))
         {
             CancelAction();
         }

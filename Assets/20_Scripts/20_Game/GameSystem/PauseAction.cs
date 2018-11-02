@@ -15,21 +15,21 @@ namespace Game
             Debug.Log("PauseAction_Start");
             this.gm = GameManager.Instance;
 
-			this.gm.UIController.PauseStart();
+			this.gm.UIManager.PauseStart();
         }
 
         public override void Update()
         {
 			//Debug.Log("PauseAction_Update");
 
-			this.gm.UIController.PauseUpdate();
+			this.gm.UIManager.PauseUpdate();
 		}
 
         public override void End()
         {
 			//Debug.Log("PauseAction_End");
 
-			this.gm.UIController.PauseEnd();
+			this.gm.UIManager.PauseEnd();
         }
     }
 }

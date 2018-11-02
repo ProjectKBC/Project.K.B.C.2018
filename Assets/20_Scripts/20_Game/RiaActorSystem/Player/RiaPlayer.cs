@@ -174,25 +174,25 @@ namespace Game.Player
 		public virtual void Move()
 		{
 			// SlowMoveRate by flanny7
-			var slowRate = (RiaInput.Instance.GetKey(RiaInput.KeyType.LowSpeed, this.PlayerNumber)) ? SLOW_MOVE_RATE : 1.0f;
-
+			var slowRate = (RiaInput.Instance.GetPush(RiaInput.KeyType.LowSpeed, this.PlayerNumber)) ? SLOW_MOVE_RATE : 1.0f;
+			
 			// Up
-			if (RiaInput.Instance.GetKey(RiaInput.KeyType.Up, this.PlayerNumber))
+			if (RiaInput.Instance.GetPush(RiaInput.KeyType.Up, this.PlayerNumber))
 			{
 				this.Trans.position += Vector3.up * this.MoveSpeed * Time.deltaTime * 60 * slowRate * this.MoveSpeedDebuffRate;
 			}
 			// Down
-			if (RiaInput.Instance.GetKey(RiaInput.KeyType.Down, this.PlayerNumber))
+			if (RiaInput.Instance.GetPush(RiaInput.KeyType.Down, this.PlayerNumber))
 			{
 				this.Trans.position += Vector3.down * this.MoveSpeed * Time.deltaTime * 60 * slowRate * this.MoveSpeedDebuffRate;
 			}
 			// Right
-			if (RiaInput.Instance.GetKey(RiaInput.KeyType.Right, this.PlayerNumber))
+			if (RiaInput.Instance.GetPush(RiaInput.KeyType.Right, this.PlayerNumber))
 			{
 				this.Trans.position += Vector3.right * this.MoveSpeed * Time.deltaTime * 60 * slowRate * this.MoveSpeedDebuffRate;
 			}
 			// Left
-			if (RiaInput.Instance.GetKey(RiaInput.KeyType.Left, this.PlayerNumber))
+			if (RiaInput.Instance.GetPush(RiaInput.KeyType.Left, this.PlayerNumber))
 			{
 				this.Trans.position += Vector3.left * this.MoveSpeed * Time.deltaTime * 60 * slowRate * this.MoveSpeedDebuffRate;
 			}
@@ -213,12 +213,12 @@ namespace Game.Player
 		/// </summary>
 		public virtual void Animation()
 		{
-			var rightPushDown = RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Right, this.PlayerNumber);
-			var leftPushDown = RiaInput.Instance.GetKeyDown(RiaInput.KeyType.Left, this.PlayerNumber);
-			var rightPushUp = RiaInput.Instance.GetKeyUp(RiaInput.KeyType.Right, this.PlayerNumber);
-			var leftPushUp = RiaInput.Instance.GetKeyUp(RiaInput.KeyType.Left, this.PlayerNumber);
-			var rightPush = RiaInput.Instance.GetKey(RiaInput.KeyType.Right, this.PlayerNumber);
-			var leftPush = RiaInput.Instance.GetKey(RiaInput.KeyType.Left, this.PlayerNumber);
+			var rightPushDown = RiaInput.Instance.GetPushDown(RiaInput.KeyType.Right, this.PlayerNumber);
+			var leftPushDown = RiaInput.Instance.GetPushDown(RiaInput.KeyType.Left, this.PlayerNumber);
+			var rightPushUp = RiaInput.Instance.GetPushUp(RiaInput.KeyType.Right, this.PlayerNumber);
+			var leftPushUp = RiaInput.Instance.GetPushUp(RiaInput.KeyType.Left, this.PlayerNumber);
+			var rightPush = RiaInput.Instance.GetPush(RiaInput.KeyType.Right, this.PlayerNumber);
+			var leftPush = RiaInput.Instance.GetPush(RiaInput.KeyType.Left, this.PlayerNumber);
 
 			// 右に移動していたら
 			if (rightPush && !leftPush)
@@ -336,7 +336,7 @@ namespace Game.Player
 			// todo: 撃破SE
 			// todo: 相手の勝利宣言
 			this.Actor.Sleep();
-			Debug.Break();
+			GameManager.Instance.FinishBattle(this.RivalPlayerNumber);
 		}
 
 		/// <summary>

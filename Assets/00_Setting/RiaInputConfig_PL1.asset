@@ -32,8 +32,10 @@ MonoBehaviour:
     Left: Player1_X
     NormalShot: "Player1_\u25CB"
     SpecialShot: "Player1_\xD7"
-    Skil: "Player1_\u25A1"
+    Skil: "Player1_\u25B3"
     LowSpeeds:
     - Player1_R2
     - Player1_L2
-    Pose: "Player1_\u25B3"
+    - Player1_R1
+    - Player1_L1
+    Pose: Player1_Start

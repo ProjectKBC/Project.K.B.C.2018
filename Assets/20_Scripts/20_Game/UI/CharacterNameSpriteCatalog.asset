@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d37efd315b54693bc2c2ca37054d90, type: 3}
+  m_Name: CharacterNameSpriteCatalog
+  m_EditorClassIdentifier: 
+  kana:
+    airos: {fileID: 21300000, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    anoma: {fileID: 21300008, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    emilia: {fileID: 21300004, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    held: {fileID: 21300016, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    kaito: {fileID: 21300028, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    kaoru: {fileID: 21300028, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    laxa: {fileID: 21300024, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    twist: {fileID: 21300032, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    vegaAl: {fileID: 21300012, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    veronica: {fileID: 21300036, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+  alp:
+    airos: {fileID: 21300002, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    anoma: {fileID: 21300010, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    emilia: {fileID: 21300006, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    held: {fileID: 21300018, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    kaito: {fileID: 21300030, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    kaoru: {fileID: 21300022, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    laxa: {fileID: 21300026, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    twist: {fileID: 21300034, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    vegaAl: {fileID: 21300014, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}
+    veronica: {fileID: 21300038, guid: c77d41131eb4bba4f8a7f5b9068c3291, type: 3}

@@ -112,7 +112,7 @@ namespace Game.Player
 			}
 
 			// キー入力
-			if (RiaInput.Instance.GetKeyUp(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetPushUp(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
 				if (script.shotChargeTime <= param.chargeTimeCount)
 				{
