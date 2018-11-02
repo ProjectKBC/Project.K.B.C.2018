@@ -112,7 +112,7 @@ namespace Game
 			            (_playerNumber == PlayerNumber.player2) ? this.commonData.player2Score :
 						-1;
 
-			if (score == -1) { Debug.LogError("存在しないです"); }
+			if (score == -1) { Debug.LogError("存在していません"); }
 
 			return score;
 		}

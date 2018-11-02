@@ -18,4 +18,4 @@ MonoBehaviour:
   canCollision: 0
   colliderSize: {x: 1.5, y: 3}
   isPenetration: 0
-  sprite: {fileID: 21300000, guid: 965427ec65754481885d32e7c1701a8a, type: 3}
+  sprite: {fileID: 21300000, guid: acd122feecaf9486cae57dda9e7b3581, type: 3}

@@ -81,7 +81,7 @@ namespace Game.Player
 			var script = this.Script.nsParam;
 
 			// キー入力
-			if (RiaInput.Instance.GetPush(RiaInput.KeyType.NormalShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetKey(RiaInput.KeyType.NormalShot, this.PlayerNumber))
 			{
 				// 経過時間の更新
 				var shotElapsedTime = this.playElapsedTime - param.shotTime;
