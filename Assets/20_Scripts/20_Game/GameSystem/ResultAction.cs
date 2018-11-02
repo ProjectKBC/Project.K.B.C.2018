@@ -32,15 +32,20 @@ namespace Game
 			//Debug.Log("FinalizeAction_Update");
 			this.elapsedTime += Time.deltaTime;
 
-			if (intervel <= this.elapsedTime)
+			if (isInitialize == false)
 			{
-				this.gm.UIManager.ResultStart(this.gm.Winner);
+				if (intervel <= this.elapsedTime)
+				{
+					this.gm.UIManager.ResultStart(this.gm.Winner);
+					this.isInitialize = true;
+				}
+				else
+				{
+					return;
+				}
+
 			}
-			else
-			{
-				return;
-			}
-			
+
 			this.gm.UIManager.ResultUpdate(this.gm.Winner);
 		}
 
