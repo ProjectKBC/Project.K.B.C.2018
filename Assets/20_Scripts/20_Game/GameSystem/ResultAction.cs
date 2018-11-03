@@ -25,7 +25,8 @@ namespace Game
 			this.gm = GameManager.Instance;
 			this.elapsedTime = 0;
 			this.isInitialize = false;
-			AudioManager.Instance.PlayBgm(BackGroundMusic.GameResult);
+
+			//AudioManager.Instance.PlayBgm(BackGroundMusicEnum.);
 		}
 
 		public override void Update()

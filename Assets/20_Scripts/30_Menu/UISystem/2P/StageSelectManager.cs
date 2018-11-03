@@ -87,7 +87,7 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
 	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Right, PlayerNumber.player2))
         {
             NextStage();
-			AudioManager.Instance.PlaySe(SoundEffect.cursor);
+			AudioManager.Instance.PlaySe(SoundEffectEnum.cursor);
 		}
 
 //        if (Input.GetKeyDown(this.pl1key.PrevKey) || Input.GetKeyDown(this.pl2key.PrevKey))
@@ -95,7 +95,7 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
 	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Left, PlayerNumber.player2))
         {
             PrevStage();
-			AudioManager.Instance.PlaySe(SoundEffect.cursor);
+			AudioManager.Instance.PlaySe(SoundEffectEnum.cursor);
 		}
 
 //        if (Input.GetKeyDown(this.pl1key.ReturnKey) || Input.GetKeyDown(this.pl2key.ReturnKey))
@@ -110,7 +110,7 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
 	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player2))
         {
             CancelAction();
-			AudioManager.Instance.PlaySe(SoundEffect.cansel);
+			AudioManager.Instance.PlaySe(SoundEffectEnum.cansel);
 		}
     }
 
@@ -145,12 +145,12 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
                 this.stage == StageEnum.stage4 ||
                 this.stage == StageEnum.stage5)
 			{
-				AudioManager.Instance.PlaySe(SoundEffect.error);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.error);
 				return;
             }
             else
 			{
-				AudioManager.Instance.PlaySe(SoundEffect.decision);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.decision);
 				this.IsNextWindow = true;
             }
         }

@@ -3,17 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SoundEffect
-{
-}
-
-public enum BackGroundMusic
-{
-	Title,
-	CharacterSelect,
-	GameResult
-}
-
 public class AudioManager : SingletonMonoBehaviour<AudioManager>
 {
     [SerializeField]
@@ -30,9 +19,9 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
     private AudioSource[] seSources = new AudioSource[12];
     // private AudioSource[] seLoopSources = new AudioSource[4];
-    private Dictionary<SoundEffect, AudioSource> seLoopSet = new Dictionary<SoundEffect, AudioSource>();
+    private Dictionary<SoundEffectEnum, AudioSource> seLoopSet = new Dictionary<SoundEffectEnum, AudioSource>();
 
-    public void PlaySe(SoundEffect _se, float _volume = 1f)
+    public void PlaySe(SoundEffectEnum _se, float _volume = 1f)
     {
         int index = this.SearchSeSouresIndex();
         if (index != -1)
@@ -43,7 +32,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         }
     }
 
-    public void PlayParticularSe(SoundEffect _se, float _volume = 1f)
+    public void PlayParticularSe(SoundEffectEnum _se, float _volume = 1f)
     {
         this.seLoopSet.Add(_se, this.seSources[(int)_se]);
 
@@ -65,7 +54,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         }
     }
 
-    public void PlayBgm(BackGroundMusic _bgm)
+    public void PlayBgm(BackGroundMusicEnum _bgm)
     {
         this.StopBgm();
         this.bgmSources[0].clip = this.bgmClips[(int)_bgm];
@@ -74,7 +63,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         this.isPlayBgm[0] = true;
     }
 
-    public void PlayBgm(BackGroundMusic _bgm, float _volume)
+    public void PlayBgm(BackGroundMusicEnum _bgm, float _volume)
     {
         this.StopBgm();
         this.bgmSources[0].clip = this.bgmClips[(int)_bgm];
@@ -83,7 +72,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         this.isPlayBgm[0] = true;
     }
 
-    public IEnumerator PlayBgmWithFadeIn(BackGroundMusic _bgm, float _fadeTime, float _maxVolume = 1)
+    public IEnumerator PlayBgmWithFadeIn(BackGroundMusicEnum _bgm, float _fadeTime, float _maxVolume = 1)
     {
         this.PlayBgm(_bgm, 0f);
 
@@ -107,7 +96,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         }
     }
 
-    public IEnumerator PlayBgmWithCrossFade(BackGroundMusic _bgm, float _fadeTime)
+    public IEnumerator PlayBgmWithCrossFade(BackGroundMusicEnum _bgm, float _fadeTime)
     {
         if (this.isPlayBgm[0] && this.isPlayBgm[1])
         {
@@ -220,22 +209,22 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                this.PlaySe((SoundEffect)Enum.ToObject(typeof(SoundEffect), 0));
+                this.PlaySe((SoundEffectEnum)Enum.ToObject(typeof(SoundEffectEnum), 0));
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                this.PlaySe((SoundEffect)Enum.ToObject(typeof(SoundEffect), 1));
+                this.PlaySe((SoundEffectEnum)Enum.ToObject(typeof(SoundEffectEnum), 1));
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                this.PlaySe((SoundEffect)Enum.ToObject(typeof(SoundEffect), 2));
+                this.PlaySe((SoundEffectEnum)Enum.ToObject(typeof(SoundEffectEnum), 2));
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                this.PlaySe((SoundEffect)Enum.ToObject(typeof(SoundEffect), 3));
+                this.PlaySe((SoundEffectEnum)Enum.ToObject(typeof(SoundEffectEnum), 3));
             }
         }
     }

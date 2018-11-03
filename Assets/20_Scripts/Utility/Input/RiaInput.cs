@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // todo: Up, Down, Right, Leftがおかしい

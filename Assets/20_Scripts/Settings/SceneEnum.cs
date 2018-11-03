@@ -2,9 +2,9 @@ using System.ComponentModel;
 
 public enum SceneEnum
 {
-	[Description("Test_TitleScene")]
+	[Description("TitleScene")]
 	Title,
-	[Description("Test_SelectScene")]
+	[Description("SelectScene")]
 	Select,
 	[Description("GameScene")]
 	Game,

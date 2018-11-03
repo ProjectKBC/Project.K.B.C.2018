@@ -223,18 +223,18 @@ namespace Game
 		// Play系
 
 		// BGM
-		public BackGroundMusic GetStageBGM()
+		public BackGroundMusicEnum GetStageBGM()
 		{
 			switch (commonData.stage)
 			{
 				case StageEnum.stage1:
-					return BackGroundMusic.Dance_With_Powder;
+					return BackGroundMusicEnum.Dance_With_Powder;
 
 				case StageEnum.stage2:
-					return BackGroundMusic.Sagittarius_2;
+					return BackGroundMusicEnum.Sagittarius_2;
 
 				default:
-					return BackGroundMusic.charaselectBGM;
+					return BackGroundMusicEnum.charaselectBGM;
 			}
 		}
 

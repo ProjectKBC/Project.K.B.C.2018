@@ -312,11 +312,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6d3501029d56b44aa3947d7d6348b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seClips: []
+  seClips:
+  - {fileID: 8300000, guid: 8177acaa7be8de8478a3620254e7d595, type: 3}
+  - {fileID: 8300000, guid: 206be2319bedc5f44a413e523ff7a118, type: 3}
+  - {fileID: 8300000, guid: 102ef7769f2e2f048be46643c98e292b, type: 3}
+  - {fileID: 8300000, guid: 5281c67ae23430e4397d82bd3af2dea2, type: 3}
+  - {fileID: 8300000, guid: 38808944b915aae4cb974cb200edd9f2, type: 3}
+  - {fileID: 8300000, guid: 6f23d760c3a46d54296e8ac5292c9b93, type: 3}
+  - {fileID: 8300000, guid: ad41b50d61db6594aa0aca08fe6811df, type: 3}
+  - {fileID: 8300000, guid: 6a7b1c765d59366419756167e5b06dfe, type: 3}
+  - {fileID: 8300000, guid: a058e7a5f79a365499d87aa4d41d6900, type: 3}
+  - {fileID: 8300000, guid: ec3f58955c8f32747bd065968ac43935, type: 3}
+  - {fileID: 8300000, guid: cf8776c3e76aa9f4b9256e215ad86cb2, type: 3}
+  - {fileID: 8300000, guid: c195a0426b9f62d479f272bc1f6bd60b, type: 3}
   bgmClips:
-  - {fileID: 8300000, guid: 9c19ffb6f2c2146b49dbc24c27efcfe6, type: 3}
-  - {fileID: 8300000, guid: b7e3e826d11ad4602835b0bb24444dc0, type: 3}
-  - {fileID: 8300000, guid: b4342680405f1430cb7b8742bdd222ef, type: 3}
+  - {fileID: 8300000, guid: d8a36beaf05894e4385269e4653c0c57, type: 3}
+  - {fileID: 8300000, guid: 57453655db3816d4a922a6fd1274e3aa, type: 3}
+  - {fileID: 8300000, guid: 714a13e8aaa3d8d4290036ffae513098, type: 3}
+  - {fileID: 8300000, guid: 2cb20523442666b49bb6d90b0272f8e0, type: 3}
+  - {fileID: 8300000, guid: ed2bddf94ce1efa40a67c89024e4f355, type: 3}
   isDebug: 0
 --- !u!1 &1797362597
 GameObject:

@@ -199,11 +199,6 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         this.pl1Images.StandBack.sprite = this.sprites.StandBackNormal1;
         this.pl2Images.StandBack.sprite = this.sprites.StandBackNormal2;
     }
-	
-	private void Start()
-	{
-		AudioManager.Instance.PlayBgm(BackGroundMusic.CharacterSelect);
-	}
 
     public void Run()
     {
@@ -498,7 +493,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         {
             if (this.ReturnAction(PlayerNumber.player1))
 			{
-				AudioManager.Instance.PlaySe(SoundEffect.cursor);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.cursor);
 			}
         }
 
@@ -507,7 +502,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         {
             if (this.CancelAction(PlayerNumber.player1))
 			{
-				AudioManager.Instance.PlaySe(SoundEffect.cansel);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.cansel);
 			}
         }
 
@@ -516,7 +511,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         {
             if (this.ReturnAction(PlayerNumber.player2))
 			{
-				AudioManager.Instance.PlaySe(SoundEffect.cursor);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.cursor);
 			}
 		}
 
@@ -525,7 +520,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         {
             if (this.CancelAction(PlayerNumber.player2))
 			{
-				AudioManager.Instance.PlaySe(SoundEffect.cansel);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.cansel);
 			}
 		}
     }
@@ -556,7 +551,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         UpdateStand(_pl);
         UpdateNames(_pl);
 
-		AudioManager.Instance.PlaySe(SoundEffect.cursor);
+		AudioManager.Instance.PlaySe(SoundEffectEnum.cursor);
 	}
 
     /// <summary>
@@ -586,7 +581,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         UpdateStand(_pl);
         UpdateNames(_pl);
 
-		AudioManager.Instance.PlaySe(SoundEffect.cursor);
+		AudioManager.Instance.PlaySe(SoundEffectEnum.cursor);
     }
 
     /// <summary>

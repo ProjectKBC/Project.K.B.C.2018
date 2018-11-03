@@ -55,11 +55,6 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
         }
     }
 
-	private void Start()
-	{
-		AudioManager.Instance.PlayBgm(BackGroundMusic.Title);
-	}
-
 	private void Update()
     {
         this.elapsedTime += Time.deltaTime;
@@ -72,7 +67,7 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
             this.contents[this.nowIndex].ReturnAction();
 
 			// todo: 決定音
-			AudioManager.Instance.PlaySe(SoundEffect.decision);
+			AudioManager.Instance.PlaySe(SoundEffectEnum.decision);
 		}
 
 		if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player1) ||
@@ -85,7 +80,7 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
 			this.GetImage(this.nowIndex).sprite = this.contents[this.nowIndex].ActiveSprite;
 
 			// todo: キャンセル音
-			AudioManager.Instance.PlaySe(SoundEffect.cansel);
+			AudioManager.Instance.PlaySe(SoundEffectEnum.cansel);
 		}
 	}
 
@@ -131,7 +126,7 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
         this.GetImage(this.nowIndex).sprite = this.contents[this.nowIndex].ActiveSprite;
 
 		// todo: 移動音
-		AudioManager.Instance.PlaySe(SoundEffect.cursor);
+		AudioManager.Instance.PlaySe(SoundEffectEnum.cursor);
 	}
 
 	private void PrevContent()
@@ -141,6 +136,6 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
         this.GetImage(this.nowIndex).sprite = this.contents[this.nowIndex].ActiveSprite;
 
 		// todo: 移動音
-		AudioManager.Instance.PlaySe(SoundEffect.cursor);
+		AudioManager.Instance.PlaySe(SoundEffectEnum.cursor);
 	}
 }

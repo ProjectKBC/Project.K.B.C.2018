@@ -65,7 +65,7 @@ namespace Game
 			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Pause, PlayerNumber.player1) ||
 			    RiaInput.Instance.GetPushDown(RiaInput.KeyType.Pause, PlayerNumber.player2))
 			{
-				AudioManager.Instance.PlaySe(SoundEffect.pause);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.pause);
 				this.gm.ChageState(GameManager.State.Pause);
 			}
 

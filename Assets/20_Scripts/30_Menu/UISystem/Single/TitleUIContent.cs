@@ -22,14 +22,8 @@ public class TitleUIContent : UIContent
 				return;
 
 			case BUTTON.Exit:
-				FadeManager.Instance.FadeOut(1.0f, () =>
-				{
-#if UNITY_EDITOR
-					EditorApplication.isPlaying = false;
-#else
-					Application.Quit();
-#endif
-				});
+				FadeManager.Instance.FadeOut(1.0f, () => { });
+				Application.Quit();
 				return;
 		}
 	}

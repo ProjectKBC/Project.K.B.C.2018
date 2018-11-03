@@ -7,7 +7,7 @@ using UnityEngine;
 public class BGMTrigger : MonoBehaviour
 {
 	[SerializeField]
-	private BackGroundMusic bgm;
+	private BackGroundMusicEnum bgm;
 
 	private bool isStartBGM = false;
 

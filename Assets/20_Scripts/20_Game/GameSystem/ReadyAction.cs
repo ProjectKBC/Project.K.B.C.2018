@@ -46,28 +46,28 @@ namespace Game
 			else if (4 < this.elapsedTime && !this.trg[3])
 			{
 				// start!!
-				AudioManager.Instance.PlaySe(SoundEffect.countDown2);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown2);
 				this.gm.UIManager.CountDownUpdate("Start!!");
 				this.trg[3] = true;
 			}
 			else if (3 < this.elapsedTime && !this.trg[2])
 			{
 				// 1
-				AudioManager.Instance.PlaySe(SoundEffect.countDown1);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown1);
 				this.gm.UIManager.CountDownUpdate("1");
 				this.trg[2] = true;
 			}
 			else if (2 < this.elapsedTime && !this.trg[1])
 			{
 				// 2
-				AudioManager.Instance.PlaySe(SoundEffect.countDown1);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown1);
 				this.gm.UIManager.CountDownUpdate("2");
 				this.trg[1] = true;
 			}
 			else if (1 < this.elapsedTime && !this.trg[0])
 			{
 				// 3
-				AudioManager.Instance.PlaySe(SoundEffect.countDown1);
+				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown1);
 				this.gm.UIManager.CountDownUpdate("3");
 				this.trg[0] = true;
 			}
