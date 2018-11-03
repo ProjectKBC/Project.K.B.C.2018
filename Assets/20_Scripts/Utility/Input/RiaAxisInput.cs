@@ -29,11 +29,11 @@ public sealed class RiaAxisInput
 		var result = false;
 		if (this.isPlus)
 		{
-			result =  (!(this.margin <= this.prevAxis)) && (this.margin <= currentAxis);
+			result = (!(this.margin < this.prevAxis)) && (this.margin <= currentAxis);
 		}
 		else
 		{
-			result =  (!(this.prevAxis <= -this.margin)) && (currentAxis <= -this.margin);
+			result = (!(this.prevAxis < -this.margin)) && (currentAxis <= -this.margin);
 		}
 		return result;
 	}
@@ -45,11 +45,11 @@ public sealed class RiaAxisInput
 		var result = false;
 		if (this.isPlus)
 		{
-			result = (this.margin <= this.prevAxis) && (!(this.margin <= currentAxis));
+			result = (this.margin < this.prevAxis) && (!(this.margin <= currentAxis));
 		}
 		else
 		{
-			result = (this.prevAxis <= -this.margin) && (!(currentAxis <= -this.margin));
+			result = (this.prevAxis < -this.margin) && (!(currentAxis <= -this.margin));
 		}
 		return result;
 	}
@@ -73,7 +73,7 @@ public sealed class RiaAxisInput
 	/// <summary>
 	/// 入力処理後に必ず呼ぶ必要がある
 	/// </summary>
-	public void LastUpdate()
+	public void LateUpdate()
 	{
 		var currentAxis = Input.GetAxis(this.btnStr);
 		this.prevAxis = currentAxis;

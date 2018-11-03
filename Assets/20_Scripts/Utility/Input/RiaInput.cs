@@ -58,17 +58,17 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 		this.axisPL2 = new RiaAxisInputs(AxisMargin, this.player2Congif);
 	}
 
-	private void LateUpdate()
+	public void LateUpdate()
 	{
-		this.axisPL1.up.LastUpdate();
-		this.axisPL1.down.LastUpdate();
-		this.axisPL1.right.LastUpdate();
-		this.axisPL1.left.LastUpdate();
+		this.axisPL1.up.LateUpdate();
+		this.axisPL1.down.LateUpdate();
+		this.axisPL1.right.LateUpdate();
+		this.axisPL1.left.LateUpdate();
 		
-		this.axisPL2.up.LastUpdate();
-		this.axisPL2.down.LastUpdate();
-		this.axisPL2.right.LastUpdate();
-		this.axisPL2.left.LastUpdate();
+		this.axisPL2.up.LateUpdate();
+		this.axisPL2.down.LateUpdate();
+		this.axisPL2.right.LateUpdate();
+		this.axisPL2.left.LateUpdate();
 	}
 
 	#region GetKey
@@ -368,7 +368,6 @@ public class RiaInput : SingletonMonoBehaviour<RiaInput>
 	{
 		var config = (_playerNumber == PlayerNumber.player1) ? this.player1Congif : this.player2Congif;
 		var axis = (_playerNumber == PlayerNumber.player1) ? this.axisPL1 : this.axisPL2;
-
 		switch (_keyType)
 		{
 			case KeyType.Return:

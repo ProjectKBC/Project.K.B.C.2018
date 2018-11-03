@@ -16,6 +16,8 @@ namespace Game
 
 			this.gm = GameManager.Instance;
 
+			AudioManager.Instance.StopBgm();
+
 			// Todo: ロード画面の生成
 			FadeManager.Instance.FadeOut(0);
 

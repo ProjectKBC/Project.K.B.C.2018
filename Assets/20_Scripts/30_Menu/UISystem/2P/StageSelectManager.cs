@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -87,28 +87,31 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
 	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Right, PlayerNumber.player2))
         {
             NextStage();
-        }
+			AudioManager.Instance.PlaySe(SoundEffect.cursor);
+		}
 
 //        if (Input.GetKeyDown(this.pl1key.PrevKey) || Input.GetKeyDown(this.pl2key.PrevKey))
 	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Left, PlayerNumber.player1) || 
 	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Left, PlayerNumber.player2))
         {
             PrevStage();
-        }
+			AudioManager.Instance.PlaySe(SoundEffect.cursor);
+		}
 
 //        if (Input.GetKeyDown(this.pl1key.ReturnKey) || Input.GetKeyDown(this.pl2key.ReturnKey))
 	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player1) || 
 	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player2))
         {
             ReturnAction();
-        }
+		}
 
 //        if (Input.GetKeyDown(this.pl1key.CancelKey) || Input.GetKeyDown(this.pl2key.CancelKey))
 	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player1) || 
 	        RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player2))
         {
             CancelAction();
-        }
+			AudioManager.Instance.PlaySe(SoundEffect.cansel);
+		}
     }
 
     private void NextStage()
@@ -141,13 +144,14 @@ public class StageSelectManager : SingletonMonoBehaviour<StageSelectManager>
             if (this.stage == StageEnum.stage3 ||
                 this.stage == StageEnum.stage4 ||
                 this.stage == StageEnum.stage5)
-            {
-                // todo: 選択不能のSE
-                return;
+			{
+				AudioManager.Instance.PlaySe(SoundEffect.error);
+				return;
             }
             else
-            {
-                this.IsNextWindow = true;
+			{
+				AudioManager.Instance.PlaySe(SoundEffect.decision);
+				this.IsNextWindow = true;
             }
         }
     }

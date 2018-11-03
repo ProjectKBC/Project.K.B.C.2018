@@ -942,7 +942,7 @@ MonoBehaviour:
   - {fileID: 437632064}
   exitIndex: 1
   firstIndex: 0
-  pressedWaitTime: 1
+  pressedWaitTime: 5
 --- !u!114 &1310652778
 MonoBehaviour:
   m_ObjectHideFlags: 0

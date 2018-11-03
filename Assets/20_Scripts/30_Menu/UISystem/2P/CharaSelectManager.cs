@@ -491,26 +491,38 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
 //        if (Input.GetKeyDown(this.pl1key.ReturnKey))
 	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player1))
         {
-            this.ReturnAction(PlayerNumber.player1);
+            if (this.ReturnAction(PlayerNumber.player1))
+			{
+				AudioManager.Instance.PlaySe(SoundEffect.cursor);
+			}
         }
 
 //        if (Input.GetKeyDown(this.pl1key.CancelKey))
 	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player1))
         {
-            this.CancelAction(PlayerNumber.player1);
+            if (this.CancelAction(PlayerNumber.player1))
+			{
+				AudioManager.Instance.PlaySe(SoundEffect.cansel);
+			}
         }
 
 //        if (Input.GetKeyDown(this.pl2key.ReturnKey))
 	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Return, PlayerNumber.player2))
         {
-            this.ReturnAction(PlayerNumber.player2);
-        }
+            if (this.ReturnAction(PlayerNumber.player2))
+			{
+				AudioManager.Instance.PlaySe(SoundEffect.cursor);
+			}
+		}
 
 //        if (Input.GetKeyDown(this.pl2key.CancelKey))
 	    if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player2))
         {
-            this.CancelAction(PlayerNumber.player2);
-        }
+            if (this.CancelAction(PlayerNumber.player2))
+			{
+				AudioManager.Instance.PlaySe(SoundEffect.cansel);
+			}
+		}
     }
 
     /// <summary>
@@ -538,7 +550,9 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         UpdateCursor(state.NowIndex);
         UpdateStand(_pl);
         UpdateNames(_pl);
-    }
+
+		AudioManager.Instance.PlaySe(SoundEffect.cursor);
+	}
 
     /// <summary>
     /// カーソルを1つ戻す
@@ -566,6 +580,8 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         UpdateCursor(state.NowIndex);
         UpdateStand(_pl);
         UpdateNames(_pl);
+
+		AudioManager.Instance.PlaySe(SoundEffect.cursor);
     }
 
     /// <summary>

@@ -41,6 +41,8 @@ namespace Game
 			this.pl2PBM = this.gm.PL2Managers.playerBulletManager;
 			this.pl1EBM = this.gm.PL1Managers.enemyBulletManager;
 			this.pl2EBM = this.gm.PL2Managers.enemyBulletManager;
+
+			AudioManager.Instance.PlayBgmWithFadeIn(this.gm.GetStageBGM(), 0.5f);
 		}
 
 		public override void Update()
@@ -63,6 +65,7 @@ namespace Game
 			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Pause, PlayerNumber.player1) ||
 			    RiaInput.Instance.GetPushDown(RiaInput.KeyType.Pause, PlayerNumber.player2))
 			{
+				AudioManager.Instance.PlaySe(SoundEffect.pause);
 				this.gm.ChageState(GameManager.State.Pause);
 			}
 

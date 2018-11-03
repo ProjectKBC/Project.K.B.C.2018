@@ -67,6 +67,7 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
             this.contents[this.nowIndex].ReturnAction();
 
 			// todo: 決定音
+			AudioManager.Instance.PlaySe(SoundEffect.decision);
 		}
 
 		if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Cancel, PlayerNumber.player1) ||
@@ -79,6 +80,7 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
 			this.GetImage(this.nowIndex).sprite = this.contents[this.nowIndex].ActiveSprite;
 
 			// todo: キャンセル音
+			AudioManager.Instance.PlaySe(SoundEffect.cansel);
 		}
 	}
 
@@ -87,28 +89,28 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
         if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Down, PlayerNumber.player1) ||
 			RiaInput.Instance.GetPushDown(RiaInput.KeyType.Down, PlayerNumber.player2))
         {
-            this.NextContent();
+			this.NextContent();
             this.nextKeyPressedTime = this.elapsedTime;
         }
 		else if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Up, PlayerNumber.player1) ||
 				 RiaInput.Instance.GetPushDown(RiaInput.KeyType.Up, PlayerNumber.player2))
         {
-            this.PrevContent();
+			this.PrevContent();
             this.prevKeyPressedTime = this.elapsedTime;
         }
-		else if ((RiaInput.Instance.GetPushDown(RiaInput.KeyType.Down, PlayerNumber.player1) ||
-				  RiaInput.Instance.GetPushDown(RiaInput.KeyType.Down, PlayerNumber.player2)) &&
-			      this.pressedWaitTime <= this.elapsedTime - this.nextKeyPressedTime)
-        {
-            this.NextContent();
-        }
-		else if ((RiaInput.Instance.GetPushDown(RiaInput.KeyType.Up, PlayerNumber.player1) ||
-				  RiaInput.Instance.GetPushDown(RiaInput.KeyType.Up, PlayerNumber.player2)) &&
-				  this.pressedWaitTime <= this.elapsedTime - this.prevKeyPressedTime)
-        {
-            this.PrevContent();
-        }
-    }
+		else if ((RiaInput.Instance.GetPush(RiaInput.KeyType.Down, PlayerNumber.player1) ||
+				  RiaInput.Instance.GetPush(RiaInput.KeyType.Down, PlayerNumber.player2)) &&
+				  this.pressedWaitTime <= this.elapsedTime - this.nextKeyPressedTime)
+		{
+			this.NextContent();
+		}
+		else if ((RiaInput.Instance.GetPush(RiaInput.KeyType.Up, PlayerNumber.player1) ||
+				  RiaInput.Instance.GetPush(RiaInput.KeyType.Up, PlayerNumber.player2)) &&
+					  this.pressedWaitTime <= this.elapsedTime - this.prevKeyPressedTime)
+		{
+			this.PrevContent();
+		}
+	}
 
     private Image GetImage(int _index)
     {
@@ -124,6 +126,7 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
         this.GetImage(this.nowIndex).sprite = this.contents[this.nowIndex].ActiveSprite;
 
 		// todo: 移動音
+		AudioManager.Instance.PlaySe(SoundEffect.cursor);
 	}
 
 	private void PrevContent()
@@ -133,5 +136,6 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
         this.GetImage(this.nowIndex).sprite = this.contents[this.nowIndex].ActiveSprite;
 
 		// todo: 移動音
+		AudioManager.Instance.PlaySe(SoundEffect.cursor);
 	}
 }
