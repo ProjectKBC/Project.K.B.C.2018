@@ -20,8 +20,6 @@ namespace Game.Bullet.Enemy
 			// アニメーションの設定
 			RiaSpriteAnimation[] animations = { this.Script.Animation };
 			this.animator.SetAnimations(animations, this.Script.Animation.KeyName);
-			
-			this.playerPos = GameManager.Instance.GetPlayer(this.PlayerNumber).Trans.position;
 
 		}
 

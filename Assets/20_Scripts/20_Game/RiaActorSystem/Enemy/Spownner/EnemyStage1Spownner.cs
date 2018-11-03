@@ -15,8 +15,6 @@ public class EnemyStage1Spownner : EnemySpownner
 		StraightVertical,
 		LStraights,
 		RStraights,
-		ToLeftSide,
-		ToRightSide,
 		Quadratic,
 		Circle,
 		Coaster,
@@ -46,7 +44,6 @@ public class EnemyStage1Spownner : EnemySpownner
 						{
 							var space = 10.0f;
 							var equalPos = Mathf.Abs(this.spownPos.RightEdgeTop.x - this.spownPos.LeftEdgeTop.x) / (figs + 1);
-							Debug.Log(this.topLeftPosX + i * equalPos);
 
 							this.factory.Create(
 								EnemyCharacterEnum.UAF1StraightEnemy,
@@ -100,42 +97,6 @@ public class EnemyStage1Spownner : EnemySpownner
 
 						break;
 					*/
-
-					case "ToLeftSide":
-						for (var i = 1; i <= figs; i++)
-						{
-							var rand = Random.Range(0, 30);
-							var space = 10.0f;
-							var equalPos = Mathf.Abs(this.topLeftPosX - this.topRightPosX) / (figs + 1);
-
-							this.factory.Create(
-								EnemyCharacterEnum.UAF1ToLeftSideEnemy,
-								this.playerNumber,
-								this.manager.GetFreeActorForSpowner(),
-								//new Vector3(this.appearRightPosX + i * space, rand, 0.0f)
-								new Vector3(this.spownPos.RightEdgeTop.x + i * space, rand, 0.0f)
-							);
-						}
-
-						break;
-
-					case "ToRightSide":
-						for (var i = 1; i <= figs; i++)
-						{
-							var rand = Random.Range(0, 30);
-							var space = 10.0f;
-							var equalPos = Mathf.Abs(this.topLeftPosX - this.topRightPosX) / (figs + 1);
-
-							this.factory.Create(
-								EnemyCharacterEnum.UAF1ToRightSideEnemy,
-								this.playerNumber,
-								this.manager.GetFreeActorForSpowner(),
-								//new Vector3(this.appearLeftPosX + i * space, rand, 0.0f)
-								new Vector3(this.spownPos.LeftEdgeTop.x + i * space, rand, 0.0f)
-							);
-						}
-
-						break;
 
 					case "Quadratic":
 

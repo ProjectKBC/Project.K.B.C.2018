@@ -13,6 +13,44 @@ namespace Game.Enemy
 	{
 		private new UFA1OutToInScript Script;
 		
+		public class Shooter
+		{
+			private float shotInterval;
+			private float elapsedTime;
+			private float shotTime;
+			private EnemyBulletActorManager manager;
+			private Transform trans;
+
+			public Shooter(UFA1OutToInScript.ShooterParam _param, EnemyBulletActorManager _manager, Transform _trans)
+			{
+				this.shotInterval = _param.shotInterval;
+
+				this.elapsedTime = 0;
+				this.shotTime = 0;
+
+				this.manager = _manager;
+				this.trans = _trans;
+
+			}
+
+			public void Update()
+			{
+				
+				var deltaTime = Time.deltaTime;
+				this.elapsedTime += deltaTime;
+				this.shotTime += deltaTime;
+				
+
+				
+				if (this.shotInterval <= this.shotTime)
+				{
+					this.manager.CreateOutToInEnemyBullet(this.trans.position);
+					this.shotTime -= this.shotInterval;
+				}
+				
+			}
+		}
+		
 		public struct ShotParam
 		{
 			public float elapsedTime;	
@@ -32,7 +70,7 @@ namespace Game.Enemy
 			public float stayElapsedTime;
 		}
 
-		private ShotParam shot;
+		private Shooter shooter;
 		private MoveParam move;
 		
 		public UFA1OutToIn(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) :
@@ -41,12 +79,14 @@ namespace Game.Enemy
 			this.Script = _script as UFA1OutToInScript;
 
 			// shot
-			this.shot.elapsedTime = 0;
+			//this.shooter.elapsedTime = 0;
 			
 			// move
 			this.move.state = MoveParam.State.Go;
 			this.move.startPos_ = this.Trans.position;
 			this.move.stayElapsedTime = 0;
+			this.shooter = new Shooter(this.Script.ShotParam, this.bulletManager, this.Trans);
+
 		}
 
 		protected override void OnInit()
@@ -67,7 +107,7 @@ namespace Game.Enemy
 
 		public override void Shot()
 		{
-			
+			this.shooter.Update();
 		}
 
 		public override void Move()

@@ -8,6 +8,8 @@ namespace Game.Bullet.Enemy
 	{
 		// CharacterScriptの上書き
 		private new OutToInEnemyBulletScript Script;
+		private Vector3 myAppearPos;
+		private Vector3 playerPos;
 
 		public OutToInEnemyBullet(GameObject _go, RiaCharacterScript _script, PlayerNumber _playerNumber) : base(_go, _script, _playerNumber)
 		{
@@ -23,6 +25,8 @@ namespace Game.Bullet.Enemy
 
 		protected override void OnInit()
 		{
+			this.myAppearPos = this.Trans.position;
+			this.playerPos = GameManager.Instance.GetPlayer(this.PlayerNumber).Trans.position;
 		}
 
 		protected override void OnWait()
@@ -65,8 +69,15 @@ namespace Game.Bullet.Enemy
 		/// </summary>
 		public override void Move()
 		{
-			this.Trans.position += Vector3.down * this.MoveSpeed * Time.deltaTime * 60.0f;
-		}
+			Vector3 pos = this.Trans.position;
+			Vector3 vectorMyselfPlayer = new Vector3(this.playerPos.x - this.myAppearPos.x,
+				this.playerPos.y - this.myAppearPos.y, this.myAppearPos.z);
+
+			
+			pos.x += (vectorMyselfPlayer.x * this.MoveSpeed * Time.deltaTime);
+			pos.y += (vectorMyselfPlayer.y * this.MoveSpeed * Time.deltaTime);
+        
+			this.Trans.position = pos;		}
 
 		/// <summary>
 		/// アニメーション処理 by flanny7
