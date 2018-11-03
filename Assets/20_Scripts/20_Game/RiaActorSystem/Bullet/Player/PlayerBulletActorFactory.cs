@@ -71,7 +71,6 @@ namespace Game.Bullet.Player
 			        this.catalog.KaitoNormalBullet.kaitoNormalBulletLeft as RiaPlayerBulletScript;
 			var character = new KaitoNormalBullet(_actor.gameObject, script, _playerNumber);
 			var pos = _position;
-			pos.x += (_type == "center") ? 0 : (_type == "right") ? 3 : -3;
 			var rot = _rotation;
 			var rotAngle = _rotation.eulerAngles;
 			rotAngle.z = (_type == "center") ? rotAngle.z : (_type == "right") ? rotAngle.z - 10 : rotAngle.z + 10;
