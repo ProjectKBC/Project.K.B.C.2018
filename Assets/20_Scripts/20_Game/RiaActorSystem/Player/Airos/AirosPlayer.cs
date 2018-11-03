@@ -156,7 +156,6 @@ namespace Game.Player
 			// サーチ開始
 			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
-				Debug.Log("サーチ開始");
 				param.searchTime = this.playElapsedTime;
 				param.searchCount = 0;
 				param.targetEnemyTranses = new Transform[script.searchCountMax];
@@ -165,9 +164,9 @@ namespace Game.Player
 			// サーチ中
 			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
-				var searchedEnemyTransformes = NearSearchEnemyTransform(script.searchAreaRange);
+				var searchedEnemyTransform = NearSearchEnemyTransform(script.searchAreaRange);
 
-				if (!searchedEnemyTransformes) { return; }
+				if (!searchedEnemyTransform) { return; }
 				if (script.searchCountMax <= param.searchCount) { return; }
 
 				// サーチ時間の更新
@@ -179,7 +178,7 @@ namespace Game.Player
 					param.searchTime = this.playElapsedTime;
 
 					++param.searchCount;
-					param.targetEnemyTranses[param.searchCount - 1] = searchedEnemyTransformes;
+					param.targetEnemyTranses[param.searchCount - 1] = searchedEnemyTransform;
 					param.searchTime = 0;
 				}
 			}
@@ -189,13 +188,9 @@ namespace Game.Player
 			{
 				for (int i = 0; i < param.targetEnemyTranses.Length; ++i)
 				{
-					// todo: bullet生成
-					// CreateBullet(param.targetEnemyTranses[i].position);
 					this.BulletManger.CreateAirosBullet(
 						PlayerBulletActorManager.BulletType.Special,
 						param.targetEnemyTranses[i].position);
-					// todo: FX生成
-					Debug.Log(param.targetEnemyTranses[i].position);
 				}
 				param.shotTime = this.playElapsedTime;
 			}
@@ -284,7 +279,7 @@ namespace Game.Player
 				var enemy = enemys[i];
 
 				// サーチ済みの敵は省く
-				if (0 <= System.Array.IndexOf(param.targetEnemyTranses, enemy)) { continue; }
+				if (0 <= System.Array.IndexOf(param.targetEnemyTranses, enemy.Trans)) { continue; }
 
 				var distance = Vector3.Distance(enemy.Trans.position, this.Trans.position);
 				if (distance <= _searchRadius)

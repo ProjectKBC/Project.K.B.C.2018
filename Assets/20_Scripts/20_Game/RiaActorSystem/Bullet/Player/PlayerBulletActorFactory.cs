@@ -33,8 +33,8 @@ namespace Game.Bullet.Player
 			Quaternion? _rotation = null,
 			Vector3? _scale = null)
 		{
-			var script = this.catalog.AirosSpecialBullet.airosSpecialBullet as RiaPlayerBulletScript;
-			var character = new AirosSpecialBullet(_actor.gameObject, script, _playerNumber);
+			var script = GameObject.Instantiate(this.catalog.AirosSpecialBullet.airosSpecialBullet);
+			var character = new AirosSpecialBullet(_actor.Go, script, _playerNumber);
 			var pos = _position;
 			_actor.WakeUp(character, script, pos, _rotation, _scale);
 		}

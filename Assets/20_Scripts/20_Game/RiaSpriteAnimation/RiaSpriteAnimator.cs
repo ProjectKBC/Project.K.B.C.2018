@@ -66,12 +66,11 @@ namespace RiaSpriteAnimationSystem
 
 			for (var i = 0; i < this.animations.Length; ++i)
 			{
-				var animation = this.animations[i];
+				this.animations[i] = GameObject.Instantiate(this.animations[i]);
 
-				animation.Init(this.spRender);
+				this.animations[i].Init(this.spRender);
 				
-				this.animDict.Add(animation.KeyName, animation);
-				// Debug.Log(animation.KeyName + ": " + this.animDict[animation.KeyName]);
+				this.animDict.Add(this.animations[i].KeyName, this.animations[i]);
 			}
 
 			this.currentAnim = this.animDict[_firstAnimKey];
