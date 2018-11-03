@@ -24,6 +24,13 @@ MonoBehaviour:
       type: 2}
     anomaNormalBulletLeft: {fileID: 11400000, guid: ea78d8b13c5874f09a69ba4d824918d8,
       type: 2}
+  kaitoNormalBullet:
+    kaitoNormalBulletRight: {fileID: 11400000, guid: 30784d69669bd46bba545a3e46047217,
+      type: 2}
+    kaitoNormalBulletCenter: {fileID: 11400000, guid: fc7752632c5c54d4abdc8fb2404a02ad,
+      type: 2}
+    kaitoNormalBulletLeft: {fileID: 11400000, guid: 5bfd6eace5c2645b69cfde11e6c278dd,
+      type: 2}
   kaoruNormalBullet:
     kaoruNormalBulletRight: {fileID: 11400000, guid: 06a8313217d914d3584e187e510b686e,
       type: 2}

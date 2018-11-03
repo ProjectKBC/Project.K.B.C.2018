@@ -61,9 +61,9 @@ namespace Game.Player
 
 		// キャッシュ
 		protected SpriteRenderer spRender;
+		protected RiaSpriteAnimator animator;
 		protected Collider2DSupporter colliderSupporter;
 		protected CircleCollider2D circleCollider;
-		protected RiaSpriteAnimator animator;
 		private PlayerBulletActorManager bulletManger;
 		protected PlayerBulletActorManager BulletManger
 		{
@@ -110,13 +110,12 @@ namespace Game.Player
 
 			this.circleCollider = this.Go.GetComponent<CircleCollider2D>();
 			this.circleCollider.radius = this.Script.CircleColliderRadius;
-
 			this.animator = this.Actor.Animator;
 			RiaSpriteAnimation[] anims = {
-				GameObject.Instantiate<RiaSpriteAnimation>(this.Script.WaitAnimation),
-				GameObject.Instantiate<RiaSpriteAnimation>(this.Script.RightGoAnimation),
-				GameObject.Instantiate<RiaSpriteAnimation>(this.Script.LeftGoAnimation),
-				};
+					GameObject.Instantiate<RiaSpriteAnimation>(this.Script.WaitAnimation),
+					GameObject.Instantiate<RiaSpriteAnimation>(this.Script.RightGoAnimation),
+					GameObject.Instantiate<RiaSpriteAnimation>(this.Script.LeftGoAnimation),
+					};
 			this.animator.SetAnimations(anims, this.Script.WaitAnimation.KeyName);
 
 			this.bulletManger = null;

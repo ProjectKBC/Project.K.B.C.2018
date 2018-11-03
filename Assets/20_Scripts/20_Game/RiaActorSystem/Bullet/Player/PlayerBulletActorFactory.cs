@@ -56,6 +56,29 @@ namespace Game.Bullet.Player
 			_actor.WakeUp(character, script, pos, _rotation, _scale);
 		}
 
+		public void CreateKaitoNormalBullet(
+			PlayerNumber _playerNumber,
+			RiaActor _actor,
+			string _type,
+			Vector3 _position,
+			Quaternion _rotation,
+			Vector3? _scale = null)
+		{
+			var script = (_type == "center") ?
+				this.catalog.KaitoNormalBullet.kaitoNormalBulletCenter as RiaPlayerBulletScript :
+					(_type == "right") ?
+			        this.catalog.KaitoNormalBullet.kaitoNormalBulletRight as RiaPlayerBulletScript :
+			        this.catalog.KaitoNormalBullet.kaitoNormalBulletLeft as RiaPlayerBulletScript;
+			var character = new KaitoNormalBullet(_actor.gameObject, script, _playerNumber);
+			var pos = _position;
+			pos.x += (_type == "center") ? 0 : (_type == "right") ? 3 : -3;
+			var rot = _rotation;
+			var rotAngle = _rotation.eulerAngles;
+			rotAngle.z = (_type == "center") ? rotAngle.z : (_type == "right") ? rotAngle.z - 10 : rotAngle.z + 10;
+			rot = Quaternion.Euler(rotAngle);
+			_actor.WakeUp(character, script, pos, rot, _scale);
+		}
+
 		public void CreateKaoruNormalBullet(
 			PlayerNumber _playerNumber,
 			RiaActor _actor,

@@ -83,6 +83,26 @@ namespace Game.Bullet.Player
 			}
 		}
 
+		public void CreateKaitoBullet(BulletType _type, Vector3 _pos, Quaternion _rot)
+		{
+			switch (_type)
+			{
+				case BulletType.Normal:
+					this.factory.CreateKaitoNormalBullet(this.playerNumber, GetFreeActor(), "center", _pos, _rot);
+					this.factory.CreateKaitoNormalBullet(this.playerNumber, GetFreeActor(), "right", _pos, _rot);
+					this.factory.CreateKaitoNormalBullet(this.playerNumber, GetFreeActor(), "left", _pos, _rot);
+					break;
+
+				case BulletType.Special:
+
+					break;
+
+				case BulletType.Skill:
+
+					break;
+			}
+		}
+
 		public void CreateKaoruBullet(BulletType _type, Vector3 _pos)
 		{
 			switch (_type)
