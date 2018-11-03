@@ -26,25 +26,19 @@ namespace Game.Enemy
 					character = new UFA1StraightEnemy(_actor.gameObject, script, _playerNumber);
 					break;
 				
+				
 				case EnemyCharacterEnum.UAF1StayEnemy:
+					/*
 					script = this.catalog.UFA1StayScript;
 					character = new UFA1StayEnemy(_actor.gameObject, script, _playerNumber);
+					*/
 					break;
 				
-				case EnemyCharacterEnum.UAF1SinEnemy:
-					script = this.catalog.UFA1SinScript;
-					character = new UFA1SinEnemy(_actor.gameObject, script, _playerNumber);
+				case EnemyCharacterEnum.UAF1OutToInSinEnemy:
+					script = this.catalog.UAF1OutToInSinEnemyScript;
+					character = new UFA1OutToInSinEnemy(_actor.gameObject, script, _playerNumber);
 					break;
 				
-				case EnemyCharacterEnum.UAF1ToLeftSideEnemy:
-					script = this.catalog.UFA1ToLeftSideEnemy;
-					character = new UFA1ToLeftSideEnemy(_actor.gameObject, script, _playerNumber);
-					break;
-				
-				case EnemyCharacterEnum.UAF1ToRightSideEnemy:
-					script = this.catalog.UFA1ToRightSideEnemy;
-					character = new UFA1ToRightSideEnemy(_actor.gameObject, script, _playerNumber);
-					break;
 				
 				case EnemyCharacterEnum.UAF1OutToInEnemy:
 					Debug.Log("いいい");

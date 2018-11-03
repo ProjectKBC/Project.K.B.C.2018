@@ -8,13 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b19fe4f2cdf4f6e8fa1a343915cc85, type: 3}
-  m_Name: UFA1ToRightSideEnemyScript
+  m_Script: {fileID: 11500000, guid: c1b7d06a12e5044e79dbca195471a4d5, type: 3}
+  m_Name: UFA1OutToInSinEnemyScript
   m_EditorClassIdentifier: 
   maxHitPoint: 1
-  moveSpeedBase: 0.25
+  moveSpeedBase: 10
   hitATK: 1
-  score: 1
+  score: 10
   sprite: {fileID: 21300000, guid: e9115d56c3d16764588f83e74a5bcd21, type: 3}
   shotParam:
-    shotInterval: 0
+    shotInterval: 2

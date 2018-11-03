@@ -10,8 +10,8 @@ public enum EnemyCharacterEnum
 	UAF1StraightEnemy,
 	[Description("UAF1StayEnemy")]
 	UAF1StayEnemy,
-	[Description("UAF1SinEnemy")]
-	UAF1SinEnemy,
+	[Description("UAF1OutToInSinEnemy")]
+	UAF1OutToInSinEnemy,
 	[Description("UAF1ToLeftSideEnemy")]
 	UAF1ToLeftSideEnemy,
 	[Description("UAF1ToRightSideEnemy")]

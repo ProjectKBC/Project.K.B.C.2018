@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Name: EnemyCharacterCatalog
   m_EditorClassIdentifier: 
   UFA1StraightScript: {fileID: 11400000, guid: ba2c24496b3b47647b0467163612c0df, type: 2}
-  UFA1StayScript: {fileID: 11400000, guid: d03588fc4750f47c9a4b6ee856e80f54, type: 2}
-  UFA1SinScript: {fileID: 11400000, guid: ea65153dcba114c049b940c613f13734, type: 2}
-  UFA1ToLeftSideEnemy: {fileID: 11400000, guid: e2a008777e07e45c3ba1c5d6a49b1822,
-    type: 2}
-  UFA1ToRightSideEnemy: {fileID: 11400000, guid: ba0453d0a5ee04e948b3fccfa3cae9ab,
+  UAF1OutToInSinEnemyScript: {fileID: 11400000, guid: e50fc0ce83cf14ef1b9fce7585728842,
     type: 2}
   UFA1OutToInEnemy: {fileID: 11400000, guid: dfb3bdb365b2c4ce59cf0550ebdb0d54, type: 2}
   UFA1InToOutEnemy: {fileID: 11400000, guid: ddf48822e78dd4cda801069ffd039c7d, type: 2}

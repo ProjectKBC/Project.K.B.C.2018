@@ -12,14 +12,7 @@ public class EnemyStage1Spownner : EnemySpownner
 	public enum EnemyPattern
 	{
 		StraightHorizontal,
-		StraightVertical,
-		LStraights,
-		RStraights,
-		Quadratic,
-		Circle,
-		Coaster,
-		Stay,
-		Sin,
+		OutToInSin,
 		OutToIn,
 		InToOut,
 		Bee
@@ -123,7 +116,30 @@ public class EnemyStage1Spownner : EnemySpownner
 
 						break;
 
-					case "Sin":
+					case "OutToInSin":
+						float appearY = 35.0f;
+						for (var i = 1; i <= figs; i++)
+						{
+							var space = 5.0f;
+							var x = 0.0f;
+							if (this.playerNumber.Equals(PlayerNumber.player1))
+							{
+								x = this.spownPos.LeftEdgeTop.x;
+								space = -5.0f;
+							}
+							else
+							{
+								x = this.spownPos.RightEdgeTop.x;
+								space = 5.0f;
+							}
+
+							this.factory.Create(
+								EnemyCharacterEnum.UAF1OutToInSinEnemy,
+								this.playerNumber,
+								this.manager.GetFreeActorForSpowner(),
+								new Vector3(x + i * space, appearY, 0.0f)
+							);
+						}
 
 						break;
 					
@@ -131,7 +147,7 @@ public class EnemyStage1Spownner : EnemySpownner
 						for (var i = 1; i <= figs; i++)
 						{
 							var rand = Random.Range(0, 30);
-							var space = 10.0f;
+							var space = 5.0f;
 							var x = 0.0f;
 							if (this.playerNumber.Equals(PlayerNumber.player1))
 							{
@@ -158,7 +174,7 @@ public class EnemyStage1Spownner : EnemySpownner
 						for (var i = 1; i <= figs; i++)
 						{
 							var rand = Random.Range(0, 30);
-							var space = 10.0f;
+							var space = 5.0f;
 							var x = 0.0f;
 							if (this.playerNumber.Equals(PlayerNumber.player1))
 							{
