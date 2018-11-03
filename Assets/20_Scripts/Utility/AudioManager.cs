@@ -9,6 +9,9 @@ public enum SoundEffect
 
 public enum BackGroundMusic
 {
+	Title,
+	CharacterSelect,
+	GameResult
 }
 
 public class AudioManager : SingletonMonoBehaviour<AudioManager>

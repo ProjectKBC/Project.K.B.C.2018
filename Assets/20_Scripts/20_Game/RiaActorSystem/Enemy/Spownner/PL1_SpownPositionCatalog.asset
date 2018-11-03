@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: PL1_SpownPositionCatalog
   m_EditorClassIdentifier: 
   centerTop: {x: -40.5, y: 58}
+  upEdgeTop: {x: 50, y: 0}
   rightEdgeTop: {x: -3, y: 58}
   leftEdgeTop: {x: -81, y: 58}
   rightCenter: {x: -3, y: 0}

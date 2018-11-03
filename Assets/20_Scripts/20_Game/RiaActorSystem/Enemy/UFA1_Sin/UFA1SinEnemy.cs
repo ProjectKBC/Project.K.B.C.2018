@@ -38,11 +38,13 @@ namespace Game.Enemy
 				this.elapsedTime += deltaTime;
 				this.shotTime += deltaTime;
 
+				/*
 				if (this.shotInterval <= this.shotTime)
 				{
 					this.manager.CreateSinEnemyBullet(this.trans.position);
 					this.shotTime -= this.shotInterval;
 				}
+				*/
 			}
 		}
 

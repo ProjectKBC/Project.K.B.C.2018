@@ -26,7 +26,7 @@ namespace Game.Enemy
 		public RiaEnemyScript UFA1ToRightSideEnemy = null;
 		
 		[SerializeField]
-		public RiaEnemyScript UFA1OutTOInEnemy = null;
+		public RiaEnemyScript UFA1OutToInEnemy = null;
 		
 		[SerializeField]
 		public RiaEnemyScript UFA1InToOutEnemy = null;

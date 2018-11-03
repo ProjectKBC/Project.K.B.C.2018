@@ -8,9 +8,11 @@ namespace Game.Enemy
 	public class UFA1InToOutScript : RiaEnemyScript
 	{
 		[System.Serializable]
-		public struct ShotParam
+		public struct ShooterParam
 		{
+			public float shotInterval;
 		}
+		
 		
 		[System.Serializable]
 		public struct MoveParam
@@ -21,12 +23,18 @@ namespace Game.Enemy
 			public float stayTime;
 		}
 		
+		[SerializeField]
+		private ShooterParam shotParam;
+		
 		// シリアライズ
-		[SerializeField] private ShotParam shot;
+		//[SerializeField] private ShootParam shot;
 		[SerializeField] private MoveParam move;
 		
+		public ShooterParam ShotParam { get { return this.shotParam; } }
+		
 		// アクセサー
-		public ShotParam Shot { get { return this.shot; } }
+		//public ShootParam Shot { get { return this.shot; } }
 		public MoveParam Move { get { return this.move; } }
+		
 	}
 }

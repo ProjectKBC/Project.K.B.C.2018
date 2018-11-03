@@ -37,6 +37,7 @@ namespace Game.Bullet.Enemy
 			_actor.WakeUp(character, script, _position, _rotation, _scale);
 		}
 		
+		/*
 		public void CreateSinEnemyBullet(
 			PlayerNumber _playerNumber,
 			RiaActor _actor,
@@ -60,6 +61,33 @@ namespace Game.Bullet.Enemy
 			var character = new StraightEnemyBullet(_actor.gameObject, script, _playerNumber);
 			_actor.WakeUp(character, script, _position, _rotation, _scale);
 		}
+		*/
+		
+		public void CreateInToOutEnemyBullet(
+			PlayerNumber _playerNumber,
+			RiaActor _actor,
+			Vector3 _position,
+			Quaternion? _rotation = null,
+			Vector3? _scale = null)
+		{
+			var script = this.catalog.InToOutEnemyBulletScript as RiaEnemyBulletScript;
+			var character = new InToOutEnemyBullet(_actor.gameObject, script, _playerNumber);
+			_actor.WakeUp(character, script, _position, _rotation, _scale);
+		}
+		
+		
+		public void CreateOutToInEnemyBullet(
+			PlayerNumber _playerNumber,
+			RiaActor _actor,
+			Vector3 _position,
+			Quaternion? _rotation = null,
+			Vector3? _scale = null)
+		{
+			var script = this.catalog.OutToInEnemyBulletScript as RiaEnemyBulletScript;
+			var character = new OutToInEnemyBullet(_actor.gameObject, script, _playerNumber);
+			_actor.WakeUp(character, script, _position, _rotation, _scale);
+		}
+		
 		
 		/*
 		public void CreateToRightSideEnemyBullet(

@@ -48,21 +48,23 @@ namespace Game.Bullet.Enemy
 			this.factory.CreateStayEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
 		}
 		
+		/*
 		public void CreateSinEnemyBullet(Vector3 _pos)
 		{
 			this.factory.CreateSinEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
 		}
+		*/
 		
 		
-		public void CreateToLeftSideEnemyBullet(Vector3 _pos)
+		public void CreateInToOutEnemyBullet(Vector3 _pos)
 		{
-			this.factory.CreateToLeftSideEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
+			this.factory.CreateInToOutEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
 		}
 		
 		
-		public void CreateToRightSideEnemyBullet(Vector3 _pos)
+		public void CreateOutToInEnemyBullet(Vector3 _pos)
 		{
-			this.factory.CreateStraightEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
+			this.factory.CreateOutToInEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
 		}
 
 		#endregion

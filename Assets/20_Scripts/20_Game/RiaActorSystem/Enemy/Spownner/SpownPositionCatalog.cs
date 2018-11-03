@@ -7,6 +7,7 @@ namespace Game.Enemy
 	public sealed class SpownPositionCatalog : ScriptableObject
 	{
 		[SerializeField] private Vector2 centerTop;
+		[SerializeField] private Vector2 upEdgeTop;
 		[SerializeField] private Vector2 rightEdgeTop;
 		[SerializeField] private Vector2 leftEdgeTop;
 		[SerializeField] private Vector2 rightCenter;
@@ -17,6 +18,7 @@ namespace Game.Enemy
 		[SerializeField] private Vector2 leftSideTop;
 
 		public Vector2 CenterTop { get { return this.centerTop; } }
+		public Vector2 UpEdgeTop { get { return this.upEdgeTop; } }
 		public Vector2 RightEdgeTop { get { return this.rightEdgeTop; } }
 		public Vector2 LeftEdgeTop { get { return this.leftEdgeTop; } }
 		public Vector2 RightCenter { get { return this.RightCenter; } }

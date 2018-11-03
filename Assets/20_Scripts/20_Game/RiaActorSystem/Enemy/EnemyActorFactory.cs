@@ -47,13 +47,15 @@ namespace Game.Enemy
 					break;
 				
 				case EnemyCharacterEnum.UAF1OutToInEnemy:
-					script = this.catalog.UFA1ToRightSideEnemy;
-					character = new UFA1ToRightSideEnemy(_actor.gameObject, script, _playerNumber);
+					Debug.Log("いいい");
+
+					script = this.catalog.UFA1OutToInEnemy;
+					character = new UFA1OutToIn(_actor.gameObject, script, _playerNumber);
 					break;
 				
 				case EnemyCharacterEnum.UAF1InToOutEnemy:
-					script = this.catalog.UFA1ToRightSideEnemy;
-					character = new UFA1ToRightSideEnemy(_actor.gameObject, script, _playerNumber);
+					script = this.catalog.UFA1InToOutEnemy;
+					character = new UFA1InToOut(_actor.gameObject, script, _playerNumber);
 					break;
 
 				default:
