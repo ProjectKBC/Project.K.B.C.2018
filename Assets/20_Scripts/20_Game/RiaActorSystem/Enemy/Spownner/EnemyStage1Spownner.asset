@@ -14,4 +14,4 @@ MonoBehaviour:
   pl1Catalog: {fileID: 11400000, guid: 864ee0215a6aa4e729471b132fec4ec0, type: 2}
   pl2Catalog: {fileID: 11400000, guid: 377bc1ff6cdfc4625ad4145548e0a97b, type: 2}
   appearInterval: 5
-  enemyPatterns: 0b000000
+  enemyPatterns: 0c000000

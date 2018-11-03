@@ -199,6 +199,11 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
         this.pl1Images.StandBack.sprite = this.sprites.StandBackNormal1;
         this.pl2Images.StandBack.sprite = this.sprites.StandBackNormal2;
     }
+	
+	private void Start()
+	{
+		AudioManager.Instance.PlayBgm(BackGroundMusic.CharacterSelect);
+	}
 
     public void Run()
     {

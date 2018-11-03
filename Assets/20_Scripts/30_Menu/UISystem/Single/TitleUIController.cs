@@ -55,7 +55,12 @@ public sealed class TitleUIController : SingletonMonoBehaviour<TitleUIController
         }
     }
 
-    private void Update()
+	private void Start()
+	{
+		AudioManager.Instance.PlayBgm(BackGroundMusic.Title);
+	}
+
+	private void Update()
     {
         this.elapsedTime += Time.deltaTime;
 

@@ -94,12 +94,20 @@ namespace Game.Enemy
 			var pos = this.Trans.position;
 			pos.x += this.Script.MoveSpeedBase * Time.deltaTime * direction;
 			this.Trans.position = pos;
+
+			/*
+			if (this.PlayerNumber.Equals(PlayerNumber.player1))
+			{
+				Debug.Log();
+			}
+			*/
+			
 			
 			// 移動しきったかを判定
 			var result = (this.PlayerNumber == PlayerNumber.player1) ? 
 				/* player1 */ this.Script.Move.oneWayDistance <= -1 * (this.move.startPos_.x - this.Trans.position.x):
 				/* player2 */ this.Script.Move.oneWayDistance <= this.move.startPos_.x - this.Trans.position.x;
-
+			
 			if (result)
 			{
 				this.move.state = MoveParam.State.Stay;

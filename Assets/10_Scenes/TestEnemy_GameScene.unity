@@ -1317,7 +1317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6157cf80bf37e458708eeae7b60029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 1
+  interval: 4
   enemyManagerAppearParam:
     StraightHorizontalPos: {x: 0, y: 0}
     StraightHorizontalPosInterval: {x: 0, y: 0}
@@ -1343,8 +1343,8 @@ MonoBehaviour:
   stayEnemy: {fileID: 1269887116242392, guid: 6bdae7b70d03f427eb7dd586fe273778, type: 2}
   sinEnemy: {fileID: 1798963835953624, guid: ddad949e046154e9f8c4300fe2fef1bf, type: 2}
   beeEnemy: {fileID: 1654025074528718, guid: 18c8c952ce4bd445dbf34d9b00526cdb, type: 2}
-  Enemy1Patterns: 0a000000
-  Enemy2Patterns: 0a000000
+  Enemy1Patterns: 0000000009000000000000000300000004000000000000000200000006000000020000000a000000
+  Enemy2Patterns: 
   Enemy1Data:
     PlayerType: 
     EnemyStartPos: {x: 0, y: 0, z: 0}

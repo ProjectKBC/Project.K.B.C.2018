@@ -272,91 +272,6 @@ Transform:
   m_Father: {fileID: 75875092}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &742666941
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 742666945}
-  - component: {fileID: 742666944}
-  - component: {fileID: 742666943}
-  - component: {fileID: 742666942}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!65 &742666942
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 742666941}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &742666943
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 742666941}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &742666944
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 742666941}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &742666945
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 742666941}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 100}
-  m_LocalScale: {x: 10, y: 10, z: 10}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1399832277
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,25 +312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6d3501029d56b44aa3947d7d6348b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seClips:
-  - {fileID: 8300000, guid: 8177acaa7be8de8478a3620254e7d595, type: 3}
-  - {fileID: 8300000, guid: 206be2319bedc5f44a413e523ff7a118, type: 3}
-  - {fileID: 8300000, guid: 102ef7769f2e2f048be46643c98e292b, type: 3}
-  - {fileID: 8300000, guid: 5281c67ae23430e4397d82bd3af2dea2, type: 3}
-  - {fileID: 8300000, guid: 38808944b915aae4cb974cb200edd9f2, type: 3}
-  - {fileID: 8300000, guid: 6f23d760c3a46d54296e8ac5292c9b93, type: 3}
-  - {fileID: 8300000, guid: ad41b50d61db6594aa0aca08fe6811df, type: 3}
-  - {fileID: 8300000, guid: 6a7b1c765d59366419756167e5b06dfe, type: 3}
-  - {fileID: 8300000, guid: a058e7a5f79a365499d87aa4d41d6900, type: 3}
-  - {fileID: 8300000, guid: ec3f58955c8f32747bd065968ac43935, type: 3}
-  - {fileID: 8300000, guid: cf8776c3e76aa9f4b9256e215ad86cb2, type: 3}
-  - {fileID: 8300000, guid: c195a0426b9f62d479f272bc1f6bd60b, type: 3}
+  seClips: []
   bgmClips:
-  - {fileID: 8300000, guid: d8a36beaf05894e4385269e4653c0c57, type: 3}
-  - {fileID: 8300000, guid: 57453655db3816d4a922a6fd1274e3aa, type: 3}
-  - {fileID: 8300000, guid: 714a13e8aaa3d8d4290036ffae513098, type: 3}
-  - {fileID: 8300000, guid: 2cb20523442666b49bb6d90b0272f8e0, type: 3}
-  - {fileID: 8300000, guid: ed2bddf94ce1efa40a67c89024e4f355, type: 3}
+  - {fileID: 8300000, guid: 9c19ffb6f2c2146b49dbc24c27efcfe6, type: 3}
+  - {fileID: 8300000, guid: b7e3e826d11ad4602835b0bb24444dc0, type: 3}
+  - {fileID: 8300000, guid: b4342680405f1430cb7b8742bdd222ef, type: 3}
   isDebug: 0
 --- !u!1 &1797362597
 GameObject:

@@ -18,5 +18,5 @@ MonoBehaviour:
     type: 2}
   UFA1ToRightSideEnemy: {fileID: 11400000, guid: ba0453d0a5ee04e948b3fccfa3cae9ab,
     type: 2}
-  UFA1OutTOInEnemy: {fileID: 11400000, guid: dfb3bdb365b2c4ce59cf0550ebdb0d54, type: 2}
+  UFA1OutToInEnemy: {fileID: 11400000, guid: dfb3bdb365b2c4ce59cf0550ebdb0d54, type: 2}
   UFA1InToOutEnemy: {fileID: 11400000, guid: ddf48822e78dd4cda801069ffd039c7d, type: 2}

@@ -33,18 +33,22 @@ namespace Game.Enemy
 				this.trans = _trans;
 			}
 
+			
 			public void Update()
 			{
 				var deltaTime = Time.deltaTime;
 				this.elapsedTime += deltaTime;
 				this.shotTime += deltaTime;
 
+				/*
 				if (this.shotInterval <= this.shotTime)
 				{
 					this.manager.CreateToRightSideEnemyBullet(this.trans.position);
 					this.shotTime -= this.shotInterval;
 				}
+				*/
 			}
+			
 		}
 
 		private Shooter shooter;
