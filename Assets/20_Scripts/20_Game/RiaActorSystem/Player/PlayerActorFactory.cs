@@ -42,6 +42,8 @@ namespace Game.Player
 					break;
 
 				case PlayerCharacterEnum.kaito:
+					script = this.catalog.kaitoScript;
+					character = new KaitoPlayer(_actor.gameObject, script, _playerNumber);
 					break;
 
 				case PlayerCharacterEnum.kaoru:
