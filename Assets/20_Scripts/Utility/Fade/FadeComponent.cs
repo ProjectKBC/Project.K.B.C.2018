@@ -1,4 +1,8 @@
-﻿using System.Collections;
+/* Author: flanny7
+ * 
+*/ 
+
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,7 +34,6 @@ public class FadeComponent : MonoBehaviour
     {
         if (this.state != FadeState.Free) { yield break; }
 
-        // ReSharper disable once CompareOfFloatsByEqualityOperator
         if (_time == 0.0f)
         {
             FadeAlpha = 0.0f;

@@ -2,27 +2,28 @@ fileFormatVersion: 2
 guid: 952c734842d1a6b4ea5ceaee2575fba6
 TextureImporter:
   fileIDToRecycleName:
-    21300000: selector_normal
-    21300002: selector_pl1
-    21300004: selector_pl2
-    21300006: selector_all
-    21300008: selector_selected1
-    21300010: selector_selected2
-    21300012: selector_selectedAll
-    21300014: selector_pl2_selected1
-    21300016: selector_pl1_selected2
-    21300018: charaselect_random
-    21300020: charaselect_veronica
-    21300022: charaselect_airos
-    21300024: charaselect_anoma
-    21300026: charaselect_held
-    21300028: charaselect_kaoru
-    21300030: charaselect_altveg
-    21300032: charaselect_kaito
-    21300034: charaselect_twist
-    21300036: charaselect_emilia
-    21300038: charaselect_laxa
-    21300040: charaselect_empty
+    21300000: charaselect_selectors_0
+    21300002: charaselect_selectors_1
+    21300004: charaselect_selectors_2
+    21300006: charaselect_selectors_3
+    21300008: charaselect_selectors_4
+    21300010: charaselect_selectors_5
+    21300012: charaselect_selectors_6
+    21300014: charaselect_selectors_7
+    21300016: charaselect_selectors_8
+    21300018: charaselect_selectors_9
+    21300020: charaselect_selectors_10
+    21300022: charaselect_selectors_11
+    21300024: charaselect_selectors_12
+    21300026: charaselect_selectors_13
+    21300028: charaselect_selectors_14
+    21300030: charaselect_selectors_15
+    21300032: charaselect_selectors_16
+    21300034: charaselect_selectors_17
+    21300036: charaselect_selectors_18
+    21300038: charaselect_selectors_19
+    21300040: charaselect_selectors_20
+    21300042: charaselect_selectors_21
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -52,7 +53,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -105,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: selector_normal
+      name: charaselect_selectors_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,19 +114,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f12b64c957bd15438e31392cda7fbd8
+      spriteID: ec0cbc6f42673544da4aac29f96516f5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selector_pl1
+      name: charaselect_selectors_1
       rect:
         serializedVersion: 2
         x: 300
@@ -133,19 +134,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 738e6e45ca1a1724aa9bac0ab088f5b6
+      spriteID: 15b7bd67f70e4af469d677de245470fa
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selector_pl2
+      name: charaselect_selectors_2
       rect:
         serializedVersion: 2
         x: 600
@@ -153,19 +154,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ddb2ebd1deab6b44937d56332d701ab
+      spriteID: d45b6973b5c46494ba7c9dc827a6cab6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selector_all
+      name: charaselect_selectors_3
       rect:
         serializedVersion: 2
         x: 900
@@ -173,19 +174,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bad8bb5d61508b448bccf698c8be453d
+      spriteID: e13f8b375cacd5941879da882867d901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selector_selected1
+      name: charaselect_selectors_4
       rect:
         serializedVersion: 2
         x: 1200
@@ -193,19 +194,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1794b5fb4b779c347b111b212c6d326e
+      spriteID: 2efe7bac0faf05a4cbe92cecc5fad0e7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selector_selected2
+      name: charaselect_selectors_5
       rect:
         serializedVersion: 2
         x: 1500
@@ -213,19 +214,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c00a7dc879b256c4c988d556abe4dc9e
+      spriteID: 044344d57ecd5eb4c92b7942d31a532f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selector_selectedAll
+      name: charaselect_selectors_6
       rect:
         serializedVersion: 2
         x: 1800
@@ -233,19 +234,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f5cbaee2e9896246b227058dba341a6
+      spriteID: fc6955ead6c216544b75f5ee41396404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selector_pl2_selected1
+      name: charaselect_selectors_7
       rect:
         serializedVersion: 2
         x: 2100
@@ -253,19 +254,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78bd84efe18497c43916050158c79a45
+      spriteID: 76357078dafbbc047bb37298cecf21b4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: selector_pl1_selected2
+      name: charaselect_selectors_8
       rect:
         serializedVersion: 2
         x: 2400
@@ -273,19 +274,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc833448ba09bc44f880e731bb4d81cf
+      spriteID: c1e610baff0e8414a80ee8d4e021b181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_random
+      name: charaselect_selectors_9
       rect:
         serializedVersion: 2
         x: 0
@@ -293,19 +294,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50b567eaa1d4a5a4f9c4de3f3fc2e977
+      spriteID: 7e0ceceba5387ee488e75a0aa7f69473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_veronica
+      name: charaselect_selectors_10
       rect:
         serializedVersion: 2
         x: 300
@@ -313,19 +314,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c48c311859298e74a98e8e6cd7fb9052
+      spriteID: 5ff905a6dc552304bbbb10df5d9d7f04
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_airos
+      name: charaselect_selectors_11
       rect:
         serializedVersion: 2
         x: 600
@@ -333,19 +334,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61cdd31f39287e54e8e03f4696c729ec
+      spriteID: 2dea249926ca0684b93472f7dbb9404d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_anoma
+      name: charaselect_selectors_12
       rect:
         serializedVersion: 2
         x: 900
@@ -353,19 +354,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a52dd3b60fabf9e40b1fb9c8d7915ece
+      spriteID: d0dca7af22aab2947932c826fb454dc2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_held
+      name: charaselect_selectors_13
       rect:
         serializedVersion: 2
         x: 1200
@@ -373,19 +374,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3e15aba42bf4de4d820c954c0250a46
+      spriteID: e962bb1260871a24196e0558aacbab4b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_kaoru
+      name: charaselect_selectors_14
       rect:
         serializedVersion: 2
         x: 1500
@@ -393,19 +394,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d97909627a532cd44859178d2f112072
+      spriteID: 879df5c3f7052b54880aecacce4806a7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_altveg
+      name: charaselect_selectors_15
       rect:
         serializedVersion: 2
         x: 1800
@@ -413,19 +414,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcef22207c85d704e984afaeec7ae63b
+      spriteID: cdf8c5dc2d428d94f87183d2252217b5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_kaito
+      name: charaselect_selectors_16
       rect:
         serializedVersion: 2
         x: 2100
@@ -433,19 +434,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f800ca86efac23478d6bafaa1bf119c
+      spriteID: dd94fa32c88221e4d96d623d5ce49574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_twist
+      name: charaselect_selectors_17
       rect:
         serializedVersion: 2
         x: 2400
@@ -453,19 +454,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fbb99c9cd5d19b44956dbcd2c36d80d
+      spriteID: 96c6b07a4b80a9446b609a024827ab05
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_emilia
+      name: charaselect_selectors_18
       rect:
         serializedVersion: 2
         x: 0
@@ -473,19 +474,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f19c082c64ef6db4d97b6c82b8ab5297
+      spriteID: e161fdf017aaf534e9f2520fe2fe156b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_laxa
+      name: charaselect_selectors_19
       rect:
         serializedVersion: 2
         x: 300
@@ -493,19 +494,19 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8454c554d9a20374bb8cd55e6f4544eb
+      spriteID: fee02ab5849a8f0449868f802789f907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: charaselect_empty
+      name: charaselect_selectors_20
       rect:
         serializedVersion: 2
         x: 600
@@ -513,13 +514,33 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f47a7d91c897c0649b7e35734369858c
+      spriteID: 2c0936ae3afdac044aa9e30460cdcd4f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: charaselect_selectors_21
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe07d972c1d905a4f9c083e9e1991e2c
       vertices: []
       indices: 
       edges: []
@@ -527,7 +548,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 82f1fb4e30b6d0948b9f0d1bd1fc9a60
+    spriteID: 77740f70741bc104891ca23099b2ce64
     vertices: []
     indices: 
     edges: []

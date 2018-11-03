@@ -49,7 +49,7 @@ namespace Game.Bullet
 				}
 				else
 				{
-					this.outOfAreaElapsedTime = 0;
+					this.outOfAreaElapsedTime = -1;
 				}
 
 				return (deleteTime <= this.outOfAreaElapsedTime);

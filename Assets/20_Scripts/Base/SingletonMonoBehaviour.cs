@@ -1,12 +1,15 @@
+/* Author: flanny7
+ * Update 2018/11/3
+*/
 using UnityEngine;
 
 public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : SingletonMonoBehaviour<T>
 {
-    private bool isInit;
+    public bool IsInit { get; private set; }
 
     protected SingletonMonoBehaviour()
     {
-        this.isInit = false;
+        this.IsInit = false;
     }
 
     private static T instance;
@@ -27,7 +30,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : Single
                 Debug.Break();
             }
 
-            if (instance != null && !instance.isInit)
+            if (instance != null && !instance.IsInit)
             {
                 instance.Init();
             }
@@ -51,10 +54,10 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : Single
     {
         if (this == Instance)
         {
-            if (this.isInit) { return; }
+            if (this.IsInit) { return; }
 
             this.OnInit();
-            this.isInit = true;
+            this.IsInit = true;
 
             return;
         }

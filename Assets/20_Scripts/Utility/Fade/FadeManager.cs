@@ -1,3 +1,7 @@
+/* Author: flanny7
+ *
+*/
+
 using System;
 using System.Collections;
 using UnityEngine;

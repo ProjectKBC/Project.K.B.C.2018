@@ -235,7 +235,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
 //        if (!Input.GetKey(key.UpKey) && !Input.GetKey(key.DownKey) && !Input.GetKey(key.RightKey) && !Input.GetKey(key.LeftKey))
         if (!RiaInput.Instance.GetPush(RiaInput.KeyType.Up, _pl) &&
             !RiaInput.Instance.GetPush(RiaInput.KeyType.Down, _pl) &&
-            !RiaInput.Instance.GetPush(RiaInput.KeyType.Return, _pl) &&
+            !RiaInput.Instance.GetPush(RiaInput.KeyType.Right, _pl) &&
             !RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl))
 	    {
             states.KeyIntervalStartTime = -1;
@@ -332,7 +332,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
 					     RiaInput.Instance.GetPush(RiaInput.KeyType.Left, _pl);
 
         var index = states.NowIndex;
-        
+
         if (isUp)
         {
             if (index == 0 || index == 1 || index == 2)
@@ -628,9 +628,12 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
 
         if (state.IsSelected) { return true; }
 
-        if (pc == PlayerCharacterEnum.length_empty)
+        if (pc == PlayerCharacterEnum.length_empty ||
+			pc == PlayerCharacterEnum.emilia ||
+			pc == PlayerCharacterEnum.laxa ||
+			pc == PlayerCharacterEnum.vega_al)
         {
-            // todo: SE [選択できない]
+			//AudioManager.Instance.PlaySe(SoundEffect.error);
             return false;
         }
         else if (pc == PlayerCharacterEnum.random)
@@ -654,8 +657,8 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
             UpdateStand(_pl);
             UpdateNames(_pl);
 
-            // todo: SE [選択した]
-            return true;
+			//AudioManager.Instance.PlaySe(SoundEffect.decision);
+			return true;
         }
         else
         {
@@ -664,8 +667,8 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
             images.StandBack.sprite = sprite;
             UpdateCursor(state.NowIndex);
 
-            // todo: SE [選択した]
-            return true;
+			//AudioManager.Instance.PlaySe(SoundEffect.decision);
+			return true;
         }
     }
 

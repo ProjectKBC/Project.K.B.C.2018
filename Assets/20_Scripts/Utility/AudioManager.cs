@@ -3,12 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum SoundEffect
 {
+	cansel,
+	countDown1,
+	countDown2,
+	cursor,
+	decision,
+	error,
+	explosion,
+	explosion2,
+	pause,
+	shotShort,
+	shotVeryShot,
+	start,
 }
 
 public enum BackGroundMusic
 {
+	charaselectBGM,
+	Dance_With_Powder,
+	Sagittarius_2,
+	slow_charaselectBGM,
+	titleBGM,
 }
 
 public class AudioManager : SingletonMonoBehaviour<AudioManager>
