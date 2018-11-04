@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+/* Author: close96
+*/
+
+using UnityEngine;
 using RiaActorSystem;
 
 namespace Game.Player
@@ -112,7 +115,7 @@ namespace Game.Player
 			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.SpecialShot, this.PlayerNumber) &&
 				param.existsGranade)
 			{
-				Debug.Log(this.PlayerNumber + " : specialShot");
+				//Debug.Log(this.PlayerNumber + " : specialShot");
 
 				param.specialBullet.GetComponent<Animator>().enabled = true;
 			}
@@ -122,6 +125,9 @@ namespace Game.Player
 			{
 				CreateSpecialBullet();
 				param.existsGranade = true;
+
+				// SE: SpecialShot
+				AudioManager.Instance.PlaySe(SoundEffectEnum.shotVeryShot);
 			}
 
 			if(!param.specialBullet)

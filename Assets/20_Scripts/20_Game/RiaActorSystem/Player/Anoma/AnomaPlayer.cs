@@ -1,3 +1,6 @@
+/* Author: close96
+*/
+
 using UnityEngine;
 using RiaActorSystem;
 
@@ -92,6 +95,9 @@ namespace Game.Player
 					this.BulletManger.CreateAnomaBullet(
 						PlayerBulletActorManager.BulletType.Normal,
 						this.Trans.position);
+
+					// SE: NormalShot
+					AudioManager.Instance.PlaySe(SoundEffectEnum.shotVeryShot);
 				}
 			}
 		}
@@ -119,6 +125,9 @@ namespace Game.Player
 					Debug.Log(this.PlayerNumber + " : specialShot");
 
 					CreateSpecialBullet();
+
+					// SE: SpecialShot
+					AudioManager.Instance.PlaySe(SoundEffectEnum.shotVeryShot);
 				}
 				param.chargeTimeCount = 0;
 			}

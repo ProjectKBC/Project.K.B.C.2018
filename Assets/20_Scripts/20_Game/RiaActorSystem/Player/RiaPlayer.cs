@@ -149,6 +149,8 @@ namespace Game.Player
 			this.invincibleElapsedTime = 0;
 			this.invincibleBlinkingWaitTime = 0;
 			this.sprCore = this.Trans.GetChild(0).GetComponent<SpriteRenderer>();
+			this.SpriteAlpha = 1;
+			this.CoreSpriteAlpha = 1;
 
 			/// フレームレートとフレーム時間の算出 by flanny
 			var frameRate = (float)Application.targetFrameRate;
@@ -332,7 +334,10 @@ namespace Game.Player
 		protected virtual void Dead()
 		{
 			// todo: 撃破FXの生成
-			// todo: 撃破SE
+
+			// SE:撃破
+			AudioManager.Instance.PlaySe(SoundEffectEnum.explosion);
+			
 			// todo: 相手の勝利宣言
 			// this.Actor.Sleep();
 			GameManager.Instance.FinishBattle(this.RivalPlayerNumber);

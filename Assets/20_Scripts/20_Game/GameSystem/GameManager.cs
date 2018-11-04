@@ -39,6 +39,8 @@ namespace Game
 	    private ResultAction resultAct = new ResultAction();
         private FinalizeAction finalAct = new FinalizeAction();
 
+		public float PlayElapsedTime { get; set; }
+
 	    public PlayerNumber Winner { get; private set; }
 	    private bool isFinishedBattle = false;
 
@@ -286,6 +288,9 @@ namespace Game
 		    this.ChageState(State.Result);
 	    }
 
+		/// <summary>
+		/// 対戦状態をリセットする
+		/// </summary>
 	    public void ResetBattle()
 	    {
 		    this.isFinishedBattle = false;

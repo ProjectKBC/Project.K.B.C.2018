@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+/* Author: close96
+*/
+
+using UnityEngine;
 using RiaActorSystem;
 
 namespace Game.Player
@@ -92,6 +95,9 @@ namespace Game.Player
 					this.BulletManger.CreateKaitoBullet(
 						PlayerBulletActorManager.BulletType.Normal,
 						this.Trans.position, this.Trans.rotation);
+
+					// SE: NormalShot
+					AudioManager.Instance.PlaySe(SoundEffectEnum.shotVeryShot);
 				}
 			}
 		}

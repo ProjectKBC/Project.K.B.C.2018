@@ -28,7 +28,7 @@ namespace Game.Enemy
 
 		protected override void OnInitialize()
 		{
-			Debug.Log("create enemy : " + this.playerNumber);
+			//Debug.Log("create enemy : " + this.playerNumber);
 
 //			this.elapsedTime = 0;
 //			this.spownTime = 0;

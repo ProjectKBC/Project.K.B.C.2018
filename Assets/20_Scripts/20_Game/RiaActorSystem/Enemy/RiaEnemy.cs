@@ -233,7 +233,10 @@ namespace Game.Enemy
 		protected void Dead()
 		{
 			// todo: 撃破FXの生成
-			// todo: 撃破SE
+
+			// SE: 撃破
+			AudioManager.Instance.PlaySe(SoundEffectEnum.explosion2);
+
 			this.SendScore();
 			this.Actor.Sleep();
 		}

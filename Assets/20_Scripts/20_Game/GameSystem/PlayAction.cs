@@ -28,8 +28,8 @@ namespace Game
 
         public override void Start()
         {
-            Debug.Log("PlayAction_Start");
             this.gm = GameManager.Instance;
+			this.gm.PlayElapsedTime = 0;
 
 			this.pl1SM = this.gm.PL1Managers.stageManager;
 			this.pl2SM = this.gm.PL2Managers.stageManager;
@@ -42,12 +42,14 @@ namespace Game
 			this.pl1EBM = this.gm.PL1Managers.enemyBulletManager;
 			this.pl2EBM = this.gm.PL2Managers.enemyBulletManager;
 
-			AudioManager.Instance.PlayBgmWithFadeIn(this.gm.GetStageBGM(), 0.5f);
+			// BGM: StageBGM
+			AudioManager.Instance.PlayBgm(this.gm.GetStageBGM());
 		}
 
 		public override void Update()
         {
 			// Debug.Log("PlayAction_Update");
+			this.gm.PlayElapsedTime += Time.deltaTime;
 
 			// Todo: Stageの更新
 			if (true /* isBoss */)
@@ -65,6 +67,7 @@ namespace Game
 			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.Pause, PlayerNumber.player1) ||
 			    RiaInput.Instance.GetPushDown(RiaInput.KeyType.Pause, PlayerNumber.player2))
 			{
+				// SE: Pause画面音
 				AudioManager.Instance.PlaySe(SoundEffectEnum.pause);
 				this.gm.ChageState(GameManager.State.Pause);
 			}

@@ -7,7 +7,7 @@ namespace Game
 		private GameManager gm;
 		private float elapsedTime;
 
-		private bool[] trg = new bool[5];
+		private bool[] countDownFlg = new bool[5];
 
 		public ReadyAction()
 		{
@@ -15,24 +15,19 @@ namespace Game
 
 		public override void Start()
 		{
-			Debug.Log("ReadyAction_Start");
 			this.gm = GameManager.Instance;
 
 			this.gm.UIManager.CountDownStart();
-
-			this.gm.ResetBattle();
 			
-			for (var i = 0; i < trg.Length; ++i) { this.trg[i] = false; }
+			// カウントダウン用のフラグを初期化
+			for (var i = 0; i < countDownFlg.Length; ++i) { this.countDownFlg[i] = false; }
 
 			this.elapsedTime = 0;
 		}
 
 		public override void Update()
 		{
-			//Debug.Log("ReadyAction_Update");
 			this.elapsedTime += Time.deltaTime;
-
-			// todo: Playerのループ(待機アニメーションかな)
 
 			// Stageのループ(だぶん待機状態)
 			this.gm.PL1Managers.stageManager.ReadyLoop();
@@ -43,39 +38,50 @@ namespace Game
 			{
 				this.gm.ChageState(GameManager.State.Play);
 			}
-			else if (4 < this.elapsedTime && !this.trg[3])
+			else if (4 < this.elapsedTime && !this.countDownFlg[3])
 			{
 				// start!!
-				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown2);
+
 				this.gm.UIManager.CountDownUpdate("Start!!");
-				this.trg[3] = true;
+				this.countDownFlg[3] = true;
+
+				// SE:
+				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown2);
 			}
-			else if (3 < this.elapsedTime && !this.trg[2])
+			else if (3 < this.elapsedTime && !this.countDownFlg[2])
 			{
 				// 1
-				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown1);
+
 				this.gm.UIManager.CountDownUpdate("1");
-				this.trg[2] = true;
+				this.countDownFlg[2] = true;
+
+				// SE:
+				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown1);
 			}
-			else if (2 < this.elapsedTime && !this.trg[1])
+			else if (2 < this.elapsedTime && !this.countDownFlg[1])
 			{
 				// 2
-				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown1);
+
 				this.gm.UIManager.CountDownUpdate("2");
-				this.trg[1] = true;
+				this.countDownFlg[1] = true;
+
+				// SE:
+				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown1);
 			}
-			else if (1 < this.elapsedTime && !this.trg[0])
+			else if (1 < this.elapsedTime && !this.countDownFlg[0])
 			{
 				// 3
-				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown1);
+
 				this.gm.UIManager.CountDownUpdate("3");
-				this.trg[0] = true;
+				this.countDownFlg[0] = true;
+
+				// SE:
+				AudioManager.Instance.PlaySe(SoundEffectEnum.countDown1);
 			}
 		}
 	
 		public override void End()
 		{
-			//Debug.Log("ReadyAction_End");
 			this.gm.UIManager.CountDownEnd();
 		}
 	}

@@ -14,7 +14,7 @@ MonoBehaviour:
   maxHitPoint: 0
   moveSpeedBase: 0
   hitATK: 0
-  score: 0
+  score: 10
   sprite: {fileID: 0}
   ordinaryYForwardBorder: 0
   shotParam:

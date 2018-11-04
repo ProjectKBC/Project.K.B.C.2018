@@ -1,3 +1,6 @@
+/* Author: close96
+*/
+
 using UnityEngine;
 using RiaActorSystem;
 using System.Collections.Generic;
@@ -136,6 +139,9 @@ namespace Game.Player
 					this.BulletManger.CreateAirosBullet(
 						PlayerBulletActorManager.BulletType.Normal,
 						this.Trans.position);
+
+					// SE: NormalShot
+					AudioManager.Instance.PlaySe(SoundEffectEnum.shotVeryShot);
 				}
 			}
 		}
@@ -191,6 +197,8 @@ namespace Game.Player
 					this.BulletManger.CreateAirosBullet(
 						PlayerBulletActorManager.BulletType.Special,
 						param.targetEnemyTranses[i].position);
+
+					// todo: SE
 				}
 				param.shotTime = this.playElapsedTime;
 			}
