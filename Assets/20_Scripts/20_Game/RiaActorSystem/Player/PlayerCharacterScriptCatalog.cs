@@ -15,8 +15,17 @@ namespace Game.Player
 		[SerializeField]
 		public AnomaPlayerScript anomaScript = null;
 		[SerializeField]
-		public KaitoPlayerScript kaitoScript = null;
+		public HeldPlayerScript heldScript = null;
+		// 緊急リリース用の偽物
+		[SerializeField]
+		public FakeKaitoPlayerScript kaitoScript = null;
+		// [SerializeField]
+		// public KaitoPlayerScript kaitoScript = null;
 		[SerializeField]
 		public KaoruPlayerScript kaoruScript = null;
+		[SerializeField]
+		public TwistPlayerScript twistScript = null;
+		[SerializeField]
+		public VeronicaPlayerScript veronicaScript = null;
 	}
 }

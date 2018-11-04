@@ -8,8 +8,13 @@ namespace Game.Bullet.Player
 	public class AirosSpecialBulletScript : RiaPlayerBulletScript
 	{
 		[SerializeField]
-		private RiaSpriteAnimation animation;
+		private Sprite sprite;
 
-		public RiaSpriteAnimation Animation { get { return this.animation; } }
+		public Sprite Sprite { get { return this.sprite; } }
+		
+//		[SerializeField]
+//		private RiaSpriteAnimation animation;
+//
+//		public RiaSpriteAnimation Animation { get { return this.animation; } }
 	}
 }

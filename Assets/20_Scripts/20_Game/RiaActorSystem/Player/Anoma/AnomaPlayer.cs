@@ -19,7 +19,8 @@ namespace Game.Player
 		// 特殊ショット
 		public class SpecialShotParam
 		{
-			public float chargeTimeCount = 0;
+			public float shotTime = 0;
+			// public float chargeTimeCount = 0;
 		}
 
 		// スキル
@@ -112,25 +113,37 @@ namespace Game.Player
 			var script = this.Script.ssParam;
 
 			// キー入力
-			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetKey(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
-				param.chargeTimeCount += Time.deltaTime;
-			}
+				// 経過時間の更新
+				var shotElapsedTime = this.playElapsedTime - param.shotTime;
 
-			// キー入力
-			if (RiaInput.Instance.GetPushUp(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
-			{
-				if (script.shotChargeTime <= param.chargeTimeCount)
+				if (script.shotInterval <= shotElapsedTime)
 				{
-					Debug.Log(this.PlayerNumber + " : specialShot");
-
-					CreateSpecialBullet();
-
-					// SE: SpecialShot
-					AudioManager.Instance.PlaySe(SoundEffectEnum.shotVeryShot);
+					param.shotTime = this.playElapsedTime;
+					this.BulletManger.CreateGeneralBullet(
+						PlayerBulletActorManager.BulletType.Special,
+						this.Trans.position, this.Trans.rotation);
 				}
-				param.chargeTimeCount = 0;
 			}
+
+//			// キー入力
+//			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+//			{
+//				param.chargeTimeCount += Time.deltaTime;
+//			}
+//
+//			// キー入力
+//			if (RiaInput.Instance.GetPushUp(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+//			{
+//				if (script.shotChargeTime <= param.chargeTimeCount)
+//				{
+//					Debug.Log(this.PlayerNumber + " : specialShot");
+//
+//					CreateSpecialBullet();
+//				}
+//				param.chargeTimeCount = 0;
+//			}
 		}
 
 		/// <summary>
@@ -142,15 +155,15 @@ namespace Game.Player
 			
 		}
 
-		private void CreateSpecialBullet()
-		{
-			var specialBullet = GameObject.Instantiate(Script.ssParam.bulletPrefab);
-
-			var playerPos = this.Trans.position;
-			var shotPos = new Vector3(playerPos.x, playerPos.y += 20, playerPos.z);
-			//pos.z = 100;
-			specialBullet.transform.position = shotPos;
-			Debug.Log(specialBullet.transform.position);
-		}
+//		private void CreateSpecialBullet()
+//		{
+//			var specialBullet = GameObject.Instantiate(Script.ssParam.bulletPrefab);
+//
+//			var playerPos = this.Trans.position;
+//			var shotPos = new Vector3(playerPos.x, playerPos.y += 20, playerPos.z);
+//			//pos.z = 100;
+//			specialBullet.transform.position = shotPos;
+//			Debug.Log(specialBullet.transform.position);
+//		}
 	}
 }

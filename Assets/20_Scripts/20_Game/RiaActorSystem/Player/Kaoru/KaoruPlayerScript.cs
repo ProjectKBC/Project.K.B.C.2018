@@ -11,14 +11,14 @@ namespace Game.Player
 		[System.Serializable]
 		public class NormalShotParam
 		{
-			public float shotInterval = 0.07f;
+			public float shotInterval = 0.15f;
+			// public float shotInterval = 0.07f;
 		}
 
 		[System.Serializable]
 		public class SpecialShotParam
 		{
-			public GameObject bulletPrefab = null;
-			public float shotCoolTime = 5;
+			public float shotInterval = 0.5f;
 		}
 
 		[System.Serializable]
