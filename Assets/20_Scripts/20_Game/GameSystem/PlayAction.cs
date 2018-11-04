@@ -29,7 +29,7 @@ namespace Game
         public override void Start()
         {
             this.gm = GameManager.Instance;
-			this.gm.PlayElapsedTime = 0;
+			this.gm.playElapsedTime = 0;
 
 			this.pl1SM = this.gm.PL1Managers.stageManager;
 			this.pl2SM = this.gm.PL2Managers.stageManager;
@@ -42,14 +42,17 @@ namespace Game
 			this.pl1EBM = this.gm.PL1Managers.enemyBulletManager;
 			this.pl2EBM = this.gm.PL2Managers.enemyBulletManager;
 
-			// BGM: StageBGM
-			AudioManager.Instance.PlayBgm(this.gm.GetStageBGM());
+			if (!this.gm.IsFromPause)
+			{
+				// BGM: StageBGM
+				AudioManager.Instance.PlayBgm(this.gm.GetStageBGM());
+			}
 		}
 
 		public override void Update()
         {
 			// Debug.Log("PlayAction_Update");
-			this.gm.PlayElapsedTime += Time.deltaTime;
+			this.gm.playElapsedTime += Time.deltaTime;
 
 			// Todo: Stageの更新
 			if (true /* isBoss */)
@@ -129,6 +132,7 @@ namespace Game
 			// UI更新
 			this.gm.UIManager.HPGageUpdate();
 			this.gm.UIManager.ScoreUpdate();
+			this.gm.UIManager.PlayTimeUpdate();
 
 			// 死亡処理
 			if (this.pl1PM) { this.pl1PM.DeadCheck(); }

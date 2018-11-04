@@ -16,6 +16,9 @@ namespace Game.UI
 		[SerializeField]
 		private ScoreController scorePlayer2 = null;
 
+		[SerializeField, Header("Play Time")]
+		private PlayTimeController playTime = null;
+
 		[SerializeField, Header("Pause Window")]
 		private PauseWindow pauseWindow = null;
 		
@@ -71,6 +74,13 @@ namespace Game.UI
 		{
 			this.scorePlayer1.Run();
 			this.scorePlayer2.Run();
+		}
+
+		// PlayTime系
+
+		public void PlayTimeUpdate()
+		{
+			this.playTime.Update();
 		}
 
 		// Pause系

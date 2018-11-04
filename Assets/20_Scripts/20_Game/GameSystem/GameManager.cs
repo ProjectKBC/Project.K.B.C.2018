@@ -39,7 +39,14 @@ namespace Game
 	    private ResultAction resultAct = new ResultAction();
         private FinalizeAction finalAct = new FinalizeAction();
 
-		public float PlayElapsedTime { get; set; }
+		// 制限時間系
+		[SerializeField]
+		private float PlayTime = 120;
+		public float PlayElapsedTime { get { return this.PlayTime - this.playElapsedTime; } }
+		public float playElapsedTime { get; set; }
+
+		// PauseでのBGMリスタート回避
+		public bool IsFromPause = false;
 
 	    public PlayerNumber Winner { get; private set; }
 	    private bool isFinishedBattle = false;

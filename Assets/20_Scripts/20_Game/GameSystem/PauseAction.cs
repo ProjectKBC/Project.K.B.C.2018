@@ -14,6 +14,7 @@ namespace Game
         {
             this.gm = GameManager.Instance;
 			this.gm.UIManager.PauseStart();
+			this.gm.IsFromPause = true;
         }
 
         public override void Update()
