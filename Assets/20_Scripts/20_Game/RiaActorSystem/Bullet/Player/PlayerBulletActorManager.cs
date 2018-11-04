@@ -204,8 +204,8 @@ namespace Game.Bullet.Player
 			switch (_type)
 			{
 				case BulletType.Normal:
-					this.factory.CreateAirosNormalBullet(this.playerNumber, GetFreeActor(), "right", _pos);
-					this.factory.CreateAirosNormalBullet(this.playerNumber, GetFreeActor(), "left", _pos);
+					this.factory.CreateGeneralNormalBullet(this.playerNumber, GetFreeActor(), "right", _pos);
+					this.factory.CreateGeneralNormalBullet(this.playerNumber, GetFreeActor(), "left", _pos);
 					break;
 
 				case BulletType.Special:

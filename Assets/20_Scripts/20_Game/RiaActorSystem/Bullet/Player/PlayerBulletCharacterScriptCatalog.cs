@@ -128,13 +128,20 @@ namespace Game.Bullet.Player
 			public RiaPlayerBulletScript veronicaSpecialBulletCenter;
 			public RiaPlayerBulletScript veronicaSpecialBulletLeft;
 		}
+		
+		[System.Serializable]
+		public class GeneralNormalBulletSet
+		{
+			public RiaPlayerBulletScript generalNormalBulletRight;
+			public RiaPlayerBulletScript generalNormalBulletLeft;
+		}
 
 		[System.Serializable]
 		public class GeneralSpecialBulletSet
 		{
 			public RiaPlayerBulletScript generalSpecialBulletRight;
 			public RiaPlayerBulletScript generalSpecialBulletCenter;
-			public RiaPlayerBulletScript generelSpecialBulletLeft;
+			public RiaPlayerBulletScript generalSpecialBulletLeft;
 		}
 		
 
@@ -212,6 +219,11 @@ namespace Game.Bullet.Player
 		private VeronicaSpecialBulletSet veronicaSpecialBullet;
 
 		public VeronicaSpecialBulletSet VeronicaSpecialBullet { get { return this.veronicaSpecialBullet; } }
+		
+		[SerializeField]
+		private GeneralNormalBulletSet generalNormalBullet;
+
+		public GeneralNormalBulletSet GeneralNormalBullet { get { return this.generalNormalBullet; } }
 		
 		[SerializeField]
 		private GeneralSpecialBulletSet generalSpecialBullet;

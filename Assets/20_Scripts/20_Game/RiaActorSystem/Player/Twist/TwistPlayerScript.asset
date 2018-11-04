@@ -18,8 +18,10 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 1aacaa7e2d9fa924f8f24b3b7d905e71, type: 3}
   circleColliderRadius: 0.45
   animations:
-    waitAnimation: {fileID: 0}
-    rightGoAnimation: {fileID: 0}
-    leftGoAnimation: {fileID: 0}
+    waitAnimation: {fileID: 11400000, guid: 1d5ffebb2fe92c446b4586ca1c47cc85, type: 2}
+    rightGoAnimation: {fileID: 11400000, guid: eaa7d4e00d040b24083b1979a7405521, type: 2}
+    leftGoAnimation: {fileID: 11400000, guid: a6699c6667e8630478a14e3e4fc5b5cc, type: 2}
   nsParam:
     shotInterval: 0.15
+  ssParam:
+    shotInterval: 0.5

@@ -17,85 +17,72 @@ MonoBehaviour:
     airosNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
       type: 2}
   airosSpecialBullet:
-    airosSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
-      type: 2}
-    airosSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
-      type: 2}
-    airosSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
-      type: 2}
+    airosSpecialBulletRight: {fileID: 0}
+    airosSpecialBulletCenter: {fileID: 0}
+    airosSpecialBulletLeft: {fileID: 0}
   anomaNormalBullet:
     anomaNormalBulletRight: {fileID: 11400000, guid: 06f86647fcde542d6900d58f02599139,
       type: 2}
     anomaNormalBulletLeft: {fileID: 11400000, guid: 9530c02b42739402bbf292de76cc619e,
       type: 2}
   anomaSpecialBullet:
-    anomaSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
-      type: 2}
-    anomaSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
-      type: 2}
-    anomaSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
-      type: 2}
+    anomaSpecialBulletRight: {fileID: 0}
+    anomaSpecialBulletCenter: {fileID: 0}
+    anomaSpecialBulletLeft: {fileID: 0}
   heldNormalBullet:
-    heldNormalBulletRight: {fileID: 11400000, guid: 566c5aa032f3242dc88b12fc66d0b015,
+    heldNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
       type: 2}
-    heldNormalBulletLeft: {fileID: 11400000, guid: 74ed1d1e1d5b34ae1b702c0465bac3e2,
+    heldNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
       type: 2}
   heldSpecialBullet:
-    heldSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
-      type: 2}
-    heldSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
-      type: 2}
-    heldSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
-      type: 2}
+    heldSpecialBulletRight: {fileID: 0}
+    heldSpecialBulletCenter: {fileID: 0}
+    heldSpecialBulletLeft: {fileID: 0}
   kaitoNormalBullet:
     airosNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
       type: 2}
     airosNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
       type: 2}
   kaitoSpecialBullet:
-    airosSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
-      type: 2}
-    airosSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
-      type: 2}
-    airosSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
-      type: 2}
+    airosSpecialBulletRight: {fileID: 0}
+    airosSpecialBulletCenter: {fileID: 0}
+    airosSpecialBulletLeft: {fileID: 0}
   kaoruNormalBullet:
     kaoruNormalBulletRight: {fileID: 11400000, guid: 06a8313217d914d3584e187e510b686e,
       type: 2}
     kaoruNormalBulletLeft: {fileID: 11400000, guid: ca3f945c043954692a1bc39ae791d1b9,
       type: 2}
   kaoruSpecialBullet:
-    kaoruSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
-      type: 2}
-    kaoruSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
-      type: 2}
-    kaoruSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
-      type: 2}
+    kaoruSpecialBulletRight: {fileID: 0}
+    kaoruSpecialBulletCenter: {fileID: 0}
+    kaoruSpecialBulletLeft: {fileID: 0}
   twistNormalBullet:
-    twistNormalBulletRight: {fileID: 11400000, guid: ae03b80fc66474309a84ac24601daa3e,
+    twistNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
       type: 2}
-    twistNormalBulletLeft: {fileID: 11400000, guid: c878396f594ee4464a1122c76f04f661,
+    twistNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
       type: 2}
   twistSpecialBullet:
-    twistSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
-      type: 2}
-    twistSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
-      type: 2}
-    twistSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
-      type: 2}
+    twistSpecialBulletRight: {fileID: 0}
+    twistSpecialBulletCenter: {fileID: 0}
+    twistSpecialBulletLeft: {fileID: 0}
   veronicaNormalBullet:
-    veronicaNormalBulletRight: {fileID: 11400000, guid: 920b28a5404084c958198f9b81e77cca,
+    veronicaNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
       type: 2}
-    veronicaNormalBulletLeft: {fileID: 11400000, guid: 3e0d02f960aca4cdd9e291d34dc17b35,
+    veronicaNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
       type: 2}
   veronicaSpecialBullet:
-    veronicaSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
+    veronicaSpecialBulletRight: {fileID: 0}
+    veronicaSpecialBulletCenter: {fileID: 0}
+    veronicaSpecialBulletLeft: {fileID: 0}
+  generalNormalBullet:
+    generalNormalBulletRight: {fileID: 11400000, guid: d4dc2875f73e44274a80e70792254034,
       type: 2}
-    veronicaSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
-      type: 2}
-    veronicaSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
+    generalNormalBulletLeft: {fileID: 11400000, guid: d8613cd5af77a49e5ae8d5a853f46839,
       type: 2}
   generalSpecialBullet:
-    generalSpecialBulletRight: {fileID: 0}
-    generalSpecialBulletCenter: {fileID: 0}
-    generelSpecialBulletLeft: {fileID: 0}
+    generalSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
+      type: 2}
+    generalSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
+      type: 2}
+    generalSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
+      type: 2}

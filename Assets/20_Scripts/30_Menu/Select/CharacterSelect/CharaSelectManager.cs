@@ -598,7 +598,7 @@ public sealed class CharaSelectManager : SingletonMonoBehaviour<CharaSelectManag
 		   (this.nextToStageSelectIntervalTime <= this.elapsedTime - this.allSelectedTime))
 		{
 			var chara1 = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
-			var chara2 = this.charaSelectorSets[this.pl1States.NowIndex].PlayerCharacter;
+			var chara2 = this.charaSelectorSets[this.pl2States.NowIndex].PlayerCharacter;
 
 			SelectUIManager.Instance.TransitionToStageSelect(chara1, chara2);
 

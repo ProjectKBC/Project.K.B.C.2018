@@ -155,7 +155,7 @@ namespace Game.Player
 			var script = this.Script.ssParam;
 
 			// キー入力
-			if (RiaInput.Instance.GetKey(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
 				// 経過時間の更新
 				var shotElapsedTime = this.playElapsedTime - param.shotTime;

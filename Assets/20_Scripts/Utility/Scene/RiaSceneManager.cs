@@ -19,4 +19,12 @@ public class RiaSceneManager : SingletonMonoBehaviour<RiaSceneManager>
             yield return null;
         }
     }
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			Application.Quit();
+		}
+	}
 }

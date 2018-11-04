@@ -163,6 +163,23 @@ namespace Game.Bullet.Player
 			_actor.WakeUp(character, script, pos, _rotation, _scale);
 		}
 		
+		public void CreateGeneralNormalBullet(
+			PlayerNumber _playerNumber,
+			RiaActor _actor,
+			string _type,
+			Vector3 _position,
+			Quaternion? _rotation = null,
+			Vector3? _scale = null)
+		{
+			var script = (_type == "right") ?
+				this.catalog.GeneralNormalBullet.generalNormalBulletRight as RiaPlayerBulletScript:
+				this.catalog.GeneralNormalBullet.generalNormalBulletLeft as RiaPlayerBulletScript;
+			var character = new GeneralNormalBullet(_actor.gameObject, script, _playerNumber);
+			var pos = _position;
+			pos.x += (_type == "right") ? 1.5f : -1.5f;
+			_actor.WakeUp(character, script, pos, _rotation, _scale);
+		}
+		
 		public void CreateGeneralSpecialBullet(
 			PlayerNumber _playerNumber,
 			RiaActor _actor,
@@ -175,7 +192,7 @@ namespace Game.Bullet.Player
 				this.catalog.GeneralSpecialBullet.generalSpecialBulletCenter as RiaPlayerBulletScript :
 					(_type == "right") ?
 			        this.catalog.GeneralSpecialBullet.generalSpecialBulletRight as RiaPlayerBulletScript :
-			        this.catalog.GeneralSpecialBullet.generelSpecialBulletLeft as RiaPlayerBulletScript;
+			        this.catalog.GeneralSpecialBullet.generalSpecialBulletLeft as RiaPlayerBulletScript;
 			var character = new GeneralSpecialBullet(_actor.gameObject, script, _playerNumber);
 			var pos = _position;
 			var rot = _rotation;

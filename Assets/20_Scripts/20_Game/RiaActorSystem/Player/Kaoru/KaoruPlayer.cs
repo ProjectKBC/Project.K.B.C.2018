@@ -89,7 +89,7 @@ namespace Game.Player
 			var script = this.Script.nsParam;
 
 			// キー入力
-			if (RiaInput.Instance.GetKey(RiaInput.KeyType.NormalShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetPush(RiaInput.KeyType.NormalShot, this.PlayerNumber))
 			{
 				// 経過時間の更新
 				var shotElapsedTime = this.playElapsedTime - param.shotTime;
@@ -97,9 +97,10 @@ namespace Game.Player
 				if (script.shotInterval <= shotElapsedTime)
 				{
 					param.shotTime = this.playElapsedTime;
-					this.BulletManger.CreateKaoruBullet(
+					this.BulletManger.CreateGeneralBullet(
 						PlayerBulletActorManager.BulletType.Normal,
-						this.Trans.position);
+						this.Trans.position, this.Trans.rotation);
+
 				}
 			}
 		}
@@ -114,7 +115,7 @@ namespace Game.Player
 			var script = this.Script.ssParam;
 
 			// キー入力
-			if (RiaInput.Instance.GetKey(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
+			if (RiaInput.Instance.GetPush(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
 				// 経過時間の更新
 				var shotElapsedTime = this.playElapsedTime - param.shotTime;
