@@ -54,6 +54,13 @@ namespace Game
 			// Debug.Log("PlayAction_Update");
 			this.gm.playElapsedTime += Time.deltaTime;
 
+			if (this.gm.PlayElapsedTime <= 0)
+			{
+				var win = (this.gm.CommonData.player2Score <= this.gm.CommonData.player1Score) ?
+					PlayerNumber.player1 : PlayerNumber.player2;
+				this.gm.FinishBattle(win);
+			}
+
 			// Todo: Stageの更新
 			if (true /* isBoss */)
 			{

@@ -46,7 +46,7 @@ namespace Game
 		public float playElapsedTime { get; set; }
 
 		// PauseでのBGMリスタート回避
-		public bool IsFromPause = false;
+		public bool IsFromPause { get; set; }
 
 	    public PlayerNumber Winner { get; private set; }
 	    private bool isFinishedBattle = false;
