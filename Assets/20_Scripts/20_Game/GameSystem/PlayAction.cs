@@ -21,7 +21,7 @@ namespace Game
 		private PlayerBulletActorManager pl2PBM;
 		private EnemyBulletActorManager pl1EBM;
 		private EnemyBulletActorManager pl2EBM;
-
+	    
 		public PlayAction()
         {
         }

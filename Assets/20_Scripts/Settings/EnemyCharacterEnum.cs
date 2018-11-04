@@ -18,6 +18,8 @@ public enum EnemyCharacterEnum
 	UAF1OutToInEnemy,
 	[Description("UAF1InToOutEnemy")]
 	UAF1InToOutEnemy,
+	[Description("Boss")]
+	Boss,
 	[Description("length")]
 	length_empty,
 }

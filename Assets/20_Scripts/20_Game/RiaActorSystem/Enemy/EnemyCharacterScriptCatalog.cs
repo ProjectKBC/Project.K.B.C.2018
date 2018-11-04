@@ -27,6 +27,9 @@ namespace Game.Enemy
 		
 		[SerializeField]
 		public RiaEnemyScript UFA1InToOutEnemy = null;
+		
+		[SerializeField]
+		public RiaEnemyScript Boss = null;
 
 	}
 }

@@ -52,6 +52,11 @@ namespace Game.Enemy
 					script = this.catalog.UFA1InToOutEnemy;
 					character = new UFA1InToOut(_actor.gameObject, script, _playerNumber);
 					break;
+				
+				case EnemyCharacterEnum.Boss:
+					script = this.catalog.Boss;
+					character = new BossEnemy(_actor.gameObject, script, _playerNumber);
+					break;
 
 				default:
 					Debug.LogError("存在しないキャラクターが選択されています");

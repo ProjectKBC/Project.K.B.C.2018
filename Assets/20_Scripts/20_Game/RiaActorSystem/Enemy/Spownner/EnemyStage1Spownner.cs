@@ -229,15 +229,28 @@ public class EnemyStage1Spownner : EnemySpownner
 						}
 						
 						break;
-
-					case "Bee":
-
-						break;
+					
 				}
 
 				this.enemyCount += 1;
 				this.appearTime = 0;
 			}
 		}
+		/*
+
+		if (this.enemyCount == this.enemyPatterns.Length)
+		{
+			var x = 0.0f;
+			x = this.spownPos.CenterTop.x;
+
+			this.factory.Create(
+				EnemyCharacterEnum.Boss,
+				this.playerNumber,
+				this.manager.GetFreeActorForSpowner(),
+				new Vector3(x, 70.0f, 0.0f)
+			);
+		}
+		*/
+		
 	}
 }
