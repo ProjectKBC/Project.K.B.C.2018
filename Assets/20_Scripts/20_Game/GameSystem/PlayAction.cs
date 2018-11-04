@@ -28,22 +28,23 @@ namespace Game
 
         public override void Start()
         {
-            this.gm = GameManager.Instance;
-			this.gm.playElapsedTime = 0;
-
-			this.pl1SM = this.gm.PL1Managers.stageManager;
-			this.pl2SM = this.gm.PL2Managers.stageManager;
-			this.pl1PM = this.gm.PL1Managers.playerManager;
-			this.pl2PM = this.gm.PL2Managers.playerManager;
-			this.pl1EM = this.gm.PL1Managers.enemyManager;
-			this.pl2EM = this.gm.PL2Managers.enemyManager;
-			this.pl1PBM = this.gm.PL1Managers.playerBulletManager;
-			this.pl2PBM = this.gm.PL2Managers.playerBulletManager;
-			this.pl1EBM = this.gm.PL1Managers.enemyBulletManager;
-			this.pl2EBM = this.gm.PL2Managers.enemyBulletManager;
-
 			if (!this.gm.IsFromPause)
 			{
+				this.gm = GameManager.Instance;
+
+				this.gm.playElapsedTime = 0;
+
+				this.pl1SM = this.gm.PL1Managers.stageManager;
+				this.pl2SM = this.gm.PL2Managers.stageManager;
+				this.pl1PM = this.gm.PL1Managers.playerManager;
+				this.pl2PM = this.gm.PL2Managers.playerManager;
+				this.pl1EM = this.gm.PL1Managers.enemyManager;
+				this.pl2EM = this.gm.PL2Managers.enemyManager;
+				this.pl1PBM = this.gm.PL1Managers.playerBulletManager;
+				this.pl2PBM = this.gm.PL2Managers.playerBulletManager;
+				this.pl1EBM = this.gm.PL1Managers.enemyBulletManager;
+				this.pl2EBM = this.gm.PL2Managers.enemyBulletManager;
+
 				// BGM: StageBGM
 				AudioManager.Instance.PlayBgm(this.gm.GetStageBGM());
 			}
