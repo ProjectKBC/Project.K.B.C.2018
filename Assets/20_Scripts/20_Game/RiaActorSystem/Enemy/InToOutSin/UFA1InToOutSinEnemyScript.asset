@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da29d29dc18ef42918441c076fac1018, type: 3}
   m_Name: UFA1InToOutSinEnemyScript
   m_EditorClassIdentifier: 
-  maxHitPoint: 0
-  moveSpeedBase: 0
-  hitATK: 0
-  score: 0
-  sprite: {fileID: 0}
+  maxHitPoint: 1
+  moveSpeedBase: 10
+  hitATK: 1
+  score: 10
+  sprite: {fileID: 21300000, guid: e9115d56c3d16764588f83e74a5bcd21, type: 3}
   shotParam:
-    shotInterval: 0
+    shotInterval: 2

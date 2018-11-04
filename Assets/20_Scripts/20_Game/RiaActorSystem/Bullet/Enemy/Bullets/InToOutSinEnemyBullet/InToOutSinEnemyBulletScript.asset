@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPointMax: 1
   atk: 1
-  moveSpeedBase: 1
+  moveSpeedBase: 0.3
   lifeTime: 60
   canCollision: 0
   colliderSize: {x: 1, y: 1}
-  animation: {fileID: 0}
+  animation: {fileID: 11400000, guid: 4363c27e8f102ad4cba6dee36f45b966, type: 2}

@@ -19,4 +19,4 @@ MonoBehaviour:
   ordinaryYForwardBorder: 35
   stayTime: 5
   shotParam:
-    shotInterval: 0
+    shotInterval: 2

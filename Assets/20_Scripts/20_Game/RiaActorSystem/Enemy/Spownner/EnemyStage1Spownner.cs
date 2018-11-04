@@ -16,8 +16,7 @@ public class EnemyStage1Spownner : EnemySpownner
 		OutToInSin,
 		InToOutSin,
 		OutToIn,
-		InToOut,
-		Bee
+		InToOut
 	}
 
 	public override void Spown()

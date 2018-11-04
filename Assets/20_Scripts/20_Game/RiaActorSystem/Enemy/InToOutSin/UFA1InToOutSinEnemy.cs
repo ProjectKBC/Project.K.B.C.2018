@@ -104,7 +104,6 @@ namespace Game.Enemy
 
 		public override void Move()
 		{
-			Debug.Log("げげげげ");
 			Vector3 pos = this.Trans.position;
 			var direction = (this.PlayerNumber == PlayerNumber.player1) ? -1 : 1;
 			pos.x += this.Script.MoveSpeedBase * Time.deltaTime * direction;
