@@ -17,22 +17,85 @@ MonoBehaviour:
     airosNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
       type: 2}
   airosSpecialBullet:
-    airosSpecialBullet: {fileID: 11400000, guid: 79034cfd882bd4ca59ac37f0a519711c,
+    airosSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
+      type: 2}
+    airosSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
+      type: 2}
+    airosSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
       type: 2}
   anomaNormalBullet:
-    anomaNormalBulletRight: {fileID: 11400000, guid: d53272dce8a96451ca6f2a25a1872618,
+    anomaNormalBulletRight: {fileID: 11400000, guid: 06f86647fcde542d6900d58f02599139,
       type: 2}
-    anomaNormalBulletLeft: {fileID: 11400000, guid: ea78d8b13c5874f09a69ba4d824918d8,
+    anomaNormalBulletLeft: {fileID: 11400000, guid: 9530c02b42739402bbf292de76cc619e,
+      type: 2}
+  anomaSpecialBullet:
+    anomaSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
+      type: 2}
+    anomaSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
+      type: 2}
+    anomaSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
+      type: 2}
+  heldNormalBullet:
+    heldNormalBulletRight: {fileID: 11400000, guid: 566c5aa032f3242dc88b12fc66d0b015,
+      type: 2}
+    heldNormalBulletLeft: {fileID: 11400000, guid: 74ed1d1e1d5b34ae1b702c0465bac3e2,
+      type: 2}
+  heldSpecialBullet:
+    heldSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
+      type: 2}
+    heldSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
+      type: 2}
+    heldSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
       type: 2}
   kaitoNormalBullet:
-    kaitoNormalBulletRight: {fileID: 11400000, guid: 30784d69669bd46bba545a3e46047217,
+    airosNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
       type: 2}
-    kaitoNormalBulletCenter: {fileID: 11400000, guid: fc7752632c5c54d4abdc8fb2404a02ad,
+    airosNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
       type: 2}
-    kaitoNormalBulletLeft: {fileID: 11400000, guid: 5bfd6eace5c2645b69cfde11e6c278dd,
+  kaitoSpecialBullet:
+    airosSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
+      type: 2}
+    airosSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
+      type: 2}
+    airosSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
       type: 2}
   kaoruNormalBullet:
     kaoruNormalBulletRight: {fileID: 11400000, guid: 06a8313217d914d3584e187e510b686e,
       type: 2}
     kaoruNormalBulletLeft: {fileID: 11400000, guid: ca3f945c043954692a1bc39ae791d1b9,
       type: 2}
+  kaoruSpecialBullet:
+    kaoruSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
+      type: 2}
+    kaoruSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
+      type: 2}
+    kaoruSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
+      type: 2}
+  twistNormalBullet:
+    twistNormalBulletRight: {fileID: 11400000, guid: ae03b80fc66474309a84ac24601daa3e,
+      type: 2}
+    twistNormalBulletLeft: {fileID: 11400000, guid: c878396f594ee4464a1122c76f04f661,
+      type: 2}
+  twistSpecialBullet:
+    twistSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
+      type: 2}
+    twistSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
+      type: 2}
+    twistSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
+      type: 2}
+  veronicaNormalBullet:
+    veronicaNormalBulletRight: {fileID: 11400000, guid: 920b28a5404084c958198f9b81e77cca,
+      type: 2}
+    veronicaNormalBulletLeft: {fileID: 11400000, guid: 3e0d02f960aca4cdd9e291d34dc17b35,
+      type: 2}
+  veronicaSpecialBullet:
+    veronicaSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
+      type: 2}
+    veronicaSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
+      type: 2}
+    veronicaSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
+      type: 2}
+  generalSpecialBullet:
+    generalSpecialBulletRight: {fileID: 0}
+    generalSpecialBulletCenter: {fileID: 0}
+    generelSpecialBulletLeft: {fileID: 0}

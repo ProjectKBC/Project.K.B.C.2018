@@ -16,8 +16,9 @@ namespace Game.Player
 		// 特殊ショット
 		public class SpecialShotParam
 		{
-			public GameObject specialBullet;
-			public bool existsGranade = false;
+			public float shotTime = 0;
+			// public GameObject specialBullet;
+			// public bool existsGranade = false;
 		}
 
 		// スキル
@@ -109,25 +110,40 @@ namespace Game.Player
 			var param = this.ssParam;
 			var script = this.Script.ssParam;
 
-			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.SpecialShot, this.PlayerNumber) &&
-				param.existsGranade)
+			// キー入力
+			if (RiaInput.Instance.GetKey(RiaInput.KeyType.SpecialShot, this.PlayerNumber))
 			{
-				Debug.Log(this.PlayerNumber + " : specialShot");
+				// 経過時間の更新
+				var shotElapsedTime = this.playElapsedTime - param.shotTime;
 
-				param.specialBullet.GetComponent<Animator>().enabled = true;
+				if (script.shotInterval <= shotElapsedTime)
+				{
+					param.shotTime = this.playElapsedTime;
+					this.BulletManger.CreateGeneralBullet(
+						PlayerBulletActorManager.BulletType.Special,
+						this.Trans.position, this.Trans.rotation);
+				}
 			}
-
-			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.SpecialShot, this.PlayerNumber) &&
-			    !param.existsGranade)
-			{
-				CreateSpecialBullet();
-				param.existsGranade = true;
-			}
-
-			if(!param.specialBullet)
-			{
-				param.existsGranade = false;
-			}
+			
+//			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.SpecialShot, this.PlayerNumber) &&
+//				param.existsGranade)
+//			{
+//				Debug.Log(this.PlayerNumber + " : specialShot");
+//
+//				param.specialBullet.GetComponent<Animator>().enabled = true;
+//			}
+//
+//			if (RiaInput.Instance.GetPushDown(RiaInput.KeyType.SpecialShot, this.PlayerNumber) &&
+//			    !param.existsGranade)
+//			{
+//				CreateSpecialBullet();
+//				param.existsGranade = true;
+//			}
+//
+//			if(!param.specialBullet)
+//			{
+//				param.existsGranade = false;
+//			}
 
 		}
 
@@ -140,15 +156,15 @@ namespace Game.Player
 
 		}
 
-		private void CreateSpecialBullet()
-		{
-			ssParam.specialBullet = GameObject.Instantiate(Script.ssParam.bulletPrefab);
-
-			var pos = this.Trans.position;
-			//pos.z = 100;
-			ssParam.specialBullet.transform.position = pos;
-			Debug.Log(ssParam.specialBullet.transform.position);
-		}
+//		private void CreateSpecialBullet()
+//		{
+//			ssParam.specialBullet = GameObject.Instantiate(Script.ssParam.bulletPrefab);
+//
+//			var pos = this.Trans.position;
+//			//pos.z = 100;
+//			ssParam.specialBullet.transform.position = pos;
+//			Debug.Log(ssParam.specialBullet.transform.position);
+//		}
 
 	}
 }

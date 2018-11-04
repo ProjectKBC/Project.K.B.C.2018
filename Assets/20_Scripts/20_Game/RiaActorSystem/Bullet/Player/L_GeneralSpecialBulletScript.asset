@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e33ebde62be4ae8bd6f8119cae8b95, type: 3}
+  m_Name: L_GeneralSpecialBulletScript
+  m_EditorClassIdentifier: 
+  hitPointMax: 1
+  atk: 1
+  moveSpeedBase: 4
+  lifeTime: 4
+  canCollision: 0
+  colliderSize: {x: 1.5, y: 3}
+  isPenetration: 0
+  sprite: {fileID: 21300000, guid: b4bda440454a4473786dc818c7e192a3, type: 3}

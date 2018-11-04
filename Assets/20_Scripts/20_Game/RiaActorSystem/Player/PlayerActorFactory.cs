@@ -39,12 +39,19 @@ namespace Game.Player
 					break;
 
 				case PlayerCharacterEnum.held:
+					script = this.catalog.heldScript;
+					character = new HeldPlayer(_actor.gameObject, script, _playerNumber);
 					break;
-
+				
 				case PlayerCharacterEnum.kaito:
 					script = this.catalog.kaitoScript;
-					character = new KaitoPlayer(_actor.gameObject, script, _playerNumber);
+					character = new FakeKaitoPlayer(_actor.gameObject, script, _playerNumber);
 					break;
+
+//				case PlayerCharacterEnum.kaito:
+//					script = this.catalog.kaitoScript;
+//					character = new KaitoPlayer(_actor.gameObject, script, _playerNumber);
+//					break;
 
 				case PlayerCharacterEnum.kaoru:
 					script = this.catalog.kaoruScript;
@@ -55,12 +62,16 @@ namespace Game.Player
 					break;
 
 				case PlayerCharacterEnum.twist:
+					script = this.catalog.twistScript;
+					character = new TwistPlayer(_actor.gameObject, script, _playerNumber);
 					break;
 
 				case PlayerCharacterEnum.vega_al:
 					break;
 
 				case PlayerCharacterEnum.veronica:
+					script = this.catalog.veronicaScript;
+					character = new VeronicaPlayer(_actor.gameObject, script, _playerNumber);
 					break;
 
 				default:
