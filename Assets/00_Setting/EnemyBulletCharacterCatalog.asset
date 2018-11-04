@@ -15,7 +15,11 @@ MonoBehaviour:
     type: 2}
   stayEnemyBulletScript: {fileID: 11400000, guid: 9a51a9569c4bbf14e951f6e2c12b8337,
     type: 2}
-  inToOutEnemyBulletScript: {fileID: 11400000, guid: c6eec1681045e4186a559c8e61c49c22,
+  outToInSinEnemyBulletScript: {fileID: 11400000, guid: d29f07b5f930749e88c73fb16fdce517,
+    type: 2}
+  inToOutSinEnemyBulletScript: {fileID: 11400000, guid: 577705558078a49b1b09ac33e03b1503,
+    type: 2}
+  inToOutEnemyBulletScript: {fileID: 11400000, guid: 35f972475c5074cad91a61229b8a22b7,
     type: 2}
   outToInEnemyBulletScript: {fileID: 11400000, guid: f7560e06e826042b484a3f8ae2a81185,
     type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPointMax: 1
   atk: 1
-  moveSpeedBase: 0.3
+  moveSpeedBase: 0.8
   lifeTime: 60
   canCollision: 0
   colliderSize: {x: 1, y: 1}

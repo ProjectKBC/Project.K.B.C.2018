@@ -16,6 +16,6 @@ MonoBehaviour:
   hitATK: 1
   score: 10
   sprite: {fileID: 21300000, guid: e9115d56c3d16764588f83e74a5bcd21, type: 3}
-  ordinaryYForwardBorder: 30
+  ordinaryYForwardBorder: 40
   shotParam:
-    shotInterval: 5
+    shotInterval: 1.5

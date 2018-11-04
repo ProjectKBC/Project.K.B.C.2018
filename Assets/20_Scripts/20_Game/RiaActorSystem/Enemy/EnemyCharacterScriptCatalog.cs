@@ -17,19 +17,19 @@ namespace Game.Enemy
 		public RiaEnemyScript UFA1StayScript = null;
 		
 		[SerializeField]
-		public RiaEnemyScript UFA1SinScript = null;
+		public RiaEnemyScript UAF1OutToInSinEnemyScript = null;
 		
 		[SerializeField]
-		public RiaEnemyScript UFA1ToLeftSideEnemy = null;
-		
-		[SerializeField]
-		public RiaEnemyScript UFA1ToRightSideEnemy = null;
+		public RiaEnemyScript UAF1InToOutSinEnemyScript = null;
 		
 		[SerializeField]
 		public RiaEnemyScript UFA1OutToInEnemy = null;
 		
 		[SerializeField]
 		public RiaEnemyScript UFA1InToOutEnemy = null;
+		
+		[SerializeField]
+		public RiaEnemyScript Boss = null;
 
 	}
 }

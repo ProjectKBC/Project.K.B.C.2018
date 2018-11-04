@@ -48,12 +48,15 @@ namespace Game.Bullet.Enemy
 			this.factory.CreateStayEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
 		}
 		
-		/*
-		public void CreateSinEnemyBullet(Vector3 _pos)
+		public void CreateOutToInSinEnemyBullet(Vector3 _pos)
 		{
-			this.factory.CreateSinEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
+			this.factory.CreateOutToInSinEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
 		}
-		*/
+		
+		public void CreateInToOutSinEnemyBullet(Vector3 _pos)
+		{
+			this.factory.CreateInToOutSinEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
+		}
 		
 		
 		public void CreateInToOutEnemyBullet(Vector3 _pos)

@@ -20,18 +20,17 @@ namespace Game.Bullet.Enemy
 
 		public RiaEnemyBulletScript StayEnemyBulletScript { get { return this.stayEnemyBulletScript; } }
 		
-		/*
-		[SerializeField]
-		private RiaEnemyBulletScript sinEnemyBulletScript = null;
-
-		public RiaEnemyBulletScript SinEnemyBulletScript { get { return this.sinEnemyBulletScript; } }
 		
 		[SerializeField]
-		private RiaEnemyBulletScript toLeftSideEnemyBulletScript = null;
+		private RiaEnemyBulletScript outToInSinEnemyBulletScript = null;
 
-		public RiaEnemyBulletScript ToLeftSideEnemyBulletScript { get { return this.toLeftSideEnemyBulletScript; } }
-		*/
-		
+		public RiaEnemyBulletScript OutToInSinEnemyBulletScript { get { return this.outToInSinEnemyBulletScript; } }
+				
+		[SerializeField]
+		private RiaEnemyBulletScript inToOutSinEnemyBulletScript = null;
+
+		public RiaEnemyBulletScript InToOutSinEnemyBulletScript { get { return this.inToOutSinEnemyBulletScript; } }
+
 		[SerializeField]
 		private RiaEnemyBulletScript inToOutEnemyBulletScript = null;
 

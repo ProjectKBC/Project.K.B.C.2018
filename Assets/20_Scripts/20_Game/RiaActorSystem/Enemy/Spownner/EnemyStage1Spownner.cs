@@ -12,19 +12,11 @@ public class EnemyStage1Spownner : EnemySpownner
 	public enum EnemyPattern
 	{
 		StraightHorizontal,
-		StraightVertical,
-		LStraights,
-		RStraights,
-		ToLeftSide,
-		ToRightSide,
-		Quadratic,
-		Circle,
-		Coaster,
 		Stay,
-		Sin,
+		OutToInSin,
+		InToOutSin,
 		OutToIn,
-		InToOut,
-		Bee
+		InToOut
 	}
 
 	public override void Spown()
@@ -38,7 +30,7 @@ public class EnemyStage1Spownner : EnemySpownner
 			if (this.appearInterval <= this.appearTime )
 			{
 				int figs = 5;
-
+				float appearY = 35.0f;
 				switch (this.enemyPatterns[this.enemyCount].ToString())
 				{
 					case "StraightHorizontal":
@@ -46,7 +38,6 @@ public class EnemyStage1Spownner : EnemySpownner
 						{
 							var space = 10.0f;
 							var equalPos = Mathf.Abs(this.spownPos.RightEdgeTop.x - this.spownPos.LeftEdgeTop.x) / (figs + 1);
-							Debug.Log(this.topLeftPosX + i * equalPos);
 
 							this.factory.Create(
 								EnemyCharacterEnum.UAF1StraightEnemy,
@@ -58,8 +49,19 @@ public class EnemyStage1Spownner : EnemySpownner
 
 						break;
 
-					case "StraightVertical":
+					case "Stay":
+						for (var i = 1; i <= figs; i++)
+						{
+							var space = 10.0f;
+							var equalPos = Mathf.Abs(this.spownPos.RightEdgeTop.x - this.spownPos.LeftEdgeTop.x) / (figs + 1);
 
+							this.factory.Create(
+								EnemyCharacterEnum.UAF1StayEnemy,
+								this.playerNumber,
+								this.manager.GetFreeActorForSpowner(),
+								new Vector3(this.spownPos.LeftEdgeTop.x + i * equalPos, this.topPosY, 0.0f)
+							);
+						}
 
 						break;
 
@@ -101,42 +103,6 @@ public class EnemyStage1Spownner : EnemySpownner
 						break;
 					*/
 
-					case "ToLeftSide":
-						for (var i = 1; i <= figs; i++)
-						{
-							var rand = Random.Range(0, 30);
-							var space = 10.0f;
-							var equalPos = Mathf.Abs(this.topLeftPosX - this.topRightPosX) / (figs + 1);
-
-							this.factory.Create(
-								EnemyCharacterEnum.UAF1ToLeftSideEnemy,
-								this.playerNumber,
-								this.manager.GetFreeActorForSpowner(),
-								//new Vector3(this.appearRightPosX + i * space, rand, 0.0f)
-								new Vector3(this.spownPos.RightEdgeTop.x + i * space, rand, 0.0f)
-							);
-						}
-
-						break;
-
-					case "ToRightSide":
-						for (var i = 1; i <= figs; i++)
-						{
-							var rand = Random.Range(0, 30);
-							var space = 10.0f;
-							var equalPos = Mathf.Abs(this.topLeftPosX - this.topRightPosX) / (figs + 1);
-
-							this.factory.Create(
-								EnemyCharacterEnum.UAF1ToRightSideEnemy,
-								this.playerNumber,
-								this.manager.GetFreeActorForSpowner(),
-								//new Vector3(this.appearLeftPosX + i * space, rand, 0.0f)
-								new Vector3(this.spownPos.LeftEdgeTop.x + i * space, rand, 0.0f)
-							);
-						}
-
-						break;
-
 					case "Quadratic":
 
 						break;
@@ -158,11 +124,55 @@ public class EnemyStage1Spownner : EnemySpownner
 
 						break;
 
-					case "Stay":
+					case "OutToInSin":
+						for (var i = 1; i <= figs; i++)
+						{
+							var space = 5.0f;
+							var x = 0.0f;
+							if (this.playerNumber.Equals(PlayerNumber.player1))
+							{
+								x = this.spownPos.LeftEdgeTop.x;
+								space = -5.0f;
+							}
+							else
+							{
+								x = this.spownPos.RightEdgeTop.x;
+								space = 5.0f;
+							}
+
+							this.factory.Create(
+								EnemyCharacterEnum.UAF1OutToInSinEnemy,
+								this.playerNumber,
+								this.manager.GetFreeActorForSpowner(),
+								new Vector3(x + i * space, appearY, 0.0f)
+							);
+						}
 
 						break;
+					
+					case "InToOutSin":
+						for (var i = 1; i <= figs; i++)
+						{
+							var space = 5.0f;
+							var x = 0.0f;
+							if (this.playerNumber.Equals(PlayerNumber.player1))
+							{
+								x = this.spownPos.RightEdgeTop.x;
+								space = 5.0f;
+							}
+							else
+							{
+								x = this.spownPos.LeftEdgeTop.x;
+								space = -5.0f;
+							}
 
-					case "Sin":
+							this.factory.Create(
+								EnemyCharacterEnum.UAF1InToOutSinEnemy,
+								this.playerNumber,
+								this.manager.GetFreeActorForSpowner(),
+								new Vector3(x + i * space, appearY, 0.0f)
+							);
+						}
 
 						break;
 					
@@ -170,7 +180,7 @@ public class EnemyStage1Spownner : EnemySpownner
 						for (var i = 1; i <= figs; i++)
 						{
 							var rand = Random.Range(0, 30);
-							var space = 10.0f;
+							var space = 5.0f;
 							var x = 0.0f;
 							if (this.playerNumber.Equals(PlayerNumber.player1))
 							{
@@ -197,7 +207,7 @@ public class EnemyStage1Spownner : EnemySpownner
 						for (var i = 1; i <= figs; i++)
 						{
 							var rand = Random.Range(0, 30);
-							var space = 10.0f;
+							var space = 5.0f;
 							var x = 0.0f;
 							if (this.playerNumber.Equals(PlayerNumber.player1))
 							{
@@ -219,15 +229,28 @@ public class EnemyStage1Spownner : EnemySpownner
 						}
 						
 						break;
-
-					case "Bee":
-
-						break;
+					
 				}
 
 				this.enemyCount += 1;
 				this.appearTime = 0;
 			}
 		}
+		/*
+
+		if (this.enemyCount == this.enemyPatterns.Length)
+		{
+			var x = 0.0f;
+			x = this.spownPos.CenterTop.x;
+
+			this.factory.Create(
+				EnemyCharacterEnum.Boss,
+				this.playerNumber,
+				this.manager.GetFreeActorForSpowner(),
+				new Vector3(x, 70.0f, 0.0f)
+			);
+		}
+		*/
+		
 	}
 }
