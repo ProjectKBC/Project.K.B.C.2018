@@ -12,7 +12,9 @@ public class EnemyStage1Spownner : EnemySpownner
 	public enum EnemyPattern
 	{
 		StraightHorizontal,
+		Stay,
 		OutToInSin,
+		InToOutSin,
 		OutToIn,
 		InToOut,
 		Bee
@@ -29,7 +31,7 @@ public class EnemyStage1Spownner : EnemySpownner
 			if (this.appearInterval <= this.appearTime )
 			{
 				int figs = 5;
-
+				float appearY = 35.0f;
 				switch (this.enemyPatterns[this.enemyCount].ToString())
 				{
 					case "StraightHorizontal":
@@ -48,8 +50,19 @@ public class EnemyStage1Spownner : EnemySpownner
 
 						break;
 
-					case "StraightVertical":
+					case "Stay":
+						for (var i = 1; i <= figs; i++)
+						{
+							var space = 10.0f;
+							var equalPos = Mathf.Abs(this.spownPos.RightEdgeTop.x - this.spownPos.LeftEdgeTop.x) / (figs + 1);
 
+							this.factory.Create(
+								EnemyCharacterEnum.UAF1StayEnemy,
+								this.playerNumber,
+								this.manager.GetFreeActorForSpowner(),
+								new Vector3(this.spownPos.LeftEdgeTop.x + i * equalPos, this.topPosY, 0.0f)
+							);
+						}
 
 						break;
 
@@ -112,12 +125,7 @@ public class EnemyStage1Spownner : EnemySpownner
 
 						break;
 
-					case "Stay":
-
-						break;
-
 					case "OutToInSin":
-						float appearY = 35.0f;
 						for (var i = 1; i <= figs; i++)
 						{
 							var space = 5.0f;
@@ -135,6 +143,32 @@ public class EnemyStage1Spownner : EnemySpownner
 
 							this.factory.Create(
 								EnemyCharacterEnum.UAF1OutToInSinEnemy,
+								this.playerNumber,
+								this.manager.GetFreeActorForSpowner(),
+								new Vector3(x + i * space, appearY, 0.0f)
+							);
+						}
+
+						break;
+					
+					case "InToOutSin":
+						for (var i = 1; i <= figs; i++)
+						{
+							var space = 5.0f;
+							var x = 0.0f;
+							if (this.playerNumber.Equals(PlayerNumber.player1))
+							{
+								x = this.spownPos.RightEdgeTop.x;
+								space = 5.0f;
+							}
+							else
+							{
+								x = this.spownPos.LeftEdgeTop.x;
+								space = -5.0f;
+							}
+
+							this.factory.Create(
+								EnemyCharacterEnum.UAF1InToOutSinEnemy,
 								this.playerNumber,
 								this.manager.GetFreeActorForSpowner(),
 								new Vector3(x + i * space, appearY, 0.0f)

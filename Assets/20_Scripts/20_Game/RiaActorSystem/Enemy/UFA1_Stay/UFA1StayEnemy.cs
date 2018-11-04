@@ -96,16 +96,17 @@ namespace Game.Enemy
 
 		public override void Move()
 		{
-			if (this.Trans.position.y > this.Script.OrdinaryYForwardBorder)
-			{
-				this.YForwardEnemy(this.Script.OrdinaryYForwardBorder);
-			}
-			
+			this.elapsedTime += Time.deltaTime;
 			if (this.elapsedTime >= this.Script.StayTime)
 			{
 				base.BackMove();
 			}
-			
+			else if (this.Trans.position.y > this.Script.OrdinaryYForwardBorder)
+			{
+				this.YForwardEnemy(this.Script.OrdinaryYForwardBorder);
+			}
+
+			//Debug.Log(this.elapsedTime + "あああ" + this.Script.StayTime);
 		}
 
 		public override void Animation()

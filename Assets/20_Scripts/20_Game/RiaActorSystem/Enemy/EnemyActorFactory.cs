@@ -28,10 +28,8 @@ namespace Game.Enemy
 				
 				
 				case EnemyCharacterEnum.UAF1StayEnemy:
-					/*
 					script = this.catalog.UFA1StayScript;
 					character = new UFA1StayEnemy(_actor.gameObject, script, _playerNumber);
-					*/
 					break;
 				
 				case EnemyCharacterEnum.UAF1OutToInSinEnemy:
@@ -39,9 +37,12 @@ namespace Game.Enemy
 					character = new UFA1OutToInSinEnemy(_actor.gameObject, script, _playerNumber);
 					break;
 				
+				case EnemyCharacterEnum.UAF1InToOutSinEnemy:
+					script = this.catalog.UAF1InToOutSinEnemyScript;
+					character = new UFA1InToOutSinEnemy(_actor.gameObject, script, _playerNumber);
+					break;
 				
 				case EnemyCharacterEnum.UAF1OutToInEnemy:
-					Debug.Log("いいい");
 
 					script = this.catalog.UFA1OutToInEnemy;
 					character = new UFA1OutToIn(_actor.gameObject, script, _playerNumber);

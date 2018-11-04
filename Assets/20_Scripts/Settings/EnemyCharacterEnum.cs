@@ -12,10 +12,8 @@ public enum EnemyCharacterEnum
 	UAF1StayEnemy,
 	[Description("UAF1OutToInSinEnemy")]
 	UAF1OutToInSinEnemy,
-	[Description("UAF1ToLeftSideEnemy")]
-	UAF1ToLeftSideEnemy,
-	[Description("UAF1ToRightSideEnemy")]
-	UAF1ToRightSideEnemy,
+	[Description("UAF1InToOutSinEnemy")]
+	UAF1InToOutSinEnemy,
 	[Description("UAF1OutToInEnemy")]
 	UAF1OutToInEnemy,
 	[Description("UAF1InToOutEnemy")]

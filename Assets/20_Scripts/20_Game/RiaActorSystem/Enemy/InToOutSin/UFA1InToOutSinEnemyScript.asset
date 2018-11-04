@@ -8,13 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19d9ec67a9171452ca760c68afb7ea73, type: 3}
-  m_Name: InToOutEnemyBulletScript
+  m_Script: {fileID: 11500000, guid: da29d29dc18ef42918441c076fac1018, type: 3}
+  m_Name: UFA1InToOutSinEnemyScript
   m_EditorClassIdentifier: 
-  hitPointMax: 1
-  atk: 1
-  moveSpeedBase: 1
-  lifeTime: 60
-  canCollision: 0
-  colliderSize: {x: 1, y: 1}
-  animation: {fileID: 0}
+  maxHitPoint: 0
+  moveSpeedBase: 0
+  hitATK: 0
+  score: 0
+  sprite: {fileID: 0}
+  shotParam:
+    shotInterval: 0

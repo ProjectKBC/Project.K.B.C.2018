@@ -50,6 +50,18 @@ namespace Game.Bullet.Enemy
 			_actor.WakeUp(character, script, _position, _rotation, _scale);
 		}
 		
+		public void CreateInToOutSinEnemyBullet(
+			PlayerNumber _playerNumber,
+			RiaActor _actor,
+			Vector3 _position,
+			Quaternion? _rotation = null,
+			Vector3? _scale = null)
+		{
+			var script = this.catalog.InToOutSinEnemyBulletScript as RiaEnemyBulletScript;
+			var character = new InToOutSinEnemyBullet(_actor.gameObject, script, _playerNumber);
+			_actor.WakeUp(character, script, _position, _rotation, _scale);
+		}
+		
 		/*
 		public void CreateToLeftSideEnemyBullet(
 			PlayerNumber _playerNumber,

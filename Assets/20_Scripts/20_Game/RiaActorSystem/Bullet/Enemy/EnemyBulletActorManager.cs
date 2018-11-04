@@ -53,6 +53,11 @@ namespace Game.Bullet.Enemy
 			this.factory.CreateOutToInSinEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
 		}
 		
+		public void CreateInToOutSinEnemyBullet(Vector3 _pos)
+		{
+			this.factory.CreateInToOutSinEnemyBullet(this.playerNumber, this.GetFreeActor(), _pos);
+		}
+		
 		
 		public void CreateInToOutEnemyBullet(Vector3 _pos)
 		{

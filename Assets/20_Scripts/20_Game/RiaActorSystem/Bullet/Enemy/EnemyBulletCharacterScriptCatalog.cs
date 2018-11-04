@@ -25,7 +25,12 @@ namespace Game.Bullet.Enemy
 		private RiaEnemyBulletScript outToInSinEnemyBulletScript = null;
 
 		public RiaEnemyBulletScript OutToInSinEnemyBulletScript { get { return this.outToInSinEnemyBulletScript; } }
-		
+				
+		[SerializeField]
+		private RiaEnemyBulletScript inToOutSinEnemyBulletScript = null;
+
+		public RiaEnemyBulletScript InToOutSinEnemyBulletScript { get { return this.inToOutSinEnemyBulletScript; } }
+
 		[SerializeField]
 		private RiaEnemyBulletScript inToOutEnemyBulletScript = null;
 
