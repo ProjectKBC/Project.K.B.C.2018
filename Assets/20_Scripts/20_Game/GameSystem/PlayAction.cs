@@ -27,11 +27,11 @@ namespace Game
         }
 
         public override void Start()
-        {
-			if (!this.gm.IsFromPause)
-			{
-				this.gm = GameManager.Instance;
+		{
+			this.gm = GameManager.Instance;
 
+			if (this.gm.IsFromInitialize)
+			{
 				this.gm.playElapsedTime = 0;
 
 				this.pl1SM = this.gm.PL1Managers.stageManager;
@@ -47,6 +47,8 @@ namespace Game
 
 				// BGM: StageBGM
 				AudioManager.Instance.PlayBgm(this.gm.GetStageBGM());
+
+				this.gm.IsFromInitialize = false;
 			}
 		}
 

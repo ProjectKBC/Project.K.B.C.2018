@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Game
 {
-    public class PauseAction : StateAction
+    public class CutInAction : StateAction
     {
         private GameManager gm;
 
-        public PauseAction()
+        public CutInAction()
         {
         }
 

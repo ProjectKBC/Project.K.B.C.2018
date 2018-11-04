@@ -292,7 +292,7 @@ namespace Game.Player
 				var distance = Vector3.Distance(enemy.Trans.position, this.Trans.position);
 				if (distance <= _searchRadius)
 				{
-					Debug.Log("search", enemy.Go);
+					//Debug.Log("search", enemy.Go);
 					searchEnemys.Add(distance, enemy);
 					isSearchFlag = true;
 				}

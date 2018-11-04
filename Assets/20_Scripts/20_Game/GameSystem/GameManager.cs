@@ -46,7 +46,7 @@ namespace Game
 		public float playElapsedTime { get; set; }
 
 		// PauseでのBGMリスタート回避
-		public bool IsFromPause { get; set; }
+		public bool IsFromInitialize { get; set; }
 
 	    public PlayerNumber Winner { get; private set; }
 	    private bool isFinishedBattle = false;
@@ -311,6 +311,8 @@ namespace Game
 
         private void Start()
         {
+			this.IsFromInitialize = true;
+
             this.stateManager.Add(State.Initialize, this.initAct);
 			this.stateManager.Add(State.Ready, this.readyAct);
 			this.stateManager.Add(State.Play, this.playAct);

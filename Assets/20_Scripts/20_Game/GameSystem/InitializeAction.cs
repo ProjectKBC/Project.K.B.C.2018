@@ -20,7 +20,6 @@ namespace Game
 
 			// Todo: BGM
 			AudioManager.Instance.StopBgm();
-			this.gm.IsFromPause = false;
 
 			// ロード画面の生成
 			// FadeManager.Instance.FadeOut(0);
@@ -77,6 +76,7 @@ namespace Game
 
 		public override void End()
 		{
+			this.gm.IsFromInitialize = true;
 		}
 	}
 }
