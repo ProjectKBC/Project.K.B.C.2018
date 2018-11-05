@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cadd8ae0d767f4e99e0de445bbde6c, type: 3}
+  m_Name: EnemyCharacterCatalog
+  m_EditorClassIdentifier: 
+  UFA1StraightScript: {fileID: 11400000, guid: ba2c24496b3b47647b0467163612c0df, type: 2}
+  UFA1StayScript: {fileID: 11400000, guid: d03588fc4750f47c9a4b6ee856e80f54, type: 2}
+  UAF1OutToInSinEnemyScript: {fileID: 11400000, guid: e50fc0ce83cf14ef1b9fce7585728842,
+    type: 2}
+  UAF1InToOutSinEnemyScript: {fileID: 11400000, guid: 7fbbb3a507501489fb7867dc3e967e7f,
+    type: 2}
+  UFA1OutToInEnemy: {fileID: 11400000, guid: dfb3bdb365b2c4ce59cf0550ebdb0d54, type: 2}
+  UFA1InToOutEnemy: {fileID: 11400000, guid: ddf48822e78dd4cda801069ffd039c7d, type: 2}

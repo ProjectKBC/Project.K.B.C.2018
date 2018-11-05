@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf24baad2646fe49b830dc5480dfd75, type: 3}
+  m_Name: AirosLeftBackAnimation
+  m_EditorClassIdentifier: 
+  keyName: left_back
+  isLoop: 0
+  updateFrame: 4
+  sprites:
+  - {fileID: 21300000, guid: f12ad6f5bff39b94d9db47511e320c62, type: 3}
+  - {fileID: 21300000, guid: f84379a991274a24684996c7e6219fe5, type: 3}
+  - {fileID: 21300000, guid: 3a3928d746d676c43b30d3c618b9bf14, type: 3}
+  - {fileID: 21300000, guid: 5c728bebbe09ea840b36ee99aa0056e4, type: 3}

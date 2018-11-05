@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ff26cd341a85a45b6729beedcad548, type: 3}
+  m_Name: PlayerBulletCharacterCatalog
+  m_EditorClassIdentifier: 
+  airosNormalBullet:
+    airosNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
+      type: 2}
+    airosNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
+      type: 2}
+  airosSpecialBullet:
+    airosSpecialBulletRight: {fileID: 0}
+    airosSpecialBulletCenter: {fileID: 0}
+    airosSpecialBulletLeft: {fileID: 0}
+  anomaNormalBullet:
+    anomaNormalBulletRight: {fileID: 11400000, guid: 06f86647fcde542d6900d58f02599139,
+      type: 2}
+    anomaNormalBulletLeft: {fileID: 11400000, guid: 9530c02b42739402bbf292de76cc619e,
+      type: 2}
+  anomaSpecialBullet:
+    anomaSpecialBulletRight: {fileID: 0}
+    anomaSpecialBulletCenter: {fileID: 0}
+    anomaSpecialBulletLeft: {fileID: 0}
+  heldNormalBullet:
+    heldNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
+      type: 2}
+    heldNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
+      type: 2}
+  heldSpecialBullet:
+    heldSpecialBulletRight: {fileID: 0}
+    heldSpecialBulletCenter: {fileID: 0}
+    heldSpecialBulletLeft: {fileID: 0}
+  kaitoNormalBullet:
+    airosNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
+      type: 2}
+    airosNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
+      type: 2}
+  kaitoSpecialBullet:
+    airosSpecialBulletRight: {fileID: 0}
+    airosSpecialBulletCenter: {fileID: 0}
+    airosSpecialBulletLeft: {fileID: 0}
+  kaoruNormalBullet:
+    kaoruNormalBulletRight: {fileID: 11400000, guid: 06a8313217d914d3584e187e510b686e,
+      type: 2}
+    kaoruNormalBulletLeft: {fileID: 11400000, guid: ca3f945c043954692a1bc39ae791d1b9,
+      type: 2}
+  kaoruSpecialBullet:
+    kaoruSpecialBulletRight: {fileID: 0}
+    kaoruSpecialBulletCenter: {fileID: 0}
+    kaoruSpecialBulletLeft: {fileID: 0}
+  twistNormalBullet:
+    twistNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
+      type: 2}
+    twistNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
+      type: 2}
+  twistSpecialBullet:
+    twistSpecialBulletRight: {fileID: 0}
+    twistSpecialBulletCenter: {fileID: 0}
+    twistSpecialBulletLeft: {fileID: 0}
+  veronicaNormalBullet:
+    veronicaNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
+      type: 2}
+    veronicaNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
+      type: 2}
+  veronicaSpecialBullet:
+    veronicaSpecialBulletRight: {fileID: 0}
+    veronicaSpecialBulletCenter: {fileID: 0}
+    veronicaSpecialBulletLeft: {fileID: 0}
+  generalNormalBullet:
+    generalNormalBulletRight: {fileID: 11400000, guid: d4dc2875f73e44274a80e70792254034,
+      type: 2}
+    generalNormalBulletLeft: {fileID: 11400000, guid: d8613cd5af77a49e5ae8d5a853f46839,
+      type: 2}
+  generalSpecialBullet:
+    generalSpecialBulletRight: {fileID: 11400000, guid: 0c865bbc6d4494cf0bf286acfec77f18,
+      type: 2}
+    generalSpecialBulletCenter: {fileID: 11400000, guid: d5625dc51908141fcb847d92e6ca7167,
+      type: 2}
+    generalSpecialBulletLeft: {fileID: 11400000, guid: 6ba37d2fd597a4f62bba151af608b255,
+      type: 2}

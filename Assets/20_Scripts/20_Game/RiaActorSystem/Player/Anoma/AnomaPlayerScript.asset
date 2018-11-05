@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44cdc6ef2170451b80891f35de70066, type: 3}
+  m_Name: AnomaPlayerScript
+  m_EditorClassIdentifier: 
+  maxHitPoint: 5
+  moveSpeedBase: 0.75
+  invincibleTimeMax: 2.5
+  invincibleBlinkingUpdateFrame: 6
+  sprite: {fileID: 21300000, guid: 321cacbed1c44a24c9219205f6d8ac50, type: 3}
+  circleColliderRadius: 0.45
+  animations:
+    waitAnimation: {fileID: 11400000, guid: abc5d04a5154d42cc99b20789cc2bf5a, type: 2}
+    rightGoAnimation: {fileID: 11400000, guid: 55c7a9875469a4b0d9542153dcb3eeb6, type: 2}
+    leftGoAnimation: {fileID: 11400000, guid: 9485af980684a4ca8a11f4ee9cb9c6e8, type: 2}
+  nsParam:
+    bulletPrefab: {fileID: 1587259063027164, guid: ac2a95ee92dfe4d4d90793a7f2513d44,
+      type: 2}
+    shotInterval: 0.1
+  ssParam:
+    bulletPrefab: {fileID: 1010962156435104, guid: cc7be787ffd7e4ab58c688cd57e39421,
+      type: 2}
+    shotChargeTime: 3

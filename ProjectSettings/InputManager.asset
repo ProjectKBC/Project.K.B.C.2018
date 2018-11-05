@@ -1,0 +1,487 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!13 &1
+InputManager:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Axes:
+  - serializedVersion: 3
+    m_Name: Player1_X
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: joystick 1 button 7
+    positiveButton: joystick 1 button 5
+    altNegativeButton: a
+    altPositiveButton: d
+    gravity: 15
+    dead: 0.1
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player1_X
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: joystick 1 button 7
+    positiveButton: joystick 1 button 5
+    altNegativeButton: a
+    altPositiveButton: d
+    gravity: 15
+    dead: 0.1
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2_X
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: joystick 2 button 7
+    positiveButton: joystick 2 button 5
+    altNegativeButton: left
+    altPositiveButton: right
+    gravity: 15
+    dead: 0.1
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player2_X
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: joystick 2 button 7
+    positiveButton: joystick 2 button 5
+    altNegativeButton: left
+    altPositiveButton: right
+    gravity: 15
+    dead: 0.1
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player1_Y
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: joystick 1 button 6
+    positiveButton: joystick 1 button 4
+    altNegativeButton: s
+    altPositiveButton: w
+    gravity: 15
+    dead: 0.1
+    sensitivity: 15
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player1_Y
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: joystick 1 button 6
+    positiveButton: joystick 1 button 4
+    altNegativeButton: s
+    altPositiveButton: w
+    gravity: 15
+    dead: 0.1
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 1
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2_Y
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: joystick 2 button 6
+    positiveButton: joystick 2 button 4
+    altNegativeButton: down
+    altPositiveButton: up
+    gravity: 15
+    dead: 0.1
+    sensitivity: 15
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player2_Y
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: joystick 2 button 6
+    positiveButton: joystick 2 button 4
+    altNegativeButton: down
+    altPositiveButton: up
+    gravity: 15
+    dead: 0.1
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 1
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: "Player1_\u25B3"
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 12
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: "Player2_\u25B3"
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 12
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: "Player1_\u25CB"
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 13
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: "Player2_\u25CB"
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 13
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: "Player1_\xD7"
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 14
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: "Player2_\xD7"
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 14
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: "Player1_\u25A1"
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 15
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: "Player2_\u25A1"
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 15
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player1_R1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 11
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2_R1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 11
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player1_R2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 9
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2_R2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 9
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player1_L1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 10
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2_L1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 10
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player1_L2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 8
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2_L2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 8
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player1_Select
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2_Select
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player1_Start
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 3
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2_Start
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 3
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Player1_PS
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 16
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Player2_PS
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 16
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 15
+    dead: 0.001
+    sensitivity: 15
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2

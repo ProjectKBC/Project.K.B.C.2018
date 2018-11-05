@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ef37f2be99f4bde88d11a87d363191, type: 3}
+  m_Name: R_KaoruNormalBulletScript
+  m_EditorClassIdentifier: 
+  hitPointMax: 1
+  atk: 0.5
+  moveSpeedBase: 7
+  lifeTime: 0.75
+  canCollision: 0
+  colliderSize: {x: 1.5, y: 3}
+  isPenetration: 0
+  sprite: {fileID: 21300000, guid: b4bda440454a4473786dc818c7e192a3, type: 3}

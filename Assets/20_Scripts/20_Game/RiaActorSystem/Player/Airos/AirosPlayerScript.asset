@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650febcc31032c84c8dde78446f60bff, type: 3}
+  m_Name: AirosPlayerScript
+  m_EditorClassIdentifier: 
+  maxHitPoint: 5
+  moveSpeedBase: 0.75
+  invincibleTimeMax: 2.5
+  invincibleBlinkingUpdateFrame: 6
+  sprite: {fileID: 21300000, guid: 51bd70c6a2c58ba46ae1eb70a841940a, type: 3}
+  circleColliderRadius: 0.45
+  animations:
+    waitAnimation: {fileID: 11400000, guid: 494ed12e9b0e1134e8571962e718258a, type: 2}
+    rightGoAnimation: {fileID: 11400000, guid: 09e6e1171ae920b4fb16ce28ea7b49f1, type: 2}
+    leftGoAnimation: {fileID: 11400000, guid: 73d6954a06a473c4c8cb1081b138de82, type: 2}
+  nsParam:
+    shotInterval: 0.15
+  ssParam:
+    shotCoolTime: 1.5
+    searchInterval: 0.5
+    searchCountMax: 3
+    searchAreaRange: 30
+  skilParam:
+    durationTime: 5
+    alphaMaxValue: 0.75
+    debuffSpeedMin: 0.5
