@@ -97,9 +97,9 @@ namespace Game.Player
 				if (script.shotInterval <= shotElapsedTime)
 				{
 					param.shotTime = this.playElapsedTime;
-					this.BulletManger.CreateGeneralBullet(
+					this.BulletManger.CreateKaoruBullet(
 						PlayerBulletActorManager.BulletType.Normal,
-						this.Trans.position, this.Trans.rotation);
+						this.Trans.position);
 
 				}
 			}

@@ -14,8 +14,8 @@ namespace Game.Bullet.Player
 			// CharacterScriptの上書き
 			this.Script = _script as AirosSpecialBulletScript;
 
-			// RiaSpriteAnimation[] animations = { this.Script.Animation };
-			// this.animator.SetAnimations(animations, this.Script.Animation.KeyName);
+			RiaSpriteAnimation[] animations = { this.Script.Animation };
+			this.animator.SetAnimations(animations, this.Script.Animation.KeyName);
 		}
 
 		#region Override Function

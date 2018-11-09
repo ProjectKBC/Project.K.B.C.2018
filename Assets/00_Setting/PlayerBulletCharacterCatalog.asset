@@ -17,14 +17,11 @@ MonoBehaviour:
     airosNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
       type: 2}
   airosSpecialBullet:
-    airosSpecialBulletRight: {fileID: 0}
-    airosSpecialBulletCenter: {fileID: 0}
-    airosSpecialBulletLeft: {fileID: 0}
+    airosSpecialBullet: {fileID: 11400000, guid: 79034cfd882bd4ca59ac37f0a519711c,
+      type: 2}
   anomaNormalBullet:
-    anomaNormalBulletRight: {fileID: 11400000, guid: 06f86647fcde542d6900d58f02599139,
-      type: 2}
-    anomaNormalBulletLeft: {fileID: 11400000, guid: 9530c02b42739402bbf292de76cc619e,
-      type: 2}
+    anomaNormalBulletRight: {fileID: 0}
+    anomaNormalBulletLeft: {fileID: 0}
   anomaSpecialBullet:
     anomaSpecialBulletRight: {fileID: 0}
     anomaSpecialBulletCenter: {fileID: 0}
@@ -39,14 +36,16 @@ MonoBehaviour:
     heldSpecialBulletCenter: {fileID: 0}
     heldSpecialBulletLeft: {fileID: 0}
   kaitoNormalBullet:
-    airosNormalBulletRight: {fileID: 11400000, guid: 4fbf4afbd377060488e895a70b1498bf,
+    kaitoNormalBulletRight: {fileID: 11400000, guid: 30784d69669bd46bba545a3e46047217,
       type: 2}
-    airosNormalBulletLeft: {fileID: 11400000, guid: b5cff43b43c68bc43bc17a3d8e505611,
+    kaitoNormalBulletCenter: {fileID: 11400000, guid: fc7752632c5c54d4abdc8fb2404a02ad,
+      type: 2}
+    kaitoNormalBulletLeft: {fileID: 11400000, guid: 5bfd6eace5c2645b69cfde11e6c278dd,
       type: 2}
   kaitoSpecialBullet:
-    airosSpecialBulletRight: {fileID: 0}
-    airosSpecialBulletCenter: {fileID: 0}
-    airosSpecialBulletLeft: {fileID: 0}
+    kaitoSpecialBulletRight: {fileID: 0}
+    kaitoSpecialBulletCenter: {fileID: 0}
+    kaitoSpecialBulletLeft: {fileID: 0}
   kaoruNormalBullet:
     kaoruNormalBulletRight: {fileID: 11400000, guid: 06a8313217d914d3584e187e510b686e,
       type: 2}

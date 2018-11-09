@@ -55,7 +55,7 @@ namespace Game.Bullet.Player
 					break;
 
 				case BulletType.Special:
-					// this.factory.CreateAirosSpecialBullet(this.playerNumber, GetFreeActor(), _pos);
+					this.factory.CreateAirosSpecialBullet(this.playerNumber, GetFreeActor(), _pos);
 					break;
 
 				case BulletType.Skill:
@@ -100,19 +100,19 @@ namespace Game.Bullet.Player
 					break;
 			}
 		}
-		
+
 		public void CreateKaitoBullet(BulletType _type, Vector3 _pos, Quaternion _rot)
 		{
 			switch (_type)
 			{
 				case BulletType.Normal:
-
-					break;
-
-				case BulletType.Special:
 					this.factory.CreateKaitoNormalBullet(this.playerNumber, GetFreeActor(), "center", _pos, _rot);
 					this.factory.CreateKaitoNormalBullet(this.playerNumber, GetFreeActor(), "right", _pos, _rot);
 					this.factory.CreateKaitoNormalBullet(this.playerNumber, GetFreeActor(), "left", _pos, _rot);
+					break;
+
+				case BulletType.Special:
+
 					break;
 
 				case BulletType.Skill:
@@ -120,26 +120,6 @@ namespace Game.Bullet.Player
 					break;
 			}
 		}
-
-//		public void CreateKaitoBullet(BulletType _type, Vector3 _pos, Quaternion _rot)
-//		{
-//			switch (_type)
-//			{
-//				case BulletType.Normal:
-//					this.factory.CreateKaitoNormalBullet(this.playerNumber, GetFreeActor(), "center", _pos, _rot);
-//					this.factory.CreateKaitoNormalBullet(this.playerNumber, GetFreeActor(), "right", _pos, _rot);
-//					this.factory.CreateKaitoNormalBullet(this.playerNumber, GetFreeActor(), "left", _pos, _rot);
-//					break;
-//
-//				case BulletType.Special:
-//
-//					break;
-//
-//				case BulletType.Skill:
-//
-//					break;
-//			}
-//		}
 
 		public void CreateKaoruBullet(BulletType _type, Vector3 _pos)
 		{

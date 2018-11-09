@@ -14,7 +14,7 @@ MonoBehaviour:
   airosScript: {fileID: 11400000, guid: 6907fc28d1f884b088fe1d9bbf499e3b, type: 2}
   anomaScript: {fileID: 11400000, guid: a679e6e5c058749c49e929931e7fee54, type: 2}
   heldScript: {fileID: 11400000, guid: f7d724609cb304caf9da72764e7562b5, type: 2}
-  kaitoScript: {fileID: 11400000, guid: 25e1ee9ee017e40848f0726f36fa2e53, type: 2}
+  kaitoScript: {fileID: 11400000, guid: 1fb8ca2577b4d46f8b1f4dfa9a854efd, type: 2}
   kaoruScript: {fileID: 11400000, guid: b84051b93751f4945b567c2369750267, type: 2}
   twistScript: {fileID: 11400000, guid: a9d223b690cad448ba4096cad3d697a5, type: 2}
   veronicaScript: {fileID: 11400000, guid: f322cd7f7cea3462aab48d5aa060569a, type: 2}

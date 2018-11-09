@@ -17,20 +17,12 @@ namespace Game.Bullet.Player
 			public RiaPlayerBulletScript airosNormalBulletRight;
 			public RiaPlayerBulletScript airosNormalBulletLeft;
 		}
-		
+
 		[System.Serializable]
 		public class AirosSpecialBulletSet
 		{
-			public RiaPlayerBulletScript airosSpecialBulletRight;
-			public RiaPlayerBulletScript airosSpecialBulletCenter;
-			public RiaPlayerBulletScript airosSpecialBulletLeft;
+			public RiaPlayerBulletScript airosSpecialBullet;
 		}
-
-//		[System.Serializable]
-//		public class AirosSpecialBulletSet
-//		{
-//			public RiaPlayerBulletScript airosSpecialBullet;
-//		}
 
 		[System.Serializable]
 		public class AnomaNormalBulletSet
@@ -61,28 +53,21 @@ namespace Game.Bullet.Player
 			public RiaPlayerBulletScript heldSpecialBulletCenter;
 			public RiaPlayerBulletScript heldSpecialBulletLeft;
 		}
-		
-		[System.Serializable]
-		public class FakeKaitoNormalBulletSet
-		{
-			public RiaPlayerBulletScript airosNormalBulletRight;
-			public RiaPlayerBulletScript airosNormalBulletLeft;
-		}
 
-//		[System.Serializable]
-//		public class KaitoNormalBulletSet
-//		{
-//			public RiaPlayerBulletScript kaitoNormalBulletRight;
-//			public RiaPlayerBulletScript kaitoNormalBulletCenter;
-//			public RiaPlayerBulletScript kaitoNormalBulletLeft;
-//		}
+		[System.Serializable]
+		public class KaitoNormalBulletSet
+		{
+			public RiaPlayerBulletScript kaitoNormalBulletRight;
+			public RiaPlayerBulletScript kaitoNormalBulletCenter;
+			public RiaPlayerBulletScript kaitoNormalBulletLeft;
+		}
 		
 		[System.Serializable]
-		public class FakeKaitoSpecialBulletSet
+		public class KaitoSpecialBulletSet
 		{
-			public RiaPlayerBulletScript airosSpecialBulletRight;
-			public RiaPlayerBulletScript airosSpecialBulletCenter;
-			public RiaPlayerBulletScript airosSpecialBulletLeft;
+			public RiaPlayerBulletScript kaitoSpecialBulletRight;
+			public RiaPlayerBulletScript kaitoSpecialBulletCenter;
+			public RiaPlayerBulletScript kaitoSpecialBulletLeft;
 		}
 
 		[System.Serializable]
@@ -176,19 +161,14 @@ namespace Game.Bullet.Player
 		public HeldSpecialBulletSet HeldSpecialBullet { get { return this.heldSpecialBullet; } }
 		
 		[SerializeField]
-		private FakeKaitoNormalBulletSet kaitoNormalBullet;
+		private KaitoNormalBulletSet kaitoNormalBullet;
 
-		public FakeKaitoNormalBulletSet KaitoNormalBullet { get { return this.kaitoNormalBullet; } }
+		public KaitoNormalBulletSet KaitoNormalBullet { get { return this.kaitoNormalBullet; } }
 		
 		[SerializeField]
-		private FakeKaitoSpecialBulletSet kaitoSpecialBullet;
+		private KaitoSpecialBulletSet kaitoSpecialBullet;
 		
-		public FakeKaitoSpecialBulletSet FakeKaitoSpecialBullet { get { return this.kaitoSpecialBullet; } }
-
-//		[SerializeField]
-//		private KaitoNormalBulletSet kaitoNormalBullet;
-//
-//		public KaitoNormalBulletSet KaitoNormalBullet { get { return this.kaitoNormalBullet; } }
+		public KaitoSpecialBulletSet FakeKaitoSpecialBullet { get { return this.kaitoSpecialBullet; } }
 
 		[SerializeField]
 		private KaoruNormalBulletSet kaoruNormalBullet;

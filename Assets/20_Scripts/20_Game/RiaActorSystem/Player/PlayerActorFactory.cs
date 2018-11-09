@@ -42,16 +42,11 @@ namespace Game.Player
 					script = this.catalog.heldScript;
 					character = new HeldPlayer(_actor.gameObject, script, _playerNumber);
 					break;
-				
+
 				case PlayerCharacterEnum.kaito:
 					script = this.catalog.kaitoScript;
-					character = new FakeKaitoPlayer(_actor.gameObject, script, _playerNumber);
+					character = new KaitoPlayer(_actor.gameObject, script, _playerNumber);
 					break;
-
-//				case PlayerCharacterEnum.kaito:
-//					script = this.catalog.kaitoScript;
-//					character = new KaitoPlayer(_actor.gameObject, script, _playerNumber);
-//					break;
 
 				case PlayerCharacterEnum.kaoru:
 					script = this.catalog.kaoruScript;
